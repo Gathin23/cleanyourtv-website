@@ -179,6 +179,7 @@ export const SHOWCASE_IMAGES: Record<string, string> = {
   "0x006e": "/showcase/0x006e.jpg",
   sethihq: "/showcase/sethihq.jpg",
   ashfaqhaq: "/showcase/ashfaqhaq-widgetv.jpg",
+  "matheus-caldeira": "/showcase/matheus-caldeira.jpg",
 };
 
 /**
