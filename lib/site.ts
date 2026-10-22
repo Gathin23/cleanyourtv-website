@@ -169,6 +169,7 @@ export const SHOWCASE_IMAGES: Record<string, string> = {
   alafazam: "/showcase/alafazam.jpg",
   griffincockfoster56: "/showcase/griffincockfoster56.jpg",
   egyjs: "/showcase/egyjs.jpg",
+  itsmevizz: "/showcase/itsmevizz.jpg",
   glidiandev: "/showcase/glidiandev.jpg",
   oliverjwroberts: "/showcase/oliverjwroberts.jpg",
   thayford: "/showcase/thayford.jpg",
