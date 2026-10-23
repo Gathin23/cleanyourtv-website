@@ -130,8 +130,10 @@ export default function AndroidPrivacy() {
             <B>Share</B> opens Android&rsquo;s share sheet and you pick where it goes (a message, an email, a note).
           </li>
           <li style={li}>
-            <B>Copy and open GitHub</B> copies the report to your phone&rsquo;s clipboard and opens the GitHub form for it in your browser. The app
-            makes no request itself, and nothing is posted until you paste the report and post the form. A GitHub issue is public.
+            <B>Open GitHub</B> (or <B>Copy and open GitHub</B>) copies the report to your phone&rsquo;s clipboard and opens the GitHub form for it
+            in your browser. When the report is short enough, it is also part of the form&rsquo;s link, so the form opens with it filled in; your
+            browser sends that link to GitHub when it opens the page, and may keep it in its history. The app makes no request itself, and nothing
+            is posted until you post the form. A GitHub issue is public.
           </li>
         </ul>
         <p style={p}>
