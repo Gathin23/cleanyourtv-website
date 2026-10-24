@@ -109,17 +109,41 @@ export default function AndroidPrivacy() {
           <li style={li}>
             <B>Your choices</B>, such as the dock and the look you picked, and the TVs you have set up.
           </li>
+          <li style={li}>
+            <B>The app&rsquo;s diagnostics log.</B> A plain text record of what the app did (connecting, reading the TV, each step and how it
+            went), with network addresses, serial numbers, keys and pairing codes removed. It stays on your phone. &ldquo;Delete everything&rdquo; in
+            the app&rsquo;s Settings deletes it, and so does clearing the app&rsquo;s storage. It leaves your phone only if you share a report.
+          </li>
         </ul>
         <p style={p}>
           You can delete all of this at any time from the app&rsquo;s Settings, or by clearing the app&rsquo;s storage or uninstalling it in
           Android&rsquo;s settings.
         </p>
 
-        <h2 style={h2}>Diagnostics</h2>
+        <h2 style={h2}>Reports you choose to share</h2>
         <p style={p}>
-          &ldquo;Share diagnostics&rdquo; is off until you use it. It shows you a preview of the report first, removes network addresses, serial
-          numbers, keys and pairing codes, and sends nothing by itself: it opens Android&rsquo;s share sheet and you pick where it goes (a message,
-          an email, a note), or you cancel.
+          &ldquo;Report a problem&rdquo; and &ldquo;Help add this TV&rdquo; are off until you use them, and the app sends nothing by itself. Each one
+          shows you the whole report first, as plain text, and then does only what you tap:
+        </p>
+        <ul style={ul}>
+          <li style={li}>
+            <B>Share</B> opens Android&rsquo;s share sheet and you pick where it goes (a message, an email, a note).
+          </li>
+          <li style={li}>
+            <B>Open GitHub</B> (or <B>Copy and open GitHub</B>) copies the report to your phone&rsquo;s clipboard and opens the GitHub form for it
+            in your browser. When the report is short enough, it is also part of the form&rsquo;s link, so the form opens with it filled in; your
+            browser sends that link to GitHub when it opens the page, and may keep it in its history. The app makes no request itself, and nothing
+            is posted until you post the form. A GitHub issue is public.
+          </li>
+        </ul>
+        <p style={p}>
+          Or you close the screen and nothing happens. &ldquo;Report a problem&rdquo; holds the app&rsquo;s own log with network addresses, serial
+          numbers, keys and pairing codes removed, and a short summary of the TV. The log can name the apps the app switched off or tried to
+          switch off or back on, which can include an app you picked yourself in Customise. &ldquo;Help add this TV&rdquo; holds the TV&rsquo;s
+          brand, model, Android version and build, how the app matched it, and the apps the TV came with. In that report and in the summary, apps
+          you installed yourself are only counted, never named, and that includes a home screen app you installed. Both name the app version and
+          your phone&rsquo;s model and Android version. Neither has the TV&rsquo;s serial number, its name or room, your network addresses or your
+          Wi-Fi name. This is the same in the Google Play version.
         </p>
 
         <h2 style={h2}>Permissions</h2>
