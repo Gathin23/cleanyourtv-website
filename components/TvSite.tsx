@@ -59,7 +59,7 @@ export default class TvSite extends React.Component<Props, State> {
     const order: string[] = [];
     d.showcase.forEach((s) => { const g = groupOf(s.category); if (!order.includes(g)) order.push(g); });
     const shows = d.showcase
-      .map((s, i) => ({ s, i, g: groupOf(s.category), image: SHOWCASE_IMAGES[s.by.toLowerCase()] }))
+      .map((s, i) => ({ s, i, g: groupOf(s.category), image: SHOWCASE_IMAGES[`${s.by}/${s.name}`.toLowerCase()] ?? SHOWCASE_IMAGES[s.by.toLowerCase()] }))
       .sort((a, b) => order.indexOf(a.g) - order.indexOf(b.g) || Number(!a.image) - Number(!b.image) || a.i - b.i);
     const count = (g: string) => shows.filter((x) => x.g === g).length;
     this.slides = shows

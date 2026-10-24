@@ -154,7 +154,10 @@ export const PRESS: [string, string, string][] = [["techcrunch", "TechCrunch", "
 /** Widths of the logos above (public/press/<slug>.png, all 88 px tall), so a strip can reserve each logo's space before it loads. */
 export const PRESS_LOGO_W: Record<string, number> = { techcrunch: 279, techradar: 265, tomsguide: 285, mashable: 243, androidauthority: 377, xda: 163, flatpanelshd: 308, itsfoss: 231, phandroid: 254, gigazine: 254, xataka: 206, winfuture: 256, frandroid: 248, macitynet: 249, techaeris: 243, techpp: 208, thedailystar: 314, detikinet: 246, techtimes: 267, gadgetreview: 329, lesjoiesducode: 366, xboxygen: 248, itavisen: 220, pplware: 219, insmart: 213, tbreak: 194, iphonemod: 267 };
 
-/** Screenshots for Made-with projects, keyed by the author's GitHub login (from their fork or PR). */
+/**
+ * Screenshots for Made-with projects, keyed by the author's GitHub login (from their fork or PR). A maker with more
+ * than one project can give one its own picture as "login/project name" (lowercase); the login's picture covers the rest.
+ */
 export const SHOWCASE_IMAGES: Record<string, string> = {
   youlop009: "/showcase/youlop009.jpg",
   omkark97: "/showcase/omkark97.jpg",
@@ -170,6 +173,7 @@ export const SHOWCASE_IMAGES: Record<string, string> = {
   griffincockfoster56: "/showcase/griffincockfoster56.jpg",
   egyjs: "/showcase/egyjs.jpg",
   glidiandev: "/showcase/glidiandev.jpg",
+  "glidiandev/home deck": "/showcase/glidiandev-home-deck.jpg",
   oliverjwroberts: "/showcase/oliverjwroberts.jpg",
   thayford: "/showcase/thayford.jpg",
   jolan94: "/showcase/jolan94.jpg",
