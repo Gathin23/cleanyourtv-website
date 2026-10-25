@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: { card: "summary_large_image", creator: "@gathint", title: "CleanYourTV", description: "Your TV, minus the ads.", images: ["/docs/og.png"] },
-  // Search Console and Bing Webmaster Tools ownership tags. Paste each tool's code into the Vercel env vars
+  // Search Console and Bing Webmaster Tools ownership tags. Paste each tool's code into the repo's Actions variables
   // NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION / NEXT_PUBLIC_BING_SITE_VERIFICATION; with them unset no tag is emitted.
   verification: {
     ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } : {}),

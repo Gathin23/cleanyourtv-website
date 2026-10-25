@@ -1,0 +1,24 @@
+# Cloudflare Pages response headers, carried over from next.config.ts headers() on Vercel.
+# A day's cache (a week stale) on the static image folders. "/press/*" covers the logos but not the /press page itself.
+/results/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+/showcase/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+/press/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+/blog/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+/docs/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+/themes/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+# Hashed build assets never change under the same name; Vercel sent this for /_next/static on its own.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# The AI-facing text files, with the charset Next's route handlers sent.
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8

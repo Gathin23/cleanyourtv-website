@@ -5,9 +5,8 @@ import { loadFacts } from "@/lib/data";
 import { GH } from "@/lib/parse";
 import { SITE, breadcrumbs, pageMeta } from "@/lib/seo";
 
-// The questions and answers are the README's "Questions people ask", re-read at most once an hour,
+// The questions and answers are the README's "Questions people ask", re-read on every hourly build,
 // so this page and the README never drift apart.
-export const revalidate = 3600;
 
 const title = "Questions people ask";
 const description =

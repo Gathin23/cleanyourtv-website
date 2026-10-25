@@ -5,7 +5,7 @@ import { SITE, isoDay } from "@/lib/seo";
 
 // The home page, /addons, /faq and /bot change whenever the repo does, so their date is the repo's last commit; /press is as new as its newest article;
 // the Android app's pages are dated by its privacy policy's effective date.
-export const revalidate = 3600;
+export const dynamic = "force-static";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { updated } = await loadFacts();

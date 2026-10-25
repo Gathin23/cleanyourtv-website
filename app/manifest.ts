@@ -1,5 +1,8 @@
 import type { MetadataRoute } from "next";
 
+// Written to out/ as a static file by the export.
+export const dynamic = "force-static";
+
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "CleanYourTV",

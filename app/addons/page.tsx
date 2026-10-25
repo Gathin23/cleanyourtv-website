@@ -6,9 +6,8 @@ import AddonsTabs from "@/components/AddonsTabs";
 import JsonLd from "@/components/JsonLd";
 import { SITE, breadcrumbs, pageMeta } from "@/lib/seo";
 
-// Themes, keys and add-ons are read from the cleanyourtv repo, re-fetched at most once an hour,
+// Themes, keys and add-ons are read from the cleanyourtv repo, re-fetched on every hourly build,
 // so a merged theme or add-on shows up here with no site change.
-export const revalidate = 3600;
 
 const title = "Add-ons, themes and settings · CleanYourTV";
 const description = "Everything optional around the small CleanYourTV launcher: themes you push without a rebuild, small settings for the home screen, and add-on apps that plug in as a card.";

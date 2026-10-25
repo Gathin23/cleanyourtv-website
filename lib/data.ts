@@ -1,6 +1,6 @@
-// Everything the site reads from the cleanyourtv repo and GitHub, fetched on the server with
-// Incremental Static Regeneration (revalidate hourly) and a static fallback for every value, so the
-// page never depends on the public GitHub rate limit at request time.
+// Everything the site reads from the cleanyourtv repo and GitHub, fetched at build time (the site is a
+// static export, rebuilt hourly by .github/workflows/deploy-cloudflare.yml) with a static fallback for
+// every value, so a build never fails on the GitHub rate limit and no request ever reaches GitHub.
 import fs from "node:fs/promises";
 import path from "node:path";
 import { GH, REPO, THEMES_RAW, brandsOf, countLanguages, parseAddons, parseFaq, parsePushCommand, parseShowcase, parseSwitchImages, parseThemeKeys, parseTVs, parseThemes, starSeriesFallback, tweetToken } from "./parse";

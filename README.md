@@ -22,9 +22,15 @@ npm install
 npm run dev
 ```
 
-Content comes from the cleanyourtv repo and the GitHub API at build time and is re-fetched at most once an hour (ISR). Every value has a static fallback, so the site builds without network access and never depends on the public GitHub rate limit at request time.
+Content comes from the cleanyourtv repo and the GitHub API at build time. Every value has a static fallback, so the site builds without network access and never depends on the public GitHub rate limit.
 
-Optional: set `GITHUB_TOKEN` in the environment (Vercel project settings, never in a file) to raise the API rate limit and turn on the real star history behind the oscilloscope. Without it the chart draws a placeholder curve.
+Optional: set `GITHUB_TOKEN` in the environment (never in a file) to raise the API rate limit and turn on the real star history behind the oscilloscope. Without it the chart draws a placeholder curve.
+
+## Deploy
+
+The site is a fully static export (`output: "export"`): `npm run build` writes plain files to `out/`, and nothing runs on a server. `.github/workflows/deploy-cloudflare.yml` builds it and uploads `out/` to Cloudflare Pages on every push to `main` and once an hour, so the stars, the wall and the credits stay current. Response headers and the `/app` redirect are in `public/_headers` and `public/_redirects`, which Pages reads from `out/`.
+
+To preview the export locally: `npm run build && npx serve out`.
 
 ## Add a result screen
 

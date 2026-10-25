@@ -1,0 +1,2 @@
+# Cloudflare Pages redirects. /app is the short link for the community Android app page (was app/app/page.tsx).
+/app /app/android 307

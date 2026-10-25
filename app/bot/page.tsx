@@ -5,9 +5,8 @@ import { loadBotStats } from "@/lib/data";
 import { GH } from "@/lib/parse";
 import { PERSON, SITE, breadcrumbs, pageMeta } from "@/lib/seo";
 
-// The PR counts and the bot's runs are read from the GitHub API, re-fetched at most once an hour.
+// The PR counts and the bot's runs are read from the GitHub API, re-fetched on every hourly build.
 // The v3 → v4 results and the model costs are from the bot's own report (report/v4.md, 22 Oct 2026).
-export const revalidate = 3600;
 
 const BOT = "https://github.com/Gathin23/maintainer-bot";
 const REPORT = `${BOT}/blob/v4/report/v4.md`;

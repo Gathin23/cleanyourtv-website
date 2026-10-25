@@ -6,8 +6,7 @@ import { GH } from "@/lib/parse";
 import { COVERAGE_TOTAL } from "@/lib/press";
 import { homeGraph, pageMeta } from "@/lib/seo";
 
-// Content comes from the cleanyourtv repo and GitHub, re-fetched at most once an hour.
-export const revalidate = 3600;
+// Content comes from the cleanyourtv repo and GitHub at build time; the deploy workflow rebuilds the site every hour.
 
 const description =
   "Your TV, minus the ads. Debloat any Android TV or Google TV over Wi-Fi and swap the ad-filled home screen for a clean Apple TV-style launcher. No root, fully reversible.";
