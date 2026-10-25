@@ -1,0 +1,12 @@
+// cleanyour.tv on Cloudflare Workers: static assets only, no Worker script, so every request is a free asset request.
+// `npm run build` writes the site to out/; `wrangler deploy` uploads it. _headers and _redirects in out/ still apply.
+{
+  "name": "cleanyourtv",
+  "compatibility_date": "2026-10-20",
+  "assets": {
+    "directory": "./out",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "observability": { "enabled": false }
+}
