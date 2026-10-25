@@ -1,4 +1,4 @@
-# Cloudflare Pages response headers, carried over from next.config.ts headers() on Vercel.
+# Cloudflare static-asset response headers, carried over from next.config.ts headers() on Vercel.
 # A day's cache (a week stale) on the static image folders. "/press/*" covers the logos but not the /press page itself.
 /results/*
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800

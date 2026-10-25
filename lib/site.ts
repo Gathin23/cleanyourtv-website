@@ -184,7 +184,7 @@ export const SHOWCASE_IMAGES: Record<string, string> = {
 /**
  * Site images (wall photos, showcase shots, press logos, blog figures) are served from jsDelivr's free
  * mirror of this public repo instead of the site's own host, so a traffic spike stays off it.
- * Pages, scripts and Open Graph images come from Cloudflare Pages.
+ * Pages, scripts and Open Graph images come from Cloudflare.
  */
 export const CDN_BASE = "https://cdn.jsdelivr.net/gh/Gathin23/cleanyourtv-website@main/public";
 export const cdn = (path: string): string => (path && path.startsWith("/") ? CDN_BASE + path : path);

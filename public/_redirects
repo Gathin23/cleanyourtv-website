@@ -1,2 +1,3 @@
-# Cloudflare Pages redirects. /app is the short link for the community Android app page (was app/app/page.tsx).
+# Cloudflare static-asset redirects. /app is the short link for the community Android app page (was app/app/page.tsx).
 /app /app/android 307
+/app/ /app/android 307

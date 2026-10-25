@@ -7,4 +7,4 @@
 - Content is fetched at build time in `lib/data.ts` with a static fallback for every value; the deploy workflow rebuilds hourly. Any new remote value needs a fallback too, so `npm run build` works offline.
 - Sound is off by default and stays that way. Reduced motion must keep every channel readable.
 - The fake clutter home on channel 00 uses invented app names only. No real brand logos or names there.
-- `npm run build` must pass before a commit. The site is a static export (`output: "export"`, hosted on Cloudflare Pages): no `revalidate`, no `next.config` headers or redirects (use `public/_headers` and `public/_redirects`), no request-time APIs. Route handlers and metadata routes need `export const dynamic = "force-static"`.
+- `npm run build` must pass before a commit. The site is a static export (`output: "export"`, served as Cloudflare Workers static assets, see `wrangler.jsonc`): no `revalidate`, no `next.config` headers or redirects (use `public/_headers` and `public/_redirects`), no request-time APIs. Route handlers and metadata routes need `export const dynamic = "force-static"`.

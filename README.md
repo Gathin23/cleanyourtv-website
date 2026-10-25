@@ -28,9 +28,9 @@ Optional: set `GITHUB_TOKEN` in the environment (never in a file) to raise the A
 
 ## Deploy
 
-The site is a fully static export (`output: "export"`): `npm run build` writes plain files to `out/`, and nothing runs on a server. `.github/workflows/deploy-cloudflare.yml` builds it and uploads `out/` to Cloudflare Pages on every push to `main` and once an hour, so the stars, the wall and the credits stay current. Response headers and the `/app` redirect are in `public/_headers` and `public/_redirects`, which Pages reads from `out/`.
+The site is a fully static export (`output: "export"`): `npm run build` writes plain files to `out/`, and nothing runs on a server. `.github/workflows/deploy-cloudflare.yml` builds it and runs `wrangler deploy` on every push to `main` and once an hour, so the stars, the wall and the credits stay current. `wrangler.jsonc` serves `out/` as the static assets of the `cleanyourtv` Worker, with no Worker script. Response headers and the `/app` redirect are in `public/_headers` and `public/_redirects`, which Cloudflare reads from `out/`.
 
-To preview the export locally: `npm run build && npx serve out`.
+To preview the export locally with Cloudflare's own asset rules: `npm run build && npx wrangler dev`.
 
 ## Add a result screen
 
