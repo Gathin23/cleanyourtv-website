@@ -22,3 +22,7 @@
   Content-Type: text/plain; charset=utf-8
 /llms-full.txt
   Content-Type: text/plain; charset=utf-8
+
+# HSTS as Vercel sent it (two years); Cloudflare's "Always Use HTTPS" does the http → https redirect.
+/*
+  Strict-Transport-Security: max-age=63072000
