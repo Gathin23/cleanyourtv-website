@@ -6,11 +6,12 @@ import { GH, brandsOf } from "@/lib/parse";
 import type { SiteData } from "@/lib/parse";
 import { GROUPS, KONAMI, NAMES, ORDER, PRESS, PRESS_LOGO_W, S, SHOWCASE_IMAGES, cdn, thumb, TERM, TERM_TOTAL, THEMES, TILE_COLORS, classify, termCost, wait } from "@/lib/site";
 
-// Home dock: Add-ons and App are pages; Get started (How to) and Showcase (Built on it) are channels 3 and 4 here.
+// Home dock: TV list and Add-ons are pages; Get started (How to) and Showcase (Built on it) are channels 3 and 4 here.
+// The TV list comes first: "which TVs does it work on" is what people ask most. The app moved to the pills.
 const DOCK: { label: string; href: string; ch?: number }[] = [
-  { label: "Add-ons", href: "/addons" },
-  { label: "App", href: "/app/android" },
+  { label: "TV list", href: "/tvs" },
   { label: "Get started", href: "#ch-03", ch: 3 },
+  { label: "Add-ons", href: "/addons" },
   { label: "Showcase", href: "#ch-04", ch: 4 },
 ];
 import type { ThemeName } from "@/lib/site";
@@ -640,8 +641,9 @@ export default class TvSite extends React.Component<Props, State> {
             </div>
             <div className="m-pills" style={S("display:flex;gap:clamp(4px,.8cqw,10px);flex-shrink:0")}>
               {/* The launcher's Inputs / Wi-Fi / Settings pills, as the site's own navigation. */}
-              <a href="/press" onClick={(e) => e.stopPropagation()} className="m-navpill" style={S(pill)}>Press</a>
+              <a href="/press" onClick={(e) => e.stopPropagation()} className="m-navpill m-navpill-press" style={S(pill)}>Press</a>
               <a href="/faq" onClick={(e) => e.stopPropagation()} className="m-navpill" style={S(pill)}>FAQ</a>
+              <a href="/app/android" onClick={(e) => e.stopPropagation()} className="m-navpill m-navpill-app" style={S(pill)}>App</a>
               <a href="/bot" onClick={(e) => e.stopPropagation()} className="m-navpill m-navpill-bot" aria-label="PR Bot, powered by 0G" style={S(pill + ";gap:.45em")}>PR Bot<img src="/brand/0g.svg" alt="" className="m-0g" /></a>
               <a href={COFFEE} target="_blank" rel="noopener" onClick={(e) => e.stopPropagation()} className="m-navpill m-navpill-coffee" aria-label="Buy me a coffee" style={S(pill + ";gap:.45em")}>
                 <svg viewBox="0 0 24 24" width="1.05em" height="1.05em" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Z" /><path d="M16 11h1.5a2.5 2.5 0 0 1 0 5H16" /><path d="M8 3c0 1 1 1 1 2s-1 1-1 2M12 3c0 1 1 1 1 2s-1 1-1 2" /></svg>
@@ -707,7 +709,7 @@ export default class TvSite extends React.Component<Props, State> {
         </div>
         <div ref={this.r.title} className="m-title" style={S("position:absolute;left:0;right:0;top:0;bottom:clamp(90px,16cqw,200px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(14px,2cqw,28px);padding:clamp(60px,9cqw,110px) 5cqw 0;text-align:center;opacity:0;pointer-events:none;color:var(--ink,rgba(255,255,255,.95))")}>
           <div style={S("display:flex;flex-direction:column;align-items:center;gap:clamp(6px,.8cqw,12px)")}>
-            {/* The community Android app (udhaykumarbala): a pill above the wordmark; narrow phones use the App pill instead. */}
+            {/* The community Android app (udhaykumarbala): a pill above the wordmark; narrow phones use the App pill instead (it takes the Press pill's place). */}
             <a href="/app/android" onClick={(e) => e.stopPropagation()} className="m-applive no-border act-shrink" style={S("pointer-events:auto;display:inline-flex;align-items:center;margin-bottom:clamp(2px,.4cqw,6px);font-size:clamp(13px,1.2cqw,15px);font-weight:500;letter-spacing:.01em;color:var(--brand,#cfffcf);opacity:.9")}>
               New: clean your TV from your phone →
             </a>
@@ -973,7 +975,7 @@ export default class TvSite extends React.Component<Props, State> {
                   <li style={S(li)}><span style={S(num)}>3</span><span>Go back to Developer options.</span></li>
                   <li style={S(li)}><span style={S(num)}>4</span><span>Turn on USB debugging, and Network or ADB debugging if your TV shows it.</span></li>
                 </ol>
-                <p style={S("margin:0;font-size:14px;line-height:1.5;color:var(--ink-dim,rgba(255,255,255,.6))")}>Keep the TV on, on the same Wi-Fi as your computer.</p>
+                <p style={S("margin:0;font-size:14px;line-height:1.5;color:var(--ink-dim,rgba(255,255,255,.6))")}>Keep the TV on, on the same Wi-Fi as your computer. Any Android TV or Google TV works: <a href="/tvs">check your model</a>.</p>
               </div>
             )}
             {s.wiz === 1 && (

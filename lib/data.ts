@@ -5,7 +5,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { GH, REPO, THEMES_RAW, brandsOf, countLanguages, parseAddons, parseFaq, parsePushCommand, parseShowcase, parseSwitchImages, parseThemeKeys, parseTVs, parseThemes, starSeriesFallback, tweetToken } from "./parse";
 import { SWITCH_IMAGES } from "./site";
-import type { AddonsData, Faq, Pr, ResultItem, ShowcaseItem, SiteData, ThemeCard, ThemeItem, Tweet } from "./parse";
+import type { AddonsData, Faq, Pr, ResultItem, ShowcaseItem, SiteData, ThemeCard, ThemeItem, Tv, Tweet } from "./parse";
 
 const RAW = `https://raw.githubusercontent.com/${REPO}/main/`;
 const REVALIDATE = 3600;
@@ -142,6 +142,13 @@ export async function loadSiteData(): Promise<SiteData> {
     starSeries: await starSeries(stars),
     fetchedAt: new Date().toISOString(),
   };
+}
+
+// ---- /tvs: the tested-model table from examples/README.md, on its own so the page skips the home page's GitHub calls
+
+export async function loadTvs(): Promise<Tv[]> {
+  const md = await text(RAW + "examples/README.md");
+  return parseTVs(md || FALLBACK.examples);
 }
 
 // ---- /addons: one card per folder in themes/, the Keys table as switches, and the add-ons table
