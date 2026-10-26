@@ -17,6 +17,7 @@
   --mint: #cfffcf;
   --white: #e9e9e9;
   --amber: #ffdc96;
+  --gold: #ffcc4d;
   --cyan: #7fe3e0;
   --green: #8ee08f;
   --violet: #d58be6;
@@ -507,6 +508,7 @@ select.chip {
   overflow: hidden;
 }
 .stat {
+  container-type: inline-size;
   background: var(--band);
   padding: 28px 24px;
   display: flex;
@@ -530,7 +532,8 @@ select.chip {
   margin: 0;
   font-family: var(--f-head);
   font-weight: 700;
-  font-size: clamp(40px, 3.9vw, 60px);
+  /* Sized to the cell, so "38,500+" fits a fifth of the row without touching the line. */
+  font-size: clamp(34px, 25cqi, 60px);
   line-height: 1;
   letter-spacing: -0.045em;
 }

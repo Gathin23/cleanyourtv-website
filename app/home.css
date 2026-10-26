@@ -254,7 +254,7 @@
 .trend {
   display: flex;
   align-items: stretch;
-  border: 2px solid var(--mint);
+  border: 2px solid var(--gold);
   border-radius: 6px;
   overflow: hidden;
   color: var(--ink);
@@ -268,8 +268,8 @@
   display: flex;
   align-items: center;
   padding: 0 16px;
-  background: var(--mint);
-  color: var(--bg);
+  background: var(--gold);
+  color: var(--on-amber);
   font-family: var(--f-head);
   font-weight: 700;
   font-size: 34px;
