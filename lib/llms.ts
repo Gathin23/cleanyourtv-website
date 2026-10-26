@@ -41,6 +41,7 @@ CleanYourTV is free and MIT licensed. You paste one markdown prompt into a codin
 - [SHOWCASE.md](${BLOB}/SHOWCASE.md): launchers, forks, add-ons and ports people built on top
 - [PRESS.md](${BLOB}/docs/PRESS.md): every article written about it, and the videos
 - [Questions people ask](${SITE}/faq): is it safe, firmware updates, ADB security and more
+- [Stop your TV tracking you](${SITE}/privacy): no-root privacy steps for Samsung, LG, Roku, Vizio and other smart TVs
 - [Add-ons, themes and settings](${SITE}/addons): optional extras for the launcher
 - [Press](${SITE}/press): the press coverage: ${COVERAGE_TOTAL} articles, with outlets in ${COVERAGE_COUNTRIES} countries, and ${VIDEOS.length} YouTube videos
 - [maintainer-bot](${SITE}/bot): the open-source bot that reviews every pull request, how it decides and how well; it runs on 0G Private Computer

@@ -75,6 +75,9 @@ export default function TvFinder({ tvs, brands }: { tvs: Tv[]; brands: [string, 
             there is no way to switch their apps off from outside.
           </p>
           <p>
+            <Link href="/privacy">You can still stop most of the tracking&nbsp;→</Link> The settings, network and DNS steps for these TVs, no root needed.
+          </p>
+          <p>
             Some people have built webOS versions: <a href={`${GH}/blob/main/SHOWCASE.md#other-platforms-fire-tv-and-lg-webos`}>see the showcase →</a>
           </p>
         </div>

@@ -30,10 +30,11 @@ const p: CSSProperties = { margin: "0 0 16px" };
 const green = { color: "#cfffcf", borderBottomColor: "rgba(207,255,207,.35)" };
 
 // The README's "Supported TVs" table, said plainly.
-const PLATFORMS: { mark: string; name: string; what: string; tone: "yes" | "part" | "no" }[] = [
+// Samsung, LG and Roku owners get a pointer to /privacy, the settings and DNS steps that work without CleanYourTV.
+const PLATFORMS: { mark: string; name: string; what: string; tone: "yes" | "part" | "no"; more?: [string, string] }[] = [
   { mark: "✓", name: "Android TV, Google TV", what: "Works: the cleanup and the new home screen (Android 8.0 or newer for the home screen).", tone: "yes" },
   { mark: "½", name: "Fire TV", what: "The cleanup only. Fire OS keeps its own home screen.", tone: "part" },
-  { mark: "✕", name: "Samsung, LG, Roku", what: "Not supported. They run other systems (Tizen, webOS, Roku OS) with no ADB.", tone: "no" },
+  { mark: "✕", name: "Samsung, LG, Roku", what: "Not supported. They run other systems (Tizen, webOS, Roku OS) with no ADB.", tone: "no", more: ["You can still stop most of the tracking\u00a0→", "/privacy"] },
 ];
 
 export default async function Tvs() {
@@ -66,6 +67,7 @@ export default async function Tvs() {
               <span>
                 <strong>{x.name}</strong>
                 <span>{x.what}</span>
+                {x.more && <span style={{ marginTop: 4 }}><Link href={x.more[1]} style={green}>{x.more[0]}</Link></span>}
               </span>
             </li>
           ))}

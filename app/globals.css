@@ -3343,6 +3343,515 @@ a.tvs-row:focus-visible {
   color: #cfffcf;
 }
 
+/* /privacy: the brand picker, the step headings, the DNS cards and the block-or-keep tables. */
+.pv a:not(.home-link) {
+  color: #cfffcf;
+  border-bottom-color: rgba(207, 255, 207, 0.35);
+}
+.pv code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: max(14px, 0.84em);
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #e9e9e9;
+  overflow-wrap: anywhere;
+}
+.pv-small {
+  margin: 12px 0 16px;
+  font-size: 16px;
+  color: #9a9a9a;
+}
+.pv-label {
+  margin: 0 0 12px;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #9a9a9a;
+}
+.pv-stepno {
+  display: block;
+  margin: 0 0 4px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #cfffcf;
+}
+.pv h2[id],
+.pv section[id] {
+  scroll-margin-top: 24px;
+}
+.pv-toc {
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: pv;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 16px;
+}
+.pv-toc li {
+  counter-increment: pv;
+}
+.pv-toc a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.04);
+}
+.pv-toc a::before {
+  content: counter(pv);
+  color: #9a9a9a;
+}
+.pv-toc a:hover {
+  border-color: rgba(207, 255, 207, 0.4) !important;
+}
+.pv-why {
+  margin: 40px 0 0;
+  padding: 22px 24px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 18px;
+}
+.pv-why ul,
+.pv-list,
+.pv-more {
+  margin: 0 0 16px;
+  padding-left: 22px;
+}
+.pv-why li,
+.pv-list li,
+.pv-more li {
+  margin: 0 0 10px;
+}
+.pv-why li::marker,
+.pv-more li::marker {
+  color: #6f6f6f;
+}
+.pv-list li::marker {
+  color: #9a9a9a;
+}
+
+/* Brand picker: one segmented bar like /addons, the picked brand lit green; every panel shows when JS is off. */
+.pv-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 6px;
+  margin: 24px 0 0;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+a.pv-tab {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 16px;
+  color: #bdbdbd !important;
+  font-size: 17px;
+  text-align: center;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+@media (hover: hover) {
+  a.pv-tab:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff !important;
+  }
+}
+a.pv-tab[aria-current="true"] {
+  color: #fff !important;
+  background: linear-gradient(180deg, rgba(207, 255, 207, 0.13), rgba(207, 255, 207, 0.04));
+  box-shadow: inset 0 0 0 1px rgba(207, 255, 207, 0.4), 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+.pv-brand {
+  margin: 14px 0 0;
+  padding: 24px 26px 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 17px;
+}
+.pv-brand[hidden] {
+  display: none;
+}
+.pv-brand h3 {
+  margin: 0 0 8px;
+  font-size: 24px;
+  font-weight: 400;
+  color: #fff;
+}
+.pv-brand h4 {
+  margin: 22px 0 10px;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #9a9a9a;
+}
+.pv-brand strong {
+  font-weight: 500;
+  color: #fff;
+}
+.pv-acr {
+  margin: 0;
+  color: #d4d4d4;
+}
+.pv-paths {
+  margin: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.pv-paths > div {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 4px 18px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.pv-paths dt {
+  font-size: 15px;
+  color: #9a9a9a;
+  padding-top: 1px;
+}
+.pv-paths dd {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.pv-path {
+  color: #fff;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.pv-step {
+  white-space: nowrap;
+}
+.pv-sep {
+  color: #cfffcf;
+  opacity: 0.6;
+}
+.pv-note {
+  font-size: 15px;
+  color: #bdbdbd;
+}
+.pv-more {
+  color: #d4d4d4;
+}
+.pv-breaks {
+  margin: 4px 0 10px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 16px;
+  color: #bdbdbd;
+}
+.pv-src {
+  margin: 0;
+  font-size: 14px;
+  color: #8a8a8a;
+}
+.pv-src a {
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  .pv-why,
+  .pv-brand {
+    padding: 18px 16px;
+  }
+  .pv-paths > div {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .pv-step {
+    white-space: normal;
+  }
+  /* phones: three rows on a six-column grid, the long Google TV label on a row of its own */
+  .pv-tabs {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  a.pv-tab {
+    grid-column: span 2;
+    font-size: 16px;
+    padding: 8px 6px;
+  }
+  a.pv-tab:nth-child(4),
+  a.pv-tab:nth-child(5) {
+    grid-column: span 3;
+  }
+  a.pv-tab:nth-child(6) {
+    grid-column: span 6;
+  }
+}
+
+/* Step 3: the three DNS options, the NextDNS warning, the disclosures and the tables. */
+.pv-cards {
+  display: grid;
+  gap: 12px;
+  margin: 8px 0 24px;
+}
+@media (min-width: 760px) {
+  .pv-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.pv-cards > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 16px;
+  line-height: 1.5;
+  color: #bdbdbd;
+}
+.pv-cards strong {
+  font-weight: 500;
+  color: #fff;
+  font-size: 17px;
+}
+.pv-pre {
+  margin: 0 0 16px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  overflow-x: auto;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.pv-pre code {
+  padding: 0;
+  background: none;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+.pv-callout {
+  margin: 0 0 24px;
+  padding: 16px 20px;
+  border-radius: 14px;
+  background: rgba(255, 220, 150, 0.07);
+  border: 1px solid rgba(255, 220, 150, 0.3);
+  font-size: 17px;
+}
+.pv-callout strong {
+  display: block;
+  margin: 0 0 4px;
+  font-weight: 500;
+  color: #ffdc96;
+}
+.pv-details {
+  margin: 0 0 24px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+}
+.pv-details > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 52px;
+  padding: 10px 18px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 17px;
+  color: #cfffcf;
+  border-radius: 14px;
+}
+.pv-details > summary::-webkit-details-marker {
+  display: none;
+}
+.pv-details > summary:focus-visible {
+  outline: 2px solid #cfffcf;
+  outline-offset: 2px;
+}
+.pv-chev {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+.pv-details[open] > summary .pv-chev {
+  transform: rotate(180deg);
+}
+.pv-details > :not(summary) {
+  margin-left: 18px;
+  margin-right: 18px;
+}
+.pv-details > :last-child {
+  margin-bottom: 18px;
+}
+.pv-dom h3 {
+  margin: 20px 0 8px;
+  font-size: 20px;
+  font-weight: 400;
+  color: #fff;
+}
+.pv-table {
+  max-width: 100%;
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.pv-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.45;
+}
+.pv-table th {
+  text-align: left;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #9a9a9a;
+  background: rgba(255, 255, 255, 0.03);
+}
+.pv-table th,
+.pv-table td {
+  padding: 10px 14px;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.pv-table tr:last-child td {
+  border-bottom: 0;
+}
+.pv-dom td:first-child {
+  width: 40%;
+}
+.pv-table code {
+  display: block;
+  font-size: 13px;
+  padding: 0;
+  background: none;
+  color: #fff;
+}
+.pv-table code + code {
+  margin-top: 4px;
+}
+@media (min-width: 641px) {
+  .pv-table code {
+    white-space: nowrap;
+  }
+}
+.pv-verdict {
+  display: inline-block;
+  margin: 0 0 4px;
+  padding: 1px 10px;
+  border-radius: 999px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.pv-verdict[data-tone="block"] {
+  color: #cfffcf;
+  background: rgba(207, 255, 207, 0.12);
+}
+.pv-verdict[data-tone="keep"] {
+  color: #ffdc96;
+  background: rgba(255, 220, 150, 0.12);
+}
+.pv-verdict[data-tone="maybe"] {
+  color: #d4d4d4;
+  background: rgba(255, 255, 255, 0.08);
+}
+.pv-why-note {
+  display: block;
+  color: #9a9a9a;
+  font-size: 14px;
+}
+/* phones: each table row becomes a small card, so nothing scrolls sideways */
+@media (max-width: 640px) {
+  .pv-table {
+    border: 0;
+    overflow: visible;
+  }
+  .pv-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+  .pv-table table,
+  .pv-table tbody,
+  .pv-table tr,
+  .pv-table td {
+    display: block;
+    width: auto !important;
+  }
+  .pv-table tr {
+    margin: 0 0 8px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+  }
+  .pv-table td {
+    padding: 2px 0;
+    border: 0;
+  }
+  .pv-table td:nth-child(2) {
+    color: #bdbdbd;
+  }
+  .pv-table td[data-label]::before {
+    content: attr(data-label) ": ";
+    color: #8a8a8a;
+  }
+  .pv-details > :not(summary) {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+}
+
+.pv-final {
+  margin: 64px 0 0;
+  padding: 22px 24px;
+  border-radius: 18px;
+  background: rgba(207, 255, 207, 0.06);
+  border: 1px solid rgba(207, 255, 207, 0.2);
+  font-size: 17px;
+}
+.pv-final p {
+  margin: 0 0 8px;
+}
+.pv-final .pv-final-h {
+  font-size: 22px;
+  line-height: 1.3;
+  color: #fff;
+  font-weight: 400;
+}
+.pv-final .pv-small {
+  margin: 8px 0 0;
+}
+.pv-sources {
+  margin: 56px 0 0;
+  font-size: 15px;
+  color: #9a9a9a;
+}
+.pv-sources ul {
+  margin: 0 0 16px;
+  padding-left: 18px;
+  columns: 2 300px;
+  column-gap: 32px;
+}
+.pv-sources li {
+  margin: 0 0 6px;
+  break-inside: avoid;
+}
+
 /* Home: the App pill only on narrow phones, where the hero's app link is hidden; it takes Press's place there
    (the "Featured in" strip still leads to /press). */
 a.m-navpill-app {
