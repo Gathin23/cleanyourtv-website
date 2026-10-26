@@ -191,20 +191,20 @@ export default async function Page() {
         </div>
       </section>
 
-      <section aria-labelledby="na-h" className="na">
-        <div className="wrap na-in">
-          <div className="na-text">
+      <section aria-labelledby="hna-h" className="hna">
+        <div className="wrap hna-in">
+          <div className="hna-text">
             <p className="kicker">CH 02 · Not Android?</p>
-            <h2 id="na-h" className="na-h">Samsung, LG or Roku?</h2>
+            <h2 id="hna-h" className="hna-h">Samsung, LG or Roku?</h2>
             <p>
               CleanYourTV can&apos;t run on these.{" "}
               {PRIVACY_LIVE ? "Our Non-Android TV guide still turns off most of the tracking, step by step, no root needed." : PRIVACY_SOON}
             </p>
           </div>
           {PRIVACY_LIVE ? (
-            <Link href={PRIVACY_PATH} className="btn na-btn">Fix my TV&apos;s privacy</Link>
+            <Link href={PRIVACY_PATH} className="btn hna-btn">Fix my TV&apos;s privacy</Link>
           ) : (
-            <p className="soon-cta na-soon">Privacy guide coming tonight</p>
+            <p className="soon-cta hna-soon">Privacy guide coming tonight</p>
           )}
         </div>
       </section>

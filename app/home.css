@@ -321,11 +321,11 @@
 }
 
 /* CH 02 Not Android? */
-.na {
+.hna {
   background: var(--amber);
   color: var(--on-amber);
 }
-.na-in {
+.hna-in {
   padding-top: 56px;
   padding-bottom: 56px;
   display: flex;
@@ -334,17 +334,17 @@
   align-items: center;
   justify-content: space-between;
 }
-.na-text {
+.hna-text {
   flex: 1 1 520px;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
-.na-text p {
+.hna-text p {
   margin: 0;
   max-width: 58ch;
 }
-.na-h {
+.hna-h {
   margin: 0;
   font-family: var(--f-head);
   font-weight: 700;
@@ -352,8 +352,8 @@
   line-height: 1.05;
   letter-spacing: -0.03em;
 }
-.na-btn,
-.na-btn:hover {
+.hna-btn,
+.hna-btn:hover {
   background: var(--on-amber);
   color: var(--amber);
 }
@@ -568,14 +568,14 @@
   .term {
     display: none;
   }
-  .na-in {
+  .hna-in {
     padding-top: 40px;
     padding-bottom: 40px;
   }
-  .na-h {
+  .hna-h {
     font-size: 30px;
   }
-  .na-btn {
+  .hna-btn {
     width: 100%;
   }
   .air {
