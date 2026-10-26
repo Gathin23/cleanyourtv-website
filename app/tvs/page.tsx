@@ -1,10 +1,11 @@
 import Link from "next/link";
-import type { CSSProperties } from "react";
 import JsonLd from "@/components/JsonLd";
-import TvFinder from "@/components/TvFinder";
+import TvFinder, { type TvRow } from "@/components/TvFinder";
 import { loadTvs } from "@/lib/data";
-import { GH, brandsOf } from "@/lib/parse";
+import { GH, brandsOf, type Tv } from "@/lib/parse";
 import { SITE, breadcrumbs, pageMeta } from "@/lib/seo";
+import { PRIVACY_PATH } from "@/lib/site";
+import "./tvs.css";
 
 // Which TVs it works on, and every model with a tested list: examples/README.md, re-read on every hourly build.
 
@@ -14,28 +15,30 @@ const description =
 
 export const metadata = pageMeta("/tvs", `${title} · CleanYourTV`, description);
 
-// body is overflow:hidden for the TV, so the page scrolls inside main, as /faq and /press do.
-const page: CSSProperties = {
-  height: "100dvh",
-  overflowY: "auto",
-  background: "#050505",
-  color: "#e9e9e9",
-  fontFamily: "var(--font-outfit), Outfit, sans-serif",
-  fontWeight: 300,
-  WebkitFontSmoothing: "antialiased",
-};
-const wrap: CSSProperties = { maxWidth: 920, margin: "0 auto", padding: "40px 20px 120px", fontSize: 19, lineHeight: 1.6 };
-const kicker: CSSProperties = { margin: "0 0 20px", fontSize: 15, letterSpacing: 2, textTransform: "uppercase", color: "#9a9a9a" };
-const p: CSSProperties = { margin: "0 0 16px" };
-const green = { color: "#cfffcf", borderBottomColor: "rgba(207,255,207,.35)" };
-
-// The README's "Supported TVs" table, said plainly.
-// Samsung, LG and Roku owners get a pointer to /privacy, the settings and DNS steps that work without CleanYourTV.
-const PLATFORMS: { mark: string; name: string; what: string; tone: "yes" | "part" | "no"; more?: [string, string] }[] = [
-  { mark: "✓", name: "Android TV, Google TV", what: "Works: the cleanup and the new home screen (Android 8.0 or newer for the home screen).", tone: "yes" },
-  { mark: "½", name: "Fire TV", what: "The cleanup only. Fire OS keeps its own home screen.", tone: "part" },
-  { mark: "✕", name: "Samsung, LG, Roku", what: "Not supported. They run other systems (Tizen, webOS, Roku OS) with no ADB.", tone: "no", more: ["You can still stop most of the tracking\u00a0→", "/privacy"] },
+// The README's "Supported TVs" table, said plainly. Samsung, LG and Roku owners get the privacy guide, which works without CleanYourTV.
+const PLATFORMS = [
+  { tone: "yes", mark: "M4 12l5 5L20 6", label: "Works", name: "Android TV, Google TV", what: "The cleanup and the new home screen. The home screen needs Android 8.0 or newer.", cta: "Set it up in three steps", href: "/#setup" },
+  { tone: "part", mark: "M5 12h14", label: "Cleanup only", name: "Fire TV", what: "The ads and bloat go, but Fire OS keeps its own home screen.", cta: "Set it up", href: "/#setup" },
+  { tone: "no", mark: "M6 6l12 12M18 6L6 18", label: "Not supported", name: "Samsung, LG, Roku", what: "They run other systems (Tizen, webOS, Roku OS) with no ADB. You can still turn off most of the tracking.", cta: "Use the privacy guide", href: PRIVACY_PATH },
 ];
+
+// A region at the end of the name ("…, India") belongs on the meta line; "1st gen 2018" or "1 GB" stays with the name.
+const isPlace = (s: string) => /^\p{Lu}[\p{L} .'-]*$/u.test(s) && s.split(" ").length <= 3 && !/\b(TV|gen|series|projector)\b/i.test(s);
+
+/** The README's "Sony BRAVIA 4K UR2 (BRAVIA_UR2_4K, MediaTek)" as a name ("BRAVIA 4K UR2") and a meta line ("BRAVIA_UR2_4K · MediaTek"). */
+function row(t: Tv): TvRow {
+  const parens = Array.from(t.tv.matchAll(/\(([^)]*)\)/g), (m) => m[1]);
+  const bare = t.tv.replace(/\s*\([^)]*\)/g, "").trim();
+  const parts = bare.split(/,\s*/);
+  const places: string[] = [];
+  while (parts.length > 1 && isPlace(parts[parts.length - 1])) places.unshift(parts.pop()!);
+  let name = parts.join(", ");
+  const first = t.tv.split(/[\s(]/)[0];
+  if (name.startsWith(first + " ") && t.brand === first) name = name.slice(first.length + 1);
+  const meta = [...parens.flatMap((p) => p.split(/[,;]\s*/)), ...places].map((s) => s.trim()).filter(Boolean).join(" · ");
+  const fire = /fire os/i.test(t.os) || /\bFire TV\b/.test(t.tv);
+  return { f: t.folder, b: t.brand, n: name || t.model, m: meta, o: t.os, ...(fire ? { p: 1 as const } : {}) };
+}
 
 export default async function Tvs() {
   const tvs = await loadTvs();
@@ -48,43 +51,61 @@ export default async function Tvs() {
     ],
   };
   return (
-    <main className="page-main" style={page}>
+    <main className="tvs">
       <JsonLd data={jsonLd} />
-      <article style={wrap}>
-        <p style={kicker}>
-          <Link href="/" className="home-link" style={green}>cleanyour.tv</Link> &nbsp;·&nbsp; Supported TVs
+      <section aria-labelledby="page-h" className="wrap page-head">
+        <p className="kicker c-mint">CH 09 · TV list</p>
+        <h1 id="page-h" className="h1">Does it work on my TV?</h1>
+        <p className="lede tvs-lede">
+          If your TV runs <strong>Android TV or Google TV</strong>, yes. Your model does not need to be on the list below.
         </p>
-        <h1 style={{ fontSize: 44, lineHeight: 1.1, fontWeight: 400, margin: "0 0 14px", letterSpacing: -0.5 }}>Does it work on my TV?</h1>
-        <p style={{ ...p, fontSize: 20, color: "#bdbdbd" }}>
-          If your TV runs <strong style={{ fontWeight: 500, color: "#fff" }}>Android TV or Google TV</strong>, yes. Your model does not need to be
-          on the list below.
-        </p>
+      </section>
 
-        <ul className="tvs-platforms">
-          {PLATFORMS.map((x) => (
-            <li key={x.name} data-tone={x.tone}>
-              <span className="tvs-mark" aria-hidden="true">{x.mark}</span>
-              <span>
-                <strong>{x.name}</strong>
-                <span>{x.what}</span>
-                {x.more && <span style={{ marginTop: 4 }}><Link href={x.more[1]} style={green}>{x.more[0]}</Link></span>}
-              </span>
-            </li>
-          ))}
-        </ul>
+      <section aria-label="Answers by platform" className="wrap tvs-answers">
+        {PLATFORMS.map((x) => (
+          <div key={x.name} className={`tvs-ans tvs-${x.tone}`}>
+            <span className="tvs-mark ch">
+              <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <path d={x.mark} />
+              </svg>
+              {x.label}
+            </span>
+            <h2>{x.name}</h2>
+            <p>{x.what}</p>
+            <Link href={x.href} className="tvs-cta">{x.cta}</Link>
+          </div>
+        ))}
+      </section>
 
-        <h2 style={{ fontSize: 28, fontWeight: 400, margin: "44px 0 8px", letterSpacing: -0.2, lineHeight: 1.25 }}>Tested models</h2>
-        <p style={{ ...p, color: "#bdbdbd", fontSize: 17 }}>
-          {tvs.length} models from {brands.length} brands already have a list, so the assistant starts from what worked on the same set.
-          Yours is missing? The assistant builds one for it, and you can <a href={`${GH}/blob/main/CONTRIBUTING.md`} style={green}>add it here</a>.
-        </p>
+      <section aria-labelledby="list-h" className="band">
+        <div className="wrap tvs-band">
+          <div className="spread">
+            <div className="stack tvs-band-head">
+              <h2 id="list-h" className="h2 tvs-h2">Tested models</h2>
+              <p className="dim tvs-band-text">
+                Each one already has a list, tested by someone on their own TV, so your assistant starts from what worked on the same set.
+              </p>
+            </div>
+            <dl className="tvs-counts">
+              <div><dt>models</dt><dd className="num">{tvs.length}</dd></div>
+              <div><dt>brands</dt><dd className="num">{brands.length}</dd></div>
+            </dl>
+          </div>
+          <TvFinder tvs={tvs.map(row)} brands={brands} />
+        </div>
+      </section>
 
-        <TvFinder tvs={tvs} brands={brands} />
-
-        <p style={{ margin: "56px 0 0", color: "#9a9a9a", fontSize: 17 }}>
-          Ready? <Link href="/#ch-03" style={green}>Set it up</Link> in three steps. More in the <Link href="/faq" style={green}>FAQ</Link>.
-        </p>
-      </article>
+      <section aria-labelledby="missing-h" className="wrap tvs-missing-wrap">
+        <div className="tvs-missing">
+          <div className="stack">
+            <h2 id="missing-h" className="tvs-missing-h">Yours is missing?</h2>
+            <p className="dim">
+              That&apos;s fine. Your assistant builds a list for it as it goes. Add it here afterwards and the next person with your TV starts from yours.
+            </p>
+          </div>
+          <a href={`${GH}/blob/main/CONTRIBUTING.md`} className="btn btn-blue btn-md">Add your TV</a>
+        </div>
+      </section>
     </main>
   );
 }

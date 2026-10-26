@@ -1,0 +1,87 @@
+/* Long reads (the blog post, the app's privacy policy): the bits .prose in globals.css leaves to the page. */
+
+.prose p,
+.prose ul,
+.prose ol {
+  margin: 0 0 20px;
+}
+.prose ul,
+.prose ol {
+  padding-left: 22px;
+}
+.prose li {
+  margin: 0 0 10px;
+}
+.prose h2 {
+  margin: 56px 0 14px;
+}
+.prose code {
+  font-size: 0.85em;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--panel);
+}
+.prose-kicker {
+  margin: 0 0 8px !important;
+  font-family: var(--f-ch);
+  font-size: 22px;
+  line-height: 1.3;
+  color: var(--mint);
+}
+.prose-kicker a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.prose-sub {
+  font-size: 22px;
+  color: var(--dim-2);
+}
+.prose-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 28px 0;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+}
+.prose-box {
+  padding: 16px 20px;
+  background: var(--band);
+  border: 1px solid var(--line-2);
+  border-left: 6px solid var(--mint);
+  border-radius: 6px;
+  font-size: 18px;
+}
+.prose-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 26px;
+  align-items: center;
+  margin: 0 0 20px;
+}
+.prose-logos a {
+  line-height: 0;
+}
+.prose-logos img {
+  display: block;
+  height: 34px;
+  width: auto;
+}
+.prose-end {
+  margin-top: 56px !important;
+  font-size: 16px;
+  color: var(--mute);
+}
+.prose-sign {
+  color: var(--mute);
+  font-style: italic;
+}
+@media (max-width: 600px) {
+  .prose-kicker {
+    font-size: 20px;
+  }
+  .prose-sub {
+    font-size: 19px;
+  }
+}

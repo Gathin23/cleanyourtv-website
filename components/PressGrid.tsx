@@ -1,57 +1,63 @@
 "use client";
 
 import { useState } from "react";
-import { cdn } from "@/lib/site";
 
-export type PressItem = { outlet: string; headline: string; date: string; url: string; thumb: string; icon: string; group: string };
+/** One article, compact: outlet, headline, date ("19 Oct" or ""), url, and its group's index in `groups`. */
+export type PressRow = [outlet: string, headline: string, date: string, url: string, group: number];
 
-// Short country labels for the card footer; the dropdown keeps the full names.
+// Short country labels for the rows and chips; the select keeps the full names.
 const short = (g: string) => g.replace(/ \(.*\)$/, "");
+const PAGE = 24;
 
-/** Every article in one grid, with a dropdown that narrows it to one country (or the online / Latin America groups). */
-export default function PressGrid({ items, groups }: { items: PressItem[]; groups: { label: string; count: number }[] }) {
-  const [group, setGroup] = useState("");
-  const shown = group ? items.filter((i) => i.group === group) : items;
+/** Every article, newest first, a page at a time; chips for the biggest countries and a select for the rest. `groups` is biggest first. */
+export default function PressGrid({ items, groups }: { items: PressRow[]; groups: { label: string; count: number }[] }) {
+  const [group, setGroup] = useState(-1);
+  const [count, setCount] = useState(PAGE);
+  const shown = group < 0 ? items : items.filter((i) => i[4] === group);
+  const pick = (g: number) => {
+    setGroup(g);
+    setCount(PAGE);
+  };
+  const chip = (g: number, label: string, n: number) => (
+    <button key={g} type="button" className="chip" aria-pressed={group === g} onClick={() => pick(g)}>
+      {label} <span className="chip-n">{n}</span>
+    </button>
+  );
   return (
     <>
-      <div className="press-filter">
-        <label className="press-jump">
-          <span className="sr-only">Filter by country</span>
-          <select value={group} aria-label="Filter by country" onChange={(e) => setGroup(e.target.value)}>
-            <option value="">All countries · {items.length}</option>
-            {groups.map((g) => (
-              <option key={g.label} value={g.label}>
-                {g.label} · {g.count}
-              </option>
-            ))}
-          </select>
-        </label>
-        {group && (
-          <button type="button" className="press-clear" onClick={() => setGroup("")}>
-            Show all {items.length}
-          </button>
-        )}
+      <div className="chips" role="group" aria-label="Filter by country">
+        {chip(-1, "All countries", items.length)}
+        {groups.slice(0, 3).map((g, i) => chip(i, short(g.label), g.count))}
+        <label htmlFor="more-c" className="sr-only">More countries</label>
+        <select id="more-c" className="chip" value={group > 2 ? group : ""} onChange={(e) => pick(e.target.value === "" ? -1 : Number(e.target.value))}>
+          <option value="">More countries</option>
+          {groups.slice(3).map((g, i) => (
+            <option key={g.label} value={i + 3}>
+              {g.label} · {g.count}
+            </option>
+          ))}
+        </select>
       </div>
-      <ul className="press-grid" aria-live="polite">
-        {shown.map(({ outlet, headline, date, url, thumb, icon, group: g }) => (
+      <ol className="plain arts" aria-live="polite">
+        {shown.slice(0, count).map(([outlet, headline, date, url, g]) => (
           <li key={url}>
-            <a href={url} target="_blank" rel="noopener" className="press-card">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className="press-thumb" src={cdn(`/press/thumbs/${thumb}.jpg`)} alt="" width={640} height={360} loading="lazy" decoding="async" />
-              <span className="press-body">
-                <span className="press-outlet">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={cdn(`/press/icons/${icon}.png`)} alt="" width={22} height={22} loading="lazy" decoding="async" />
-                  <span className="press-outlet-name">{outlet}</span>
-                </span>
-                <span className="press-title">{headline}</span>
-                <span className="press-date">{[date, short(g)].filter(Boolean).join(" · ")}</span>
-                <span className="sr-only"> (opens in a new tab)</span>
+            <a href={url} target="_blank" rel="noopener" className="art">
+              <span className="art-src">
+                <span className="art-date ch">{date}</span>
+                <span className="art-outlet">{outlet}</span>
+                <span className="art-country">{short(groups[g].label)}</span>
               </span>
+              <span className="art-title">{headline}</span>
+              <span className="sr-only"> (opens in a new tab)</span>
             </a>
           </li>
         ))}
-      </ul>
+      </ol>
+      {count < shown.length && (
+        <button type="button" className="btn btn-mint btn-sm press-more" onClick={() => setCount((c) => c + PAGE)}>
+          Show more articles <span className="ch">{shown.length - count} left</span>
+        </button>
+      )}
     </>
   );
 }

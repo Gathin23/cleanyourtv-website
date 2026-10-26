@@ -1,58 +1,55 @@
 import Link from "next/link";
-import type { CSSProperties } from "react";
-import { PRESS, cdn } from "@/lib/site";
 import { COVERAGE, COVERAGE_COUNTRIES, COVERAGE_TOTAL } from "@/lib/press";
 import { VIDEOS, VIDEOS_AS_OF, videoDate } from "@/lib/videos";
 import VideoGrid from "@/components/VideoGrid";
-import LogoWall from "@/components/LogoWall";
-import PressGrid, { type PressItem } from "@/components/PressGrid";
+import PressGrid, { type PressRow } from "@/components/PressGrid";
 import JsonLd from "@/components/JsonLd";
+import { loadTweet } from "@/lib/data";
+import { GH } from "@/lib/parse";
 import { SITE, breadcrumbs, isoDay, pageMeta } from "@/lib/seo";
+import "./press.css";
 
 const title = "CleanYourTV in the press";
 const description = `${COVERAGE_TOTAL} articles and ${VIDEOS.length} videos about CleanYourTV, from outlets in ${COVERAGE_COUNTRIES} countries: TechCrunch and Mashable to GIGAZINE and Xataka.`;
 
 export const metadata = pageMeta("/press", title, description);
 
-// body is overflow:hidden for the TV, so the page scrolls inside main, as the blog does.
-const page: CSSProperties = {
-  height: "100dvh",
-  overflowY: "auto",
-  background: "#050505",
-  color: "#e9e9e9",
-  fontFamily: "var(--font-outfit), Outfit, sans-serif",
-  fontWeight: 300,
-  WebkitFontSmoothing: "antialiased",
-};
-const wrap: CSSProperties = { maxWidth: 1160, margin: "0 auto", padding: "40px 20px 120px", fontSize: 17, lineHeight: 1.5 };
-const kicker: CSSProperties = { margin: "0 0 20px", fontSize: 15, letterSpacing: 2, textTransform: "uppercase", color: "#9a9a9a" };
-const green = { color: "#cfffcf", borderBottomColor: "rgba(207,255,207,.35)" };
+// "Featured in": the big names, in this order, each linking to its first article here.
+const FEATURED = ["TechCrunch", "TechRadar", "Tom's Guide", "Mashable", "Android Authority", "XDA", "Gizmodo", "PCWorld", "404 Media", "Yahoo Tech", "01net", "GIGAZINE"];
 
-// Left out of the logo wall: icons that are a generated letter, a person's photo or YouTube's own logo, and What People Made (a gallery, not an outlet).
-const NO_LOGO = new Set(["tectoc", "timenews", "twaslnews", "newsytoday", "substack", "artificiallyintimidating", "youtube", "whatpeoplemade", "sohu", "digitalage"]);
-// The big names (the home page's press strip) lead, then everything else in the list's order.
-const RANK = new Map(PRESS.map(([slug], i) => [slug, i]));
-const rank = (icon: string, i: number) => RANK.get(icon) ?? 1000 + i;
-// Platform icons shared by several authors are named after the platform.
-const LOGO_NAME: Record<string, string> = { devto: "DEV Community" };
+// For a journalist: the pictures and the story. There is no press-kit archive, so these are the repo's own files.
+const KIT: [string, string, string][] = [
+  ["Screenshots and logos", `${GH}/tree/main/docs`, "GitHub"],
+  ["Before and after photo", `${GH}/blob/main/docs/stock-vs-new.jpg`, "JPG"],
+  ["The story, from the first post", "/blog/reintroducing-cleanyourtv", "READ"],
+];
+const CONTACT = "hello@itsgathin.com";
 
-export default function Press() {
-  const fromCountries = COVERAGE.filter((g) => g.country).reduce((n, g) => n + g.items.length, 0);
-  const items: PressItem[] = COVERAGE.flatMap((g) =>
-    g.items.map(([outlet, headline, date, url, thumb, icon]) => ({ outlet, headline, date, url, thumb, icon, group: g.group })),
-  )
-    .map((it, i) => ({ it, r: rank(it.icon, i) }))
-    .sort((a, b) => a.r - b.r)
-    .map(({ it }) => it);
-  // One logo per outlet, linking to its first article; names drop "(on Yahoo Tech)"-style notes.
-  const seen = new Set<string>();
-  const logos = items
-    .filter((it) => !NO_LOGO.has(it.icon) && !seen.has(it.icon) && seen.add(it.icon))
-    .map((it) => ({ icon: it.icon, url: it.url, outlet: LOGO_NAME[it.icon] ?? it.outlet.replace(/ \(.*\)$/, "") }));
-  // ISO 8601 length for VideoObject: 754 -> PT12M34S
+// ISO 8601 length for VideoObject: 754 -> PT12M34S
 const isoLength = (s: number) => `PT${s >= 3600 ? `${Math.floor(s / 3600)}H` : ""}${Math.floor((s % 3600) / 60)}M${s % 60}S`;
+// 35543 -> 35.5K
+const compact = (n: number) => (n >= 1e6 ? `${(n / 1e6).toFixed(1).replace(/\.0$/, "")}M` : n >= 1000 ? `${(n / 1000).toFixed(1).replace(/\.0$/, "")}K` : String(n));
 
-// The page as a collection of the articles, in the order the grid shows them, and of the videos.
+export default async function Press() {
+  const tweet = await loadTweet();
+  // Groups biggest first, so the chips are the three biggest and the select holds the rest.
+  const groups = COVERAGE.map((g) => ({ label: g.group, count: g.items.length })).sort((a, b) => b.count - a.count);
+  const at = new Map(groups.map((g, i) => [g.label, i]));
+  // Every article, newest first; undated ones last, in the list's order.
+  const items = COVERAGE.flatMap((g) => g.items.map(([outlet, headline, date, url]) => ({ outlet, headline, date, url, group: g.group })))
+    .map((it, i) => ({ it, d: isoDay(it.date), i }))
+    .sort((a, b) => (b.d || "0").localeCompare(a.d || "0") || a.i - b.i)
+    .map(({ it }) => it);
+  const rows: PressRow[] = items.map((it) => [it.outlet, it.headline, it.date, it.url, at.get(it.group) ?? 0]);
+  const featured = FEATURED.map((name) => items.find((it) => it.outlet === name || it.outlet.startsWith(name + " ("))).filter((it) => !!it);
+  const stats = [
+    { label: "Articles", value: String(COVERAGE_TOTAL), bar: "#FF8A8A" },
+    { label: "Countries", value: String(COVERAGE_COUNTRIES), bar: "#FFDC96" },
+    { label: "YouTube videos", value: String(VIDEOS.length), bar: "#6FA8FF" },
+    { label: "Likes on the first post", value: compact(tweet.likes), bar: "#8EE08F" },
+  ];
+
+  // The page as a collection of the articles, in the order the list shows them, and of the videos.
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -106,47 +103,78 @@ const isoLength = (s: number) => `PT${s >= 3600 ? `${Math.floor(s / 3600)}H` : "
     ],
   };
   return (
-    <main className="page-main" style={page}>
+    <main className="press">
       <JsonLd data={jsonLd} />
-      <div style={wrap}>
-        <p style={kicker}>
-          <Link href="/" className="home-link" style={green}>cleanyour.tv</Link> &nbsp;·&nbsp; Press
-        </p>
-        <h1 style={{ fontSize: 44, lineHeight: 1.1, fontWeight: 400, margin: "0 0 14px", letterSpacing: -0.5 }}>In the press</h1>
-        <p style={{ margin: "0 0 32px", fontSize: 20, color: "#bdbdbd", maxWidth: 680 }}>
-          {COVERAGE_TOTAL} articles and {VIDEOS.length} videos about CleanYourTV in its first days. Of the articles, {fromCountries} are from outlets in{" "}
-          {COVERAGE_COUNTRIES} countries, the rest from Spanish-language sites in Latin America, newsletters, blogs and AI news sites. Headlines are as
-          published.
-        </p>
+      <section aria-labelledby="page-h" className="wrap press-hero">
+        <div className="stack press-hero-text">
+          <p className="kicker c-pink">CH 05 · Press</p>
+          <h1 id="page-h" className="h1 press-h1">In the press</h1>
+          <p className="lede press-lede">Articles and videos about CleanYourTV from its first days. Headlines are as published, in the language they were written in.</p>
+        </div>
+        <aside aria-labelledby="kit-h" className="kit">
+          <h2 id="kit-h">Writing about it?</h2>
+          <ul className="plain">
+            {KIT.map(([label, href, tag]) => (
+              <li key={label}>
+                {href.startsWith("/") ? (
+                  <Link href={href}>{label}<span className="ch">{tag}</span></Link>
+                ) : (
+                  <a href={href}>{label}<span className="ch">{tag}</span></a>
+                )}
+              </li>
+            ))}
+          </ul>
+          <p>
+            Questions: <a href={`mailto:${CONTACT}`}>{CONTACT}</a>
+          </p>
+        </aside>
+      </section>
 
-        <LogoWall count={COVERAGE_TOTAL}>
-        <ul className="press-logos" aria-label="Outlets">
-          {logos.map((l) => (
-            <li key={l.icon}>
-              <a href={l.url} target="_blank" rel="noopener" title={l.outlet} className="no-border">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={cdn(`/press/icons/${l.icon}.png`)} alt="" width={28} height={28} loading="lazy" decoding="async" />
-                <span>{l.outlet}</span>
-              </a>
+      <section aria-label="Coverage in numbers" className="band">
+        <dl className="wrap press-nums">
+          {stats.map((s) => (
+            <div key={s.label} style={{ "--bar": s.bar } as React.CSSProperties}>
+              <dt>{s.label}</dt>
+              <dd className="num">{s.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section aria-labelledby="logos-h" className="wrap press-logos">
+        <h2 id="logos-h" className="kicker c-mute">Featured in</h2>
+        <ul className="plain">
+          {featured.map((it) => (
+            <li key={it.url}>
+              <a href={it.url} target="_blank" rel="noopener">{it.outlet.replace(/ \(.*\)$/, "")}</a>
             </li>
           ))}
         </ul>
-        </LogoWall>
+      </section>
 
-        <h2 id="videos" className="press-h2">Videos</h2>
-        <p className="press-h2-note">On YouTube, most watched first. Views as of {videoDate(VIDEOS_AS_OF)}.</p>
+      <section aria-labelledby="vid-h" className="wrap press-sec">
+        <div className="spread">
+          <div className="stack">
+            <p className="kicker c-blue">On YouTube · most watched first</p>
+            <h2 id="vid-h" className="h2 h2-sm">Videos</h2>
+          </div>
+          <span className="ch press-asof">Views as of {videoDate(VIDEOS_AS_OF)}</span>
+        </div>
         <VideoGrid videos={VIDEOS} />
+      </section>
 
-        <h2 id="articles" className="press-h2">Articles</h2>
-        <PressGrid items={items} groups={COVERAGE.map((g) => ({ label: g.group, count: g.items.length }))} />
-
-        <p style={{ margin: "56px 0 0", color: "#9a9a9a" }}>
-          Wrote about CleanYourTV and not on this list? <a href="https://github.com/Gathin23/cleanyourtv/issues/new" style={green}>Open an issue</a> with the link.
-          The same list is <a href="https://github.com/Gathin23/cleanyourtv/blob/main/docs/PRESS.md" style={green}>docs/PRESS.md</a> in the repo.
-          New here? Start with <Link href="/faq" style={green}>the questions people ask</Link>, or see{" "}
-          <Link href="/bot" style={green}>the bot that reviews every pull request</Link>.
+      <section aria-labelledby="art-h" className="wrap press-sec press-arts">
+        <div className="stack">
+          <p className="kicker c-amber">Newest first</p>
+          <h2 id="art-h" className="h2 h2-sm">Articles</h2>
+        </div>
+        <PressGrid items={rows} groups={groups} />
+        <p className="press-foot">
+          Wrote about CleanYourTV and not on this list? <a href={`${GH}/issues/new`}>Open an issue</a> with the link. The same list is{" "}
+          <a href={`${GH}/blob/main/docs/PRESS.md`}>docs/PRESS.md</a> in the repo. New here? Start with <Link href="/faq">the questions people ask</Link>, or see{" "}
+          <Link href="/bot">the bot that reviews every pull request</Link>.
         </p>
-      </div>
+      </section>
     </main>
   );
 }

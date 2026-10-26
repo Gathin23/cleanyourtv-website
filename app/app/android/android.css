@@ -1,0 +1,420 @@
+/* /app/android: udhaykumarbala's community phone app. The hero's TV and phone are drawn in CSS, the rest are his pictures and demo. */
+
+.and-hero {
+  padding-top: 72px;
+  padding-bottom: 88px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(480px, 100%), 1fr));
+  gap: 56px;
+  align-items: center;
+}
+.and-hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.and-h1 {
+  font-size: clamp(48px, 7vw, 100px);
+}
+.and-hero .lede {
+  max-width: 40ch;
+}
+.and-phone-only {
+  display: none;
+}
+.and-ver {
+  font-size: 20px;
+  font-weight: 400;
+}
+.and-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* The drawn figure: a TV on its new home screen, the phone over its corner on the plan screen. */
+.and-fig {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.and-stage {
+  position: relative;
+  min-height: 520px;
+}
+.and-tv {
+  position: absolute;
+  left: 0;
+  right: 60px;
+  top: 40px;
+  aspect-ratio: 16 / 10;
+  background: #111;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.and-clock {
+  display: flex;
+  flex-direction: column;
+}
+.and-clock span:first-child {
+  font-family: var(--f-head);
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.and-clock span:last-child {
+  font-size: 13px;
+  color: var(--mute);
+}
+.and-dock {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+.and-dock i {
+  display: block;
+  height: 40px;
+}
+.and-dock i:nth-child(1) { background: var(--red); }
+.and-dock i:nth-child(2) { background: var(--blue); }
+.and-dock i:nth-child(3) { background: var(--green); }
+.and-dock i:nth-child(4) { background: var(--violet); }
+.and-phone {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 240px;
+  height: 480px;
+  background: var(--bg);
+  border: 3px solid var(--ink);
+  border-radius: 34px;
+  padding: 18px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.and-phone-step {
+  font-size: 17px;
+  color: var(--green);
+}
+.and-phone-h {
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.05;
+}
+.and-plan {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+}
+.and-plan div {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background: var(--panel);
+  border-radius: 8px;
+}
+.and-plan span:last-child {
+  color: var(--green);
+}
+.and-plan .and-stays {
+  background: transparent;
+  border: 1px solid var(--line-2);
+}
+.and-plan .and-stays span:last-child {
+  color: var(--mute);
+}
+.and-make {
+  margin-top: auto;
+  height: 46px;
+  border-radius: 10px;
+  background: var(--green);
+  color: var(--on-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+.and-cap {
+  font-size: 18px;
+  color: var(--mute);
+}
+
+/* 01 Watch it */
+.and-watch {
+  padding-top: 88px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.and-video {
+  background: var(--panel);
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.and-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* 02 Three steps */
+.and-steps-sec {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.and-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: 16px;
+}
+.and-steps li {
+  border: 1px solid var(--line-2);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+/* His screenshots are tall phone screens: shown whole, centred on the dark panel. */
+.and-shot {
+  height: 240px;
+  padding: 16px 0 0;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line-2);
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+.and-shot img {
+  height: auto;
+  width: 150px;
+  max-width: none;
+  border: 2px solid #3a3a3a;
+  border-bottom: 0;
+  border-radius: 18px 18px 0 0;
+  object-fit: cover;
+  object-position: top;
+}
+.and-step-text {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.and-step-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 12px;
+}
+.and-step-top .h3 {
+  font-size: 24px;
+}
+.and-step-top .h3 .ch {
+  margin-right: 8px;
+  color: var(--green);
+  font-weight: 400;
+}
+.and-step-top > .ch {
+  font-size: 18px;
+  color: var(--mute);
+}
+.and-step-text p {
+  margin: 0;
+  color: var(--dim-2);
+  font-size: 16px;
+}
+.and-after {
+  margin: 0;
+}
+
+/* 03 How it works */
+.and-how {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.and-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: 16px;
+}
+.and-fact {
+  padding: 24px;
+  border-top: 6px solid var(--green);
+  background: var(--bg);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.and-fact.and-blue {
+  border-top-color: var(--blue);
+}
+.and-fact.and-amber {
+  border-top-color: var(--amber);
+}
+.and-fact ul {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--dim);
+  font-size: 16px;
+}
+.and-fact b {
+  color: var(--ink);
+  font-weight: 600;
+}
+.and-not {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  background: var(--amber);
+  color: var(--on-amber);
+  border-radius: 6px;
+}
+.and-not p {
+  margin: 0;
+  flex: 1 1 420px;
+}
+.and-not strong {
+  font-family: var(--f-head);
+  font-size: 19px;
+}
+.and-not-btn,
+.and-not-btn:hover {
+  background: var(--on-amber);
+  color: var(--amber);
+  font-family: var(--f-body);
+  font-weight: 600;
+}
+
+/* Closing */
+.and-end {
+  padding-top: 96px;
+  padding-bottom: 96px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr));
+  gap: 40px;
+  align-items: center;
+}
+.and-end-text {
+  gap: 16px;
+}
+.and-end-text p {
+  margin: 0;
+  max-width: 46ch;
+}
+.and-end-h {
+  font-size: clamp(40px, 5.4vw, 72px);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+.and-credit {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 24px;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.and-credit:hover {
+  color: var(--ink);
+  background: #111;
+}
+.and-credit img {
+  flex: none;
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  border: 1px solid var(--line-2);
+}
+.and-credit .stack {
+  gap: 2px;
+}
+.and-credit .ch {
+  font-size: 19px;
+}
+.and-credit-name {
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 22px;
+}
+.and-credit .dim {
+  font-size: 15px;
+}
+
+@media (max-width: 1100px) {
+  .and-stage {
+    min-height: 440px;
+  }
+}
+@media (max-width: 600px) {
+  .and-hero {
+    padding-top: 32px;
+    padding-bottom: 40px;
+    gap: 28px;
+  }
+  .and-hero-text {
+    gap: 16px;
+  }
+  .and-phone-only {
+    display: inline;
+  }
+  .and-hero .btn {
+    flex: 1 1 100%;
+  }
+  /* Phones show the app's plan screen on its own, as the phone artboard does. */
+  .and-tv,
+  .and-cap {
+    display: none;
+  }
+  .and-stage {
+    min-height: 0;
+    display: flex;
+    justify-content: center;
+  }
+  .and-phone {
+    position: static;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    min-height: 440px;
+  }
+  .and-watch {
+    padding-top: 56px;
+  }
+  .and-shot {
+    height: 200px;
+  }
+  .and-step-text {
+    padding: 18px;
+  }
+  .and-end {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+  .and-end .btn {
+    flex: 1 1 100%;
+  }
+  .and-credit {
+    padding: 18px;
+  }
+}

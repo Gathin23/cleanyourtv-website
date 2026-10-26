@@ -1,0 +1,561 @@
+/* /bot: the receipt, the PR flood, six checks, a sample review and the labels it can suggest. */
+
+.bot-hero {
+  padding-bottom: 56px;
+  gap: 20px;
+}
+.bot-lede {
+  max-width: 40ch;
+}
+.bot-mit {
+  padding: 0 8px;
+  font-size: 20px;
+  color: var(--mute);
+}
+
+/* The receipt */
+.bot-receipt {
+  padding-top: 56px;
+  padding-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.bot-asof {
+  font-size: 19px;
+  color: var(--mute);
+}
+.bot-receipt .stats {
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+}
+.bot-receipt .stat {
+  padding: 24px;
+}
+.bot-receipt .stat::before {
+  width: 36px;
+  margin-bottom: 14px;
+}
+.bot-receipt .stat dd {
+  font-size: clamp(40px, 4vw, 56px);
+}
+.bot-of {
+  color: #8a8a8a;
+}
+.bot-spend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
+  gap: 24px;
+  align-items: end;
+}
+.bot-total {
+  font-size: 40px;
+  letter-spacing: -0.04em;
+}
+.bot-note {
+  margin: 0;
+  max-width: 90ch;
+  font-size: 14px;
+  color: var(--mute);
+}
+
+/* Bar charts: one series, the value on each bar, a dashed bar for a day still running. */
+.bot-chart {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.bot-chart figcaption {
+  font-size: 19px;
+  color: var(--mute);
+}
+.bot-bars {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  height: 150px;
+}
+.bot-bars-tall {
+  gap: 8px;
+  height: 220px;
+}
+.bot-col {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 4px;
+}
+.bot-col .ch {
+  font-size: 18px;
+  line-height: 1;
+  white-space: nowrap;
+}
+.bot-bar {
+  flex: none;
+  max-height: calc(100% - 22px);
+  background: var(--amber);
+}
+.bot-bar-mint {
+  background: var(--mint);
+}
+.bot-sofar {
+  background: transparent;
+  border: 2px dashed var(--mint);
+}
+.bot-sofar-amber {
+  border-color: var(--amber);
+}
+.bot-axis {
+  display: flex;
+  gap: 8px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line-2);
+  font-size: 13px;
+  color: var(--mute);
+}
+.bot-axis span {
+  flex: 1 1 0;
+  min-width: 0;
+}
+.bot-chart-spend .bot-axis {
+  gap: 10px;
+}
+
+/* 01 Why it exists */
+.bot-why {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr));
+  gap: 48px;
+  align-items: center;
+}
+.bot-why-text {
+  gap: 14px;
+}
+.bot-why-p {
+  margin: 0;
+  max-width: 46ch;
+}
+
+/* 02 How it decides */
+.bot-how {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.bot-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
+  gap: 12px;
+}
+.bot-step {
+  padding: 22px;
+  border: 1px solid var(--line-2);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.bot-step p {
+  margin: 0;
+  font-size: 15px;
+  color: var(--dim-2);
+}
+.bot-step-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.bot-step-n {
+  font-size: 26px;
+  line-height: 1;
+  color: var(--blue);
+}
+.bot-pill {
+  padding: 2px 10px;
+  border: 1px solid #5a5a5a;
+  border-radius: 999px;
+  font-size: 13px;
+  color: var(--dim-2);
+}
+.bot-pill-ai {
+  background: var(--mint);
+  border-color: var(--mint);
+  color: var(--bg);
+  font-weight: 600;
+}
+.bot-step-out {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+.bot-step-out .bot-step-n {
+  color: var(--bg);
+}
+.bot-step-out .bot-pill {
+  border-color: var(--bg);
+  color: var(--bg);
+}
+.bot-step-out p {
+  color: #2a2a2a;
+}
+.bot-rails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  font-family: var(--f-ch);
+  font-size: 21px;
+}
+
+/* 03 A sample review: verdict tabs on the left, the comment on the right. */
+.bot-sample {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr));
+  gap: 48px;
+  align-items: start;
+}
+.bot-sample-text {
+  gap: 16px;
+}
+.bot-sample-text p {
+  margin: 0;
+}
+.bs-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.bs-tab {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  min-height: 56px;
+  padding: 0 16px;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line-3);
+  border-radius: 6px;
+  text-align: left;
+}
+.bs-tab:hover {
+  border-color: var(--ink);
+}
+.bs-tab .ch {
+  font-size: 20px;
+  color: var(--mint);
+  white-space: nowrap;
+}
+.bs-tab[aria-selected="true"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+  font-weight: 600;
+}
+.bs-tab[aria-selected="true"] .ch {
+  color: var(--bg);
+}
+.bs-review {
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--bg);
+}
+.bs-pr {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line-2);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.bs-label {
+  font-size: 18px;
+  color: var(--mute);
+}
+.bs-pr strong {
+  font-family: var(--f-head);
+  font-size: 20px;
+  line-height: 1.25;
+}
+.bs-pr code {
+  font-family: var(--f-mono);
+  font-size: 13px;
+  color: var(--dim-2);
+  overflow-wrap: anywhere;
+}
+.bs-body {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.bs-body p {
+  margin: 0;
+}
+.bs-who {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.bs-who strong {
+  font-weight: 600;
+}
+.bs-avatar {
+  width: 36px;
+  height: 36px;
+  flex: none;
+  border-radius: 999px;
+  background: var(--mint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bs-time {
+  font-size: 15px;
+  color: var(--mute);
+}
+.bs-verdict {
+  font-size: 19px;
+}
+.bs-verdict strong {
+  padding: 2px 10px;
+  background: var(--mint);
+  color: var(--bg);
+  border-radius: 4px;
+  font-family: var(--f-head);
+}
+.bs-text {
+  color: #d4d4d4;
+}
+.bs-facts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px;
+  background: var(--band);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+.bs-facts .bs-label {
+  font-size: 19px;
+}
+.bs-facts ul {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 15px;
+}
+.bs-facts li {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+.bs-ok,
+.bs-flag {
+  flex: none;
+  min-width: 32px;
+  font-size: 18px;
+}
+.bs-ok {
+  color: var(--green);
+}
+.bs-flag {
+  color: var(--amber);
+}
+.bs-second {
+  font-size: 15px;
+  color: var(--dim-2);
+}
+.bs-labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.bs-labels li {
+  padding: 4px 10px;
+  border: 1px solid var(--mint);
+  border-radius: 999px;
+  font-size: 13px;
+  color: var(--mint);
+}
+
+/* 04 What it can suggest */
+.bot-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.bot-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+  gap: 12px;
+}
+.bot-group {
+  padding: 22px;
+  border-top: 6px solid var(--green);
+  background: var(--band);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.bot-blue {
+  border-top-color: var(--blue);
+}
+.bot-amber {
+  border-top-color: var(--amber);
+}
+.bot-group .h3 {
+  font-size: 20px;
+}
+.bot-group dl {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 15px;
+}
+.bot-group dt {
+  display: inline;
+  font-weight: 600;
+}
+.bot-group dd {
+  display: inline;
+  margin: 0;
+  color: var(--dim-2);
+}
+.bot-report {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+@media (max-width: 600px) {
+  .bot-hero {
+    padding-bottom: 24px;
+    gap: 12px;
+  }
+  .bot-hero .h1 {
+    font-size: 50px;
+  }
+  .bot-hero .btn {
+    flex: 1 1 100%;
+  }
+  .bot-mit {
+    padding: 0;
+    font-size: 18px;
+  }
+  .bot-receipt {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    gap: 14px;
+  }
+  .bot-receipt .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .bot-receipt .stat {
+    padding: 14px;
+  }
+  .bot-receipt .stat dd {
+    font-size: 34px;
+  }
+  .bot-asof {
+    font-size: 17px;
+  }
+  .bot-total {
+    font-size: 30px;
+  }
+  .bot-chart-spend {
+    display: none;
+  }
+  .bot-why {
+    gap: 24px;
+  }
+  .bot-why .h2,
+  .bot-how .h2,
+  .bot-sample .h2,
+  .bot-labels .h2 {
+    font-size: 32px;
+    line-height: 1.02;
+  }
+  .bot-bars-tall {
+    height: 160px;
+    gap: 4px;
+  }
+  .bot-col .ch {
+    font-size: 15px;
+  }
+  .bot-axis {
+    gap: 4px;
+    font-size: 12px;
+  }
+  .bot-how {
+    gap: 16px;
+  }
+  .bot-steps {
+    gap: 0;
+    border-top: 1px solid var(--line-2);
+  }
+  .bot-step,
+  .bot-step-out {
+    padding: 12px 0;
+    border: 0;
+    border-bottom: 1px solid var(--line-2);
+    border-radius: 0;
+    background: none;
+    color: var(--ink);
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 0 4px;
+    align-items: baseline;
+  }
+  .bot-step-top {
+    display: contents;
+  }
+  .bot-step-n,
+  .bot-step-out .bot-step-n {
+    grid-row: 1;
+    font-size: 22px;
+    color: var(--blue);
+  }
+  .bot-step .h3 {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 17px;
+  }
+  .bot-pill,
+  .bot-pill-ai,
+  .bot-step-out .bot-pill {
+    grid-column: 2;
+    justify-self: start;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--mute);
+  }
+  .bot-pill-ai {
+    color: var(--mint);
+  }
+  .bot-step p,
+  .bot-step-out p {
+    display: none;
+  }
+  .bot-rails {
+    font-size: 19px;
+  }
+  .bot-sample {
+    gap: 16px;
+  }
+  .bs-pr,
+  .bs-body {
+    padding: 14px;
+  }
+}

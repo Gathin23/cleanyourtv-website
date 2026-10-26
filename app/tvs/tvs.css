@@ -1,0 +1,385 @@
+/* /tvs: the three platform answers, the tested-model band with its search and brand chips, and "Yours is missing?". */
+
+.tvs-lede {
+  font-size: 21px;
+}
+.tvs-answers {
+  padding-bottom: 88px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: 12px;
+}
+.tvs-ans {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px;
+  border-radius: 6px;
+}
+.tvs-ans h2 {
+  margin: 0;
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.05;
+}
+.tvs-ans p {
+  margin: 0;
+  flex: 1;
+  font-size: 16px;
+}
+.tvs-mark {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 22px;
+}
+.tvs-cta {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.tvs-yes {
+  background: var(--green);
+  color: var(--on-green);
+}
+.tvs-yes .tvs-cta,
+.tvs-yes .tvs-cta:hover {
+  background: var(--on-green);
+  color: var(--green);
+}
+.tvs-part {
+  background: var(--amber);
+  color: var(--on-amber);
+}
+.tvs-part .tvs-cta,
+.tvs-part .tvs-cta:hover {
+  background: var(--on-amber);
+  color: var(--amber);
+}
+.tvs-no {
+  border: 2px solid var(--ink);
+}
+.tvs-no p {
+  color: var(--dim);
+}
+.tvs-no .tvs-cta {
+  background: var(--ink);
+  color: var(--bg);
+}
+.tvs-no .tvs-cta:hover {
+  background: #fff;
+  color: var(--bg);
+}
+
+/* The tested models */
+.tvs-band {
+  padding-top: 72px;
+  padding-bottom: 72px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.tvs-band-head {
+  flex: 1 1 520px;
+  gap: 10px;
+}
+.tvs-h2 {
+  font-size: clamp(36px, 4.6vw, 60px);
+}
+.tvs-band-text {
+  margin: 0;
+  max-width: 54ch;
+}
+.tvs-counts {
+  margin: 0;
+  display: flex;
+  gap: 32px;
+}
+.tvs-counts div {
+  display: flex;
+  flex-direction: column;
+}
+.tvs-counts dt {
+  font-size: 15px;
+  color: var(--dim-2);
+}
+.tvs-counts dd {
+  order: -1;
+  margin: 0;
+  font-size: 52px;
+}
+
+.tvf {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.tvf-search {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-end;
+}
+.tvf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.tvf-q {
+  flex: 1 1 420px;
+}
+.tvf-more {
+  flex: 0 1 240px;
+}
+.tvf-field label {
+  font-weight: 600;
+  font-size: 15px;
+}
+.tvf-field input,
+.tvf-field select {
+  width: 100%;
+  height: 56px;
+  padding: 0 16px;
+  background: var(--bg);
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  color: var(--ink);
+  font: inherit;
+  font-size: 18px;
+}
+.tvf-field select {
+  padding: 0 12px;
+  border-color: var(--line-3);
+  font-size: 17px;
+}
+.tvf-field input::placeholder {
+  color: #8f8f8f;
+}
+.tvf-count {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 20px;
+  color: var(--mute);
+}
+.tvf-clear {
+  min-height: 44px;
+  padding: 0 4px;
+  background: none;
+  border: 0;
+  color: var(--mint);
+  font-family: var(--f-body);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.tvf-list {
+  border-top: 2px solid var(--ink);
+}
+.tvf-list li {
+  border-bottom: 1px solid var(--line);
+}
+.tvf-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 24px;
+  min-height: 64px;
+  padding: 12px 0;
+  color: var(--ink);
+  text-decoration: none;
+}
+.tvf-row:hover {
+  color: var(--ink);
+  background: #111;
+}
+.tvf-name {
+  flex: 1 1 380px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.tvf-model {
+  font-family: var(--f-head);
+  font-size: 19px;
+  overflow-wrap: anywhere;
+}
+.tvf-model strong {
+  font-weight: 700;
+}
+.tvf-meta {
+  font-family: var(--f-mono);
+  font-size: 13px;
+  color: var(--mute);
+  overflow-wrap: anywhere;
+}
+.tvf-os {
+  flex: 0 1 260px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  font-size: 20px;
+}
+.tvf-part {
+  padding: 0 8px;
+  background: var(--amber);
+  color: var(--on-amber);
+  border-radius: 3px;
+  font-size: 17px;
+}
+.tvf-open {
+  flex: none;
+  font-weight: 600;
+  color: var(--mint);
+}
+.tvf-row:hover .tvf-open {
+  text-decoration: underline;
+}
+.tvf-all {
+  align-self: flex-start;
+}
+.tvf-empty {
+  padding: 24px;
+  border: 2px dashed var(--line-3);
+  border-radius: 6px;
+}
+.tvf-empty p {
+  margin: 0 0 10px;
+  color: var(--dim);
+}
+.tvf-empty p:last-child {
+  margin: 0;
+}
+.tvf-empty strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Yours is missing? */
+.tvs-missing-wrap {
+  padding-top: 72px;
+  padding-bottom: 96px;
+}
+.tvs-missing {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 48px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px;
+  border: 2px dashed var(--blue);
+  border-radius: 6px;
+}
+.tvs-missing .stack {
+  flex: 1 1 480px;
+}
+.tvs-missing p {
+  margin: 0;
+  max-width: 56ch;
+}
+.tvs-missing-h {
+  margin: 0;
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: -0.03em;
+}
+
+@media (max-width: 600px) {
+  .tvs-lede {
+    font-size: 17px;
+  }
+  .tvs-answers {
+    padding-bottom: 40px;
+    gap: 8px;
+  }
+  .tvs-ans {
+    padding: 16px;
+    gap: 8px;
+  }
+  .tvs-ans h2 {
+    font-size: 22px;
+  }
+  .tvs-ans p {
+    font-size: 15px;
+  }
+  .tvs-mark {
+    font-size: 19px;
+  }
+  .tvs-band {
+    padding-top: 32px;
+    padding-bottom: 40px;
+    gap: 18px;
+  }
+  .tvs-band-head {
+    flex-basis: 100%;
+  }
+  .tvs-h2 {
+    font-size: 32px;
+  }
+  .tvs-band-text {
+    display: none;
+  }
+  .tvs-counts {
+    gap: 24px;
+  }
+  .tvs-counts dd {
+    font-size: 36px;
+  }
+  .tvf {
+    gap: 14px;
+  }
+  .tvf-q,
+  .tvf-more {
+    flex-basis: 100%;
+  }
+  .tvf-field input {
+    height: 52px;
+    font-size: 17px;
+  }
+  .tvf-field select {
+    height: 48px;
+  }
+  .tvf-row {
+    min-height: 56px;
+    gap: 4px 12px;
+  }
+  .tvf-name {
+    flex-basis: 100%;
+  }
+  .tvf-model {
+    font-size: 17px;
+  }
+  .tvf-os {
+    flex: 1 1 auto;
+    font-size: 18px;
+  }
+  .tvf-open {
+    font-size: 15px;
+  }
+  .tvs-missing-wrap {
+    padding-top: 40px;
+    padding-bottom: 56px;
+  }
+  .tvs-missing {
+    padding: 20px;
+  }
+  .tvs-missing-h {
+    font-size: 26px;
+  }
+  .tvs-missing .btn {
+    width: 100%;
+  }
+}
