@@ -3852,15 +3852,9 @@ a.pv-tab[aria-current="true"] {
   break-inside: avoid;
 }
 
-/* Home: the App pill only on narrow phones, where the hero's app link is hidden; it takes Press's place there
+/* Home: the App pill on every size; on narrow phones it takes Press's place
    (the "Featured in" strip still leads to /press). */
-a.m-navpill-app {
-  display: none !important;
-}
 @media (max-width: 480px) {
-  a.m-navpill-app {
-    display: flex !important;
-  }
   a.m-navpill-press {
     display: none !important;
   }
