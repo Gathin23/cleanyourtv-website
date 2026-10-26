@@ -8,6 +8,58 @@
 .na-what {
   max-width: 760px;
 }
+.na-need {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  color: var(--ink);
+}
+.na-need svg {
+  flex: none;
+  color: var(--amber);
+}
+/* What a step does, in one plain line under its title. */
+.na-does {
+  margin: -4px 0 0;
+  font-size: 16px;
+  color: var(--dim-2);
+}
+.na-list .na-does {
+  margin: 0 0 8px;
+}
+.na-card {
+  scroll-margin-top: calc(var(--mast-h) + 16px);
+}
+.na-card h3:focus,
+.na-done [data-head]:focus {
+  outline: none;
+}
+.na-card h3:focus-visible,
+.na-done [data-head]:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 4px;
+}
+.na-done {
+  scroll-margin-top: calc(var(--mast-h) + 16px);
+}
+.na-nudge {
+  align-self: flex-start;
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px;
+  background: var(--bg);
+  color: var(--green);
+  border-radius: 6px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.na-nudge:hover {
+  color: #fff;
+}
 .na-what summary,
 .na-undo summary,
 .na-fold-sm summary {
@@ -289,15 +341,7 @@
 .na-remote-note strong {
   color: var(--ink);
 }
-@media (min-width: 861px) {
-  /* On a computer the remote mode is still there, as a link-sized button in the note. */
-  .na-remote-btn {
-    display: inline-flex;
-    align-self: flex-start;
-    min-height: 48px;
-    font-size: 16px;
-  }
-}
+
 @media (max-width: 860px) {
   .na-remote-btn {
     display: flex;
@@ -510,8 +554,13 @@
 .na-card-title {
   font-family: var(--f-head);
   font-weight: 700;
-  font-size: 17px;
+  font-size: 20px;
   line-height: 1.2;
+}
+@media (max-width: 600px) {
+  .na-card-title {
+    font-size: 17px;
+  }
 }
 .na-tick {
   flex: none;
@@ -1236,6 +1285,10 @@
 }
 .na-rm-done .btn {
   width: 100%;
+}
+.na-rm-nudge {
+  min-height: 64px;
+  font-size: 19px;
 }
 .na-rm-tick {
   width: 72px;

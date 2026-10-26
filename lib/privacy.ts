@@ -17,6 +17,8 @@ export type Check = { year: number; model: string; by: string; issue: number };
 export type Step = {
   id: string;
   title: string;
+  /** What the step does, in one plain line from what the step itself says (the card, remote mode and print show it). */
+  does: string;
   /** Who the step is for, when not everyone: "Sony only", "If your TV has one". */
   tag?: string;
   /** Only for these answers to the brand's question (a Roku TV, not a stick). */
@@ -87,6 +89,7 @@ export const BRANDS: Brand[] = [
       {
         id: "acr",
         title: "Turn off Viewing Information Services",
+        does: "Stops your TV recognising what’s on screen and reporting it.",
         items: [{ name: "Viewing Information Services", to: "off" }],
         variants: [
           { label: "2025 TVs", years: [2025, 2025], crumbs: ["Settings", "All Settings", "General & Privacy", "Terms & Privacy"], note: "Some models say “Terms and Policy”." },
@@ -102,6 +105,7 @@ export const BRANDS: Brand[] = [
       {
         id: "ads",
         title: "Untick the rest on that screen",
+        does: "Ads stay, but stop being targeted at you.",
         sameAs: "acr",
         items: [
           { name: "Interest-Based Advertisements", to: "off" },
@@ -118,6 +122,7 @@ export const BRANDS: Brand[] = [
       {
         id: "psid",
         title: "Reset the ad ID",
+        does: "Gives the TV a new ad ID. On its own it doesn’t stop personalised ads.",
         variants: [{ label: "Newer menus", crumbs: ["Settings", "All Settings", "General & Privacy", "Terms & Privacy"], items: [{ name: "Reset PSID", to: "press" }] }],
         note: "This gives the TV a new ad ID. On its own it doesn’t turn off personalised ads; step 2 does.",
         undo: "Nothing to undo.",
@@ -127,6 +132,7 @@ export const BRANDS: Brand[] = [
       {
         id: "voice",
         title: "Turn off Bixby’s wake word",
+        does: "The TV stops listening for its wake word.",
         items: [{ name: "Voice Wake-Up", to: "off" }],
         variants: [
           { label: "2025 TVs", years: [2025, 2025], crumbs: ["Settings", "All Settings", "Advanced Features", "Voice", "Bixby Settings"] },
@@ -143,6 +149,7 @@ export const BRANDS: Brand[] = [
       {
         id: "mic",
         title: "Flip the mic switch",
+        does: "Cuts the microphone off in hardware.",
         tag: "If your TV has one",
         text: "Feel along the lower edge of the TV, in the middle or towards the right, for a small switch. Slide it to off. Not every model has one.",
         note: "With it off, voice commands stop. The remote’s mic only listens while you hold its button.",
@@ -153,6 +160,7 @@ export const BRANDS: Brand[] = [
       {
         id: "petcare",
         title: "Leave Pet Care off",
+        does: "Keeps the TV from listening for barking while it’s off.",
         tag: "Q8F and higher",
         text: "On Q8F and higher models, Pet Care uses the TV’s mic to listen for barking while the TV is off. It’s switched on from the SmartThings app on your phone, so if you never turned it on there, you’re done.",
         undo: "Turn it on again in SmartThings.",
@@ -185,6 +193,7 @@ export const BRANDS: Brand[] = [
       {
         id: "acr",
         title: "Turn off Live Plus",
+        does: "Stops your TV recognising what’s on screen and reporting it.",
         items: [{ name: "Live Plus", to: "off" }],
         variants: [
           { label: "2026 TVs", years: [2026, 2026], crumbs: ["Hold the Settings button", "System", "Additional settings"] },
@@ -199,6 +208,7 @@ export const BRANDS: Brand[] = [
       {
         id: "agreements",
         title: "Decline the optional agreements",
+        does: "Says no to the optional data sharing. Apps keep working without it.",
         items: [
           { name: "Viewing information", to: "off" },
           { name: "Voice information", to: "off" },
@@ -218,6 +228,7 @@ export const BRANDS: Brand[] = [
       {
         id: "adid",
         title: "Limit ad tracking",
+        does: "Ads stay, but stop being targeted at you.",
         variants: [{ label: "", crumbs: ["All Settings", "General", "System", "Additional Settings", "Advertisement"] }],
         items: [{ name: "Limit AD Tracking", to: "on" }],
         undo: "Turn it off again.",
@@ -227,6 +238,7 @@ export const BRANDS: Brand[] = [
       {
         id: "home",
         title: "Stop the home screen promotions",
+        does: "Takes the promotions and recommended content off the home screen.",
         variants: [{ label: "", crumbs: ["All Settings", "General", "System", "Additional Settings", "Home Settings"] }],
         items: [
           { name: "Home Promotion", to: "off" },
@@ -240,6 +252,7 @@ export const BRANDS: Brand[] = [
       {
         id: "voice",
         title: "Leave hands-free voice off",
+        does: "The TV stops listening for “Hi LG” in standby.",
         tag: "If you turned on “Hi LG”",
         text: "If you turned on Hands-free Voice (“Hi LG”), turn it off: with it on, the TV listens for the wake word in standby. Some models also have a hardware mic switch.",
         note: "Voice recognition is off by default. The Magic Remote’s mic only listens while you hold its button.",
@@ -260,7 +273,7 @@ export const BRANDS: Brand[] = [
       help: "ACR is on Roku TVs, not on Roku sticks, so a stick has one step fewer.",
       choices: [
         { id: "tv", label: "Roku TV (TCL, Hisense…)" },
-        { id: "stick", label: "Roku stick or box" },
+        { id: "stick", label: "Roku streaming stick" },
       ],
     },
     list: "native.roku",
@@ -268,6 +281,7 @@ export const BRANDS: Brand[] = [
       {
         id: "acr",
         title: "Turn off ACR",
+        does: "Stops your TV recognising what’s on screen and reporting it.",
         only: ["tv"],
         variants: [
           { label: "On the TV", crumbs: ["Home", "Settings", "Privacy", "Smart TV Experience"] },
@@ -282,6 +296,7 @@ export const BRANDS: Brand[] = [
       {
         id: "ads",
         title: "Turn off personalised ads",
+        does: "Ads stay, but stop being targeted at you.",
         variants: [{ label: "", crumbs: ["Settings", "Privacy", "Advertising"] }],
         items: [{ name: "Personalize ads", to: "off" }],
         note: "Older software calls it Limit ad tracking (tick that one on). Resetting the advertising ID on its own doesn’t opt you out.",
@@ -292,6 +307,7 @@ export const BRANDS: Brand[] = [
       {
         id: "mic",
         title: "Check the microphone settings",
+        does: "Channels lose access to the microphone.",
         variants: [{ label: "", crumbs: ["Settings", "Privacy", "Microphone"] }],
         note: "Take mic access away from each channel, or block it for all. On the Voice Remote Pro, the hands-free switch turns off “Hey Roku”; push-to-talk still works.",
         undo: "Allow it again in the same menu.",
@@ -320,6 +336,7 @@ export const BRANDS: Brand[] = [
       {
         id: "acr",
         title: "Turn off Viewing Data",
+        does: "Stops your TV recognising what’s on screen and reporting it.",
         variants: [
           { label: "If you see Privacy & Legal", for: ["pl"], crumbs: ["All Settings", "Privacy & Legal"] },
           { label: "If you see Admin & Privacy", for: ["ap"], crumbs: ["All Settings", "Admin & Privacy"] },
@@ -334,6 +351,7 @@ export const BRANDS: Brand[] = [
       {
         id: "walmart",
         title: "Don’t link your viewing to Walmart",
+        does: "What you watch isn’t linked to your Walmart account.",
         sameAs: "acr",
         items: [{ name: "Let Walmart link Viewing Data to your Walmart account", to: "off" }],
         note: "Walmart owns Vizio now. The Viewing Data screen lets you say no.",
@@ -344,6 +362,7 @@ export const BRANDS: Brand[] = [
       {
         id: "ads",
         title: "Limit ad tracking",
+        does: "Ads stay, but stop being targeted at you.",
         variants: [
           { label: "If you see Privacy & Legal", for: ["pl"], crumbs: ["Menu", "Privacy & Legal", "Advertising"] },
           { label: "Before 2024", for: ["ap"], crumbs: ["Menu", "Admin & Privacy", "Advertising"] },
@@ -381,6 +400,7 @@ export const BRANDS: Brand[] = [
       {
         id: "acr",
         title: "Turn off Enhanced Viewing",
+        does: "Stops your TV recognising what’s on screen from its sound and reporting it.",
         variants: [
           {
             label: "If Settings has Advanced Settings",
@@ -407,6 +427,7 @@ export const BRANDS: Brand[] = [
       {
         id: "ev-rest",
         title: "Turn off the rest of Enhanced Viewing",
+        does: "Turns off the personalised ads, recommendations and automatic picture and sound that come with it.",
         variants: [{ label: "If Settings has Advanced Settings", crumbs: ["Settings", "Advanced Settings", "Enhanced Viewing Settings"] }],
         items: [
           { name: "Enable Personalized Ads", to: "off" },
@@ -424,6 +445,7 @@ export const BRANDS: Brand[] = [
       {
         id: "ads",
         title: "Turn off personalised ads",
+        does: "Ads stay, but stop being targeted at you.",
         variants: [{ label: "", crumbs: ["Settings", "System", "Advanced Settings", "Personalised Ads"] }],
         items: [
           { name: "Personalised Ads", to: "off" },
@@ -437,6 +459,7 @@ export const BRANDS: Brand[] = [
       {
         id: "consent",
         title: "Check what you agreed to",
+        does: "Withdraws the data-sharing consents you don’t want.",
         variants: [
           { label: "VIDAA U9", for: ["u9"], crumbs: ["Settings", "Support", "Disclaimer and Privacy", "Data Sharing, Privacy and EULA"] },
           { label: "VIDAA U6", for: ["u6"], crumbs: ["Settings", "Support", "Disclaimer and Privacy", "EULA and Other Policy and Services"] },
@@ -455,6 +478,7 @@ export const BRANDS: Brand[] = [
       {
         id: "voice",
         title: "Turn off hands-free voice",
+        does: "The TV stops listening for “Hey VIDAA” or “Alexa”.",
         variants: [
           { label: "VIDAA U9", for: ["u9"], crumbs: ["Settings", "System", "Voice Service", "VIDAA Voice or Amazon Alexa"], items: [{ name: "Hands-Free", to: "off" }] },
           { label: "VIDAA U5", for: ["u5"], crumbs: ["Settings", "System", "Voice Service", "Amazon Alexa"], items: [{ name: "Build-in Microphone", to: "off" }] },
@@ -489,6 +513,7 @@ export const BRANDS: Brand[] = [
       {
         id: "usage",
         title: "Turn off usage data and ads",
+        does: "Stops sharing how you use the device and its apps, and ads stop being targeted at you.",
         variants: [{ label: "", crumbs: ["Settings", "Preferences", "Privacy Settings"] }],
         items: [
           { name: "Device Usage Data", to: "off" },
@@ -502,6 +527,7 @@ export const BRANDS: Brand[] = [
       {
         id: "ota",
         title: "Turn off aerial viewing data",
+        does: "Stops sharing what you watch through the aerial.",
         tag: "Fire TV smart TVs",
         only: ["tv"],
         sameAs: "usage",
@@ -531,6 +557,7 @@ export const BRANDS: Brand[] = [
       {
         id: "ads",
         title: "Delete the advertising ID",
+        does: "Deletes the TV’s advertising ID.",
         variants: [
           { label: "Google TV", for: ["gtv"], crumbs: ["Settings", "Privacy", "Ads"] },
           { label: "Older Android TV", for: ["atv"], crumbs: ["Settings", "About", "Legal Information", "Ads"] },
@@ -544,6 +571,7 @@ export const BRANDS: Brand[] = [
       {
         id: "sony",
         title: "Turn off Samba Interactive TV",
+        does: "Stops Sony’s ACR recognising what’s on screen and reporting it.",
         tag: "Sony only",
         variants: [{ label: "Sony Bravia", crumbs: ["Settings", "All Settings", "Privacy"] }],
         items: [{ name: "Samba Interactive TV", to: "off" }],
@@ -555,6 +583,7 @@ export const BRANDS: Brand[] = [
       {
         id: "tcl",
         title: "Withdraw the optional agreements",
+        does: "Says no to TCL’s optional data sharing.",
         tag: "TCL only",
         variants: [{ label: "TCL Google TV", crumbs: ["Settings", "Privacy", "User Agreements"] }],
         items: [{ name: "User Experience Improvement Program", to: "off" }],

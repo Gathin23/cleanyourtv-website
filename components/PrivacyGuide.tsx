@@ -63,6 +63,40 @@ function openFold(id: string, scroll = true) {
 }
 
 const stepKey = (b: Brand, s: Step) => `${b.id}:${s.id}`;
+
+/** Roughly a minute a step: "about 2 minutes" for one or two, "about 5" for Samsung's six; "a few minutes" before a TV is picked. */
+function timeFor(n: number | null): string {
+  if (!n) return "a few minutes";
+  if (n <= 2) return "about 2 minutes";
+  if (n <= 4) return "about 3 minutes";
+  if (n <= 6) return "about 5 minutes";
+  return "a few minutes";
+}
+
+const smooth = (): ScrollBehavior => (matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth");
+
+/** Bring the network check into view and put focus on its Run button (or Run again, after a run). */
+function goCheck() {
+  document.getElementById("check")?.scrollIntoView({ block: "start", behavior: smooth() });
+  const btn = document.querySelector<HTMLButtonElement>("#check .na-net-start .btn, #check .na-net-btn");
+  btn?.focus({ preventScroll: true });
+}
+
+/** The nudge at the end of level 1: the network check, a couple of minutes more. */
+function CheckNudge({ onGo, className }: { onGo: () => void; className?: string }) {
+  return (
+    <a
+      href="#check"
+      className={className}
+      onClick={(e) => {
+        e.preventDefault();
+        onGo();
+      }}
+    >
+      2 more minutes? Check if your Wi-Fi blocks the rest <span aria-hidden="true">→</span>
+    </a>
+  );
+}
 const tvText = (b: Brand, pick: Pick, model: string) => [b.name, pickLabel(b, pick), model && b.decoder && pick && /^\d{4}$/.test(pick) ? model.toUpperCase().replace(/\s+/g, "") : ""].filter(Boolean).join(" ");
 
 function issueUrl(kind: "worked" | "different", b: Brand, pick: Pick, model: string, done: string[], step: Step | null) {
@@ -94,7 +128,8 @@ const Remote = () => (
   </svg>
 );
 
-export default function PrivacyGuide() {
+/** `hero` is the page's kicker, title and subtitle; `after` what goes under the "you need" line. */
+export default function PrivacyGuide({ hero, after }: { hero: React.ReactNode; after: React.ReactNode }) {
   const [ready, setReady] = useState(false);
   const [brandId, setBrandId] = useState<BrandId | null>(null);
   const [pick, setPick] = useState<Pick>(null);
@@ -105,6 +140,8 @@ export default function PrivacyGuide() {
   // On phones only the step in hand is open; the rest fold to a line, as in the phone design.
   const [phone, setPhone] = useState(false);
   const [openStep, setOpenStep] = useState<string | null>(null);
+  // After Mark done: the step to bring into view and focus once it has opened ("done" for the end band).
+  const moveTo = useRef<string | null>(null);
   const opener = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
@@ -191,23 +228,51 @@ export default function PrivacyGuide() {
   };
   const steps = brand ? stepsFor(brand, pick) : [];
   const isDone = (s: Step) => !!brand && done.includes(stepKey(brand, s));
+  // Mark done moves on: the step folds, and the next one not done opens and comes into view (the done band after the last).
   const toggle = (s: Step) => {
     const k = stepKey(brand!, s);
     const was = done.includes(k);
     setDone((d) => (was ? d.filter((x) => x !== k) : [...d, k]));
-    // Ticking the open step on a phone moves on to the next one not done yet.
-    if (!was && phone) setOpenStep(steps.find((x) => x !== s && !isDone(x))?.id ?? null);
+    if (was) {
+      setOpenStep(s.id);
+      return;
+    }
+    const i = steps.indexOf(s);
+    const next = [...steps.slice(i + 1), ...steps.slice(0, i)].find((x) => !isDone(x));
+    moveTo.current = next ? next.id : "done";
+    setOpenStep(next?.id ?? null);
   };
+  useEffect(() => {
+    const to = moveTo.current;
+    if (!to) return;
+    moveTo.current = null;
+    const target = document.getElementById(to === "done" ? "na-done" : `step-${to}`);
+    target?.scrollIntoView({ block: "start", behavior: smooth() });
+    target?.querySelector<HTMLElement>("h3, [data-head]")?.focus({ preventScroll: true });
+  }, [done, openStep]);
   const mark = (s: Step) => {
     const k = stepKey(brand!, s);
     setDone((d) => (d.includes(k) ? d : [...d, k]));
   };
   const count = steps.filter(isDone).length;
   const current = openStep && steps.some((x) => x.id === openStep) ? openStep : steps.find((x) => !isDone(x))?.id;
+  // Open: the step in hand, and on a computer every step not done yet. Done steps fold to a line.
+  const isOpen = (s: Step) => s.id === current || (!phone && !isDone(s));
   const allDone = steps.length > 0 && count === steps.length;
 
   return (
     <>
+      <section aria-labelledby="page-h" className="wrap page-head na-hero">
+        {hero}
+        <p className="na-need">
+          <Remote />
+          <span>
+            You need: your TV remote and {timeFor(brand ? steps.length : null)}. Nothing to download.
+          </span>
+        </p>
+        {after}
+      </section>
+
       <section aria-labelledby="pick-h" className="wrap na-pick">
         <h2 id="pick-h" className="na-h2"><span className="ch">1</span>Which TV do you have?</h2>
         <ul className="plain na-brands">
@@ -284,8 +349,8 @@ export default function PrivacyGuide() {
 
               <ol className="plain na-cards">
                 {steps.map((s, i) =>
-                  phone && s.id !== current ? (
-                    <li key={s.id} className="na-card na-card-fold" data-done={isDone(s) || undefined}>
+                  !isOpen(s) ? (
+                    <li key={s.id} id={`step-${s.id}`} className="na-card na-card-fold" data-done={isDone(s) || undefined}>
                       <button type="button" className="na-card-open" aria-expanded="false" onClick={() => setOpenStep(s.id)}>
                         <span className="ch na-num">Step {i + 1}{s.tag ? ` · ${s.tag}` : ""}</span>
                         <span className="na-card-title">{s.title}</span>
@@ -295,13 +360,14 @@ export default function PrivacyGuide() {
                       </button>
                     </li>
                   ) : (
-                  <li key={s.id} className="na-card" data-done={isDone(s) || undefined}>
+                  <li key={s.id} id={`step-${s.id}`} className="na-card" data-done={isDone(s) || undefined}>
                     <div className="na-card-main">
                       <div className="na-card-head">
                         <span className="ch na-num">Step {i + 1}</span>
-                        <h3>{s.title}</h3>
+                        <h3 tabIndex={-1}>{s.title}</h3>
                         {s.tag && <span className="na-tag">{s.tag}</span>}
                       </div>
+                      <p className="na-does">{s.does}</p>
                       <StepBody
                         brand={brand}
                         step={s}
@@ -326,7 +392,7 @@ export default function PrivacyGuide() {
               </ol>
 
               {allDone ? (
-                <DoneBand brand={brand} pick={pick} model={model} done={done} hash={hash} />
+                <DoneBand brand={brand} pick={pick} model={model} done={done} hash={hash} time={timeFor(steps.length)} />
               ) : (
                 brand.outro && <p className="na-outro">{brand.outro}</p>
               )}
@@ -335,7 +401,7 @@ export default function PrivacyGuide() {
         </>
       )}
 
-      <Further brand={brand} level={level} setLevel={setLevel} ready={ready} />
+      <Further brand={brand} level={level} setLevel={setLevel} ready={ready} time={timeFor(brand ? steps.length : null)} />
 
       <section id="check" aria-labelledby="check-h" className="na-check">
         <div className="wrap na-check-in">
@@ -365,14 +431,15 @@ export default function PrivacyGuide() {
             setRemote(false);
             if (to === "network") setLevel("l2");
             requestAnimationFrame(() => {
-              if (to) document.getElementById(to === "network" ? "further" : "check")?.scrollIntoView({ block: "start" });
+              if (to === "check") goCheck();
+              else if (to) document.getElementById("further")?.scrollIntoView({ block: "start" });
               else opener.current?.focus();
             });
           }}
         />
       )}
 
-      {ready && brand && createPortal(<Printout brand={brand} pick={pick} model={model} hash={hash} />, document.body)}
+      {ready && brand && createPortal(<Printout brand={brand} pick={pick} model={model} hash={hash} time={timeFor(steps.length)} />, document.body)}
     </>
   );
 }
@@ -464,12 +531,12 @@ function Ask({ brand, pick, model, setModel, setPick }: { brand: Brand; pick: Pi
 }
 
 /** Every step ticked: the level-1 band, and what the old guide offered at the end: feedback, print, send to family. */
-function DoneBand({ brand, pick, model, done, hash }: { brand: Brand; pick: Pick; model: string; done: string[]; hash: string }) {
+function DoneBand({ brand, pick, model, done, hash, time }: { brand: Brand; pick: Pick; model: string; done: string[]; hash: string; time: string }) {
   const [msg, setMsg] = useState("");
   const [link, setLink] = useState("");
   const share = async () => {
     const url = `${location.origin}/not-android#${hash}`;
-    const text = `Steps to stop a ${brand.name} TV tracking what you watch, about 2 minutes with the remote.`;
+    const text = `Steps to stop a ${brand.name} TV tracking what you watch, ${time} with the remote.`;
     setLink("");
     if (navigator.share) {
       try {
@@ -488,12 +555,13 @@ function DoneBand({ brand, pick, model, done, hash }: { brand: Brand; pick: Pick
     }
   };
   return (
-    <div className="na-done">
+    <div className="na-done" id="na-done">
       <div className="na-done-band">
         <div className="stack">
           <span className="ch">Level 1 done</span>
-          <strong>Your {brand.name} has stopped the tracking it lets you switch off.</strong>
+          <strong data-head tabIndex={-1}>Your {brand.name} has stopped the tracking it lets you switch off.</strong>
           {brand.outro && <span>{brand.outro}</span>}
+          <CheckNudge onGo={goCheck} className="na-nudge" />
         </div>
         <a href="#further" className="btn na-done-go">Go further</a>
       </div>
@@ -586,6 +654,7 @@ function RemoteMode(props: {
                 {s.tag ? ` · ${s.tag}` : ""}
               </span>
               <h2 ref={head} tabIndex={-1}>{s.title}</h2>
+              <p className="na-does">{s.does}</p>
             </div>
             {s.text && <p className="na-rm-text">{s.text}</p>}
             {list.map((v, k) => (
@@ -646,8 +715,10 @@ function RemoteMode(props: {
           <span className="na-rm-tick" aria-hidden="true"><Check size={36} /></span>
           <h2 ref={head} tabIndex={-1}>Your {brand.name} is done.</h2>
           <p className="na-rm-text">It has stopped the tracking it lets you switch off.{brand.outro ? ` ${brand.outro}` : ""}</p>
+          <button type="button" className="btn btn-green na-rm-nudge" onClick={() => onExit("check")}>
+            2 more minutes? Check if your Wi-Fi blocks the rest <span aria-hidden="true">→</span>
+          </button>
           <button type="button" className="btn btn-blue" onClick={() => onExit("network")}>Go further: guest network</button>
-          <button type="button" className="btn btn-green" onClick={() => onExit("check")}>Check your home network</button>
           <button type="button" className="btn btn-ghost btn-sm" onClick={() => setI(0)}>Start again</button>
         </div>
       )}
@@ -656,9 +727,9 @@ function RemoteMode(props: {
 }
 
 /** Go further: level 1 is the steps above, 2 the guest network, 3 DNS blocking. Every level reads without JS. */
-function Further({ brand, level, setLevel, ready }: { brand?: Brand; level: Level; setLevel: (l: Level) => void; ready: boolean }) {
+function Further({ brand, level, setLevel, ready, time }: { brand?: Brand; level: Level; setLevel: (l: Level) => void; ready: boolean; time: string }) {
   const levels: [Level, string, string, string][] = [
-    ["l1", "Level 1", "2 minutes", "TV settings"],
+    ["l1", "Level 1", time.replace(/^about /, ""), "TV settings"],
     ["l2", "Level 2", "10 minutes", "Guest network"],
     ["l3", "Level 3", "Advanced", "DNS blocking"],
   ];
@@ -681,7 +752,7 @@ function Further({ brand, level, setLevel, ready }: { brand?: Brand; level: Leve
 
         <div id="panel-l1" role="tabpanel" aria-labelledby="tab-l1" className="na-panel" hidden={ready && level !== "l1"}>
           <p className="dim">
-            The steps above: two minutes with your remote, and the biggest single change. The <a href={IMC}>IMC 2024 study</a> found that opting
+            The steps above: {time} with your remote, and the biggest single change. The <a href={IMC}>IMC 2024 study</a> found that opting
             out in the settings stopped Samsung and LG TVs&rsquo; traffic to ACR servers.
           </p>
           <a href="#pick-h">Back to your steps</a>
@@ -839,12 +910,12 @@ function Further({ brand, level, setLevel, ready }: { brand?: Brand; level: Leve
 }
 
 /** Print target: only this TV's steps, in black on white. */
-function Printout({ brand, pick, model, hash }: { brand: Brand; pick: Pick; model: string; hash: string }) {
+function Printout({ brand, pick, model, hash, time }: { brand: Brand; pick: Pick; model: string; hash: string; time: string }) {
   return (
     <section className="na-print" aria-hidden="true">
       <h1>Clean up your non-Android TV</h1>
       <p className="na-print-tv">{tvText(brand, pick, model)}</p>
-      <p>About 2 minutes with the TV remote. &ldquo;Turn off&rdquo; means untick or switch off, &ldquo;Turn on&rdquo; means tick or switch on. Every step can be undone the same way.</p>
+      <p>{time.charAt(0).toUpperCase() + time.slice(1)} with the TV remote. &ldquo;Turn off&rdquo; means untick or switch off, &ldquo;Turn on&rdquo; means tick or switch on. Every step can be undone the same way.</p>
       {brand.findVersion && <p>{brand.findVersion}</p>}
       <StepList brand={{ ...brand, steps: stepsFor(brand, pick) }} pick={pick} />
       {brand.outro && <p>{brand.outro}</p>}

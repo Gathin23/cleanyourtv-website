@@ -112,6 +112,7 @@ export function StepList({ brand, pick }: { brand: Brand; pick: Pick }) {
             <span className="ch">Step {i + 1}</span> {s.title}
             {s.tag && <span className="na-tag">{s.tag}</span>}
           </h4>
+          <p className="na-does">{s.does}</p>
           <StepBody brand={brand} step={s} pick={pick} />
         </li>
       ))}

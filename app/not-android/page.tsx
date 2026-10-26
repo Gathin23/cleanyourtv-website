@@ -94,21 +94,25 @@ export default function Privacy() {
   return (
     <main className="na">
       <JsonLd data={jsonLd} />
-      <section aria-labelledby="page-h" className="wrap page-head na-hero">
-        <p className="kicker c-amber">CH 02 · Non-Android TVs</p>
-        <h1 id="page-h" className="na-h1">Clean up your <span className="na-nowrap">non-Android</span> TV</h1>
-        <p className="lede na-lede">Stop it tracking you: Samsung, LG, Roku, Vizio, Hisense VIDAA and Fire TV. No root, nothing to install, every step undoable.</p>
-        <details className="na-what">
-          <summary>What is it tracking?</summary>
-          <p>
-            Most smart TVs recognise what&rsquo;s on screen, including live TV and whatever comes in over HDMI, and report it back for advertising.
-            It&rsquo;s called automatic content recognition, or ACR. A 2024 study of Samsung and LG TVs found that opting out in the settings stopped
-            the traffic to ACR servers. <a href="#why">Why this matters</a>
-          </p>
-        </details>
-      </section>
-
-      <PrivacyGuide />
+      <PrivacyGuide
+        hero={
+          <>
+            <p className="kicker c-amber">CH 02 · Non-Android TVs</p>
+            <h1 id="page-h" className="na-h1">Clean up your <span className="na-nowrap">non-Android</span> TV</h1>
+            <p className="lede na-lede">Stop it tracking you: Samsung, LG, Roku, Vizio, Hisense VIDAA and Fire TV. No root, nothing to install, every step undoable.</p>
+          </>
+        }
+        after={
+          <details className="na-what">
+            <summary>What is it tracking?</summary>
+            <p>
+              Most smart TVs recognise what&rsquo;s on screen, including live TV and whatever comes in over HDMI, and report it back for advertising.
+              It&rsquo;s called automatic content recognition, or ACR. A 2024 study of Samsung and LG TVs found that opting out in the settings stopped
+              the traffic to ACR servers. <a href="#why">Why this matters</a>
+            </p>
+          </details>
+        }
+      />
 
       <section aria-labelledby="know-h" className="na-know">
         <div className="wrap na-know-in">
