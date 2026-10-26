@@ -48,9 +48,11 @@ export default function Header({ stars }: { stars: number }) {
 
   const current = (href: string) => (href === path ? "page" : undefined);
   const gh = (
-    <a href={GH} className="gh-pill">
+    <a href={GH} className="gh-pill" aria-label={`GitHub, ${shortCount(stars)} stars`}>
       GitHub · {shortCount(stars)}
-      <span className="sr-only"> stars</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+        <path d="M12 2.8l2.8 5.7 6.3.9-4.6 4.4 1.1 6.2L12 17.1 6.4 20l1.1-6.2L2.9 9.4l6.3-.9z" />
+      </svg>
     </a>
   );
   const coffee = (

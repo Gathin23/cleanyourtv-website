@@ -776,8 +776,12 @@ select.chip {
   white-space: nowrap;
 }
 .gh-pill {
+  gap: 6px;
   background: var(--ink);
   color: var(--bg);
+}
+.gh-pill svg {
+  flex: none;
 }
 .gh-pill:hover {
   background: #fff;
