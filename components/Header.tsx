@@ -10,10 +10,10 @@ import { CHANNELS, COFFEE, PRIVACY_LIVE, PRIVACY_PATH, shortCount } from "@/lib/
 
 const NAV: [string, string][] = [
   ["TV list", "/tvs"],
-  ["Set up", "/#setup"],
   ...(PRIVACY_LIVE ? [["Privacy guide", PRIVACY_PATH] as [string, string]] : []),
   ["Add-ons", "/addons"],
   ["Press", "/press"],
+  ["PR bot", "/bot"],
   ["App", "/app/android"],
 ];
 
