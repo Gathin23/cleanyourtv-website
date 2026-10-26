@@ -121,6 +121,10 @@
   flex-direction: column;
   gap: 20px;
 }
+/* /tvs?q= lands here: the search box just under the header (sticky on phones), the results below it. */
+.tvs #search {
+  scroll-margin-top: calc(var(--mast-h) + 16px);
+}
 .tvf-search {
   display: flex;
   flex-wrap: wrap;

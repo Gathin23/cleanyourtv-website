@@ -1,10 +1,11 @@
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
-import TvFinder, { type TvRow } from "@/components/TvFinder";
+import TvFinder from "@/components/TvFinder";
 import { loadTvs } from "@/lib/data";
-import { GH, brandsOf, type Tv } from "@/lib/parse";
+import { GH, brandsOf } from "@/lib/parse";
 import { SITE, breadcrumbs, pageMeta } from "@/lib/seo";
 import { PRIVACY_PATH } from "@/lib/site";
+import { tvRow } from "@/lib/tvrows";
 import "./tvs.css";
 
 // Which TVs it works on, and every model with a tested list: examples/README.md, re-read on every hourly build.
@@ -21,24 +22,6 @@ const PLATFORMS = [
   { tone: "part", mark: "M5 12h14", label: "Cleanup only", name: "Fire TV", what: "The ads and bloat go, but Fire OS keeps its own home screen.", cta: "Set it up", href: "/#setup" },
   { tone: "no", mark: "M6 6l12 12M18 6L6 18", label: "Not supported", name: "Samsung, LG, Roku", what: "They run other systems (Tizen, webOS, Roku OS) with no ADB. You can still turn off most of the tracking.", cta: "Use the privacy guide", href: PRIVACY_PATH },
 ];
-
-// A region at the end of the name ("…, India") belongs on the meta line; "1st gen 2018" or "1 GB" stays with the name.
-const isPlace = (s: string) => /^\p{Lu}[\p{L} .'-]*$/u.test(s) && s.split(" ").length <= 3 && !/\b(TV|gen|series|projector)\b/i.test(s);
-
-/** The README's "Sony BRAVIA 4K UR2 (BRAVIA_UR2_4K, MediaTek)" as a name ("BRAVIA 4K UR2") and a meta line ("BRAVIA_UR2_4K · MediaTek"). */
-function row(t: Tv): TvRow {
-  const parens = Array.from(t.tv.matchAll(/\(([^)]*)\)/g), (m) => m[1]);
-  const bare = t.tv.replace(/\s*\([^)]*\)/g, "").trim();
-  const parts = bare.split(/,\s*/);
-  const places: string[] = [];
-  while (parts.length > 1 && isPlace(parts[parts.length - 1])) places.unshift(parts.pop()!);
-  let name = parts.join(", ");
-  const first = t.tv.split(/[\s(]/)[0];
-  if (name.startsWith(first + " ") && t.brand === first) name = name.slice(first.length + 1);
-  const meta = [...parens.flatMap((p) => p.split(/[,;]\s*/)), ...places].map((s) => s.trim()).filter(Boolean).join(" · ");
-  const fire = /fire os/i.test(t.os) || /\bFire TV\b/.test(t.tv);
-  return { f: t.folder, b: t.brand, n: name || t.model, m: meta, o: t.os, ...(fire ? { p: 1 as const } : {}) };
-}
 
 export default async function Tvs() {
   const tvs = await loadTvs();
@@ -91,7 +74,7 @@ export default async function Tvs() {
               <div><dt>brands</dt><dd className="num">{brands.length}</dd></div>
             </dl>
           </div>
-          <TvFinder tvs={tvs.map(row)} brands={brands} />
+          <TvFinder tvs={tvs.map(tvRow)} brands={brands} />
         </div>
       </section>
 

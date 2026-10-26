@@ -606,6 +606,88 @@ select.chip {
   }
 }
 
+/* The type-ahead under it: tested models as you type, the privacy guide first for TVs that are not Android. */
+.cb {
+  position: relative;
+}
+.cb-list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 30;
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+  max-height: min(70vh, 500px);
+  overflow-y: auto;
+  background: var(--band-2);
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+}
+.cb-list[hidden] {
+  display: none;
+}
+.cb-opt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 6px 14px;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1.3;
+}
+.cb-opt[aria-selected="true"] {
+  background: #1e1e1e;
+  border-left-color: var(--mint);
+}
+.cb-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cb-name strong {
+  font-weight: 600;
+}
+.cb-list mark {
+  background: none;
+  color: var(--mint);
+}
+.cb-os {
+  flex: none;
+  max-width: 40%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--f-ch);
+  font-size: 17px;
+  color: var(--mute);
+}
+.cb-privacy {
+  color: var(--amber);
+  font-weight: 600;
+}
+.cb-all {
+  color: var(--mint);
+  font-weight: 600;
+  border-top: 1px solid var(--line-2);
+}
+@media (max-width: 600px) {
+  .cb-opt {
+    padding: 6px 12px;
+    gap: 8px;
+    font-size: 15px;
+  }
+  .cb-os {
+    font-size: 16px;
+  }
+}
+
 /* ---- header */
 .mast {
   background: var(--bg);

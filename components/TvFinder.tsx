@@ -4,12 +4,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { GH } from "@/lib/parse";
 import { PRIVACY_PATH } from "@/lib/site";
+import { matches, searchWords, type TvRow } from "@/lib/tvrows";
 
-/** One tested model, as compact as the list needs: folder, brand, name, meta line, OS, and whether it is cleanup only (Fire TV). */
-export type TvRow = { f: string; b: string; n: string; m: string; o: string; p?: 1 };
-
-// Letters and digits only, so "kd55x80j", "KD-55X80J" and "kd 55 x80j" all find the same set.
-const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "");
 const brandKey = (b: string) => b.toLowerCase().replace(/\.$/, "");
 // The first rows show; the rest stay in the page (so every tested model is in its HTML) until asked for or searched.
 const CAP = 30;
@@ -19,14 +15,16 @@ export default function TvFinder({ tvs, brands }: { tvs: TvRow[]; brands: [strin
   const [q, setQ] = useState("");
   const [brand, setBrand] = useState("");
   const [all, setAll] = useState(false);
-  // /tvs?q=sony (from the home page's checker) arrives already searched.
+  // /tvs?q=sony (from the home page's checker) arrives already searched, scrolled to the search box and its results.
   useEffect(() => {
     const v = new URLSearchParams(location.search).get("q");
+    if (!v) return;
     // eslint-disable-next-line react-hooks/set-state-in-effect -- the URL is only readable after hydration
-    if (v) setQ(v);
+    setQ(v);
+    requestAnimationFrame(() => document.getElementById("search")?.scrollIntoView({ block: "start" }));
   }, []);
-  const words = q.split(/\s+/).map(norm).filter(Boolean);
-  const shown = tvs.filter((t) => (!brand || brandKey(t.b) === brand) && words.every((w) => norm(`${t.b} ${t.n} ${t.m} ${t.o} ${t.f}`).includes(w)));
+  const words = searchWords(q);
+  const shown = tvs.filter((t) => (!brand || brandKey(t.b) === brand) && matches(t, words));
   const filtered = !!(words.length || brand);
   const top = brands.slice(0, 5);
   const rest = brands.slice(5);
@@ -42,7 +40,7 @@ export default function TvFinder({ tvs, brands }: { tvs: TvRow[]; brands: [strin
   );
   return (
     <div className="tvf">
-      <div className="tvf-search">
+      <div id="search" className="tvf-search">
         <div className="tvf-field tvf-q">
           <label htmlFor="tv-q">Search by brand or model</label>
           <input id="tv-q" type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="e.g. BRAVIA, 65OLED907, Chromecast" autoComplete="off" spellCheck={false} />

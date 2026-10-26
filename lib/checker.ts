@@ -5,6 +5,16 @@ import { PRIVACY_PATH } from "./site";
 // Systems with no ADB, so nothing to switch off from outside: their owners get the privacy guide.
 const NOT_ANDROID = /\b(samsung|tizen|lg|webos|roku|vizio|smartcast|vidaa|titan ?os|saphi|my home screen|firefox ?os)\b/i;
 
+const NAMES: Record<string, string> = { samsung: "Samsung", tizen: "Tizen", lg: "LG", webos: "webOS", roku: "Roku", vizio: "Vizio", smartcast: "SmartCast", vidaa: "Hisense VIDAA", saphi: "Saphi", myhomescreen: "Panasonic My Home Screen" };
+
+/** "Samsung" for "samsung qn90": the system or brand in a search that is not Android, or null. */
+export function notAndroid(query: string): string | null {
+  const m = NOT_ANDROID.exec(query);
+  if (!m) return null;
+  const k = m[1].toLowerCase().replace(/\s+/g, "");
+  return NAMES[k] ?? (k.startsWith("titan") ? "Titan OS" : k.startsWith("firefox") ? "Firefox OS" : m[1]);
+}
+
 /** The page a search goes to: the privacy guide for TVs that are not Android, otherwise the TV list, searched. */
 export function routeFor(query: string): string {
   const q = query.trim();
