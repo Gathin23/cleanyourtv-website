@@ -66,6 +66,21 @@ export default async function Page() {
     <main className="home">
       <JsonLd data={homeGraph(facts, description)} />
 
+      {PRIVACY_LIVE && (
+        <Link href={PRIVACY_PATH} className="hbar">
+          <span className="wrap hbar-in">
+            <span className="hbar-new ch">New</span>
+            <span className="hbar-text">
+              <span className="hide-phone">Samsung, LG, Roku or another non-Android TV? Turn off the tracking, step by step, no root.</span>
+              <span className="hbar-short">Samsung, LG or Roku? Stop the tracking.</span>
+            </span>
+            <span className="hbar-go">
+              <span className="hide-phone">Check here</span> →
+            </span>
+          </span>
+        </Link>
+      )}
+
       <section aria-labelledby="hero-h" className="wrap hero">
         <div className="stack hero-top">
           <p className="kicker c-mint">CH 00 · For Android TV and Google TV</p>

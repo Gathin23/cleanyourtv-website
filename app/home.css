@@ -1,5 +1,60 @@
 /* Home: the hero and its checker, the four buttons, the live numbers, set-up, Not Android, On air, Is it safe. */
 
+/* The bar above the hero: Samsung, LG and Roku owners straight to the Non-Android guide. */
+.hbar {
+  display: block;
+  background: var(--amber);
+  color: var(--on-amber);
+  text-decoration: none;
+  border-bottom: 2px solid var(--on-amber);
+}
+.hbar:hover {
+  color: var(--on-amber);
+}
+.hbar-in {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 56px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.hbar-new {
+  flex: none;
+  padding: 0 8px;
+  background: var(--on-amber);
+  color: var(--amber);
+  font-size: 20px;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+.hbar-text {
+  flex: 1;
+  font-family: var(--f-head);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.3;
+}
+.hbar-short {
+  display: none;
+}
+.hbar-go {
+  flex: none;
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 18px;
+  white-space: nowrap;
+}
+.hbar:hover .hbar-go,
+.hbar:focus-visible .hbar-go {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.hbar:focus-visible {
+  outline: 3px solid var(--on-amber);
+  outline-offset: -5px;
+}
+
 .hero {
   padding-top: 72px;
   padding-bottom: 56px;
@@ -473,6 +528,17 @@
 }
 
 @media (max-width: 600px) {
+  .hbar-in {
+    gap: 12px;
+    min-height: 52px;
+  }
+  .hbar-short {
+    display: inline;
+  }
+  .hbar-text,
+  .hbar-go {
+    font-size: 17px;
+  }
   .hero {
     padding-top: 32px;
     padding-bottom: 24px;
