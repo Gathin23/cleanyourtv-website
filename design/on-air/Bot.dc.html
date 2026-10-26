@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CleanYourTV — maintainer-bot</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400&amp;family=VT323&amp;family=Fredoka:wght@600&amp;display=swap">
+<style>
+body{margin:0;background:#050505}
+a{color:#CFFFCF}a:hover{color:#ffffff}
+a:focus-visible,button:focus-visible{outline:3px solid #FFDC96;outline-offset:2px}
+.navlinks{display:flex}
+.menubtn{display:none}
+@media (max-width:860px){.navlinks{display:none}.menubtn{display:inline-flex}}
+</style>
+</helmet>
+<div style="background: #050505; color: #ECECEC; font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 17px; line-height: 1.55">
+
+<div aria-hidden="true" style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); height: 6px"><div style="background: #E9E9E9"></div><div style="background: #FFDC96"></div><div style="background: #7FE3E0"></div><div style="background: #8EE08F"></div><div style="background: #D58BE6"></div><div style="background: #FF6B6B"></div><div style="background: #6FA8FF"></div></div>
+
+<header style="border-bottom: 1px solid #262626">
+<nav aria-label="Main" style="max-width: 1240px; margin: 0 auto; padding: 0 24px; height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px">
+<a href="https://cleanyour.tv/" style="display: flex; align-items: center; gap: 10px; color: #ECECEC; text-decoration: none">
+<svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><path d="M11 3.5l5 6 5-6" stroke="#CFFFCF" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path><rect x="3" y="10" width="26" height="18" rx="5" fill="#CFFFCF"></rect><rect x="7" y="14" width="18" height="10" rx="2.5" fill="#050505"></rect></svg>
+<span style="font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 22px">CleanYour<span style="color: #CFFFCF">TV</span></span>
+</a>
+<div class="navlinks" style="align-items: center; gap: 4px; font-size: 15px; font-weight: 500">
+<a href="https://cleanyour.tv/tvs" style="padding: 10px 12px; color: #ECECEC; text-decoration: none">TV list</a>
+<a href="https://cleanyour.tv/#setup" style="padding: 10px 12px; color: #ECECEC; text-decoration: none">Set up</a>
+<a href="https://cleanyour.tv/privacy" style="padding: 10px 12px; color: #ECECEC; text-decoration: none">Privacy guide</a>
+<a href="https://cleanyour.tv/addons" style="padding: 10px 12px; color: #ECECEC; text-decoration: none">Add-ons</a>
+<a href="https://cleanyour.tv/press" style="padding: 10px 12px; color: #ECECEC; text-decoration: none">Press</a>
+<a href="https://cleanyour.tv/faq" style="padding: 10px 12px; color: #ECECEC; text-decoration: none">FAQ</a>
+</div>
+<div style="display: flex; align-items: center; gap: 12px">
+<a href="https://github.com/Gathin23/cleanyourtv" style="display: inline-flex; align-items: center; height: 40px; padding: 0 14px; background: #ECECEC; color: #050505; border-radius: 4px; font-size: 14px; font-weight: 600; text-decoration: none">GitHub · 36.5k</a>
+<button class="menubtn" aria-label="Open menu" style="width: 44px; height: 44px; align-items: center; justify-content: center; background: transparent; border: 1px solid #3A3A3A; border-radius: 4px; color: #ECECEC"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+</div>
+</nav>
+</header>
+
+<main>
+<section aria-labelledby="page-h" style="max-width: 1240px; margin: 0 auto; padding: 72px 24px 56px; display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0; font-family: 'VT323', monospace; font-size: 22px; color: #8EE08F">CH 07 · PR bot</p>
+<h1 id="page-h" style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(48px, 8vw, 112px); line-height: 0.92; letter-spacing: -0.045em">maintainer-bot</h1>
+<p style="margin: 0; max-width: 40ch; font-size: 20px; color: #C4C4C4">Every pull request here is reviewed by an open-source bot that runs on 0G Private Computer.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center">
+<a href="https://github.com/Gathin23/maintainer-bot" style="display: inline-flex; align-items: center; height: 52px; padding: 0 22px; background: #CFFFCF; color: #050505; border-radius: 6px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; text-decoration: none">maintainer-bot on GitHub</a>
+<a href="#how" style="display: inline-flex; align-items: center; height: 52px; padding: 0 22px; border: 2px solid #ECECEC; color: #ECECEC; border-radius: 6px; font-weight: 600; text-decoration: none">How it decides</a>
+<span style="font-family: 'VT323', monospace; font-size: 20px; color: #A8A8A8; padding: 0 8px">MIT licensed · runs on <a href="https://pc.0g.ai">0G Private Computer</a></span>
+</div>
+</section>
+
+<section aria-labelledby="receipt-h" style="background: #0C0C0C; border-top: 2px solid #ECECEC; border-bottom: 2px solid #ECECEC">
+<div aria-hidden="true" style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); height: 4px"><div style="background: #E9E9E9"></div><div style="background: #FFDC96"></div><div style="background: #7FE3E0"></div><div style="background: #8EE08F"></div><div style="background: #D58BE6"></div><div style="background: #FF6B6B"></div><div style="background: #6FA8FF"></div></div>
+<div style="max-width: 1240px; margin: 0 auto; padding: 56px 24px; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<p style="margin: 0; display: inline-flex; align-items: center; gap: 8px; font-family: 'VT323', monospace; font-size: 22px; color: #FF8A8A"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 999px; background: #FF6B6B"></span>Receipt · since 21 Oct</p>
+<h2 id="receipt-h" style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(32px, 4vw, 48px); line-height: 1; letter-spacing: -0.035em">5.5¢ a review.</h2>
+</div>
+<span style="font-family: 'VT323', monospace; font-size: 19px; color: #A8A8A8">As of 24 Oct 2026, 13:35 IST</span>
+</div>
+<dl style="margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 2px; background: #2E2E2E; border: 2px solid #2E2E2E; border-radius: 6px; overflow: hidden">
+<div style="background: #0C0C0C; padding: 24px; display: flex; flex-direction: column; gap: 6px"><div aria-hidden="true" style="order: -2; width: 36px; height: 6px; background: #E9E9E9; margin-bottom: 14px"></div><dt style="color: #BDBDBD; font-size: 16px">Review runs</dt><dd style="order: -1; margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(40px, 4vw, 56px); line-height: 1; letter-spacing: -0.045em">1,320</dd></div>
+<div style="background: #0C0C0C; padding: 24px; display: flex; flex-direction: column; gap: 6px"><div aria-hidden="true" style="order: -2; width: 36px; height: 6px; background: #8EE08F; margin-bottom: 14px"></div><dt style="color: #BDBDBD; font-size: 16px">PRs carry its review</dt><dd style="order: -1; margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(40px, 4vw, 56px); line-height: 1; letter-spacing: -0.045em">801</dd></div>
+<div style="background: #0C0C0C; padding: 24px; display: flex; flex-direction: column; gap: 6px"><div aria-hidden="true" style="order: -2; width: 36px; height: 6px; background: #6FA8FF; margin-bottom: 14px"></div><dt style="color: #BDBDBD; font-size: 16px">Median time to review</dt><dd style="order: -1; margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(40px, 4vw, 56px); line-height: 1; letter-spacing: -0.045em">87 s</dd></div>
+<div style="background: #0C0C0C; padding: 24px; display: flex; flex-direction: column; gap: 6px"><div aria-hidden="true" style="order: -2; width: 36px; height: 6px; background: #FFDC96; margin-bottom: 14px"></div><dt style="color: #BDBDBD; font-size: 16px">Same call as the maintainer</dt><dd style="order: -1; margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(40px, 4vw, 56px); line-height: 1; letter-spacing: -0.045em">246<span style="color: #8A8A8A">/248</span></dd></div>
+</dl>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 24px; align-items: end">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 40px; letter-spacing: -0.04em; line-height: 1">$53.81</span>
+<span style="color: #BDBDBD">total model spend on 0G Private Computer. Re-checking an unchanged push costs nothing.</span>
+</div>
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 10px">
+<figcaption style="font-family: 'VT323', monospace; font-size: 19px; color: #A8A8A8">Daily spend</figcaption>
+<div role="img" aria-label="Daily spend: 21 Oct $15.64, 22 Oct $20.25, 23 Oct $14.23, 24 Oct so far $3.69" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; align-items: end; height: 150px">
+<div style="display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; height: 100%"><span style="font-family: 'VT323', monospace; font-size: 18px">$15.64</span><div style="height: 85px; background: #CFFFCF"></div></div>
+<div style="display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; height: 100%"><span style="font-family: 'VT323', monospace; font-size: 18px">$20.25</span><div style="height: 110px; background: #CFFFCF"></div></div>
+<div style="display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; height: 100%"><span style="font-family: 'VT323', monospace; font-size: 18px">$14.23</span><div style="height: 77px; background: #CFFFCF"></div></div>
+<div style="display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; height: 100%"><span style="font-family: 'VT323', monospace; font-size: 18px">$3.69</span><div style="height: 20px; background: transparent; border: 2px dashed #CFFFCF; box-sizing: border-box"></div></div>
+</div>
+<div aria-hidden="true" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; border-top: 1px solid #333; padding-top: 6px; font-size: 13px; color: #A8A8A8"><span>Wed 21</span><span>Thu 22</span><span>Fri 23</span><span>Sat 24, so far</span></div>
+</figure>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="why-h" style="max-width: 1240px; margin: 0 auto; padding: 88px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); gap: 48px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0; font-family: 'VT323', monospace; font-size: 22px; color: #FFDC96">01 · Why it exists</p>
+<h2 id="why-h" style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(34px, 4.4vw, 56px); line-height: 1; letter-spacing: -0.035em">1,528 pull requests. 692 people. 1 maintainer.</h2>
+<p style="margin: 0; max-width: 46ch; color: #BDBDBD">Each one can switch off system packages on someone's TV, or touch a launcher that has to stay small. At the peak, 174 were waiting at once.</p>
+</div>
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 10px">
+<figcaption style="font-family: 'VT323', monospace; font-size: 19px; color: #A8A8A8">Pull requests opened per day (UTC)</figcaption>
+<div role="img" aria-label="Pull requests opened per day: 18 Oct 70, 19 Oct 136, 20 Oct 251, 21 Oct 243, 22 Oct 208, 23 Oct 198, 24 Oct 176" style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; align-items: end; height: 220px">
+<div style="display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; height: 100%"><span style="font-family: 'VT323', monospace; font-size: 18px">70</span><div style="height: 50px; background: #FFDC96"></div></div>
+<div style="display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; height: 100%"><span style="font-family: 'VT323', monospace; font-size: 18px">136</span><div style="height: 98px; background: #FFDC96"></div></div>
+<div style="display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; height: 100%"><span style="font-family: 'VT323', monospace; font-size: 18px">251</span><div style="height: 180px; background: #FFDC96"></div></div>
+<div style="display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; height: 100%"><span style="font-family: 'VT323', monospace; font-size: 18px">243</span><div style="height: 174px; background: #FFDC96"></div></div>
+<div style="display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; height: 100%"><span style="font-family: 'VT323', monospace; font-size: 18px">208</span><div style="height: 149px; background: #FFDC96"></div></div>
+<div style="display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; height: 100%"><span style="font-family: 'VT323', monospace; font-size: 18px">198</span><div style="height: 142px; background: #FFDC96"></div></div>
+<div style="display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; height: 100%"><span style="font-family: 'VT323', monospace; font-size: 18px">176</span><div style="height: 126px; background: #FFDC96"></div></div>
+</div>
+<div aria-hidden="true" style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; border-top: 1px solid #333; padding-top: 6px; font-size: 13px; color: #A8A8A8"><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span></div>
+</figure>
+</section>
+
+<section id="how" aria-labelledby="how-h" style="border-top: 1px solid #262626">
+<div style="max-width: 1240px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<p style="margin: 0; font-family: 'VT323', monospace; font-size: 22px; color: #6FA8FF">02 · How it decides</p>
+<h2 id="how-h" style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(34px, 4.4vw, 56px); line-height: 1; letter-spacing: -0.035em">Six checks, one comment.</h2>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 12px">
+<li style="padding: 22px; border: 1px solid #333; border-radius: 6px; display: flex; flex-direction: column; gap: 10px"><div style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><span style="font-family: 'VT323', monospace; font-size: 26px; color: #6FA8FF">01</span><span style="padding: 2px 10px; border: 1px solid #5A5A5A; border-radius: 999px; font-size: 13px; color: #BDBDBD">No model</span></div><h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px">Facts</h3><p style="margin: 0; font-size: 15px; color: #BDBDBD">Folders, protected packages, conflicts with main, size, strings per language, new permissions or network use.</p></li>
+<li style="padding: 22px; border: 1px solid #333; border-radius: 6px; display: flex; flex-direction: column; gap: 10px"><div style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><span style="font-family: 'VT323', monospace; font-size: 26px; color: #6FA8FF">02</span><span style="padding: 2px 10px; background: #CFFFCF; color: #050505; border-radius: 999px; font-size: 13px; font-weight: 600">Claude Opus 5.5</span></div><h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px">Decide</h3><p style="margin: 0; font-size: 15px; color: #BDBDBD">The repo's written rules, a checklist for this kind of PR, and the maintainer's past calls on the most similar PRs.</p></li>
+<li style="padding: 22px; border: 1px solid #333; border-radius: 6px; display: flex; flex-direction: column; gap: 10px"><div style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><span style="font-family: 'VT323', monospace; font-size: 26px; color: #6FA8FF">03</span><span style="padding: 2px 10px; background: #CFFFCF; color: #050505; border-radius: 999px; font-size: 13px; font-weight: 600">Claude Sonnet 5</span></div><h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px">Critic</h3><p style="margin: 0; font-size: 15px; color: #BDBDBD">Before a code or judgement-call merge: what is the strongest rule-backed reason not to merge?</p></li>
+<li style="padding: 22px; border: 1px solid #333; border-radius: 6px; display: flex; flex-direction: column; gap: 10px"><div style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><span style="font-family: 'VT323', monospace; font-size: 26px; color: #6FA8FF">04</span><span style="padding: 2px 10px; background: #CFFFCF; color: #050505; border-radius: 999px; font-size: 13px; font-weight: 600">GLM-5.3-flash</span></div><h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px">Second opinion</h3><p style="margin: 0; font-size: 15px; color: #BDBDBD">A cheaper model on every PR. If it points another way, the maintainer decides.</p></li>
+<li style="padding: 22px; border: 1px solid #333; border-radius: 6px; display: flex; flex-direction: column; gap: 10px"><div style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><span style="font-family: 'VT323', monospace; font-size: 26px; color: #6FA8FF">05</span><span style="padding: 2px 10px; border: 1px solid #5A5A5A; border-radius: 999px; font-size: 13px; color: #BDBDBD">No model</span></div><h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px">Hard rules</h3><p style="margin: 0; font-size: 15px; color: #BDBDBD">Fixed rules always win, and can only make a verdict more cautious.</p></li>
+<li style="padding: 22px; background: #ECECEC; color: #050505; border-radius: 6px; display: flex; flex-direction: column; gap: 10px"><div style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><span style="font-family: 'VT323', monospace; font-size: 26px">06</span><span style="padding: 2px 10px; border: 1px solid #050505; border-radius: 999px; font-size: 13px">Output</span></div><h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px">One comment</h3><p style="margin: 0; font-size: 15px; color: #2A2A2A">A suggestion and a few labels, or “needs maintainer”.</p></li>
+</ol>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 28px; font-family: 'VT323', monospace; font-size: 21px">
+<li>✓ Abstains when unsure</li><li>✓ Some PRs always go to the maintainer</li><li>✓ Unchanged pushes cost nothing</li>
+</ul>
+</div>
+</section>
+
+<section aria-labelledby="sample-h" style="background: #0C0C0C; border-top: 2px solid #ECECEC; border-bottom: 2px solid #ECECEC">
+<div style="max-width: 1240px; margin: 0 auto; padding: 88px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 48px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-family: 'VT323', monospace; font-size: 22px; color: #FF8A8A">03 · A sample review</p>
+<h2 id="sample-h" style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(34px, 4.4vw, 56px); line-height: 1; letter-spacing: -0.035em">What lands on your PR.</h2>
+<p style="margin: 0; color: #BDBDBD">It never merges or closes by itself. Phase 1 only suggests: one comment and a few labels. Gathin approves every decision.</p>
+<div role="tablist" aria-label="Sample verdicts" style="display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{samples}}" as="s" hint-placeholder-count="3">
+<sc-if value="{{s.on}}" hint-placeholder-val="{{false}}"><button type="button" role="tab" aria-selected="true" onClick="{{s.pick}}" style="display: flex; justify-content: space-between; align-items: center; min-height: 56px; padding: 0 16px; background: #ECECEC; color: #050505; border: 0; border-radius: 6px; font: inherit; font-weight: 600; text-align: left">{{s.tabLabel}}<span style="font-family: 'VT323', monospace; font-size: 20px">{{s.verdict}}</span></button></sc-if>
+<sc-if value="{{s.off}}" hint-placeholder-val="{{true}}"><button type="button" role="tab" aria-selected="false" onClick="{{s.pick}}" style="display: flex; justify-content: space-between; align-items: center; min-height: 56px; padding: 0 16px; background: transparent; color: #ECECEC; border: 1px solid #3A3A3A; border-radius: 6px; font: inherit; text-align: left">{{s.tabLabel}}<span style="font-family: 'VT323', monospace; font-size: 20px; color: #CFFFCF">{{s.verdict}}</span></button></sc-if>
+</sc-for>
+</div>
+</div>
+
+<article role="tabpanel" aria-label="Sample review" style="border: 2px solid #ECECEC; border-radius: 6px; overflow: hidden; background: #050505">
+<div style="padding: 14px 18px; border-bottom: 1px solid #333; display: flex; flex-direction: column; gap: 4px">
+<span style="font-family: 'VT323', monospace; font-size: 18px; color: #A8A8A8">Pull request #[number] by @[contributor]</span>
+<strong style="font-family: 'Space Grotesk', sans-serif; font-size: 20px">{{cur.pr}}</strong>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #BDBDBD">{{cur.files}}</span>
+</div>
+<div style="padding: 18px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; align-items: center; gap: 10px">
+<span aria-hidden="true" style="width: 36px; height: 36px; border-radius: 999px; background: #CFFFCF; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 32 32"><path d="M11 3.5l5 6 5-6" stroke="#050505" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path><rect x="3" y="10" width="26" height="18" rx="5" fill="#050505"></rect></svg></span>
+<span><strong style="font-weight: 600">maintainer-bot</strong> <span style="color: #A8A8A8; font-size: 15px">reviewed in 87 s</span></span>
+</div>
+<p style="margin: 0; font-size: 19px">Suggestion: <strong style="font-family: 'Space Grotesk', sans-serif; padding: 2px 10px; background: #CFFFCF; color: #050505; border-radius: 4px">{{cur.verdict}}</strong></p>
+<p style="margin: 0; color: #D4D4D4">{{cur.body}}</p>
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 14px; background: #0C0C0C; border: 1px solid #262626; border-radius: 4px">
+<span style="font-family: 'VT323', monospace; font-size: 19px; color: #A8A8A8">Facts · no model</span>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; font-size: 15px">
+<sc-for list="{{cur.facts}}" as="f" hint-placeholder-count="4">
+<li style="display: flex; gap: 10px; align-items: baseline">
+<sc-if value="{{f.ok}}" hint-placeholder-val="{{true}}"><span style="flex: none; font-family: 'VT323', monospace; font-size: 18px; color: #8EE08F">OK</span></sc-if>
+<sc-if value="{{f.flag}}" hint-placeholder-val="{{false}}"><span style="flex: none; font-family: 'VT323', monospace; font-size: 18px; color: #FFDC96">FLAG</span></sc-if>
+<span>{{f.text}}</span>
+</li>
+</sc-for>
+</ul>
+</div>
+<p style="margin: 0; font-size: 15px; color: #BDBDBD">Second opinion: {{cur.second}}</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{cur.labels}}" as="l" hint-placeholder-count="2"><span style="padding: 4px 10px; border: 1px solid #CFFFCF; border-radius: 999px; font-size: 13px; color: #CFFFCF">{{l}}</span></sc-for>
+</div>
+</div>
+</article>
+</div>
+</section>
+
+<section aria-labelledby="labels-h" style="max-width: 1240px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<p style="margin: 0; font-family: 'VT323', monospace; font-size: 22px; color: #D58BE6">04 · What it can suggest</p>
+<h2 id="labels-h" style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(34px, 4.4vw, 56px); line-height: 1; letter-spacing: -0.035em">Eight labels.</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 12px">
+<div style="padding: 22px; border-top: 6px solid #8EE08F; background: #0C0C0C; border-radius: 6px; display: flex; flex-direction: column; gap: 12px"><h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px">Merged here</h3><dl style="margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 15px"><div><dt style="display: inline; font-weight: 600">merge</dt> <dd style="display: inline; margin: 0; color: #BDBDBD">correct, in scope, nothing to change</dd></div><div><dt style="display: inline; font-weight: 600">merge with fix</dt> <dd style="display: inline; margin: 0; color: #BDBDBD">after one small fix, spelled out</dd></div><div><dt style="display: inline; font-weight: 600">rework</dt> <dd style="display: inline; margin: 0; color: #BDBDBD">worth having, one clear ask first</dd></div><div><dt style="display: inline; font-weight: 600">close</dt> <dd style="display: inline; margin: 0; color: #BDBDBD">duplicate, superseded or against the rules, kindly</dd></div></dl></div>
+<div style="padding: 22px; border-top: 6px solid #6FA8FF; background: #0C0C0C; border-radius: 6px; display: flex; flex-direction: column; gap: 12px"><h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px">A better home</h3><dl style="margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 15px"><div><dt style="display: inline; font-weight: 600">showcase</dt> <dd style="display: inline; margin: 0; color: #BDBDBD">a big or different idea: your fork, plus a SHOWCASE.md row</dd></div><div><dt style="display: inline; font-weight: 600">add-on</dt> <dd style="display: inline; margin: 0; color: #BDBDBD">can be its own small app under addons/</dd></div><div><dt style="display: inline; font-weight: 600">theme</dt> <dd style="display: inline; margin: 0; color: #BDBDBD">a new look a themes/ folder can carry</dd></div></dl></div>
+<div style="padding: 22px; border-top: 6px solid #FFDC96; background: #0C0C0C; border-radius: 6px; display: flex; flex-direction: column; gap: 12px"><h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px">The maintainer</h3><dl style="margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 15px"><div><dt style="display: inline; font-weight: 600">needs maintainer</dt> <dd style="display: inline; margin: 0; color: #BDBDBD">safety, scope or taste, or the bot is unsure</dd></div></dl><a href="https://github.com/Gathin23/maintainer-bot/blob/v4/report/v4.md" style="margin-top: auto; font-weight: 600; font-size: 15px">Read the full v4 report</a></div>
+</div>
+</section>
+</main>
+
+<footer style="border-top: 2px solid #ECECEC">
+<div style="max-width: 1240px; margin: 0 auto; padding: 48px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr)); gap: 32px; font-size: 15px">
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 20px">CleanYour<span style="color: #CFFFCF">TV</span></span><span style="font-family: 'VT323', monospace; font-size: 18px; color: #A8A8A8">The bot's code, rules and reports are MIT licensed</span></div>
+<nav aria-label="Use it" style="display: flex; flex-direction: column; gap: 10px"><a href="https://cleanyour.tv/tvs" style="color: #ECECEC; text-decoration: none">TV list</a><a href="https://cleanyour.tv/#setup" style="color: #ECECEC; text-decoration: none">Set up</a><a href="https://cleanyour.tv/privacy" style="color: #ECECEC; text-decoration: none">Privacy guide</a><a href="https://cleanyour.tv/app/android" style="color: #ECECEC; text-decoration: none">Android app</a></nav>
+<nav aria-label="Build" style="display: flex; flex-direction: column; gap: 10px"><a href="https://github.com/Gathin23/cleanyourtv" style="color: #ECECEC; text-decoration: none">GitHub</a><a href="https://cleanyour.tv/addons" style="color: #ECECEC; text-decoration: none">Add-ons</a><a href="https://cleanyour.tv/bot" style="color: #ECECEC; text-decoration: none">PR bot</a><a href="https://cleanyour.tv/faq" style="color: #ECECEC; text-decoration: none">FAQ</a></nav>
+<nav aria-label="About" style="display: flex; flex-direction: column; gap: 10px"><a href="https://cleanyour.tv/blog/reintroducing-cleanyourtv" style="color: #ECECEC; text-decoration: none">The story</a><a href="https://cleanyour.tv/press" style="color: #ECECEC; text-decoration: none">Press</a><a href="#" style="color: #FFDC96; text-decoration: none">Buy me a coffee</a></nav>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3800}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { s: 'merge' }; }
+  renderVals() {
+    var self = this;
+    var data = [
+      { id: 'merge', tabLabel: 'A new TV for the list', verdict: 'merge', pr: 'Add a tested TCL model to the TV list', files: 'tvs/tcl.md  +12 −0',
+        body: 'The new entry follows the TV-list format, and every package it switches off is already on the safe list for this brand. Nothing to change.',
+        facts: [{ ok: true, flag: false, text: 'Only touches tvs/' }, { ok: true, flag: false, text: 'No protected packages' }, { ok: true, flag: false, text: 'No conflicts with main' }, { ok: true, flag: false, text: 'No new permissions or network use' }],
+        second: 'agrees.', labels: ['bot: merge', 'tv-list'] },
+      { id: 'addon', tabLabel: 'A new card on Home', verdict: 'add-on', pr: 'Add a weather card to the Home screen', files: 'launcher/home/  +240 −8',
+        body: 'A weather card is a nice idea, but the launcher has to stay small and this adds network use to it. It fits better as its own small app under addons/, so people who want it can add the card to Home.',
+        facts: [{ ok: false, flag: true, text: 'Touches the launcher' }, { ok: false, flag: true, text: 'Adds network use' }, { ok: true, flag: false, text: 'No protected packages' }, { ok: true, flag: false, text: 'No conflicts with main' }],
+        second: 'agrees.', labels: ['bot: add-on'] },
+      { id: 'maint', tabLabel: 'A protected package', verdict: 'needs maintainer', pr: 'Switch off [system package] on [brand] TVs', files: 'tvs/[brand].md  +3 −0',
+        body: 'This switches off a package on the protected list. That is always the maintainer’s call, so I have not suggested anything else.',
+        facts: [{ ok: false, flag: true, text: 'Switches off a protected package' }, { ok: true, flag: false, text: 'Only touches tvs/' }, { ok: true, flag: false, text: 'No conflicts with main' }, { ok: true, flag: false, text: 'No new permissions or network use' }],
+        second: 'not asked: hard rule applies.', labels: ['bot: needs maintainer'] }
+    ];
+    var cur = data.find(function (d) { return d.id === self.state.s; }) || data[0];
+    return {
+      samples: data.map(function (d) { return { tabLabel: d.tabLabel, verdict: d.verdict, on: d.id === cur.id, off: d.id !== cur.id, pick: function () { self.setState({ s: d.id }); } }; }),
+      cur: cur
+    };
+  }
+}
+</script>
+</body>
+</html>

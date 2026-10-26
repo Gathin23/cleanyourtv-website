@@ -1,0 +1,36 @@
+{
+  "v": 3,
+  "createdOnFiles": {"v": 1, "at": "2026-10-26T09:40:00Z"},
+  "title": "CleanYourTV redesign — On air",
+  "launch": {"view": "canvas"},
+  "pages": [],
+  "boards": {
+    "B-desktop.dc.html": {"x": 0, "y": 0, "w": 1440, "h": 4000, "title": "Home — desktop", "expand": "fill"},
+    "B-phone.dc.html": {"x": 1520, "y": 0, "w": 390, "h": 2080, "title": "Home — phone", "is_interactive": true},
+    "Press.dc.html": {"x": 0, "y": 4520, "w": 1440, "h": 3200, "title": "/press — desktop", "expand": "fill", "is_interactive": true},
+    "Press-phone.dc.html": {"x": 1520, "y": 4520, "w": 390, "h": 1900, "title": "/press — phone"},
+    "Addons.dc.html": {"x": 0, "y": 8240, "w": 1440, "h": 3200, "title": "/addons — desktop", "expand": "fill", "is_interactive": true},
+    "Addons-phone.dc.html": {"x": 1520, "y": 8240, "w": 390, "h": 1900, "title": "/addons — phone"},
+    "Bot.dc.html": {"x": 0, "y": 11960, "w": 1440, "h": 3800, "title": "/bot — desktop", "expand": "fill", "is_interactive": true},
+    "Bot-phone.dc.html": {"x": 1520, "y": 11960, "w": 390, "h": 2000, "title": "/bot — phone"},
+    "App.dc.html": {"x": 0, "y": 16280, "w": 1440, "h": 3100, "title": "/app/android — desktop", "expand": "fill"},
+    "App-phone.dc.html": {"x": 1520, "y": 16280, "w": 390, "h": 1900, "title": "/app/android — phone"},
+    "Tvs.dc.html": {"x": 0, "y": 19900, "w": 1440, "h": 2800, "title": "/tvs — desktop", "expand": "fill", "is_interactive": true},
+    "Tvs-phone.dc.html": {"x": 1520, "y": 19900, "w": 390, "h": 1900, "title": "/tvs — phone"},
+    "Faq.dc.html": {"x": 0, "y": 23220, "w": 1440, "h": 2300, "title": "/faq — desktop", "expand": "fill"},
+    "Faq-phone.dc.html": {"x": 1520, "y": 23220, "w": 390, "h": 1700, "title": "/faq — phone"},
+    "Menu-phone.dc.html": {"x": 0, "y": 26040, "w": 390, "h": 844, "title": "Mobile menu — tap to open and close", "is_interactive": true}
+  },
+  "order": ["B-desktop.dc.html", "B-phone.dc.html", "Press.dc.html", "Press-phone.dc.html", "Addons.dc.html", "Addons-phone.dc.html", "Bot.dc.html", "Bot-phone.dc.html", "App.dc.html", "App-phone.dc.html", "Tvs.dc.html", "Tvs-phone.dc.html", "Faq.dc.html", "Faq-phone.dc.html", "Menu-phone.dc.html"],
+  "notes": {
+    "titleB": {"x": 0, "y": -300, "text": "Home · On air", "kind": "title1", "maxW": 1910},
+    "titlePress": {"x": 0, "y": 4220, "text": "/press", "kind": "title1", "maxW": 1910},
+    "titleAddons": {"x": 0, "y": 7940, "text": "/addons", "kind": "title1", "maxW": 1910},
+    "titleBot": {"x": 0, "y": 11660, "text": "/bot", "kind": "title1", "maxW": 1910},
+    "titleApp": {"x": 0, "y": 15980, "text": "/app/android", "kind": "title1", "maxW": 1910},
+    "titleTvs": {"x": 0, "y": 19600, "text": "/tvs", "kind": "title1", "maxW": 1910},
+    "titleFaq": {"x": 0, "y": 22920, "text": "/faq", "kind": "title1", "maxW": 1910},
+    "titleMenu": {"x": 0, "y": 25740, "text": "Mobile menu", "kind": "title1", "maxW": 1910}
+  },
+  "designSystems": []
+}

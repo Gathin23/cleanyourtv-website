@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CleanYourTV TV list — phone</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400&amp;family=VT323&amp;family=Fredoka:wght@600&amp;display=swap">
+<style>
+body{margin:0;background:#050505}
+a{color:#CFFFCF}a:hover{color:#ffffff}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #FFDC96;outline-offset:2px}
+</style>
+</helmet>
+<div style="width: 390px; height: 1900px; box-sizing: border-box; background: #050505; color: #ECECEC; font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 16px; line-height: 1.5; display: flex; flex-direction: column; overflow: hidden">
+<div aria-hidden="true" style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); height: 5px"><div style="background: #E9E9E9"></div><div style="background: #FFDC96"></div><div style="background: #7FE3E0"></div><div style="background: #8EE08F"></div><div style="background: #D58BE6"></div><div style="background: #FF6B6B"></div><div style="background: #6FA8FF"></div></div>
+<header style="height: 60px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #262626">
+<a href="#" style="display: flex; align-items: center; gap: 8px; color: #ECECEC; text-decoration: none"><svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true"><path d="M11 3.5l5 6 5-6" stroke="#CFFFCF" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path><rect x="3" y="10" width="26" height="18" rx="5" fill="#CFFFCF"></rect><rect x="7" y="14" width="18" height="10" rx="2.5" fill="#050505"></rect></svg><span style="font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 19px">CleanYour<span style="color: #CFFFCF">TV</span></span></a>
+<button aria-label="Open menu" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: transparent; border: 1px solid #3A3A3A; border-radius: 4px; color: #ECECEC"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+</header>
+
+<section style="padding: 32px 16px 20px; display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; font-family: 'VT323', monospace; font-size: 20px; color: #CFFFCF">CH 09 · TV list</p>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 48px; line-height: 0.92; letter-spacing: -0.045em">Does it work on my TV?</h1>
+<p style="margin: 0; font-size: 17px; color: #C4C4C4">If it runs <strong style="color: #ECECEC; font-weight: 600">Android TV or Google TV</strong>, yes. It doesn't need to be on the list.</p>
+</section>
+
+<section aria-label="Answers by platform" style="padding: 0 16px; display: flex; flex-direction: column; gap: 8px">
+<a href="#" style="display: flex; flex-direction: column; gap: 4px; padding: 16px; background: #8EE08F; color: #06210A; border-radius: 6px; text-decoration: none"><span style="font-family: 'VT323', monospace; font-size: 20px">Works</span><strong style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; line-height: 1.1">Android TV, Google TV</strong><span style="font-size: 15px">The cleanup and the new home screen.</span></a>
+<a href="#" style="display: flex; flex-direction: column; gap: 4px; padding: 16px; background: #FFDC96; color: #2B1E00; border-radius: 6px; text-decoration: none"><span style="font-family: 'VT323', monospace; font-size: 20px">Cleanup only</span><strong style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; line-height: 1.1">Fire TV</strong><span style="font-size: 15px">Fire OS keeps its own home screen.</span></a>
+<a href="#" style="display: flex; flex-direction: column; gap: 4px; padding: 16px; border: 2px solid #ECECEC; color: #ECECEC; border-radius: 6px; text-decoration: none"><span style="font-family: 'VT323', monospace; font-size: 20px">Not supported</span><strong style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; line-height: 1.1">Samsung, LG, Roku</strong><span style="font-size: 15px; color: #C4C4C4">No ADB on these. Use the privacy guide instead.</span></a>
+</section>
+
+<section style="margin-top: 32px; padding: 28px 16px; background: #0C0C0C; border-top: 2px solid #ECECEC; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; justify-content: space-between; align-items: flex-end">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 32px; letter-spacing: -0.035em; line-height: 1">Tested models</h2>
+<span style="font-family: 'VT323', monospace; font-size: 19px; color: #A8A8A8">316 · 89 brands</span>
+</div>
+<label for="tv-qp" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Search by brand or model</label>
+<input id="tv-qp" type="search" placeholder="Search brand or model" style="height: 52px; padding: 0 14px; background: #050505; border: 2px solid #ECECEC; border-radius: 6px; color: #ECECEC; font: inherit; font-size: 17px">
+<div role="group" aria-label="Filter by brand" style="display: flex; gap: 8px; overflow-x: auto; margin: 0 -16px; padding: 0 16px">
+<button type="button" aria-pressed="true" style="flex: none; height: 44px; padding: 0 14px; background: #ECECEC; color: #050505; border: 0; border-radius: 4px; font: inherit; font-size: 15px; font-weight: 600">All</button>
+<button type="button" aria-pressed="false" style="flex: none; height: 44px; padding: 0 14px; background: transparent; color: #ECECEC; border: 1px solid #3A3A3A; border-radius: 4px; font: inherit; font-size: 15px">TCL <span style="font-family: 'VT323', monospace; font-size: 19px; color: #A8A8A8">65</span></button>
+<button type="button" aria-pressed="false" style="flex: none; height: 44px; padding: 0 14px; background: transparent; color: #ECECEC; border: 1px solid #3A3A3A; border-radius: 4px; font: inherit; font-size: 15px">Sony <span style="font-family: 'VT323', monospace; font-size: 19px; color: #A8A8A8">37</span></button>
+<button type="button" aria-pressed="false" style="flex: none; height: 44px; padding: 0 14px; background: transparent; color: #ECECEC; border: 1px solid #3A3A3A; border-radius: 4px; font: inherit; font-size: 15px">Xiaomi <span style="font-family: 'VT323', monospace; font-size: 19px; color: #A8A8A8">31</span></button>
+</div>
+<ul style="list-style: none; margin: 0; padding: 0; border-top: 2px solid #ECECEC">
+<li style="border-bottom: 1px solid #262626"><a href="#" style="display: flex; flex-direction: column; gap: 2px; padding: 12px 0; color: #ECECEC; text-decoration: none"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 18px"><strong>Acer</strong> AR55AR2851UDPRO 55"</span><span style="display: flex; justify-content: space-between; gap: 8px"><span style="font-family: 'VT323', monospace; font-size: 18px">Android TV 14</span><span style="font-size: 14px; font-weight: 600; color: #CFFFCF">List</span></span></a></li>
+<li style="border-bottom: 1px solid #262626"><a href="#" style="display: flex; flex-direction: column; gap: 2px; padding: 12px 0; color: #ECECEC; text-decoration: none"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 18px"><strong>Amazon</strong> Fire TV Stick 4K, 1st gen</span><span style="display: flex; justify-content: space-between; gap: 8px"><span style="display: flex; gap: 8px; align-items: center"><span style="font-family: 'VT323', monospace; font-size: 18px">Fire OS 6.7</span><span style="padding: 0 6px; background: #FFDC96; color: #2B1E00; border-radius: 3px; font-family: 'VT323', monospace; font-size: 16px">cleanup only</span></span><span style="font-size: 14px; font-weight: 600; color: #CFFFCF">List</span></span></a></li>
+<li style="border-bottom: 1px solid #262626"><a href="#" style="display: flex; flex-direction: column; gap: 2px; padding: 12px 0; color: #ECECEC; text-decoration: none"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 18px"><strong>Google</strong> Chromecast with Google TV 4K</span><span style="display: flex; justify-content: space-between; gap: 8px"><span style="font-family: 'VT323', monospace; font-size: 18px">Google TV 14</span><span style="font-size: 14px; font-weight: 600; color: #CFFFCF">List</span></span></a></li>
+<li style="border-bottom: 1px solid #262626"><a href="#" style="display: flex; flex-direction: column; gap: 2px; padding: 12px 0; color: #ECECEC; text-decoration: none"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 18px"><strong>Philips</strong> 65OLED907/12</span><span style="display: flex; justify-content: space-between; gap: 8px"><span style="font-family: 'VT323', monospace; font-size: 18px">Android TV 11</span><span style="font-size: 14px; font-weight: 600; color: #CFFFCF">List</span></span></a></li>
+<li style="border-bottom: 1px solid #262626"><a href="#" style="display: flex; flex-direction: column; gap: 2px; padding: 12px 0; color: #ECECEC; text-decoration: none"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 18px"><strong>Sony</strong> BRAVIA KD-55X75K</span><span style="display: flex; justify-content: space-between; gap: 8px"><span style="font-family: 'VT323', monospace; font-size: 18px">Google TV 14</span><span style="font-size: 14px; font-weight: 600; color: #CFFFCF">List</span></span></a></li>
+</ul>
+<button type="button" style="height: 48px; background: transparent; color: #ECECEC; border: 2px solid #ECECEC; border-radius: 6px; font: inherit; font-weight: 600">Show all 316</button>
+</section>
+
+<a href="#" style="margin: 0 16px; display: flex; flex-direction: column; gap: 4px; padding: 16px; border: 2px dashed #6FA8FF; border-radius: 6px; color: #ECECEC; text-decoration: none"><strong style="font-family: 'Space Grotesk', sans-serif; font-size: 20px">Yours is missing?</strong><span style="font-size: 15px; color: #BDBDBD">Your assistant builds a list as it goes. Add your TV afterwards.</span></a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1900}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
