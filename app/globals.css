@@ -862,18 +862,23 @@ select.chip {
   border-color: var(--ink);
   color: var(--bg);
 }
-/* Home's header carries On air and the coffee link too; below 1100 px the coffee link leaves the bar (it stays in the footer and the phone menu). */
-@media (max-width: 1100px) {
+/* Home's header carries On air and the coffee link too; below 1180 px the coffee link leaves the bar (it stays in the footer and the phone menu). */
+@media (max-width: 1180px) {
   .head-right .coffee {
     display: none;
   }
 }
-@media (max-width: 1040px) {
+@media (max-width: 1120px) {
   .head-bar {
     gap: 12px;
   }
   .navlinks a {
     padding: 0 8px;
+  }
+}
+@media (max-width: 920px) {
+  .nav-more {
+    display: none;
   }
 }
 @media (max-width: 860px) {

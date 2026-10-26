@@ -53,7 +53,7 @@ function answer(md: string): ReactNode[] {
 // Where most people are headed before they read a word: [label, answer, link, tile colour].
 const QUICK: [string, string, string, string][] = [
   ["Which TVs?", "Android TV and Google TV. Check yours.", "/tvs", "t-green"],
-  ["Samsung, LG or Roku?", PRIVACY_LIVE ? "Not supported. Use the privacy guide." : "Not supported. A privacy guide is coming tonight.", PRIVACY_PATH, "t-amber"],
+  ["Samsung, LG or Roku?", PRIVACY_LIVE ? "Not supported. Use the Non-Android TV guide." : "Not supported. A privacy guide is coming tonight.", PRIVACY_PATH, "t-amber"],
   ["No laptop?", "Use the Android phone app.", "/app/android", "t-blue"],
 ];
 

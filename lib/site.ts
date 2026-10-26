@@ -1,7 +1,9 @@
 // Site-wide constants: the nav, the links every page shares, and the image mirrors.
 
-/** Where "Privacy guide" and every Samsung, LG and Roku answer points. The old /privacy redirects here (public/_redirects). */
+/** Where the non-Android TV guide and every Samsung, LG and Roku answer points. The old /privacy redirects here (public/_redirects). */
 export const PRIVACY_PATH = "/not-android";
+/** Its name in the nav, the phone menu and the footer. */
+export const PRIVACY_NAME = "Non-Android TVs";
 /**
  * Whether the privacy guide is linked. While false it is "coming tonight": no nav, menu or footer link, and every
  * Samsung, LG and Roku answer says so instead of linking.
@@ -18,7 +20,7 @@ export const TRENDSHIFT = { rank: 1, week: "Oct 19–25", url: "https://trendshi
 /** The channel guide: the phone menu lists every channel; the desktop bar and the footer pick from it. */
 export const CHANNELS: { ch: string; label: string; href: string }[] = [
   { ch: "01", label: "Set up", href: "/#setup" },
-  ...(PRIVACY_LIVE ? [{ ch: "02", label: "Privacy guide", href: PRIVACY_PATH }] : []),
+  ...(PRIVACY_LIVE ? [{ ch: "02", label: PRIVACY_NAME, href: PRIVACY_PATH }] : []),
   { ch: "05", label: "Press", href: "/press" },
   { ch: "06", label: "Add-ons", href: "/addons" },
   { ch: "07", label: "PR bot", href: "/bot" },

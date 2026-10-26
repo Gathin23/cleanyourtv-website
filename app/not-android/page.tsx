@@ -14,12 +14,12 @@ import "./not-android.css";
 // level 3 DNS blocking; then a check of the home network. The research behind it
 // (cleanyourtv-launch/tv-privacy-research.md) sits in the folds below; nothing it marks unverified is here.
 
-const title = "Stop your TV tracking you";
+const title = "Non-Android TVs: stop your TV tracking you";
 const description =
-  "For Samsung, LG, Roku, Vizio, Hisense VIDAA and Fire TV: stop your TV tracking you, no root needed. Step by step with your remote, two minutes, every step undoable.";
+  "Clean up your non-Android TV: stop Samsung, LG, Roku, Vizio, Hisense VIDAA and Fire TV tracking you. Step by step with your remote, no root, nothing to install, every step undoable.";
 const CHECKED = "26 Oct 2026";
 
-export const metadata = pageMeta("/not-android", `${title}, no root needed · CleanYourTV`, description);
+export const metadata = pageMeta("/not-android", `${title} · CleanYourTV`, description);
 
 const IMC = "https://arxiv.org/abs/2409.06203";
 const HAGEZI = "https://github.com/hagezi/dns-blocklists";
@@ -88,16 +88,16 @@ export default function Privacy() {
         dateModified: "2026-10-26",
         isPartOf: { "@id": `${SITE}/#website` },
       },
-      breadcrumbs(["Privacy guide", "/not-android"]),
+      breadcrumbs(["Non-Android TVs", "/not-android"]),
     ],
   };
   return (
     <main className="na">
       <JsonLd data={jsonLd} />
       <section aria-labelledby="page-h" className="wrap page-head na-hero">
-        <p className="kicker c-amber">CH 02 · Privacy guide · Samsung, LG, Roku, Vizio, Hisense, Fire TV</p>
-        <h1 id="page-h" className="h1">{title}</h1>
-        <p className="lede na-lede">Two minutes with your remote. No root, nothing to install, and every step can be undone.</p>
+        <p className="kicker c-amber">CH 02 · Non-Android TVs</p>
+        <h1 id="page-h" className="na-h1">Clean up your <span className="na-nowrap">non-Android</span> TV</h1>
+        <p className="lede na-lede">Stop it tracking you: Samsung, LG, Roku, Vizio, Hisense VIDAA and Fire TV. No root, nothing to install, every step undoable.</p>
         <details className="na-what">
           <summary>What is it tracking?</summary>
           <p>
@@ -204,6 +204,11 @@ export default function Privacy() {
                 <section key={b.id} id={`all-${b.id}`} className="na-allbrand" aria-label={b.name}>
                   <h3 className="na-h3">{b.name}</h3>
                   <p className="na-small">{b.intro}</p>
+                  {b.findModel && (
+                    <p className="na-small">
+                      <strong>Not sure of the year?</strong> It&rsquo;s in the model number. {b.findModel} Each step below lists every year&rsquo;s path.
+                    </p>
+                  )}
                   {b.findVersion && <p className="na-small">{b.findVersion}</p>}
                   <StepList brand={b} pick={null} />
                   {b.outro && <p className="na-small">{b.outro}</p>}

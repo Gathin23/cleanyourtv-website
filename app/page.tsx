@@ -198,7 +198,7 @@ export default async function Page() {
             <h2 id="na-h" className="na-h">Samsung, LG or Roku?</h2>
             <p>
               CleanYourTV can&apos;t run on these.{" "}
-              {PRIVACY_LIVE ? "Our privacy guide still turns off most of the tracking, step by step, no root needed." : PRIVACY_SOON}
+              {PRIVACY_LIVE ? "Our Non-Android TV guide still turns off most of the tracking, step by step, no root needed." : PRIVACY_SOON}
             </p>
           </div>
           {PRIVACY_LIVE ? (

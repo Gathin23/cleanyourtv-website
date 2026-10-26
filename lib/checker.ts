@@ -59,12 +59,12 @@ export function brandAnswers(counts: Record<string, number>, total: number): Bra
     },
     {
       id: "samsung", label: "Samsung", android: false, tone: "no",
-      body: `Samsung TVs run Tizen, so CleanYourTV can't run on them. ${PRIVACY_LIVE ? "The privacy guide still turns off most tracking." : PRIVACY_SOON}`,
+      body: `Samsung TVs run Tizen, so CleanYourTV can't run on them. ${PRIVACY_LIVE ? "The Non-Android TV guide still turns off most tracking." : PRIVACY_SOON}`,
       cta: "Fix my Samsung privacy", href: PRIVACY_LIVE ? `${PRIVACY_PATH}#samsung` : null,
     },
     {
       id: "lg", label: "LG", android: false, tone: "no",
-      body: `LG TVs run webOS, so CleanYourTV can't run on them. ${PRIVACY_LIVE ? "The privacy guide covers LG step by step." : PRIVACY_SOON}`,
+      body: `LG TVs run webOS, so CleanYourTV can't run on them. ${PRIVACY_LIVE ? "The Non-Android TV guide covers LG step by step." : PRIVACY_SOON}`,
       cta: "Fix my LG privacy", href: PRIVACY_LIVE ? `${PRIVACY_PATH}#lg` : null,
     },
     {

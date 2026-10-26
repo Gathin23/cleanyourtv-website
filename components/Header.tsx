@@ -6,11 +6,11 @@ import { useEffect, useRef, useState } from "react";
 import CheckForm from "@/components/CheckForm";
 import { Mark, Wordmark } from "@/components/Logo";
 import { GH } from "@/lib/parse";
-import { CHANNELS, COFFEE, PRIVACY_LIVE, PRIVACY_PATH, shortCount } from "@/lib/site";
+import { CHANNELS, COFFEE, PRIVACY_LIVE, PRIVACY_NAME, PRIVACY_PATH, shortCount } from "@/lib/site";
 
 const NAV: [string, string][] = [
   ["TV list", "/tvs"],
-  ...(PRIVACY_LIVE ? [["Privacy guide", PRIVACY_PATH] as [string, string]] : []),
+  ...(PRIVACY_LIVE ? [[PRIVACY_NAME, PRIVACY_PATH] as [string, string]] : []),
   ["Add-ons", "/addons"],
   ["Press", "/press"],
   ["PR bot", "/bot"],
@@ -74,7 +74,15 @@ export default function Header({ stars }: { stars: number }) {
           <div className="navlinks">
             {NAV.map(([label, href]) => (
               <Link key={label} href={href} aria-current={current(href)}>
-                {label}
+                {/* "Non-Android TVs" loses its "TVs" when the bar is tight (home's, just above the phone menu). */}
+                {label.endsWith(" TVs") ? (
+                  <>
+                    {label.slice(0, -4)}
+                    <span className="nav-more">{"\u00a0"}TVs</span>
+                  </>
+                ) : (
+                  label
+                )}
               </Link>
             ))}
           </div>

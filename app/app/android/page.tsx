@@ -227,7 +227,7 @@ export default function AndroidApp() {
           <div className="and-not">
             <p><strong>Not for Samsung, LG or Roku.</strong> Those TVs don&rsquo;t run Android, so the app can&rsquo;t work on them.</p>
             {PRIVACY_LIVE ? (
-              <Link href={PRIVACY_PATH} className="btn btn-sm and-not-btn">Use the privacy guide</Link>
+              <Link href={PRIVACY_PATH} className="btn btn-sm and-not-btn">Non-Android TV guide</Link>
             ) : (
               <p className="soon-cta and-soon">Privacy guide coming tonight</p>
             )}

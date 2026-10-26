@@ -123,6 +123,22 @@
   font-size: 15px;
   color: var(--dim-2);
 }
+.na-aside a[aria-current="true"] {
+  color: var(--amber);
+  font-weight: 600;
+}
+.na-nowrap {
+  white-space: nowrap;
+}
+/* The page's title is a heading, not a display line: the brand picker is what the page is for. */
+.na-h1 {
+  margin: 0;
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: clamp(34px, 3.4vw, 46px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
 
 /* 2 · The question */
 .na-ask {
@@ -394,41 +410,36 @@
   font-size: 19px;
   color: var(--mute);
 }
+/* A menu path reads as one line of text that wraps: each menu name under a mint marker stroke, the last one bold
+   and underlined, "›" in grey between them. */
 .na-keys {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
+  font-size: 17px;
+  line-height: 1.75;
 }
 .na-keys li {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+  display: inline;
 }
 .na-key {
-  display: inline-flex;
-  align-items: center;
-  min-height: 34px;
-  padding: 2px 12px;
-  background: var(--panel);
-  border: 1px solid #4a4a4a;
-  border-radius: 6px;
   font-weight: 500;
-  font-size: 15px;
-  line-height: 1.25;
+  background: linear-gradient(transparent 58%, rgba(207, 255, 207, 0.2) 58%);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
-.na-key0 {
-  background: var(--ink);
-  color: var(--bg);
-  border-color: var(--ink);
-  font-weight: 600;
+.na-key-last {
+  font-weight: 700;
+  color: var(--mint);
+  background: none;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: rgba(207, 255, 207, 0.55);
+  text-underline-offset: 4px;
 }
 .na-sep {
+  margin: 0 0.4em;
   color: #8a8a8a;
-  font-size: 18px;
 }
 .na-toggles {
   list-style: none;
@@ -440,36 +451,28 @@
 }
 .na-toggles li {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  align-items: baseline;
+  gap: 10px;
 }
 .na-toggles strong {
   font-weight: 600;
 }
+/* Turn off / Turn on / Select: a small coloured word before the setting, not a box. */
 .na-tg {
   flex: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 70px;
-  height: 26px;
-  padding: 0 8px;
-  border-radius: 4px;
+  min-width: 4.6em;
   font-family: var(--f-ch);
   font-size: 19px;
   line-height: 1;
 }
 .tg-off {
-  border: 2px solid var(--ink);
-  color: var(--ink);
+  color: var(--pink);
 }
 .tg-on {
-  background: var(--mint);
-  color: var(--bg);
+  color: var(--mint);
 }
 .tg-sel {
-  background: var(--blue);
-  color: var(--on-blue);
+  color: var(--blue);
 }
 .na-alt {
   display: flex;
@@ -479,9 +482,9 @@
   font-size: 15px;
   color: var(--dim-2);
 }
-.na-alt .na-key {
-  min-height: 28px;
-  font-size: 14px;
+.na-alt .na-keys {
+  display: inline;
+  font-size: 15px;
 }
 .na-card-fold {
   flex-wrap: nowrap;
@@ -1186,9 +1189,10 @@
 }
 .na-rm-path li {
   display: grid;
-  grid-template-columns: 32px 1fr;
-  align-items: center;
-  gap: 8px;
+  grid-template-columns: 28px 1fr;
+  align-items: baseline;
+  gap: 10px;
+  padding: 6px 0;
 }
 .na-rm-path .ch {
   font-size: 20px;
@@ -1196,9 +1200,9 @@
   text-align: right;
 }
 .na-rm-path .na-key {
-  min-height: 48px;
-  padding: 6px 14px;
-  font-size: 18px;
+  justify-self: start;
+  font-size: 21px;
+  line-height: 1.35;
 }
 .na-rm-then {
   display: flex;
@@ -1209,9 +1213,7 @@
   border-radius: 6px;
 }
 .na-rm-then .na-tg {
-  min-width: 78px;
-  height: 30px;
-  font-size: 21px;
+  font-size: 22px;
 }
 .na-rm-then strong {
   font-size: 18px;
@@ -1275,15 +1277,16 @@
     font-weight: 600;
   }
   .na-print .na-key,
-  .na-print .na-key0 {
-    background: #fff;
+  .na-print .na-key-last {
+    background: none;
     color: #000;
-    border: 1px solid #000;
+  }
+  .na-print .na-key-last {
+    font-weight: 700;
   }
   .na-print .na-tg {
-    border: 1px solid #000;
     color: #000;
-    background: #fff;
+    font-weight: 700;
   }
   .na-print .na-list h4,
   .na-print .na-list h4 .ch,
@@ -1322,9 +1325,6 @@
   }
   .na-brands {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .na-brand-wide {
-    grid-column: span 2;
   }
   .na-brand {
     min-height: 64px;
@@ -1375,14 +1375,10 @@
   .na-mark {
     min-height: 48px;
   }
-  .na-key {
-    min-height: 32px;
-    padding: 2px 10px;
-    font-size: 14px;
+  .na-keys {
+    font-size: 16px;
   }
   .na-tg {
-    min-width: 60px;
-    height: 24px;
     font-size: 18px;
   }
   .na-done-band {

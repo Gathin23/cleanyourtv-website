@@ -68,7 +68,7 @@ const tvText = (b: Brand, pick: Pick, model: string) => [b.name, pickLabel(b, pi
 function issueUrl(kind: "worked" | "different", b: Brand, pick: Pick, model: string, done: string[], step: Step | null) {
   const tv = tvText(b, pick, model);
   const steps = stepsFor(b, pick);
-  const title = kind === "worked" ? `Privacy guide worked: ${tv}` : `Privacy guide: menu looked different on ${tv}${step ? `, step ${steps.indexOf(step) + 1}` : ""}`;
+  const title = kind === "worked" ? `Non-Android TV guide worked: ${tv}` : `Non-Android TV guide: menu looked different on ${tv}${step ? `, step ${steps.indexOf(step) + 1}` : ""}`;
   const lines = [`**TV brand:** ${b.name}`, `**Year or version:** ${pickLabel(b, pick) || "not sure"}`, `**Model number:** ${model || "(not given)"}`, ""];
   if (kind === "worked") {
     lines.push("**Steps:**");
@@ -211,8 +211,8 @@ export default function PrivacyGuide() {
       <section aria-labelledby="pick-h" className="wrap na-pick">
         <h2 id="pick-h" className="na-h2"><span className="ch">1</span>Which TV do you have?</h2>
         <ul className="plain na-brands">
-          {BRANDS.map((b) => (
-            <li key={b.id} className={b.id === "google" ? "na-brand-wide" : undefined}>
+          {BRANDS.filter((b) => b.id !== "google").map((b) => (
+            <li key={b.id}>
               <a
                 href={`#all-${b.id}`}
                 className="na-brand"
@@ -228,8 +228,20 @@ export default function PrivacyGuide() {
             </li>
           ))}
         </ul>
+        {/* Google TV and Android TV are CleanYourTV's own ground: their quick switches stay, one line down. */}
         <p className="na-aside">
-          Have Google TV or Android TV? Pick it above for the quick switches, then <Link href="/tvs">CleanYourTV can do the rest</Link>.
+          Have Google TV or Android TV?{" "}
+          <a
+            href="#all-google"
+            aria-current={brandId === "google" ? "true" : undefined}
+            onClick={(e) => {
+              e.preventDefault();
+              choose("google");
+            }}
+          >
+            Turn off its quick switches
+          </a>
+          , then <Link href="/tvs">CleanYourTV can do the rest</Link>.
         </p>
       </section>
 
@@ -368,6 +380,8 @@ export default function PrivacyGuide() {
 /** Step 2: the brand's question, its answers, and for Samsung and LG the model-number decoder. */
 function Ask({ brand, pick, model, setModel, setPick }: { brand: Brand; pick: Pick; model: string; setModel: (m: string) => void; setPick: (p: Pick) => void }) {
   const [res, setRes] = useState<YearResult | null>(null);
+  // The model-number finder is for "Not sure"; a year picked or linked (#samsung-2024) leaves it closed.
+  const [finder, setFinder] = useState(pick === "all");
   const on = choiceOf(brand, pick);
   const decode = brand.decoder === "lg" ? lgYear : samsungYear;
   const example = brand.decoder === "lg" ? "e.g. OLED65C4PUA or 55UQ7570" : "e.g. UN55DU7200";
@@ -378,12 +392,21 @@ function Ask({ brand, pick, model, setModel, setPick }: { brand: Brand; pick: Pi
         <p className="na-help">{brand.ask.help}</p>
         <div className="chips na-choices" role="group" aria-label={brand.ask.q}>
           {[...brand.ask.choices, { id: "all", label: "Not sure" }].map((c) => (
-            <button key={c.id} type="button" className="na-choice" aria-pressed={on === c.id} onClick={() => setPick(on === c.id ? null : c.id)}>
+            <button
+              key={c.id}
+              type="button"
+              className="na-choice"
+              aria-pressed={on === c.id}
+              onClick={() => {
+                setPick(on === c.id ? null : c.id);
+                setFinder(c.id === "all" && on !== c.id);
+              }}
+            >
               {c.label}
             </button>
           ))}
         </div>
-        {brand.decoder && (
+        {brand.decoder && finder && (
           <div className="na-decoder">
             <div className="na-decoder-in">
               <label htmlFor="na-model">Not sure? Type the model number and we&rsquo;ll work out the year</label>
@@ -450,7 +473,7 @@ function DoneBand({ brand, pick, model, done, hash }: { brand: Brand; pick: Pick
     setLink("");
     if (navigator.share) {
       try {
-        await navigator.share({ title: "Stop your TV tracking you", text, url });
+        await navigator.share({ title: "Clean up your non-Android TV", text, url });
         return;
       } catch (e) {
         if ((e as Error).name === "AbortError") return;
@@ -573,7 +596,7 @@ function RemoteMode(props: {
                   {v.crumbs.map((c, n) => (
                     <li key={n}>
                       <span className="ch">{n + 1}</span>
-                      <span className={n === 0 ? "na-key na-key0" : "na-key"}>{c}</span>
+                      <span className={n === v.crumbs.length - 1 ? "na-key na-key-last" : "na-key"}>{c}</span>
                     </li>
                   ))}
                 </ol>
@@ -819,7 +842,7 @@ function Further({ brand, level, setLevel, ready }: { brand?: Brand; level: Leve
 function Printout({ brand, pick, model, hash }: { brand: Brand; pick: Pick; model: string; hash: string }) {
   return (
     <section className="na-print" aria-hidden="true">
-      <h1>Stop your TV tracking you</h1>
+      <h1>Clean up your non-Android TV</h1>
       <p className="na-print-tv">{tvText(brand, pick, model)}</p>
       <p>About 2 minutes with the TV remote. &ldquo;Turn off&rdquo; means untick or switch off, &ldquo;Turn on&rdquo; means tick or switch on. Every step can be undone the same way.</p>
       {brand.findVersion && <p>{brand.findVersion}</p>}

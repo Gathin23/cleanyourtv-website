@@ -6,14 +6,14 @@ import { variantsFor } from "@/lib/privacy";
 
 const TAG: Record<Item["to"], [string, string]> = { off: ["Turn off", "tg-off"], on: ["Turn on", "tg-on"], press: ["Select", "tg-sel"] };
 
-/** Settings › All Settings › … as keys, the first one lit like the button you press. */
+/** Settings › All Settings › … as one line of text, the last menu name stressed. */
 export function Keys({ crumbs, label }: { crumbs: string[]; label?: string }) {
   return (
     <ol className="na-keys" aria-label={label ? `Menu path, ${label}` : "Menu path"}>
       {crumbs.map((c, i) => (
         <li key={i}>
           {i > 0 && <span className="na-sep" aria-hidden="true">›</span>}
-          <span className={i === 0 ? "na-key na-key0" : "na-key"}>{c}</span>
+          <span className={i === crumbs.length - 1 ? "na-key na-key-last" : "na-key"}>{c}</span>
         </li>
       ))}
     </ol>
