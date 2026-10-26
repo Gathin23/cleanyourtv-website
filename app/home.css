@@ -144,10 +144,10 @@
   flex-direction: column;
   gap: 10px;
 }
-/* Side by side, the photo rises into the empty space beside "the ads." instead of starting under it. */
+/* Side by side, the photo rises beside "the ads." so its bottom edge lines up with the bottom of the TV search box. */
 @media (min-width: 1040px) {
   .hero-grid .ba {
-    margin-top: calc(-1 * min(150px, 13vw));
+    margin-top: calc(-1 * min(118px, 24.6vw - 198px));
   }
 }
 .ba-frame {
