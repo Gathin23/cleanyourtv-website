@@ -15,11 +15,21 @@ export function notAndroid(query: string): string | null {
   return NAMES[k] ?? (k.startsWith("titan") ? "Titan OS" : k.startsWith("firefox") ? "Firefox OS" : m[1]);
 }
 
+// The privacy guide's own tab for each system (#samsung opens its steps); the rest land on the brand picker.
+const GUIDE_TAB: Record<string, string> = { samsung: "samsung", tizen: "samsung", lg: "lg", webos: "lg", roku: "roku", vizio: "vizio", smartcast: "vizio", vidaa: "hisense" };
+
+/** The privacy guide, opened on the steps for the TV in a search when it has some. */
+export function privacyHref(query: string): string {
+  const m = NOT_ANDROID.exec(query);
+  const tab = m ? GUIDE_TAB[m[1].toLowerCase()] : undefined;
+  return tab ? `${PRIVACY_PATH}#${tab}` : PRIVACY_PATH;
+}
+
 /** The page a search goes to: the privacy guide for TVs that are not Android (while it is live), otherwise the TV list, searched. */
 export function routeFor(query: string): string {
   const q = query.trim();
   if (!q) return "/tvs";
-  if (PRIVACY_LIVE && NOT_ANDROID.test(q)) return PRIVACY_PATH;
+  if (PRIVACY_LIVE && NOT_ANDROID.test(q)) return privacyHref(q);
   return `/tvs?q=${encodeURIComponent(q)}`;
 }
 
@@ -50,17 +60,17 @@ export function brandAnswers(counts: Record<string, number>, total: number): Bra
     {
       id: "samsung", label: "Samsung", android: false, tone: "no",
       body: `Samsung TVs run Tizen, so CleanYourTV can't run on them. ${PRIVACY_LIVE ? "The privacy guide still turns off most tracking." : PRIVACY_SOON}`,
-      cta: "Fix my Samsung privacy", href: PRIVACY_LIVE ? PRIVACY_PATH : null,
+      cta: "Fix my Samsung privacy", href: PRIVACY_LIVE ? `${PRIVACY_PATH}#samsung` : null,
     },
     {
       id: "lg", label: "LG", android: false, tone: "no",
       body: `LG TVs run webOS, so CleanYourTV can't run on them. ${PRIVACY_LIVE ? "The privacy guide covers LG step by step." : PRIVACY_SOON}`,
-      cta: "Fix my LG privacy", href: PRIVACY_LIVE ? PRIVACY_PATH : null,
+      cta: "Fix my LG privacy", href: PRIVACY_LIVE ? `${PRIVACY_PATH}#lg` : null,
     },
     {
       id: "roku", label: "Roku", android: false, tone: "no",
       body: `Roku runs its own system, not Android. ${PRIVACY_LIVE ? "You can still limit ad tracking in its settings." : PRIVACY_SOON}`,
-      cta: "Fix my Roku privacy", href: PRIVACY_LIVE ? PRIVACY_PATH : null,
+      cta: "Fix my Roku privacy", href: PRIVACY_LIVE ? `${PRIVACY_PATH}#roku` : null,
     },
     {
       id: "other", label: "Other", android: true, tone: "maybe",

@@ -2,8 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { useState, type KeyboardEvent, type ReactNode } from "react";
-import { notAndroid, routeFor } from "@/lib/checker";
-import { PRIVACY_LIVE, PRIVACY_PATH } from "@/lib/site";
+import { notAndroid, privacyHref, routeFor } from "@/lib/checker";
+import { PRIVACY_LIVE } from "@/lib/site";
 import { matches, norm, searchWords, type TvRow } from "@/lib/tvrows";
 
 const SHOWN = 8;
@@ -78,7 +78,7 @@ export default function CheckForm({ id, placeholder = "Type a brand or model", s
     if (not)
       options.push(
         PRIVACY_LIVE
-          ? { key: "privacy", href: PRIVACY_PATH, kind: "privacy", body: <>{not} isn&apos;t Android <span aria-hidden="true">→</span> privacy guide</> }
+          ? { key: "privacy", href: privacyHref(q), kind: "privacy", body: <>{not} isn&apos;t Android <span aria-hidden="true">→</span> privacy guide</> }
           : { key: "privacy", href: null, kind: "soon", body: <>{not} isn&apos;t Android · privacy guide coming tonight</> },
       );
     if (rows) {

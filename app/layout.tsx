@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fredoka, IBM_Plex_Mono, IBM_Plex_Sans, Outfit, Space_Grotesk, VT323 } from "next/font/google";
+import { Fredoka, IBM_Plex_Mono, IBM_Plex_Sans, Space_Grotesk, VT323 } from "next/font/google";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { loadStars } from "@/lib/data";
@@ -11,8 +11,6 @@ const plex = IBM_Plex_Sans({ subsets: ["latin"], weight: ["400", "500", "600"], 
 const plexMono = IBM_Plex_Mono({ subsets: ["latin"], weight: "400", variable: "--font-plex-mono", display: "swap", preload: false });
 const vt323 = VT323({ subsets: ["latin"], weight: "400", variable: "--font-vt323", display: "swap" });
 const fredoka = Fredoka({ subsets: ["latin"], weight: "600", variable: "--font-fredoka", display: "swap" });
-// Only /privacy still sets Outfit, until the Not Android page replaces it; not preloaded, so other pages never fetch it.
-const outfit = Outfit({ subsets: ["latin"], weight: ["300", "400", "500"], variable: "--font-outfit", display: "swap", preload: false });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://cleanyour.tv"),
@@ -44,7 +42,7 @@ export const viewport: Viewport = { themeColor: "#050505", width: "device-width"
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const stars = await loadStars();
   return (
-    <html lang="en" className={[grotesk, plex, plexMono, vt323, fredoka, outfit].map((f) => f.variable).join(" ")}>
+    <html lang="en" className={[grotesk, plex, plexMono, vt323, fredoka].map((f) => f.variable).join(" ")}>
       <body>
         <a href="#content" className="skip">Skip to content</a>
         <Header stars={stars} />

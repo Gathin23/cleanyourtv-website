@@ -1,15 +1,12 @@
 // Site-wide constants: the nav, the links every page shares, and the image mirrors.
 
-/**
- * Where "Privacy guide" and every Samsung, LG and Roku answer points. /privacy for now; the Not Android
- * page replaces it at /not-android, and this is the one line that switches the whole site over.
- */
-export const PRIVACY_PATH = "/privacy";
+/** Where "Privacy guide" and every Samsung, LG and Roku answer points. The old /privacy redirects here (public/_redirects). */
+export const PRIVACY_PATH = "/not-android";
 /**
  * Whether the privacy guide is linked. While false it is "coming tonight": no nav, menu or footer link, and every
- * Samsung, LG and Roku answer says so instead of linking. Tonight: PRIVACY_PATH = "/not-android" and this true.
+ * Samsung, LG and Roku answer says so instead of linking.
  */
-export const PRIVACY_LIVE = false;
+export const PRIVACY_LIVE = true;
 export const PRIVACY_SOON = "A no-root privacy guide for Samsung, LG and Roku is coming tonight.";
 
 export const COFFEE = "https://buymeacoffee.com/gathint";
