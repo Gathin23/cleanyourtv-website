@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BeforeAfter from "@/components/BeforeAfter";
 import CopyButton from "@/components/CopyButton";
 import HomeCheck from "@/components/HomeCheck";
 import JsonLd from "@/components/JsonLd";
@@ -80,27 +81,7 @@ export default async function Page() {
             </p>
             <HomeCheck counts={counts} total={facts.tvs} />
           </div>
-          <figure className="ba">
-            <div className="ba-screen" role="img" aria-label="Before and after: a TV home screen with a sponsored banner next to the clean CleanYourTV launcher">
-              <div className="ba-before">
-                <span className="ba-tag">Before</span>
-                <div className="ba-banner"><span>Sponsored</span></div>
-                <div className="ba-row">
-                  <i style={{ background: "#6B2E2E" }} /><i style={{ background: "#2E466B" }} /><i style={{ background: "#6B5A2E" }} /><i style={{ background: "#2E6B50" }} />
-                </div>
-                <div className="ba-row">
-                  <i style={{ background: "#552E6B" }} /><i style={{ background: "#6B2E50" }} /><i style={{ background: "#2E5A6B" }} /><i style={{ background: "#6B402E" }} />
-                </div>
-              </div>
-              <div className="ba-after">
-                <span className="ba-tag ba-tag-after">After</span>
-                <div className="ba-clock"><span>21:04</span><span>Good evening</span></div>
-                <div className="ba-row ba-dock">
-                  <i style={{ background: "#FF6B6B" }} /><i style={{ background: "#6FA8FF" }} /><i style={{ background: "#8EE08F" }} /><i style={{ background: "#D58BE6" }} />
-                </div>
-              </div>
-            </div>
-          </figure>
+          <BeforeAfter />
         </div>
       </section>
 

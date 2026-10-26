@@ -82,97 +82,95 @@
   font-weight: 600;
 }
 
-/* The before and after, drawn: a sponsored banner and loud rows, then a clock and four tiles. */
+/* The before and after: two photos of the same TV, lined up bezel to bezel, with a drag line between them. */
 .ba {
   margin: 0;
-}
-.ba-screen {
-  aspect-ratio: 16 / 10;
-  background: #111;
-  border: 2px solid var(--ink);
-  border-radius: 6px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  overflow: hidden;
-}
-.ba-before,
-.ba-after {
-  position: relative;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-}
-.ba-before {
-  background: #1b1b22;
-  padding: 14px;
   gap: 10px;
-  border-right: 2px solid var(--ink);
 }
-.ba-after {
-  background: var(--bg);
-  padding: 18px;
-  justify-content: space-between;
+.ba-frame {
+  position: relative;
+  aspect-ratio: 1280 / 760;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #111;
+  user-select: none;
+}
+.ba-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.ba-img-before {
+  clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0);
 }
 .ba-tag {
   position: absolute;
   top: 10px;
   left: 10px;
-  z-index: 1;
-  padding: 0 6px;
-  background: var(--bg);
+  padding: 2px 8px;
+  background: #050505;
   color: var(--ink);
+  border-radius: 3px;
   font-family: var(--f-ch);
   font-size: 18px;
+  line-height: 1.2;
+  pointer-events: none;
 }
 .ba-tag-after {
   left: auto;
   right: 10px;
   background: var(--mint);
-  color: var(--bg);
+  color: #050505;
 }
-.ba-banner {
-  flex: 0 0 44%;
-  margin-top: 22px;
-  background: #463261;
+.ba-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos, 50%);
+  width: 3px;
+  margin-left: -1.5px;
+  background: var(--ink);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+.ba-knob {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 46px;
+  height: 46px;
+  margin: -23px 0 0 -23px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #050505;
   display: flex;
-  align-items: flex-end;
-  padding: 8px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
 }
-.ba-banner span {
-  padding: 2px 5px;
-  background: var(--amber);
-  color: #111;
-  font-size: 9px;
-  font-weight: 700;
+.ba-range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+  touch-action: pan-y;
 }
-.ba-row {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 5px;
+.ba-frame:has(.ba-range:focus-visible) {
+  outline: 3px solid var(--amber);
+  outline-offset: 3px;
 }
-.ba-row i {
-  display: block;
-  height: 30px;
-}
-.ba-dock {
-  gap: 6px;
-}
-.ba-dock i {
-  height: 34px;
-}
-.ba-clock {
-  display: flex;
-  flex-direction: column;
-  margin-top: 18px;
-}
-.ba-clock span:first-child {
-  font-family: var(--f-head);
-  font-size: 34px;
-  font-weight: 500;
-  line-height: 1.2;
-}
-.ba-clock span:last-child {
-  font-size: 12px;
+.ba-cap {
+  margin: 0;
+  font-size: 18px;
   color: var(--mute);
 }
 
@@ -491,9 +489,6 @@
   }
   .hc {
     gap: 12px;
-  }
-  .ba {
-    display: none;
   }
   .paths {
     padding-top: 8px;
