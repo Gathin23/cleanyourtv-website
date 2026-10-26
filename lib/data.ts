@@ -144,6 +144,17 @@ export async function loadSiteData(): Promise<SiteData> {
   };
 }
 
+// ---- every page: the header's GitHub pill. The same request as loadSiteData's, so a build sends it once.
+
+export async function loadStars(): Promise<number> {
+  const repo = await json<{ stargazers_count: number }>(`https://api.github.com/repos/${REPO}`);
+  return repo?.stargazers_count ?? FALLBACK.stars;
+}
+
+// ---- /press: the launch post's likes, from the same syndication call as the home page's
+
+export const loadTweet = (): Promise<Tweet> => tweet();
+
 // ---- /tvs: the tested-model table from examples/README.md, on its own so the page skips the home page's GitHub calls
 
 export async function loadTvs(): Promise<Tv[]> {
