@@ -727,6 +727,12 @@ select.chip {
   border-color: var(--ink);
   color: var(--bg);
 }
+/* Home's header carries On air and the coffee link too; below 1100 px the coffee link leaves the bar (it stays in the footer and the phone menu). */
+@media (max-width: 1100px) {
+  .head-right .coffee {
+    display: none;
+  }
+}
 @media (max-width: 1040px) {
   .head-bar {
     gap: 12px;

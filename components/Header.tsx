@@ -14,7 +14,7 @@ const NAV: [string, string][] = [
   ["Privacy guide", PRIVACY_PATH],
   ["Add-ons", "/addons"],
   ["Press", "/press"],
-  ["FAQ", "/faq"],
+  ["App", "/app/android"],
 ];
 
 const Cup = () => (
