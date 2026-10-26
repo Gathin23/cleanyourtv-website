@@ -144,6 +144,12 @@
   flex-direction: column;
   gap: 10px;
 }
+/* Side by side, the photo rises into the empty space beside "the ads." instead of starting under it. */
+@media (min-width: 1040px) {
+  .hero-grid .ba {
+    margin-top: calc(-1 * min(150px, 13vw));
+  }
+}
 .ba-frame {
   position: relative;
   aspect-ratio: 1280 / 760;
