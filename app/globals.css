@@ -3370,230 +3370,9 @@ a.tvs-row:focus-visible {
   text-transform: uppercase;
   color: #9a9a9a;
 }
-.pv-stepno {
-  display: block;
-  margin: 0 0 4px;
-  font-size: 14px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #cfffcf;
-}
 .pv h2[id],
 .pv section[id] {
   scroll-margin-top: 24px;
-}
-.pv-toc {
-  margin: 20px 0 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: pv;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  font-size: 16px;
-}
-.pv-toc li {
-  counter-increment: pv;
-}
-.pv-toc a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  padding: 0 16px;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.04);
-}
-.pv-toc a::before {
-  content: counter(pv);
-  color: #9a9a9a;
-}
-.pv-toc a:hover {
-  border-color: rgba(207, 255, 207, 0.4) !important;
-}
-.pv-why {
-  margin: 40px 0 0;
-  padding: 22px 24px;
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
-  font-size: 18px;
-}
-.pv-why ul,
-.pv-list,
-.pv-more {
-  margin: 0 0 16px;
-  padding-left: 22px;
-}
-.pv-why li,
-.pv-list li,
-.pv-more li {
-  margin: 0 0 10px;
-}
-.pv-why li::marker,
-.pv-more li::marker {
-  color: #6f6f6f;
-}
-.pv-list li::marker {
-  color: #9a9a9a;
-}
-
-/* Brand picker: one segmented bar like /addons, the picked brand lit green; every panel shows when JS is off. */
-.pv-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  padding: 6px;
-  margin: 24px 0 0;
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.03);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-}
-a.pv-tab {
-  flex: 1 1 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 48px;
-  padding: 8px 16px;
-  border: 0;
-  border-radius: 16px;
-  color: #bdbdbd !important;
-  font-size: 17px;
-  text-align: center;
-  white-space: nowrap;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
-}
-@media (hover: hover) {
-  a.pv-tab:hover {
-    background: rgba(255, 255, 255, 0.05);
-    color: #fff !important;
-  }
-}
-a.pv-tab[aria-current="true"] {
-  color: #fff !important;
-  background: linear-gradient(180deg, rgba(207, 255, 207, 0.13), rgba(207, 255, 207, 0.04));
-  box-shadow: inset 0 0 0 1px rgba(207, 255, 207, 0.4), 0 8px 28px rgba(0, 0, 0, 0.35);
-}
-.pv-brand {
-  margin: 14px 0 0;
-  padding: 24px 26px 18px;
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
-  font-size: 17px;
-}
-.pv-brand[hidden] {
-  display: none;
-}
-.pv-brand h3 {
-  margin: 0 0 8px;
-  font-size: 24px;
-  font-weight: 400;
-  color: #fff;
-}
-.pv-brand h4 {
-  margin: 22px 0 10px;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #9a9a9a;
-}
-.pv-brand strong {
-  font-weight: 500;
-  color: #fff;
-}
-.pv-acr {
-  margin: 0;
-  color: #d4d4d4;
-}
-.pv-paths {
-  margin: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-.pv-paths > div {
-  display: grid;
-  grid-template-columns: 150px minmax(0, 1fr);
-  gap: 4px 18px;
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-.pv-paths dt {
-  font-size: 15px;
-  color: #9a9a9a;
-  padding-top: 1px;
-}
-.pv-paths dd {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.pv-path {
-  color: #fff;
-  font-weight: 400;
-  line-height: 1.5;
-}
-.pv-step {
-  white-space: nowrap;
-}
-.pv-sep {
-  color: #cfffcf;
-  opacity: 0.6;
-}
-.pv-note {
-  font-size: 15px;
-  color: #bdbdbd;
-}
-.pv-more {
-  color: #d4d4d4;
-}
-.pv-breaks {
-  margin: 4px 0 10px;
-  padding: 12px 16px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.04);
-  font-size: 16px;
-  color: #bdbdbd;
-}
-.pv-src {
-  margin: 0;
-  font-size: 14px;
-  color: #8a8a8a;
-}
-.pv-src a {
-  white-space: nowrap;
-}
-@media (max-width: 640px) {
-  .pv-why,
-  .pv-brand {
-    padding: 18px 16px;
-  }
-  .pv-paths > div {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .pv-step {
-    white-space: normal;
-  }
-  /* phones: three rows on a six-column grid, the long Google TV label on a row of its own */
-  .pv-tabs {
-    display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-  }
-  a.pv-tab {
-    grid-column: span 2;
-    font-size: 16px;
-    padding: 8px 6px;
-  }
-  a.pv-tab:nth-child(4),
-  a.pv-tab:nth-child(5) {
-    grid-column: span 3;
-  }
-  a.pv-tab:nth-child(6) {
-    grid-column: span 6;
-  }
 }
 
 /* Step 3: the three DNS options, the NextDNS warning, the disclosures and the tables. */
@@ -3850,6 +3629,931 @@ a.pv-tab[aria-current="true"] {
 .pv-sources li {
   margin: 0 0 6px;
   break-inside: avoid;
+}
+.pv-list {
+  margin: 0 0 16px;
+  padding-left: 22px;
+}
+.pv-list li {
+  margin: 0 0 10px;
+}
+.pv-list li::marker {
+  color: #9a9a9a;
+}
+
+/* /privacy, "Fix my TV": phone-first. The brand picker, the year finder, one step card at a time, the three levels
+   and the network check. Big type and 44 px+ targets: people read it at arm's length with a remote in the other hand. */
+.pv2-h1 {
+  margin: 0 0 8px;
+  font-size: clamp(34px, 8vw, 46px);
+  line-height: 1.08;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  color: #fff;
+}
+.pv2-sub {
+  margin: 0 0 24px;
+  font-size: 19px;
+  color: #bdbdbd;
+}
+.pv2-h2 {
+  margin: 0 0 14px;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #fff;
+}
+.pv2-h3 {
+  margin: 28px 0 6px;
+  font-size: 20px;
+  font-weight: 400;
+  color: #fff;
+}
+.pv2 strong {
+  font-weight: 500;
+  color: #fff;
+}
+.pv2 p {
+  margin: 0 0 14px;
+}
+.pv2-guide h2:focus {
+  outline: none;
+}
+.pv2-guide h2:focus-visible {
+  outline: 2px solid #cfffcf;
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+/* Buttons: pills like the home page's wizard, the main one in mint. */
+.pv2-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 10px 20px;
+  border-radius: 24px;
+  border: 0 !important;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  color: #fff !important;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+.pv2-btn:active {
+  transform: scale(0.98);
+}
+@media (hover: hover) {
+  .pv2-btn:hover {
+    background: rgba(255, 255, 255, 0.16);
+  }
+  .pv2-primary:hover {
+    background: #e2ffe2;
+  }
+}
+.pv2-btn:focus-visible {
+  outline: 2px solid #cfffcf;
+  outline-offset: 2px;
+}
+.pv2-btn:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+.pv2-primary {
+  min-height: 56px;
+  background: #cfffcf;
+  box-shadow: none;
+  color: #050505 !important;
+  font-weight: 500;
+  font-size: 18px;
+}
+.pv2-primary[aria-pressed="true"] {
+  background: rgba(207, 255, 207, 0.16);
+  box-shadow: inset 0 0 0 1px rgba(207, 255, 207, 0.5);
+  color: #cfffcf !important;
+}
+.pv2-wide {
+  width: 100%;
+  margin-top: 10px;
+}
+.pv2-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0;
+  border: 0 !important;
+  background: none;
+  font: inherit;
+  font-size: 16px;
+  color: #cfffcf !important;
+  text-decoration: underline;
+  text-decoration-color: rgba(207, 255, 207, 0.35);
+  text-underline-offset: 3px;
+  cursor: pointer;
+  text-align: left;
+}
+.pv2-link:focus-visible {
+  outline: 2px solid #cfffcf;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.pv2-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 12px;
+}
+.pv2-row > .pv2-btn {
+  flex: 1 1 220px;
+}
+
+/* Levels: level 1 is open; 2 and 3 fold. */
+.pv2-level {
+  margin: 0 0 14px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.025);
+}
+.pv2-level1 {
+  padding: 0 0 4px;
+  border-color: rgba(207, 255, 207, 0.22);
+  background: linear-gradient(180deg, rgba(207, 255, 207, 0.05), rgba(207, 255, 207, 0.01) 220px);
+}
+.pv2-levelhead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 64px;
+  margin: 0 !important;
+  padding: 12px 18px;
+  cursor: pointer;
+  list-style: none;
+  border-radius: 22px;
+}
+.pv2-levelhead::-webkit-details-marker {
+  display: none;
+}
+.pv2-levelhead:focus-visible {
+  outline: 2px solid #cfffcf;
+  outline-offset: 2px;
+}
+.pv2-levelhead-static {
+  cursor: default;
+  min-height: 56px;
+  padding-bottom: 0;
+}
+.pv2-levelno {
+  flex-shrink: 0;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #cfffcf;
+  background: rgba(207, 255, 207, 0.1);
+}
+.pv2-levelname {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 10px;
+  font-size: 20px;
+  color: #fff;
+}
+.pv2-leveltime {
+  font-size: 15px;
+  color: #9a9a9a;
+}
+.pv2-level .pv-chev,
+.pv2-fold .pv-chev {
+  color: #cfffcf;
+}
+.pv2-level[open] > summary .pv-chev,
+.pv2-fold[open] > summary .pv-chev {
+  transform: rotate(180deg);
+}
+.pv2-levelbody {
+  padding: 4px 18px 18px;
+  font-size: 18px;
+}
+.pv2-mini {
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+  counter-reset: pv2;
+  display: grid;
+  gap: 10px;
+}
+.pv2-mini li {
+  counter-increment: pv2;
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  gap: 2px 12px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+}
+.pv2-mini li::before {
+  content: counter(pv2);
+  grid-row: span 2;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  color: #050505;
+  background: #cfffcf;
+}
+.pv2-mini span {
+  color: #bdbdbd;
+  font-size: 17px;
+}
+
+/* The guide inside level 1. */
+.pv2-guide {
+  padding: 4px 18px 14px;
+}
+.pv2-picker .pv2-h2 {
+  margin-top: 6px;
+}
+.pv2-brands {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+@media (min-width: 700px) {
+  .pv2-brands {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+/* Under the six brands: the one line for Google TV and Android TV. */
+.pv2-google {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 8px;
+  margin: 12px 0 2px !important;
+  font-size: 16px;
+  color: #9a9a9a;
+}
+.pv2 a.pv2-google-go {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  border-bottom: 0;
+  text-decoration: underline;
+  text-decoration-color: rgba(207, 255, 207, 0.35);
+  text-underline-offset: 3px;
+  font-size: 17px;
+}
+.pv2 a.pv2-brand {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  min-height: 84px;
+  height: 100%;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 0;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+a.pv2-brand:active {
+  transform: scale(0.98);
+}
+@media (hover: hover) {
+  a.pv2-brand:hover {
+    background: rgba(207, 255, 207, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(207, 255, 207, 0.45);
+  }
+}
+.pv2-brand-name {
+  font-size: 21px;
+  line-height: 1.2;
+}
+.pv2-brand-os {
+  font-size: 14px;
+  color: #9a9a9a;
+}
+.pv2-card {
+  padding: 2px 0 0;
+}
+.pv2-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 14px;
+  margin: 0 0 6px;
+}
+.pv2-picked {
+  font-size: 15px;
+  color: #9a9a9a;
+}
+.pv2-picked .pv2-link {
+  min-width: 44px;
+  justify-content: center;
+  font-size: 15px;
+}
+.pv2-intro {
+  font-size: 17px;
+  color: #bdbdbd;
+}
+.pv2-title {
+  margin: 4px 0 14px;
+  font-size: clamp(26px, 6.6vw, 32px);
+  line-height: 1.18;
+  font-weight: 400;
+  color: #fff;
+}
+.pv2-lead {
+  font-size: 18px;
+  color: #d4d4d4;
+}
+.pv2-progress {
+  margin: 4px 0 10px;
+}
+.pv2-count {
+  margin: 0 0 6px;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #cfffcf;
+}
+.pv2-countdone {
+  color: #9a9a9a;
+}
+.pv2-track {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+.pv2-track > span {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  background: #cfffcf;
+  transition: width 0.3s ease;
+}
+
+/* The menu path, drawn like the TV draws it: one chip per screen, ▸ between, the switch at the end. */
+.pv2-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 0;
+  margin: 0 0 10px;
+  padding: 14px;
+  list-style: none;
+  border-radius: 16px;
+  background: #0d1013;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+.pv2-crumb {
+  display: inline-flex;
+  align-items: center;
+  font-size: 19px;
+  line-height: 1.3;
+  color: #fff;
+}
+.pv2-crumb + .pv2-crumb::before {
+  content: "▸";
+  margin: 0 8px;
+  font-size: 15px;
+  color: #cfffcf;
+  opacity: 0.7;
+}
+.pv2-target {
+  font-weight: 500;
+  color: #cfffcf;
+}
+.pv2-target > span[aria-hidden] {
+  margin-right: 6px;
+}
+/* Several switches on one screen: one per line under the path. */
+.pv2-items {
+  margin: -4px 0 10px;
+  padding: 10px 14px;
+  list-style: none;
+  border-radius: 0 0 16px 16px;
+  background: #0d1013;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+.pv2-crumbs:has(+ .pv2-items) {
+  border-radius: 16px 16px 0 0;
+  margin-bottom: 0;
+}
+.pv2-items li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-height: 36px;
+  padding: 4px 0;
+  font-size: 18px;
+  line-height: 1.35;
+}
+.pv2-items li + li {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+.pv2-items li[data-to="on"] {
+  color: #fff;
+}
+.pv2-vlabel {
+  margin: 0 0 6px !important;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #9a9a9a;
+}
+.pv2-variant + .pv2-variant {
+  margin-top: 14px;
+}
+.pv2-nomatch {
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(255, 220, 150, 0.08);
+  color: #ffdc96;
+  font-size: 16px;
+}
+.pv2-text {
+  font-size: 19px;
+  color: #fff;
+}
+.pv2-note {
+  font-size: 16px;
+  color: #bdbdbd;
+}
+.pv2-undo {
+  font-size: 16px;
+  color: #bdbdbd;
+}
+.pv2-undo strong {
+  color: #cfffcf;
+  font-weight: 400;
+}
+.pv2-checks {
+  margin: 0 0 10px;
+  padding: 0;
+  list-style: none;
+  font-size: 15px;
+  color: #cfffcf;
+}
+.pv2-src {
+  font-size: 14px;
+  color: #8a8a8a;
+}
+.pv2-src a {
+  white-space: nowrap;
+}
+.pv2-actions {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0 6px;
+}
+.pv2-nav {
+  display: flex;
+  gap: 10px;
+}
+.pv2-nav > .pv2-btn {
+  flex: 1;
+}
+.pv2-end {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.pv2-different {
+  margin: 4px 0 0 !important;
+  font-size: 15px;
+  color: #9a9a9a;
+}
+
+/* Year finder. */
+.pv2-model label {
+  display: block;
+  margin: 0 0 6px;
+  font-size: 15px;
+  color: #bdbdbd;
+}
+.pv2-model-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 12px;
+}
+.pv2-model input {
+  flex: 1 1 220px;
+  min-width: 0;
+  height: 56px;
+  padding: 0 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+  font: inherit;
+  font-size: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.pv2-model input::placeholder {
+  color: #7a7a7a;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 17px;
+}
+.pv2-model input:focus {
+  outline: none;
+  border-color: #cfffcf;
+  box-shadow: 0 0 0 3px rgba(207, 255, 207, 0.22);
+}
+.pv2-model .pv2-btn {
+  flex: 0 0 auto;
+  min-height: 56px;
+}
+.pv2-result {
+  margin: 0 0 14px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  font-size: 17px;
+}
+.pv2-result[data-tone="ok"] {
+  background: rgba(207, 255, 207, 0.07);
+  box-shadow: inset 0 0 0 1px rgba(207, 255, 207, 0.35);
+}
+.pv2-result[data-tone="no"],
+.pv2-result[data-tone="warn"] {
+  background: rgba(255, 220, 150, 0.06);
+  box-shadow: inset 0 0 0 1px rgba(255, 220, 150, 0.3);
+}
+.pv2-result > p:last-child {
+  margin-bottom: 0;
+}
+.pv2-result .pv2-btn {
+  width: 100%;
+}
+.pv2-help {
+  font-size: 16px;
+  color: #bdbdbd;
+}
+.pv2-or {
+  margin: 18px 0 8px !important;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #9a9a9a;
+}
+.pv2-years {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+.pv2-years .pv2-btn {
+  padding: 8px 6px;
+  font-size: 16px;
+}
+.pv2-years .pv2-btn:last-child {
+  grid-column: span 2;
+}
+@media (max-width: 420px) {
+  .pv2-years {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .pv2-years .pv2-btn:last-child {
+    grid-column: span 2;
+  }
+}
+
+/* Done screen. */
+.pv2-skipped ul {
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+}
+.pv2-which {
+  display: grid;
+  gap: 6px;
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: #bdbdbd;
+}
+.pv2-which select {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 0 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #15181c;
+  color: #fff;
+  font: inherit;
+  font-size: 16px;
+  max-width: 100%;
+}
+.pv2-msg {
+  font-size: 16px;
+  color: #cfffcf;
+}
+.pv2-copy {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  height: 48px;
+  padding: 0 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+  font: inherit;
+  font-size: 15px;
+}
+
+/* Network check. */
+.pv2-section {
+  margin: 30px 0 14px;
+  padding: 18px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.025);
+}
+.pv2-fine {
+  margin: 0 0 16px;
+  padding-left: 20px;
+  font-size: 15px;
+  color: #9a9a9a;
+}
+.pv2-fine li {
+  margin: 0 0 4px;
+}
+.pv2-net > .pv2-btn {
+  width: 100%;
+}
+.pv2-netout {
+  margin-top: 14px;
+}
+.pv2-netlist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.pv2-netlist > .pv2-result {
+  margin: 0 0 10px;
+}
+.pv2-result[data-tone="maybe"] {
+  background: rgba(255, 255, 255, 0.04);
+}
+.pv2-netbrand {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 12px;
+  margin: 0 !important;
+}
+.pv2-netbrand span {
+  color: #d4d4d4;
+}
+.pv2-result[data-tone="ok"] .pv2-netbrand span {
+  color: #cfffcf;
+}
+.pv2-result[data-tone="warn"] .pv2-netbrand span {
+  color: #ffdc96;
+}
+.pv2-hosts {
+  margin: 8px 0;
+  padding: 0;
+  list-style: none;
+}
+.pv2-hosts code {
+  font-size: 14px;
+}
+.pv2 a.pv2-more {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  border-bottom: 0;
+  text-decoration: underline;
+  text-decoration-color: rgba(207, 255, 207, 0.35);
+  text-underline-offset: 3px;
+}
+
+/* The folds under the levels. */
+.pv2-folds {
+  margin: 14px 0 0;
+  display: grid;
+  gap: 10px;
+}
+.pv2-fold {
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+}
+.pv2-fold > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 56px;
+  padding: 10px 18px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 18px;
+  color: #fff;
+  border-radius: 18px;
+}
+.pv2-fold > summary::-webkit-details-marker {
+  display: none;
+}
+.pv2-fold > summary:focus-visible {
+  outline: 2px solid #cfffcf;
+  outline-offset: 2px;
+}
+.pv2-foldbody {
+  padding: 2px 18px 18px;
+  font-size: 17px;
+}
+.pv2-take {
+  padding: 14px 16px;
+  border-left: 3px solid #cfffcf;
+  border-radius: 4px 12px 12px 4px;
+  background: rgba(207, 255, 207, 0.05);
+  color: #fff;
+}
+.pv2-allbrand + .pv2-allbrand {
+  margin-top: 28px;
+}
+.pv2-allbrand h3 {
+  margin: 18px 0 6px;
+  font-size: 22px;
+  font-weight: 400;
+  color: #fff;
+}
+.pv2-list {
+  margin: 0;
+  padding-left: 24px;
+}
+.pv2-list > li {
+  margin: 0 0 18px;
+}
+.pv2-list > li::marker {
+  color: #cfffcf;
+}
+.pv2-list h4 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+}
+.pv2-list .pv2-crumb {
+  font-size: 16px;
+}
+@media (max-width: 640px) {
+  .pv2-guide {
+    padding: 2px 14px 12px;
+  }
+  .pv2-levelbody,
+  .pv2-foldbody {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .pv2-section {
+    padding: 16px 14px;
+  }
+  .pv2-crumbs {
+    padding: 12px;
+  }
+  .pv2 .pv-details > :not(summary) {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+  .pv2 .pv-table tr {
+    padding: 10px 12px;
+  }
+  .pv2 .pv-table code {
+    font-size: 12.5px;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+}
+
+/* The printout: only the picked TV's steps, black on white. The rest of the page stays on screen. */
+.pv2-print {
+  display: none;
+}
+@media print {
+  html,
+  body {
+    height: auto !important;
+    overflow: visible !important;
+    background: #fff !important;
+  }
+  html[data-pv-print] body > :not(.pv2-print) {
+    display: none !important;
+  }
+  html[data-pv-print] .pv2-print {
+    display: block;
+    color: #000;
+    font-family: var(--font-outfit), Outfit, sans-serif;
+    font-size: 13pt;
+    line-height: 1.45;
+  }
+  .pv2-print h1 {
+    margin: 0 0 4pt;
+    font-size: 22pt;
+    font-weight: 500;
+  }
+  .pv2-print-tv {
+    margin: 0 0 8pt;
+    font-size: 15pt;
+    font-weight: 500;
+  }
+  .pv2-print p {
+    margin: 0 0 8pt;
+  }
+  .pv2-print .pv2-list > li {
+    margin-bottom: 12pt;
+  }
+  .pv2-print .pv2-variant {
+    break-inside: avoid;
+  }
+  .pv2-print .pv2-list h4 {
+    break-after: avoid;
+  }
+  .pv2-print .pv2-list > li::marker {
+    color: #000;
+  }
+  .pv2-print .pv2-list h4 {
+    color: #000;
+    font-size: 14pt;
+  }
+  .pv2-print .pv2-crumbs {
+    padding: 6pt 8pt;
+    background: none;
+    box-shadow: none;
+    border: 1pt solid #999;
+    border-radius: 6pt;
+  }
+  .pv2-print .pv2-crumb,
+  .pv2-print .pv2-target,
+  .pv2-print .pv2-text,
+  .pv2-print .pv2-note,
+  .pv2-print .pv2-undo,
+  .pv2-print .pv2-undo strong,
+  .pv2-print .pv2-vlabel,
+  .pv2-print strong {
+    color: #000 !important;
+    font-size: 12pt;
+  }
+  .pv2-print .pv2-crumb + .pv2-crumb::before {
+    color: #000;
+  }
+  @page {
+    margin: 14mm;
+  }
+  .pv2-print .pv2-items {
+    margin: 0 0 6pt;
+    padding: 4pt 8pt;
+    background: none;
+    box-shadow: none;
+    border: 1pt solid #999;
+    border-top: 0;
+    border-radius: 0 0 6pt 6pt;
+  }
+  .pv2-print .pv2-items li {
+    min-height: 0;
+    padding: 2pt 0;
+    color: #000 !important;
+    font-size: 12pt;
+  }
+  .pv2-print .pv2-crumbs:has(+ .pv2-items) {
+    border-radius: 6pt 6pt 0 0;
+  }
+  .pv2-print .pv2-src,
+  .pv2-print .pv2-nomatch {
+    display: none;
+  }
+  .pv2-print-foot {
+    margin-top: 14pt !important;
+    font-size: 10pt;
+    color: #444;
+  }
 }
 
 /* Home: the App pill on every size; on narrow phones it takes Press's place
