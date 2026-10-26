@@ -6,12 +6,12 @@ import { useEffect, useRef, useState } from "react";
 import CheckForm from "@/components/CheckForm";
 import { Mark, Wordmark } from "@/components/Logo";
 import { GH } from "@/lib/parse";
-import { CHANNELS, COFFEE, PRIVACY_PATH, shortCount } from "@/lib/site";
+import { CHANNELS, COFFEE, PRIVACY_LIVE, PRIVACY_PATH, shortCount } from "@/lib/site";
 
 const NAV: [string, string][] = [
   ["TV list", "/tvs"],
   ["Set up", "/#setup"],
-  ["Privacy guide", PRIVACY_PATH],
+  ...(PRIVACY_LIVE ? [["Privacy guide", PRIVACY_PATH] as [string, string]] : []),
   ["Add-ons", "/addons"],
   ["Press", "/press"],
   ["App", "/app/android"],
@@ -68,7 +68,7 @@ export default function Header({ stars }: { stars: number }) {
       <header className="site-head">
         <nav aria-label="Main" className="wrap head-bar">
           <Link href="/" className="logo" aria-label="CleanYourTV, home">
-            <Mark />
+            <Mark id="logo-glow-head" />
             <Wordmark />
           </Link>
           <div className="navlinks">

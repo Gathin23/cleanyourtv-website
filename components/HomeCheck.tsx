@@ -28,7 +28,7 @@ export default function HomeCheck({ counts, total }: { counts: Record<string, nu
             <div className="result-body">
               <strong>{a.id === "other" ? "Another brand" : a.label}</strong>
               <p>{a.body}</p>
-              <Link href={a.href}>{a.cta}</Link>
+              {a.href ? <Link href={a.href}>{a.cta}</Link> : <span className="soon">Coming tonight</span>}
             </div>
           </div>
         )}

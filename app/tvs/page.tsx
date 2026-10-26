@@ -4,7 +4,7 @@ import TvFinder from "@/components/TvFinder";
 import { loadTvs } from "@/lib/data";
 import { GH, brandsOf } from "@/lib/parse";
 import { SITE, breadcrumbs, pageMeta } from "@/lib/seo";
-import { PRIVACY_PATH } from "@/lib/site";
+import { PRIVACY_LIVE, PRIVACY_PATH } from "@/lib/site";
 import { tvRow } from "@/lib/tvrows";
 import "./tvs.css";
 
@@ -20,7 +20,7 @@ export const metadata = pageMeta("/tvs", `${title} · CleanYourTV`, description)
 const PLATFORMS = [
   { tone: "yes", mark: "M4 12l5 5L20 6", label: "Works", name: "Android TV, Google TV", what: "The cleanup and the new home screen. The home screen needs Android 8.0 or newer.", cta: "Set it up in three steps", href: "/#setup" },
   { tone: "part", mark: "M5 12h14", label: "Cleanup only", name: "Fire TV", what: "The ads and bloat go, but Fire OS keeps its own home screen.", cta: "Set it up", href: "/#setup" },
-  { tone: "no", mark: "M6 6l12 12M18 6L6 18", label: "Not supported", name: "Samsung, LG, Roku", what: "They run other systems (Tizen, webOS, Roku OS) with no ADB. You can still turn off most of the tracking.", cta: "Use the privacy guide", href: PRIVACY_PATH },
+  { tone: "no", mark: "M6 6l12 12M18 6L6 18", label: "Not supported", name: "Samsung, LG, Roku", what: `They run other systems (Tizen, webOS, Roku OS) with no ADB.${PRIVACY_LIVE ? " You can still turn off most of the tracking." : ""}`, cta: "Use the privacy guide", href: PRIVACY_PATH },
 ];
 
 export default async function Tvs() {
@@ -55,7 +55,11 @@ export default async function Tvs() {
             </span>
             <h2>{x.name}</h2>
             <p>{x.what}</p>
-            <Link href={x.href} className="tvs-cta">{x.cta}</Link>
+            {x.href === PRIVACY_PATH && !PRIVACY_LIVE ? (
+              <p className="soon-cta">Privacy guide coming tonight</p>
+            ) : (
+              <Link href={x.href} className="tvs-cta">{x.cta}</Link>
+            )}
           </div>
         ))}
       </section>

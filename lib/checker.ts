@@ -1,6 +1,6 @@
 // "Does it work on my TV?": where a typed brand or model goes, and the answers behind the brand chips.
 // Client-safe (no Node imports): the home hero and the phone menu both use it.
-import { PRIVACY_PATH } from "./site";
+import { PRIVACY_LIVE, PRIVACY_PATH, PRIVACY_SOON } from "./site";
 
 // Systems with no ADB, so nothing to switch off from outside: their owners get the privacy guide.
 const NOT_ANDROID = /\b(samsung|tizen|lg|webos|roku|vizio|smartcast|vidaa|titan ?os|saphi|my home screen|firefox ?os)\b/i;
@@ -15,18 +15,18 @@ export function notAndroid(query: string): string | null {
   return NAMES[k] ?? (k.startsWith("titan") ? "Titan OS" : k.startsWith("firefox") ? "Firefox OS" : m[1]);
 }
 
-/** The page a search goes to: the privacy guide for TVs that are not Android, otherwise the TV list, searched. */
+/** The page a search goes to: the privacy guide for TVs that are not Android (while it is live), otherwise the TV list, searched. */
 export function routeFor(query: string): string {
   const q = query.trim();
   if (!q) return "/tvs";
-  if (NOT_ANDROID.test(q)) return PRIVACY_PATH;
+  if (PRIVACY_LIVE && NOT_ANDROID.test(q)) return PRIVACY_PATH;
   return `/tvs?q=${encodeURIComponent(q)}`;
 }
 
 export type Tone = "yes" | "maybe" | "no";
 
 /** A brand chip: its dot (an Android brand or not), the answer it gives, and where that answer leads. */
-export type BrandAnswer = { id: string; label: string; android: boolean; tone: Tone; body: string; cta: string; href: string };
+export type BrandAnswer = { id: string; label: string; android: boolean; tone: Tone; body: string; cta: string; href: string | null };
 
 /** The chips' answers. `counts` is tested models per brand (lowercase), from the TV list; `total` is every tested model. */
 export function brandAnswers(counts: Record<string, number>, total: number): BrandAnswer[] {
@@ -49,18 +49,18 @@ export function brandAnswers(counts: Record<string, number>, total: number): Bra
     },
     {
       id: "samsung", label: "Samsung", android: false, tone: "no",
-      body: "Samsung TVs run Tizen, so CleanYourTV can't run on them. The privacy guide still turns off most tracking.",
-      cta: "Fix my Samsung privacy", href: PRIVACY_PATH,
+      body: `Samsung TVs run Tizen, so CleanYourTV can't run on them. ${PRIVACY_LIVE ? "The privacy guide still turns off most tracking." : PRIVACY_SOON}`,
+      cta: "Fix my Samsung privacy", href: PRIVACY_LIVE ? PRIVACY_PATH : null,
     },
     {
       id: "lg", label: "LG", android: false, tone: "no",
-      body: "LG TVs run webOS, so CleanYourTV can't run on them. The privacy guide covers LG step by step.",
-      cta: "Fix my LG privacy", href: PRIVACY_PATH,
+      body: `LG TVs run webOS, so CleanYourTV can't run on them. ${PRIVACY_LIVE ? "The privacy guide covers LG step by step." : PRIVACY_SOON}`,
+      cta: "Fix my LG privacy", href: PRIVACY_LIVE ? PRIVACY_PATH : null,
     },
     {
       id: "roku", label: "Roku", android: false, tone: "no",
-      body: "Roku runs its own system, not Android. You can still limit ad tracking in its settings.",
-      cta: "Fix my Roku privacy", href: PRIVACY_PATH,
+      body: `Roku runs its own system, not Android. ${PRIVACY_LIVE ? "You can still limit ad tracking in its settings." : PRIVACY_SOON}`,
+      cta: "Fix my Roku privacy", href: PRIVACY_LIVE ? PRIVACY_PATH : null,
     },
     {
       id: "other", label: "Other", android: true, tone: "maybe",

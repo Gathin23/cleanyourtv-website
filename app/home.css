@@ -608,3 +608,9 @@
     height: 22px;
   }
 }
+
+/* An answer whose link isn't live yet ends on the "Coming tonight" label instead. */
+.result-body .soon {
+  align-self: flex-start;
+  margin-top: 6px;
+}

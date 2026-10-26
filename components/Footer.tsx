@@ -1,8 +1,8 @@
 import Link from "next/link";
 import FooterNote from "@/components/FooterNote";
-import { Wordmark } from "@/components/Logo";
+import { Mark, Wordmark } from "@/components/Logo";
 import { GH } from "@/lib/parse";
-import { COFFEE, ON_AIR_SINCE, PRIVACY_PATH } from "@/lib/site";
+import { COFFEE, ON_AIR_SINCE, PRIVACY_LIVE, PRIVACY_PATH } from "@/lib/site";
 
 const since = new Date(ON_AIR_SINCE + "T00:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
 
@@ -12,13 +12,16 @@ export default function Footer() {
     <footer className="site-foot">
       <div className="wrap foot-grid">
         <div className="foot-brand">
-          <Wordmark />
+          <Link href="/" className="logo foot-logo" aria-label="CleanYourTV, home">
+            <Mark id="logo-glow-foot" />
+            <Wordmark />
+          </Link>
           <span className="foot-since">On air since {since}</span>
         </div>
         <nav aria-label="Use it" className="foot-nav">
           <Link href="/tvs">TV list</Link>
           <Link href="/#setup">Set up</Link>
-          <Link href={PRIVACY_PATH}>Privacy guide</Link>
+          {PRIVACY_LIVE && <Link href={PRIVACY_PATH}>Privacy guide</Link>}
           <Link href="/app/android">Android app</Link>
         </nav>
         <nav aria-label="Build" className="foot-nav">

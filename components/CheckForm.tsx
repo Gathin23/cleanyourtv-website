@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState, type KeyboardEvent, type ReactNode } from "react";
 import { notAndroid, routeFor } from "@/lib/checker";
-import { PRIVACY_PATH } from "@/lib/site";
+import { PRIVACY_LIVE, PRIVACY_PATH } from "@/lib/site";
 import { matches, norm, searchWords, type TvRow } from "@/lib/tvrows";
 
 const SHOWN = 8;
@@ -47,7 +47,8 @@ function highlight(text: string, words: string[]): ReactNode[] {
   return out;
 }
 
-type Option = { key: string; href: string; kind: "privacy" | "tv" | "all"; body: ReactNode };
+/** href null: a line that informs but can't be picked (the privacy guide, until it is live). */
+type Option = { key: string; href: string | null; kind: "privacy" | "soon" | "tv" | "all"; body: ReactNode };
 
 /**
  * "Does it work on my TV?": a combobox over the tested models. Typing two letters lists the matches, a TV that is not
@@ -74,7 +75,12 @@ export default function CheckForm({ id, placeholder = "Type a brand or model", s
   const options: Option[] = [];
   if (q.trim().length >= 2) {
     const not = notAndroid(q);
-    if (not) options.push({ key: "privacy", href: PRIVACY_PATH, kind: "privacy", body: <>{not} isn&apos;t Android <span aria-hidden="true">→</span> privacy guide</> });
+    if (not)
+      options.push(
+        PRIVACY_LIVE
+          ? { key: "privacy", href: PRIVACY_PATH, kind: "privacy", body: <>{not} isn&apos;t Android <span aria-hidden="true">→</span> privacy guide</> }
+          : { key: "privacy", href: null, kind: "soon", body: <>{not} isn&apos;t Android · privacy guide coming tonight</> },
+      );
     if (rows) {
       const hits = rows.filter((t) => matches(t, words));
       // Models whose brand and name carry the words come before ones that only match on a chip or a folder name,
@@ -111,20 +117,25 @@ export default function CheckForm({ id, placeholder = "Type a brand or model", s
     }
   }
   const expanded = open && options.length > 0;
-  const current = expanded && active >= 0 && active < options.length ? active : -1;
+  const current = expanded && active >= 0 && active < options.length && options[active].href ? active : -1;
+  // The next option that can be picked, from `from` in direction `step`; -1 back at the input.
+  const step = (from: number, dir: 1 | -1) => {
+    for (let i = from + dir; i >= 0 && i < options.length; i += dir) if (options[i].href) return i;
+    return dir === 1 ? from : -1;
+  };
 
   const onKey = (e: KeyboardEvent<HTMLInputElement>) => {
     load();
     if (e.key === "ArrowDown") {
       e.preventDefault();
       setOpen(true);
-      setActive(Math.min(current + 1, options.length - 1));
+      setActive(step(current, 1));
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
-      setActive(Math.max(current - 1, -1));
+      setActive(step(current, -1));
     } else if (e.key === "Enter" && current >= 0) {
       e.preventDefault();
-      go(options[current].href);
+      go(options[current].href!);
     } else if (e.key === "Escape" && expanded) {
       // Close the list only; the phone menu around it stays open.
       e.preventDefault();
@@ -187,10 +198,11 @@ export default function CheckForm({ id, placeholder = "Type a brand or model", s
               id={`${id}-opt-${i}`}
               role="option"
               aria-selected={i === current}
+              aria-disabled={o.href ? undefined : true}
               className={`cb-opt cb-${o.kind}`}
               onMouseDown={(e) => e.preventDefault()}
-              onMouseMove={() => i !== current && setActive(i)}
-              onClick={() => go(o.href)}
+              onMouseMove={() => o.href && i !== current && setActive(i)}
+              onClick={() => o.href && go(o.href)}
             >
               {o.body}
             </li>

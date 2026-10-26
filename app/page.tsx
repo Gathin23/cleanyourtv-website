@@ -7,7 +7,7 @@ import { loadFacts, loadSiteData } from "@/lib/data";
 import { GH } from "@/lib/parse";
 import { COVERAGE_COUNTRIES, COVERAGE_TOTAL } from "@/lib/press";
 import { homeGraph, pageMeta } from "@/lib/seo";
-import { ON_AIR_SINCE, PRESS, PRESS_LOGO_W, PRIVACY_PATH, TRENDSHIFT, cdn, roundedCount } from "@/lib/site";
+import { ON_AIR_SINCE, PRESS, PRESS_LOGO_W, PRIVACY_LIVE, PRIVACY_PATH, PRIVACY_SOON, TRENDSHIFT, cdn, roundedCount } from "@/lib/site";
 import "./home.css";
 
 // Content comes from the cleanyourtv repo and GitHub at build time; the deploy workflow rebuilds the site every hour.
@@ -97,12 +97,26 @@ export default async function Page() {
       <section aria-labelledby="paths-h" className="wrap paths">
         <h2 id="paths-h" className="kicker c-mute">Pick your button</h2>
         <div className="tiles">
-          {TILES.map(([tone, label, href], i) => (
-            <Link key={label} href={href} className={`tile ${tone}`}>
-              <span className="tile-n">{i + 1}</span>
-              <span className="tile-t">{label}</span>
-            </Link>
-          ))}
+          {TILES.map(([tone, label, href], i) =>
+            href === PRIVACY_PATH && !PRIVACY_LIVE ? (
+              // The privacy guide isn't out yet: the tile stays, as a plain panel that says when.
+              <div key={label} className={`tile tile-soon ${tone}`}>
+                <span className="tile-n">
+                  {i + 1}
+                  <span className="soon">Coming tonight</span>
+                </span>
+                <span className="stack tile-soon-text">
+                  <span className="tile-t">{label}</span>
+                  <span className="tile-sub">No-root privacy guide for Samsung, LG, Roku and more.</span>
+                </span>
+              </div>
+            ) : (
+              <Link key={label} href={href} className={`tile ${tone}`}>
+                <span className="tile-n">{i + 1}</span>
+                <span className="tile-t">{label}</span>
+              </Link>
+            ),
+          )}
         </div>
       </section>
 
@@ -182,9 +196,16 @@ export default async function Page() {
           <div className="na-text">
             <p className="kicker">CH 02 · Not Android?</p>
             <h2 id="na-h" className="na-h">Samsung, LG or Roku?</h2>
-            <p>CleanYourTV can&apos;t run on these. Our privacy guide still turns off most of the tracking, step by step, no root needed.</p>
+            <p>
+              CleanYourTV can&apos;t run on these.{" "}
+              {PRIVACY_LIVE ? "Our privacy guide still turns off most of the tracking, step by step, no root needed." : PRIVACY_SOON}
+            </p>
           </div>
-          <Link href={PRIVACY_PATH} className="btn na-btn">Fix my TV&apos;s privacy</Link>
+          {PRIVACY_LIVE ? (
+            <Link href={PRIVACY_PATH} className="btn na-btn">Fix my TV&apos;s privacy</Link>
+          ) : (
+            <p className="soon-cta na-soon">Privacy guide coming tonight</p>
+          )}
         </div>
       </section>
 

@@ -3,7 +3,7 @@ import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import LoopVideo from "@/components/LoopVideo";
 import { SITE, breadcrumbs, pageMeta } from "@/lib/seo";
-import { PRIVACY_PATH } from "@/lib/site";
+import { PRIVACY_LIVE, PRIVACY_PATH } from "@/lib/site";
 import "./android.css";
 
 // The community-built phone app for Clean Your TV, by udhaykumarbala, given a home under /app with Gathin's agreement.
@@ -226,7 +226,11 @@ export default function AndroidApp() {
           </div>
           <div className="and-not">
             <p><strong>Not for Samsung, LG or Roku.</strong> Those TVs don&rsquo;t run Android, so the app can&rsquo;t work on them.</p>
-            <Link href={PRIVACY_PATH} className="btn btn-sm and-not-btn">Use the privacy guide</Link>
+            {PRIVACY_LIVE ? (
+              <Link href={PRIVACY_PATH} className="btn btn-sm and-not-btn">Use the privacy guide</Link>
+            ) : (
+              <p className="soon-cta and-soon">Privacy guide coming tonight</p>
+            )}
           </div>
         </div>
       </section>

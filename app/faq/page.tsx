@@ -4,7 +4,7 @@ import JsonLd from "@/components/JsonLd";
 import { loadFacts } from "@/lib/data";
 import { GH } from "@/lib/parse";
 import { SITE, breadcrumbs, pageMeta } from "@/lib/seo";
-import { PRIVACY_PATH } from "@/lib/site";
+import { PRIVACY_LIVE, PRIVACY_PATH } from "@/lib/site";
 import "./faq.css";
 
 // The questions and answers are the README's "Questions people ask", re-read on every hourly build,
@@ -53,7 +53,7 @@ function answer(md: string): ReactNode[] {
 // Where most people are headed before they read a word: [label, answer, link, tile colour].
 const QUICK: [string, string, string, string][] = [
   ["Which TVs?", "Android TV and Google TV. Check yours.", "/tvs", "t-green"],
-  ["Samsung, LG or Roku?", "Not supported. Use the privacy guide.", PRIVACY_PATH, "t-amber"],
+  ["Samsung, LG or Roku?", PRIVACY_LIVE ? "Not supported. Use the privacy guide." : "Not supported. A privacy guide is coming tonight.", PRIVACY_PATH, "t-amber"],
   ["No laptop?", "Use the Android phone app.", "/app/android", "t-blue"],
 ];
 
@@ -90,12 +90,19 @@ export default async function Faq() {
 
       <section aria-label="Quick answers" className="wrap faq-quick">
         <div className="grid-cards">
-          {QUICK.map(([label, text, href, tone]) => (
-            <Link key={label} href={href} className={`tile faq-tile ${tone}`}>
-              <span className="faq-tile-q">{label}</span>
-              <span className="faq-tile-a">{text}</span>
-            </Link>
-          ))}
+          {QUICK.map(([label, text, href, tone]) =>
+            href === PRIVACY_PATH && !PRIVACY_LIVE ? (
+              <div key={label} className={`tile tile-soon faq-tile ${tone}`}>
+                <span className="faq-tile-q">{label}</span>
+                <span className="faq-tile-a">{text}</span>
+              </div>
+            ) : (
+              <Link key={label} href={href} className={`tile faq-tile ${tone}`}>
+                <span className="faq-tile-q">{label}</span>
+                <span className="faq-tile-a">{text}</span>
+              </Link>
+            ),
+          )}
         </div>
       </section>
 

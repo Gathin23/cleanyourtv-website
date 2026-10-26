@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { GH } from "@/lib/parse";
-import { PRIVACY_PATH } from "@/lib/site";
+import { PRIVACY_LIVE, PRIVACY_PATH, PRIVACY_SOON } from "@/lib/site";
 import { matches, searchWords, type TvRow } from "@/lib/tvrows";
 
 const brandKey = (b: string) => b.toLowerCase().replace(/\.$/, "");
@@ -98,9 +98,13 @@ export default function TvFinder({ tvs, brands }: { tvs: TvRow[]; brands: [strin
             <strong>Samsung, LG and Roku TVs are not supported.</strong> They run Tizen, webOS and Roku OS, which have no ADB, so there is no way to switch
             their apps off from outside.
           </p>
-          <p>
-            <Link href={PRIVACY_PATH}>You can still stop most of the tracking</Link>: the settings, network and DNS steps for these TVs, no root needed.
-          </p>
+          {PRIVACY_LIVE ? (
+            <p>
+              <Link href={PRIVACY_PATH}>You can still stop most of the tracking</Link>: the settings, network and DNS steps for these TVs, no root needed.
+            </p>
+          ) : (
+            <p>{PRIVACY_SOON}</p>
+          )}
           <p>
             Some people have built webOS versions: <a href={`${GH}/blob/main/SHOWCASE.md#other-platforms-fire-tv-and-lg-webos`}>see the showcase</a>.
           </p>

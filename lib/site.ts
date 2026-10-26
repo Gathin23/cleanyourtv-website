@@ -5,6 +5,12 @@
  * page replaces it at /not-android, and this is the one line that switches the whole site over.
  */
 export const PRIVACY_PATH = "/privacy";
+/**
+ * Whether the privacy guide is linked. While false it is "coming tonight": no nav, menu or footer link, and every
+ * Samsung, LG and Roku answer says so instead of linking. Tonight: PRIVACY_PATH = "/not-android" and this true.
+ */
+export const PRIVACY_LIVE = false;
+export const PRIVACY_SOON = "A no-root privacy guide for Samsung, LG and Roku is coming tonight.";
 
 export const COFFEE = "https://buymeacoffee.com/gathint";
 /** The day the repo went public, for "On air since". */
@@ -15,7 +21,7 @@ export const TRENDSHIFT = { rank: 1, week: "Oct 19–25", url: "https://trendshi
 /** The channel guide: the phone menu lists every channel; the desktop bar and the footer pick from it. */
 export const CHANNELS: { ch: string; label: string; href: string }[] = [
   { ch: "01", label: "Set up", href: "/#setup" },
-  { ch: "02", label: "Privacy guide", href: PRIVACY_PATH },
+  ...(PRIVACY_LIVE ? [{ ch: "02", label: "Privacy guide", href: PRIVACY_PATH }] : []),
   { ch: "05", label: "Press", href: "/press" },
   { ch: "06", label: "Add-ons", href: "/addons" },
   { ch: "07", label: "PR bot", href: "/bot" },
