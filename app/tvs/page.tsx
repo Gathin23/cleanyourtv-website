@@ -34,7 +34,7 @@ const green = { color: "#cfffcf", borderBottomColor: "rgba(207,255,207,.35)" };
 const PLATFORMS: { mark: string; name: string; what: string; tone: "yes" | "part" | "no"; more?: [string, string] }[] = [
   { mark: "✓", name: "Android TV, Google TV", what: "Works: the cleanup and the new home screen (Android 8.0 or newer for the home screen).", tone: "yes" },
   { mark: "½", name: "Fire TV", what: "The cleanup only. Fire OS keeps its own home screen.", tone: "part" },
-  { mark: "✕", name: "Samsung, LG, Roku", what: "Not supported. They run other systems (Tizen, webOS, Roku OS) with no ADB.", tone: "no", more: ["You can still stop most of the tracking\u00a0→", "/not-android"] },
+  { mark: "✕", name: "Samsung, LG, Roku", what: "Not supported. They run other systems (Tizen, webOS, Roku OS) with no ADB.", tone: "no", more: ["You can still stop most of the tracking\u00a0→", "/privacy"] },
 ];
 
 export default async function Tvs() {

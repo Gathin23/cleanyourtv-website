@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "test": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tools/tv-year.test.mjs"
+    "lint": "eslint"
   },
   "dependencies": {
     "next": "16.4.2",
