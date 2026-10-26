@@ -107,7 +107,6 @@ export default async function Page() {
                 </span>
                 <span className="stack tile-soon-text">
                   <span className="tile-t">{label}</span>
-                  <span className="tile-sub">No-root privacy guide for Samsung, LG, Roku and more.</span>
                 </span>
               </div>
             ) : (
@@ -147,6 +146,16 @@ export default async function Page() {
               </div>
             ))}
           </dl>
+        <ul className="plain logos" aria-label="Featured in">
+          {PRESS.slice(0, 6).map(([slug, name, url]) => (
+            <li key={slug}>
+              <a href={url} target="_blank" rel="noopener">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={cdn(`/press/${slug}.png`)} alt={name} width={Math.round(((PRESS_LOGO_W[slug] ?? 88) * 28) / 88)} height={28} loading="lazy" decoding="async" />
+              </a>
+            </li>
+          ))}
+        </ul>
           <div className="spread numbers-foot">
             <span className="ch">Refreshed every hour from the repo</span>
             <Link href="/press">See all press coverage</Link>
@@ -231,16 +240,6 @@ export default async function Page() {
             ))}
           </ul>
         </OnAirWall>
-        <ul className="plain logos" aria-label="Featured in">
-          {PRESS.slice(0, 6).map(([slug, name, url]) => (
-            <li key={slug}>
-              <a href={url} target="_blank" rel="noopener">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={cdn(`/press/${slug}.png`)} alt={name} width={Math.round(((PRESS_LOGO_W[slug] ?? 88) * 28) / 88)} height={28} loading="lazy" decoding="async" />
-              </a>
-            </li>
-          ))}
-        </ul>
       </section>
 
       <section aria-labelledby="safe-h" className="rule-top">
