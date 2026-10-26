@@ -660,26 +660,28 @@ function RemoteMode(props: {
             {list.map((v, k) => (
               <div key={k} className="na-rm-variant">
                 {list.length > 1 && v.label && <p className="na-vlabel">{v.label}</p>}
-                <span className="na-rm-label">On your remote, go to</span>
-                <ol className="plain na-rm-path">
-                  {v.crumbs.map((c, n) => (
-                    <li key={n}>
-                      <span className="ch">{n + 1}</span>
-                      <span className={n === v.crumbs.length - 1 ? "na-key na-key-last" : "na-key"}>{c}</span>
-                    </li>
-                  ))}
-                </ol>
-                {(v.items || []).length > 0 && (
-                  <div className="na-rm-then">
-                    <span className="na-rm-label">Then</span>
-                    <Toggles items={v.items || []} />
-                  </div>
-                )}
+                <div className="na-menu">
+                  <span className="na-rm-label">On your remote, go to</span>
+                  <ol className="plain na-rm-path">
+                    {v.crumbs.map((c, n) => (
+                      <li key={n}>
+                        <span className="ch">{n + 1}</span>
+                        <span className={n === v.crumbs.length - 1 ? "na-key na-key-last" : "na-key"}>{c}</span>
+                      </li>
+                    ))}
+                  </ol>
+                  {(v.items || []).length > 0 && (
+                    <div className="na-rm-then">
+                      <span className="na-rm-label">Then</span>
+                      <Toggles items={v.items || []} />
+                    </div>
+                  )}
+                </div>
                 {v.note && <p className="na-note">{v.note}</p>}
               </div>
             ))}
             {!list.length && (s.items || []).length > 0 && (
-              <div className="na-rm-then">
+              <div className="na-menu na-rm-then">
                 <span className="na-rm-label">Then</span>
                 <Toggles items={s.items || []} />
               </div>

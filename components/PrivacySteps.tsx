@@ -1,10 +1,10 @@
 import type { Brand, Item, Pick, Step, Variant } from "@/lib/privacy";
 import { variantsFor } from "@/lib/privacy";
 
-// One step's menu path drawn as remote-control keys, shared by the guide (client), the no-JS list and the printout.
+// One step's menu path and its switches in one box, shared by the guide (client), the no-JS list and the printout.
 // No hooks here, so the server page can render it too.
 
-const TAG: Record<Item["to"], [string, string]> = { off: ["Turn off", "tg-off"], on: ["Turn on", "tg-on"], press: ["Select", "tg-sel"] };
+const TAG: Record<Item["to"], [string, string, string]> = { off: ["Off", "Turn off", "tg-off"], on: ["On", "Turn on", "tg-on"], press: ["Select", "Select", "tg-sel"] };
 
 /** Settings › All Settings › … as one line of text, the last menu name stressed. */
 export function Keys({ crumbs, label }: { crumbs: string[]; label?: string }) {
@@ -20,18 +20,28 @@ export function Keys({ crumbs, label }: { crumbs: string[]; label?: string }) {
   );
 }
 
-/** "Turn off  Viewing Information Services", one switch per line. */
+/** One row per switch: the setting's name, then where to set it (OFF / ON / SELECT). */
 export function Toggles({ items }: { items: Item[] }) {
   if (!items.length) return null;
   return (
     <ul className="na-toggles" aria-label="On that screen">
       {items.map((it) => (
         <li key={it.name}>
-          <span className={`na-tg ${TAG[it.to][1]}`}>{TAG[it.to][0]}</span>
           <strong>{it.name}</strong>
+          <span className={`na-tg ${TAG[it.to][2]}`} aria-label={TAG[it.to][1]}>{TAG[it.to][0]}</span>
         </li>
       ))}
     </ul>
+  );
+}
+
+/** The path and the switches at the end of it, in one box. */
+export function MenuBox({ crumbs, items, label }: { crumbs?: string[]; items: Item[]; label?: string }) {
+  return (
+    <div className="na-menu">
+      {crumbs && <Keys crumbs={crumbs} label={label} />}
+      <Toggles items={items} />
+    </div>
   );
 }
 
@@ -40,8 +50,7 @@ function Path({ v, many }: { v: Variant; many: boolean }) {
   return (
     <div className="na-variant">
       {many && label && <p className="na-vlabel">{label}</p>}
-      <Keys crumbs={v.crumbs} label={v.label} />
-      <Toggles items={v.items || []} />
+      <MenuBox crumbs={v.crumbs} items={v.items || []} label={v.label} />
       {v.note && <p className="na-note">{v.note}</p>}
     </div>
   );
@@ -71,7 +80,7 @@ export function StepBody({ brand, step, pick, extra }: { brand: Brand; step: Ste
           <Keys crumbs={anyYear.crumbs} label="any year" />
         </div>
       )}
-      {!list.length && <Toggles items={step.items || []} />}
+      {!list.length && (step.items || []).length > 0 && <MenuBox items={step.items || []} />}
       {step.note && <p className="na-note">{step.note}</p>}
       <div className="na-foot">
         <details className="na-undo">

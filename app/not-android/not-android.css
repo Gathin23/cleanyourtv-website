@@ -454,32 +454,35 @@
   font-size: 19px;
   color: var(--mute);
 }
-/* A menu path reads as one line of text that wraps: each menu name under a mint marker stroke, the last one bold
-   and underlined, "›" in grey between them. */
+/* One box per path: the menu names as plain text that wraps, "›" in grey between them, the last one in mint; the
+   switches on that screen below it, one row each. */
+.na-menu {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line-3);
+  border-radius: 10px;
+  background: #15181e;
+  overflow: hidden;
+}
 .na-keys {
   list-style: none;
   margin: 0;
   padding: 0;
   font-size: 17px;
-  line-height: 1.75;
+  line-height: 1.6;
+}
+.na-menu > .na-keys {
+  padding: 12px 16px;
 }
 .na-keys li {
   display: inline;
 }
 .na-key {
   font-weight: 500;
-  background: linear-gradient(transparent 58%, rgba(207, 255, 207, 0.2) 58%);
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
 }
 .na-key-last {
   font-weight: 700;
   color: var(--mint);
-  background: none;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-decoration-color: rgba(207, 255, 207, 0.55);
-  text-underline-offset: 4px;
 }
 .na-sep {
   margin: 0 0.4em;
@@ -491,31 +494,45 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+}
+.na-menu > .na-keys + .na-toggles {
+  border-top: 1px solid var(--line-3);
 }
 .na-toggles li {
   display: flex;
-  align-items: baseline;
-  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 16px;
+}
+.na-toggles li + li {
+  border-top: 1px solid var(--line-2);
 }
 .na-toggles strong {
+  min-width: 0;
   font-weight: 600;
 }
-/* Turn off / Turn on / Select: a small coloured word before the setting, not a box. */
+/* OFF / ON / SELECT: what to set it to, a pill at the end of the row. */
 .na-tg {
   flex: none;
-  min-width: 4.6em;
+  padding: 3px 10px 2px;
+  border: 1px solid transparent;
+  border-radius: 999px;
   font-family: var(--f-ch);
   font-size: 19px;
   line-height: 1;
+  text-transform: uppercase;
 }
 .tg-off {
-  color: var(--pink);
+  background: var(--mint);
+  color: var(--on-green);
 }
 .tg-on {
-  color: var(--mint);
+  background: var(--blue);
+  color: var(--on-blue);
 }
 .tg-sel {
+  border-color: var(--blue);
   color: var(--blue);
 }
 .na-alt {
@@ -1056,9 +1073,9 @@
   flex-direction: column;
   gap: 4px;
 }
-.na-fold-body .na-toggles,
-.na-fold-body .na-keys {
+.na-fold-body .na-toggles {
   padding-left: 0;
+  gap: 0;
 }
 .na-fold-body strong {
   color: var(--ink);
@@ -1231,17 +1248,21 @@
   font-weight: 600;
   color: var(--dim-2);
 }
+.na-menu .na-rm-label {
+  padding: 12px 16px 0;
+}
 .na-rm-path {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 2px;
+  padding: 6px 16px 10px;
 }
 .na-rm-path li {
   display: grid;
   grid-template-columns: 28px 1fr;
   align-items: baseline;
   gap: 10px;
-  padding: 6px 0;
+  padding: 4px 0;
 }
 .na-rm-path .ch {
   font-size: 20px;
@@ -1256,10 +1277,10 @@
 .na-rm-then {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 14px;
-  border: 2px solid var(--ink);
-  border-radius: 6px;
+  gap: 4px;
+}
+.na-rm-path + .na-rm-then {
+  border-top: 1px solid var(--line-3);
 }
 .na-rm-then .na-tg {
   font-size: 22px;
@@ -1331,13 +1352,18 @@
   }
   .na-print .na-key,
   .na-print .na-key-last {
-    background: none;
     color: #000;
+  }
+  .na-print .na-menu {
+    background: none;
+    border-color: #000;
   }
   .na-print .na-key-last {
     font-weight: 700;
   }
   .na-print .na-tg {
+    background: none;
+    border-color: #000;
     color: #000;
     font-weight: 700;
   }
