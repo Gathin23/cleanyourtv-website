@@ -40,6 +40,14 @@ const STEPS: [string, string][] = [
   ["Follow along", "Approve on the TV, pick a theme. One command undoes it all."],
 ];
 
+// Picked by Gathin for the home page's On air strip (26 Oct).
+const FEATURED_AIR = [
+  "https://x.com/MarcoPorro/status/2113250090915627161",
+  "https://x.com/findsakshat/status/2112851995501691091",
+  "https://x.com/sudeepsd_/status/2112618722913604029",
+  "https://x.com/gcockfoster/status/2112241649791439338",
+];
+
 export default async function Page() {
   const [data, facts] = await Promise.all([loadSiteData(), loadFacts()]);
   const counts = Object.fromEntries(facts.brands.map(([b, n]) => [b.toLowerCase(), n]));
@@ -50,7 +58,9 @@ export default async function Page() {
     { label: "TV models tested", value: String(facts.tvs), sub: `from ${facts.brands.length} brands`, bar: "#6FA8FF" },
     { label: "Press articles", value: String(COVERAGE_TOTAL), sub: `in ${COVERAGE_COUNTRIES} countries`, bar: "#FF8A8A" },
   ];
-  const photos = data.results.slice(0, 4);
+  // The four the home page leads with; anything missing falls back to the wall's own order.
+  const featured = FEATURED_AIR.map((link) => data.results.find((r) => r.link === link)).filter((r): r is (typeof data.results)[number] => !!r);
+  const photos = [...featured, ...data.results.filter((r) => !featured.includes(r))].slice(0, 4);
   return (
     <main className="home">
       <JsonLd data={homeGraph(facts, description)} />
