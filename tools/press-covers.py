@@ -33,7 +33,7 @@ UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, li
 W, H = 640, 360
 # Buttons that close a cookie or consent banner, in the languages the list covers.
 # Text of the pages a bot check, captcha or country block shows instead of the article: no cover beats a picture of those.
-BLOCKED = re.compile(r"Performing security verification|Just a moment|Verify you are human|Checking your browser|не робот|not allowed to access|Access denied|Attention Required", re.I)
+BLOCKED = re.compile(r"Performing security verification|Just a moment|Verify you are human|Checking your browser|не робот|not allowed to access|Access denied|Attention Required|请求存在异常", re.I)
 CONSENT = ["Accept all", "Accept All", "Accept", "I agree", "Agree", "Got it", "OK", "Allow all", "Alle akzeptieren", "Akzeptieren",
            "Tout accepter", "Accepter", "Aceptar", "Aceitar", "Accetta", "Accetto", "Zgadzam się", "Akceptuję", "Принять", "同意", "接受", "동의"]
 
@@ -108,7 +108,11 @@ def screenshot(page, url: str) -> bytes | None:
         return None
     for _ in range(4):  # a bot check often clears itself within a few seconds
         page.wait_for_timeout(2500)
-        if not BLOCKED.search(page.title() + " " + page.inner_text("body")[:2000]):
+        try:
+            text = page.title() + " " + page.inner_text("body", timeout=5000)[:2000]
+        except Exception:  # a page with no body yet, or one still redirecting: look again
+            continue
+        if not BLOCKED.search(text):
             break
     else:
         return None
@@ -155,6 +159,7 @@ def main(argv: list[str]) -> int:
             name = f"{tid}-{hashlib.sha1(cover).hexdigest()[:6]}.jpg"
             (COVERS / name).write_bytes(cover)
             covers[tid] = name
+            MAP.write_text(json.dumps(dict(sorted(covers.items())), indent=1, ensure_ascii=False) + "\n")  # kept if a later page crashes the run
             print(f"{tid}: {how} -> covers/{name} ({len(cover) // 1024} KB)  {outlet}")
         browser.close()
     MAP.write_text(json.dumps(dict(sorted(covers.items())), indent=1, ensure_ascii=False) + "\n")
