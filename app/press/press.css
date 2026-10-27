@@ -45,7 +45,7 @@
   border: 2px solid var(--line-3);
   border-radius: 18px;
   overflow: hidden;
-  background: radial-gradient(ellipse 80% 70% at 30% 35%, rgba(207, 255, 207, 0.08), transparent 70%), #0b0c0f;
+  background: #0b0c0f;
   box-shadow: 0 0 0 1px rgba(207, 255, 207, 0.06), 0 0 60px rgba(207, 255, 207, 0.07);
 }
 .phx-tv::after {
@@ -129,7 +129,6 @@
   line-height: 0.9;
   letter-spacing: -0.045em;
   color: var(--mint);
-  text-shadow: 0 0 36px rgba(207, 255, 207, 0.45);
 }
 .phx-unit {
   font-size: 34px;
