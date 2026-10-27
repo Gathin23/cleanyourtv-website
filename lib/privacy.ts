@@ -61,6 +61,8 @@ export type Brand = {
 
 const CR = ["Consumer Reports, Oct 2025", "https://www.consumerreports.org/electronics/privacy/how-to-turn-off-smart-tv-snooping-features-a4840102036/"] as [string, string];
 const CR21 = ["Consumer Reports, 2021", "https://www.yahoo.com/news/turn-off-smart-tv-snooping-110157618.html"] as [string, string];
+const CR22 = ["Consumer Reports, Oct 2022", "https://www.yahoo.com/news/turn-off-smart-tv-snooping-060657238.html"] as [string, string];
+const EM21 = ["Samsung 2021 e-Manual (AU8000)", "https://m.media-amazon.com/images/I/C170VD7wAYL.pdf"] as [string, string];
 const MARKUP = ["The Markup", "https://themarkup.org/privacy/2023/12/12/your-smart-tv-knows-what-youre-watching"] as [string, string];
 const IMC = ["IMC 2024 study", "https://arxiv.org/abs/2409.06203"] as [string, string];
 const NAI = ["NAI", "https://thenai.org/opt-out/connected-tv-choices/"] as [string, string];
@@ -79,7 +81,7 @@ export const BRANDS: Brand[] = [
       choices: [
         { id: "2025", label: "2025", years: [2025, 2025] },
         { id: "2022-2024", label: "2022–2024", years: [2022, 2024] },
-        { id: "2019-2020", label: "2019–2020", years: [2019, 2020] },
+        { id: "2019-2021", label: "2019–2021", years: [2019, 2021] },
         { id: "older", label: "2018 or older", years: [1990, 2018] },
       ],
     },
@@ -94,12 +96,17 @@ export const BRANDS: Brand[] = [
         variants: [
           { label: "2025 TVs", years: [2025, 2025], crumbs: ["Settings", "All Settings", "General & Privacy", "Terms & Privacy"], note: "Some models say “Terms and Policy”." },
           { label: "2022–2024 TVs", years: [2022, 2024], crumbs: ["Settings", "All Settings", "General & Privacy", "Terms & Privacy", "Privacy Choices", "Terms & Conditions, Privacy Policy"] },
-          { label: "2019–2020 TVs", years: [2019, 2020], crumbs: ["Settings", "Support", "Terms & Privacy", "Privacy Choices"] },
+          {
+            label: "2019–2021 TVs",
+            years: [2019, 2021],
+            crumbs: ["Settings", "Support", "Terms & Privacy", "Privacy Choices"],
+            note: "Some sets say “Terms & Policy”. On a 2021 TV, if the menu looks different, try the 2022–2024 path, or Home › Privacy Choices.",
+          },
           { label: "2018 and older", years: [1990, 2018], crumbs: ["Smart Hub", "Settings", "Support", "Terms & Policy"], items: [{ name: "SyncPlus and Marketing", to: "off" }] },
           { label: "Any year", crumbs: ["Home", "Privacy Choices"], note: "An app in the home screen’s side bar that opens the same agreements." },
         ],
         undo: "Tick it again in the same place.",
-        sources: [CR, ["SamMobile, Feb 2025", "https://www.sammobile.com/news/samsung-tvs-displaying-repeated-privacy-pop-ups/"], CR21, ["Samsung: ACR", "https://www.samsung.com/us/support/answer/ANS10010616/"]],
+        sources: [CR, ["SamMobile, Feb 2025", "https://www.sammobile.com/news/samsung-tvs-displaying-repeated-privacy-pop-ups/"], CR22, CR21, EM21, ["Samsung: ACR", "https://www.samsung.com/us/support/answer/ANS10010616/"]],
         checks: [],
       },
       {
@@ -136,13 +143,15 @@ export const BRANDS: Brand[] = [
         items: [{ name: "Voice Wake-Up", to: "off" }],
         variants: [
           { label: "2025 TVs", years: [2025, 2025], crumbs: ["Settings", "All Settings", "Advanced Features", "Voice", "Bixby Settings"] },
-          { label: "2024 and older", years: [1990, 2024], crumbs: ["Settings", "All Settings", "General & Privacy", "Voice", "Bixby Settings"] },
+          { label: "2022–2024 TVs", years: [2022, 2024], crumbs: ["Settings", "All Settings", "General & Privacy", "Voice", "Bixby Settings"] },
+          { label: "2021 and older", years: [1990, 2021], crumbs: ["Settings", "General", "Voice", "Bixby Voice Settings"], note: "From Samsung’s 2021 manual; older sets may differ." },
         ],
         note: "Bixby itself can’t be turned off, only its wake-up.",
         undo: "Turn Voice Wake-Up back on.",
         sources: [
           ["Samsung: Bixby", "https://www.samsung.com/hk_en/support/tv-audio-video/how-to-set-up-and-use-bixby-on-your-samsung-smart-tv/"],
           ["Samsung AU: Bixby can’t be turned off", "https://www.samsung.com/au/support/tv-audio-video/how-to-use-bixby-on-a-samsung-smart-tv/"],
+          EM21,
         ],
         checks: [],
       },

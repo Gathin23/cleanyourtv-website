@@ -50,6 +50,7 @@ function save(s: Saved) {
 /** A pick the brand understands: one of its answers, "all", or (Samsung and LG) a year. */
 function validPick(b: Brand, p: string | undefined): Pick {
   if (!p) return null;
+  if (b.id === "samsung" && p === "2019-2020") p = "2019-2021"; // links sent before 2021 joined that group
   if (p === "all" || b.ask.choices.some((c) => c.id === p) || (b.decoder && /^\d{4}$/.test(p))) return p;
   return null;
 }
