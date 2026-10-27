@@ -21,6 +21,7 @@ export const metadata = pageMeta("/press", title, description);
 // at a height that gives every logo about the same area, linking to its article here. Phones show the first six.
 const FEATURED: [outlet: string, logo: string, height: number][] = [
   ["TechCrunch", "techcrunch", 40],
+  ["The Verge", "theverge", 27],
   ["Yahoo Tech", "yahoo", 29],
   ["Gizmodo", "gizmodo", 25],
   ["Mashable", "mashable", 22],
@@ -31,7 +32,6 @@ const FEATURED: [outlet: string, logo: string, height: number][] = [
   ["XDA", "xda", 30],
   ["Bild", "bild", 34],
   ["404 Media", "404media", 32],
-  ["Xataka", "xataka", 34],
 ];
 
 // For a journalist: the pictures and the story. There is no press-kit archive, so these are the repo's own files.

@@ -7,6 +7,7 @@ CleanYourTV was covered; each links to that outlet's article.
 | File | Source | License |
 |---|---|---|
 | techcrunch.svg | [File:TechCrunch logo.svg](https://commons.wikimedia.org/wiki/File:TechCrunch_logo.svg), Wikimedia Commons | Public domain (text logo), trademark of TechCrunch |
+| theverge.svg | [File:The Verge wordmark 2022.svg](https://commons.wikimedia.org/wiki/File:The_Verge_wordmark_2022.svg), Wikimedia Commons | Public domain (text logo), trademark of Vox Media |
 | yahoo.svg | [File:Yahoo! (2019).svg](https://commons.wikimedia.org/wiki/File:Yahoo!_(2019).svg), Wikimedia Commons | Public domain (text logo), trademark of Yahoo |
 | gizmodo.svg | [File:Gizmodo logo.svg](https://commons.wikimedia.org/wiki/File:Gizmodo_logo.svg), Wikimedia Commons | Public domain (text logo), trademark of Gizmodo |
 | mashable.svg | [File:Mashable Logo (2021).svg](https://commons.wikimedia.org/wiki/File:Mashable_Logo_(2021).svg), Wikimedia Commons | Public domain (text logo), trademark of Mashable |
@@ -17,4 +18,3 @@ CleanYourTV was covered; each links to that outlet's article.
 | xda.svg | [File:Xda logo.svg](https://commons.wikimedia.org/wiki/File:Xda_logo.svg), Wikimedia Commons | Public domain (text logo), trademark of XDA |
 | bild.svg | [File:Logo BILD.svg](https://commons.wikimedia.org/wiki/File:Logo_BILD.svg), Wikimedia Commons, recoloured | Public domain (text logo), trademark of Axel Springer |
 | 404media.svg | [File:404 Media logo.svg](https://commons.wikimedia.org/wiki/File:404_Media_logo.svg), Wikimedia Commons | Public domain (text logo), trademark of 404 Media |
-| xataka.svg | The site header logo at [xataka.com](https://www.xataka.com/) | Trademark of Webedia; no free-licence copy exists |
