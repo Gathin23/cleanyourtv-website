@@ -110,10 +110,24 @@ export default function AndroidApp() {
     <main className="and">
       <JsonLd data={jsonLd} />
 
+      {/* Said before anything else: the app is someone else's project, so its bugs belong in its own repo, not CleanYourTV's. */}
+      <a href={`${REPO}/issues`} className="abar">
+        <span className="wrap abar-in">
+          <span className="abar-tag ch">Community</span>
+          <span className="abar-text">
+            <span className="hide-phone">Community-built app, made separately from CleanYourTV. Problem with the app? Report it on the app&apos;s GitHub.</span>
+            <span className="abar-short">Community-built, separate from CleanYourTV. App problems go to its GitHub.</span>
+          </span>
+          <span className="abar-go">
+            <span className="hide-phone">Report an app issue</span> →
+          </span>
+        </span>
+      </a>
+
       {/* Hero: the pitch, and the phone beside the TV it just cleaned (drawn, not a picture). */}
       <section aria-labelledby="page-h" className="wrap and-hero">
         <div className="and-hero-text">
-          <p className="kicker c-green">CH 08 · Android app · community-built</p>
+          <p className="kicker c-green">CH 08 · Community app by @udhaykumarbala</p>
           <h1 id="page-h" className="h1 and-h1">Clean your TV from your phone.</h1>
           <p className="lede">
             <strong>No laptop. No coding agent.</strong> <span className="hide-phone">Open the app on your Android phone, tap Start, and</span>
@@ -123,6 +137,9 @@ export default function AndroidApp() {
             <Download version />
             <a href={REPO} className="btn btn-ghost">Source on GitHub</a>
           </div>
+          <p className="and-report dim">
+            App not working? <a href={`${REPO}/issues`}>Report it in the app&apos;s repo</a>, not CleanYourTV&apos;s.
+          </p>
           <ul className="plain and-tags" aria-label="At a glance">
             <li className="tag">Android 9+</li>
             <li className="tag">MIT · open source</li>
