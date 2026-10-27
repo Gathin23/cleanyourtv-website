@@ -340,6 +340,9 @@ export const COVERAGE: PressGroup[] = [
       ["Demokratis.co.id (English edition)", "AI Tools Help TV Owners Remove Ads and Tracking", "24 Oct", "https://demokratis.co.id/en/ai-tools-remove-tv-ads-tracking", "demokratis-10552b", "demokratis"],
       ["Telset.id", "Vibe Coding di Smart TV: Pengguna Ramai-ramai Bobol Iklan dan Pelacakan", "24 Oct", "https://telset.id/news/ai/vibe-coding-di-smart-tv-pengguna-ramai-ramai-bobol-iklan-dan-pelacakan", "telset-f47796", "telset"],
       ["Jagat Review", "Ramai Debloat Smart TV Biar Ringan Pakai AI, Apakah Aman?", "25 Oct", "https://www.jagatreview.com/2026/10/smart-tv-debloat-cleanyourtv/", "jagatreview-07bcaa", "jagatreview"],
+      ["Peradaban.id", "Developer Ubah Smart TV Xiaomi Jadi Mirip Apple TV dengan AI", "19 Oct", "https://peradaban.id/developer-modifikasi-tv-xiaomi-ai", "peradaban-b93b08", "peradaban"],
+      ["Peradaban.id", "Developer Ubah Smart TV Xiaomi Bebas Iklan dengan Bantuan AI", "19 Oct", "https://peradaban.id/developer-modifikasi-smart-tv-xiaomi", "peradaban-26d8ed", "peradaban"],
+      ["ChatNews", "Pengguna Manfaatkan AI untuk Bersihkan Iklan di Smart TV", "21 Oct", "https://chatnews.id/ai-bersihkan-iklan-smart-tv", "chatnews-bfcd0f", "chatnews"],
     ],
   },
   {
@@ -373,6 +376,7 @@ export const COVERAGE: PressGroup[] = [
       ["AI Wereld", "AI maakt je TV schoon met CleanYourTV", "21 Oct", "https://aiwereld.nl/nieuws/ai-maakt-je-tv-schoon-met-cleanyourtv", "aiwereld-2d2339", "aiwereld"],
       ["AI Wereld", "Goedemorgen AI: een game in drie uur en ChatGPT in het restaurant", "21 Oct", "https://aiwereld.nl/nieuws/goedemorgen-ai-een-game-in-drie-uur-en-chatgpt-in-het-restaurant", "aiwereld-07f903", "aiwereld"],
       ["Bright", "Slimmeriken gebruiken AI om hun smart-tv juist dom te maken", "20 Oct", "https://www.bright.nl/nieuws/2148884/slimmeriken-gebruiken-ai-om-hun-smart-tv-juist-dom-te-maken.html", "bright-d94d44", "bright"],
+      ["Tweakers", "Vibecoders schrijven zelf firmware die ads en bloatware uit tv's verwijdert", "", "https://tweakers.net/geek/253576/vibecoders-schrijven-zelf-firmware-die-ads-en-bloatware-uit-tvs-verwijdert.html", "tweakers-069592", "tweakers"],
     ],
   },
   {
@@ -386,6 +390,7 @@ export const COVERAGE: PressGroup[] = [
       ["Bezprawnik", "Hakowanie telewizorów przez AI. Apple TV za 1499 zł traci sens?", "19 Oct", "https://bezprawnik.pl/hakowanie-telewizorow-ai/", "bezprawnik-e8ee40", "bezprawnik"],
       ["Instalki", "Magia ery kodowania z AI. Użytkownicy sami ulepszają swoje telewizory", "23 Oct", "https://www.instalki.pl/news/tv-audio/magia-ery-kodowania-z-ai-uzytkownicy-sami-ulepszaja-swoje-telewizory/", "instalki-13ee40", "instalki"],
       ["Elektroda.pl", "AI w walce z nachalnymi reklamami - agenci AI czyszczą smart TV z reklam i śledzenia", "", "https://www.elektroda.pl/rtvforum/topic4185760.html", "elektroda-41df5e", "elektroda"],
+      ["Audiostereo.pl", "Koniec z reklamami w Smart TV. Użytkownicy używają AI, by odzyskać własne telewizory", "", "https://www.audiostereo.pl/magazyn/magazyn-kulturalny/newsy/koniec-z-reklamami-w-smart-tv-u%C5%BCytkownicy-u%C5%BCywaj%C4%85-ai-by-odzyska%C4%87-w%C5%82asne-telewizory-r2002", "audiostereo-e81bef", "audiostereo"],
     ],
   },
   {
@@ -478,6 +483,7 @@ export const COVERAGE: PressGroup[] = [
     items: [
       ["connect.ro", "Utilizatorii folosesc AI-ul pentru programarea unor aplicații fără reclame sau funcții inutile", "20 Oct", "https://www.connect.ro/2026/10/20/utilizatorii-folosesc-ai-ul-pentru-programarea-unor-aplicatii-fara-reclame-sau-functii-inutile/", "connectro-08052d", "connectro"],
       ["Mobilissimo.ro", "Oamenii folosesc AI ca să-și facă televizoarele smart mai simple, fără reclame în meniu", "23 Oct", "https://www.mobilissimo.ro/stiri-diverse/oamenii-folosesc-ai-ca-sa-si-faca-televizoarele-smart-mai-simple-fara-reclame-in-meniu", "mobilissimo-eb0711", "mobilissimo"],
+      ["Playtech.ro", "Oamenii folosesc inteligența artificială ca să scape de reclamele de pe Smart TV. Claude Code poate transforma un televizor lent într-unul mult mai rapid", "20 Oct", "https://playtech.ro/2026/oamenii-folosesc-inteligenta-artificiala-ca-sa-scape-de-reclamele-de-pe-smart-tv-claude-code-poate-transforma-un-televizor-lent-intr-unul-mult-mai-rapid/", "playtech-c6a727", "playtech"],
     ],
   },
   {
@@ -588,6 +594,7 @@ export const COVERAGE: PressGroup[] = [
       ["PPC Land", "CleanYourTV gains 30,900 GitHub stars by removing Google TV home screen ads", "24 Oct", "https://ppc.land/cleanyourtv-gains-30-900-github-stars-by-removing-google-tv-home-screen-ads/", "ppcland-c5f201", "ppcland"],
       ["PaidFreeDroid", "CleanYourTV Guide: Remove Ads From Android TV in 5 Minutes", "24 Oct", "https://paidfreedroid.com/2026/10/cleanyourtv-guide-remove-android-tv-ads-bloatware.html", "paidfreedroid-f23f6b", "paidfreedroid"],
       ["daily.dev", "People are using AI to make their smart TVs dumb again", "19 Oct", "https://daily.dev/posts/people-are-using-ai-to-make-their-smart-tvs-dumb-again-w4vznkz9w", "dailydev-0abb45", "dailydev"],
+      ["Archyde", "Smart TV Owners Use AI Coding Assistants to Remove Bloatware", "20 Oct", "https://www.archyde.com/smart-tv-owners-use-ai-coding-assistants-to-remove-bloatware/", "archyde-694b78", "archyde"],
     ],
   },
 ];
