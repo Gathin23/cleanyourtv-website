@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import Link from "next/link";
 import { COVERAGE, COVERAGE_COUNTRIES, COVERAGE_TOTAL } from "@/lib/press";
 import { VIDEOS, VIDEOS_AS_OF, videoDate } from "@/lib/videos";
@@ -36,11 +38,15 @@ export default async function Press() {
   const groups = COVERAGE.map((g) => ({ label: g.group, count: g.items.length })).sort((a, b) => b.count - a.count);
   const at = new Map(groups.map((g, i) => [g.label, i]));
   // Every article, newest first; undated ones last, in the list's order.
-  const items = COVERAGE.flatMap((g) => g.items.map(([outlet, headline, date, url]) => ({ outlet, headline, date, url, group: g.group })))
+  const items = COVERAGE.flatMap((g) => g.items.map(([outlet, headline, date, url, thumb, icon]) => ({ outlet, headline, date, url, thumb, icon, group: g.group })))
     .map((it, i) => ({ it, d: isoDay(it.date), i }))
     .sort((a, b) => (b.d || "0").localeCompare(a.d || "0") || a.i - b.i)
     .map(({ it }) => it);
-  const rows: PressRow[] = items.map((it) => [it.outlet, it.headline, it.date, it.url, at.get(it.group) ?? 0]);
+  // A card's cover: a picture tools/press-covers.py fetched or screenshot, else the og:image saved with the article, else none (the card shows the outlet's icon).
+  const covers = JSON.parse(fs.readFileSync(path.join(process.cwd(), "content", "press-covers.json"), "utf8")) as Record<string, string>;
+  const cover = (thumb: string) =>
+    covers[thumb] ? `/press/covers/${covers[thumb]}` : fs.existsSync(path.join(process.cwd(), "public", "press", "thumbs", `${thumb}.jpg`)) ? `/press/thumbs/${thumb}.jpg` : "";
+  const rows: PressRow[] = items.map((it) => [it.outlet, it.headline, it.date, it.url, at.get(it.group) ?? 0, cover(it.thumb), `/press/icons/${it.icon}.png`]);
   const featured = FEATURED.map((name) => items.find((it) => it.outlet === name || it.outlet.startsWith(name + " ("))).filter((it) => !!it);
   const stats = [
     { label: "Articles", value: String(COVERAGE_TOTAL), bar: "#FF8A8A" },

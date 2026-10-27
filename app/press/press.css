@@ -214,54 +214,107 @@ select.chip {
   font: inherit;
   font-size: 15px;
 }
-.arts {
-  border-top: 2px solid var(--ink);
+/* Articles: one card each, the cover on top (pc- names, since route CSS stays loaded after client navigation). */
+.pc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
 }
-.arts li {
-  border-bottom: 1px solid var(--line);
-}
-.art {
+.pc-card {
+  height: 100%;
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px 24px;
-  padding: 18px 0;
+  flex-direction: column;
+  background: var(--panel);
+  border: 1px solid var(--line-2);
+  border-radius: 6px;
+  overflow: hidden;
   color: var(--ink);
   text-decoration: none;
 }
-.art:hover {
+.pc-card:hover {
   color: var(--ink);
-  background: #111;
+  border-color: var(--mute);
 }
-.art:hover .art-title {
+.pc-card:hover .pc-title {
   text-decoration: underline;
+  text-underline-offset: 3px;
 }
-.art-src {
-  flex: 0 1 360px;
+.pc-card:focus-visible {
+  outline: 3px solid var(--mint);
+  outline-offset: 2px;
+}
+.pc-cover {
   display: flex;
-  flex-wrap: wrap;
-  gap: 4px 12px;
-  align-items: baseline;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, #1b2620, #101412);
+  border-bottom: 1px solid var(--line-2);
+  overflow: hidden;
 }
-.art-date {
-  min-width: 56px;
-  font-size: 20px;
-  color: var(--mute);
+.pc-cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.art-outlet {
-  font-weight: 600;
+.pc-cover .pc-cover-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
 }
-.art-country {
-  font-size: 14px;
-  color: var(--mute);
+.pc-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px 16px 16px;
 }
-.art-title {
-  flex: 1 1 420px;
+.pc-outlet {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   min-width: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dim);
+}
+.pc-outlet img {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+}
+.pc-outlet-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pc-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
   font-family: var(--f-head);
-  font-weight: 500;
-  font-size: 19px;
+  font-weight: 600;
+  font-size: 18px;
   line-height: 1.3;
   overflow-wrap: anywhere;
+}
+.pc-meta {
+  margin-top: auto;
+  font-size: 18px;
+  color: var(--mute);
+}
+@media (max-width: 1180px) {
+  .pc-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 900px) {
+  .pc-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 .press-foot {
   margin: 24px 0 0;
@@ -306,11 +359,11 @@ select.chip {
   .press-arts {
     padding-bottom: 56px;
   }
-  .art {
-    padding: 14px 0;
+  .pc-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
   }
-  .art-title {
-    flex-basis: 100%;
+  .pc-title {
     font-size: 17px;
   }
   .press-more {

@@ -1,15 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import { cdn } from "@/lib/site";
 
-/** One article, compact: outlet, headline, date ("19 Oct" or ""), url, and its group's index in `groups`. */
-export type PressRow = [outlet: string, headline: string, date: string, url: string, group: number];
+/** One article: outlet, headline, date ("19 Oct" or ""), url, its group's index in `groups`, cover path ("" for none) and the outlet's icon path. */
+export type PressRow = [outlet: string, headline: string, date: string, url: string, group: number, cover: string, icon: string];
 
-// Short country labels for the rows and chips; the select keeps the full names.
+// Short country labels for the cards and chips; the select keeps the full names.
 const short = (g: string) => g.replace(/ \(.*\)$/, "");
+// Every article is from the launch year, so "19 Oct" reads as "19 Oct 2026".
+const day = (d: string) => (d ? `${d} 2026` : "");
 const PAGE = 24;
 
-/** Every article, newest first, a page at a time; chips for the biggest countries and a select for the rest. `groups` is biggest first. */
+/** Every article as a card, newest first, a page at a time; chips for the biggest countries and a select for the rest. `groups` is biggest first. */
 export default function PressGrid({ items, groups }: { items: PressRow[]; groups: { label: string; count: number }[] }) {
   const [group, setGroup] = useState(-1);
   const [count, setCount] = useState(PAGE);
@@ -38,21 +41,34 @@ export default function PressGrid({ items, groups }: { items: PressRow[]; groups
           ))}
         </select>
       </div>
-      <ol className="plain arts" aria-live="polite">
-        {shown.slice(0, count).map(([outlet, headline, date, url, g]) => (
+      <ul className="plain pc-grid" aria-live="polite">
+        {shown.slice(0, count).map(([outlet, headline, date, url, g, cover, icon]) => (
           <li key={url}>
-            <a href={url} target="_blank" rel="noopener" className="art">
-              <span className="art-src">
-                <span className="art-date ch">{date}</span>
-                <span className="art-outlet">{outlet}</span>
-                <span className="art-country">{short(groups[g].label)}</span>
+            <a href={url} target="_blank" rel="noopener" className="pc-card">
+              <span className="pc-cover">
+                {cover ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={cdn(cover)} alt="" width={640} height={360} loading="lazy" decoding="async" />
+                ) : (
+                  // No picture for this one: the outlet's icon on a tinted panel.
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img className="pc-cover-icon" src={cdn(icon)} alt="" width={64} height={64} loading="lazy" decoding="async" />
+                )}
               </span>
-              <span className="art-title">{headline}</span>
-              <span className="sr-only"> (opens in a new tab)</span>
+              <span className="pc-body">
+                <span className="pc-outlet">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={cdn(icon)} alt="" width={22} height={22} loading="lazy" decoding="async" />
+                  <span className="pc-outlet-name">{outlet}</span>
+                </span>
+                <span className="pc-title">{headline}</span>
+                <span className="pc-meta ch">{[day(date), short(groups[g].label)].filter(Boolean).join(" · ")}</span>
+                <span className="sr-only"> (opens in a new tab)</span>
+              </span>
             </a>
           </li>
         ))}
-      </ol>
+      </ul>
       {count < shown.length && (
         <button type="button" className="btn btn-mint btn-sm press-more" onClick={() => setCount((c) => c + PAGE)}>
           Show more articles <span className="ch">{shown.length - count} left</span>

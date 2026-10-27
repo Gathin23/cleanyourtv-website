@@ -50,7 +50,8 @@ export const PRESS_LOGO_W: Record<string, number> = { techcrunch: 279, techradar
  * mirror of this public repo instead of the site's own host, so a traffic spike stays off it.
  * Pages, scripts and Open Graph images come from Cloudflare.
  */
-export const CDN_BASE = "https://cdn.jsdelivr.net/gh/Gathin23/cleanyourtv-website@main/public";
+// A preview build sets NEXT_PUBLIC_CDN_BASE="" to serve them from its own copy, since files that are not on main yet are not on jsDelivr either.
+export const CDN_BASE = process.env.NEXT_PUBLIC_CDN_BASE ?? "https://cdn.jsdelivr.net/gh/Gathin23/cleanyourtv-website@main/public";
 export const cdn = (path: string): string => (path && path.startsWith("/") ? CDN_BASE + path : path);
 /** The On air wall's small copy of a photo: public/results/thumbs/, 320x180, centre-cropped. */
 export const thumb = (path: string): string => path.replace(/^\/results\//, "/results/thumbs/");
