@@ -135,49 +135,62 @@
   letter-spacing: 0.06em;
 }
 .phx-row {
-  margin: 0;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-  align-items: start;
-  padding-top: 24px;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+  padding-top: 26px;
   border-top: 1px solid var(--line);
 }
 .phx-stat {
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 6px;
-  min-width: 0;
 }
 .phx-stat::before {
   content: "";
-  order: -2;
   width: 28px;
   height: 4px;
   margin-bottom: 8px;
-  background: var(--bar);
+  background: var(--amber);
 }
-.phx-stat dd {
-  order: -1;
-  margin: 0;
+.phx-stat-n {
   font-family: var(--f-head);
   font-weight: 700;
-  font-size: clamp(32px, 3.2vw, 46px);
+  font-size: clamp(40px, 4vw, 56px);
   line-height: 1;
   letter-spacing: -0.035em;
   color: var(--ink);
 }
-.phx-stat dd a {
-  color: inherit;
-  text-decoration: none;
-}
-.phx-stat dd a:hover {
-  color: var(--mint);
-}
-.phx-stat dt {
-  font-size: 19px;
-  line-height: 1.15;
+.phx-stat-l {
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   color: var(--dim-2);
+}
+/* The flags: small round ones, slightly overlapping, in a tidy wrapped cluster. */
+.phx-flags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 0;
+  padding-left: 6px;
+}
+.phx-flags li {
+  margin-left: -6px;
+}
+.phx-flags img {
+  display: block;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #0b0c0f;
+  transition: transform 0.12s ease;
+}
+.phx-flags img:hover {
+  transform: translateY(-2px) scale(1.15);
+  position: relative;
+  z-index: 1;
 }
 .kit {
   border: 2px solid var(--ink);
@@ -531,18 +544,27 @@ select.chip {
     font-size: 26px;
   }
   .phx-row {
-    gap: 12px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
     padding-top: 18px;
   }
+  .phx-stat {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 12px;
+  }
   .phx-stat::before {
-    width: 22px;
-    margin-bottom: 6px;
+    display: none;
   }
-  .phx-stat dd {
-    font-size: 30px;
+  .phx-stat-n {
+    font-size: 40px;
   }
-  .phx-stat dt {
-    font-size: 17px;
+  .phx-stat-l {
+    font-size: 19px;
+  }
+  .phx-flags img {
+    width: 24px;
+    height: 24px;
   }
   .press-logos {
     padding-top: 28px;

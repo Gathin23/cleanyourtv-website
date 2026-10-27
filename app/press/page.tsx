@@ -2,10 +2,10 @@ import fs from "node:fs";
 import path from "node:path";
 import Link from "next/link";
 import { COVERAGE, COVERAGE_COUNTRIES, COVERAGE_TOTAL } from "@/lib/press";
+import { COUNTRY_ISO } from "@/lib/flags";
 import { VIDEOS } from "@/lib/videos";
 import PressGrid, { type PressRow } from "@/components/PressGrid";
 import JsonLd from "@/components/JsonLd";
-import { loadTweet } from "@/lib/data";
 import { GH } from "@/lib/parse";
 import { SITE, breadcrumbs, isoDay, pageMeta } from "@/lib/seo";
 import { cdn } from "@/lib/site";
@@ -43,11 +43,8 @@ const KIT: [string, string, string][] = [
 ];
 const CONTACT = "hello@itsgathin.com";
 
-// 35543 -> 35.5K
-const compact = (n: number) => (n >= 1e6 ? `${(n / 1e6).toFixed(1).replace(/\.0$/, "")}M` : n >= 1000 ? `${(n / 1000).toFixed(1).replace(/\.0$/, "")}K` : String(n));
 
 export default async function Press() {
-  const tweet = await loadTweet();
   // Groups biggest first, so the chips are the three biggest and the select holds the rest.
   const groups = COVERAGE.map((g) => ({ label: g.group, count: g.items.length })).sort((a, b) => b.count - a.count);
   const at = new Map(groups.map((g, i) => [g.label, i]));
@@ -71,12 +68,10 @@ export default async function Press() {
   const outlets = [...new Set(items.map((i) => i.outlet.replace(/ \(.*\)$/, "")))];
   const WALL_ROWS = 16;
   const wall = Array.from({ length: WALL_ROWS }, (_, r) => outlets.filter((_, i) => i % WALL_ROWS === r));
-  // The screen's row under the big article count: three figures of equal weight.
-  const stats: { label: string; value: string; bar: string; href?: string }[] = [
-    { label: "countries", value: String(COVERAGE_COUNTRIES), bar: "#FFDC96" },
-    { label: "videos", value: String(VIDEOS.length), bar: "#6FA8FF", href: "/tutorials" },
-    { label: "likes on the first post", value: compact(tweet.likes), bar: "#8EE08F" },
-  ];
+  // Under the big article count: the countries, each as its round flag (lib/flags.ts), most articles first.
+  const flags = COVERAGE.filter((g) => g.country)
+    .map((g) => ({ name: g.group, iso: COUNTRY_ISO[g.group], count: g.items.length }))
+    .sort((x, y) => y.count - x.count || x.name.localeCompare(y.name));
 
   // The page as a collection of the articles, in the order the list shows them (the videos' VideoObjects live on /tutorials).
   const jsonLd = {
@@ -148,14 +143,20 @@ export default async function Press() {
               <span className="phx-num">{COVERAGE_TOTAL}</span>
               <span className="ch phx-unit">articles</span>
             </p>
-            <dl className="phx-row">
-              {stats.map((s) => (
-                <div key={s.label} className="phx-stat" style={{ "--bar": s.bar } as React.CSSProperties}>
-                  <dt className="ch">{s.label}</dt>
-                  <dd>{s.href ? <Link href={s.href}>{s.value}</Link> : s.value}</dd>
-                </div>
-              ))}
-            </dl>
+            <div className="phx-row">
+              <p className="phx-stat">
+                <span className="phx-stat-n">{COVERAGE_COUNTRIES}</span>
+                <span className="ch phx-stat-l">countries</span>
+              </p>
+              <ul className="plain phx-flags" aria-label={`The ${COVERAGE_COUNTRIES} countries`}>
+                {flags.map((f) => (
+                  <li key={f.iso}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={cdn(`/press/flags/${f.iso}.svg`)} alt={f.name} title={`${f.name} · ${f.count} ${f.count === 1 ? "article" : "articles"}`} width={26} height={26} loading="lazy" decoding="async" />
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
