@@ -89,23 +89,26 @@ export default function TutorialGrid({ videos }: { videos: TutorialVideo[] }) {
             All videos <span className="chip-n">{videos.length}</span>
           </button>
         </div>
-        <label className="tut-sort">
-          <span className="sr-only">Sort</span>
-          <select className="chip" value={sort} onChange={(e) => setSort(e.target.value as "views" | "new")}>
-            <option value="views">Most viewed</option>
-            <option value="new">Newest</option>
-          </select>
-        </label>
-      </div>
-      <div className="chips tut-langs" role="group" aria-label="Language">
-        <button type="button" className="chip" aria-pressed={lang === "all"} onClick={() => (setLang("all"), setShown(PAGE))}>
-          Every language <span className="chip-n">{byKind.length}</span>
-        </button>
-        {langs.map(([code, n]) => (
-          <button key={code} type="button" className="chip" aria-pressed={lang === code} onClick={() => (setLang(code), setShown(PAGE))}>
-            {LANGS[code] || code} <span className="chip-n">{n}</span>
-          </button>
-        ))}
+        <div className="tut-selects">
+          <label className="tut-sort">
+            <span className="sr-only">Language</span>
+            <select className="chip" value={lang} onChange={(e) => (setLang(e.target.value), setShown(PAGE))}>
+              <option value="all">Every language ({byKind.length})</option>
+              {langs.map(([code, n]) => (
+                <option key={code} value={code}>
+                  {LANGS[code] || code} ({n})
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="tut-sort">
+            <span className="sr-only">Sort</span>
+            <select className="chip" value={sort} onChange={(e) => setSort(e.target.value as "views" | "new")}>
+              <option value="views">Most viewed</option>
+              <option value="new">Newest</option>
+            </select>
+          </label>
+        </div>
       </div>
       <ul className="plain tut-grid" aria-live="polite">
         {list.slice(0, shown).map((v) => (

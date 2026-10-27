@@ -38,13 +38,15 @@
   justify-content: space-between;
   gap: 12px;
 }
+.tut-selects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
 .tut-sort select {
   height: 44px;
   font: inherit;
   font-size: 15px;
-}
-.tut-langs {
-  padding-bottom: 8px;
 }
 .tut-more {
   align-self: flex-start;
@@ -194,14 +196,4 @@
   .tut-controls {
     flex-direction: column;
   }
-  .tut-langs {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    margin: 0 -16px;
-    padding: 0 16px 8px;
-    scrollbar-width: none;
   }
-  .tut-langs .chip {
-    flex: none;
-  }
-}
