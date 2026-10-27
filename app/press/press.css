@@ -148,26 +148,19 @@
   flex-direction: column;
   gap: 6px;
 }
-.phx-stat::before {
-  content: "";
-  width: 28px;
-  height: 4px;
-  margin-bottom: 8px;
-  background: var(--amber);
-}
 .phx-stat-n {
   font-family: var(--f-head);
   font-weight: 700;
   font-size: clamp(40px, 4vw, 56px);
   line-height: 1;
   letter-spacing: -0.035em;
-  color: var(--ink);
+  color: var(--mint);
 }
 .phx-stat-l {
   font-size: 22px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--dim-2);
+  color: var(--mint);
 }
 /* The flags: small round ones, slightly overlapping, in a tidy wrapped cluster. */
 .phx-flags {
@@ -552,9 +545,6 @@ select.chip {
     flex-direction: row;
     align-items: baseline;
     gap: 12px;
-  }
-  .phx-stat::before {
-    display: none;
   }
   .phx-stat-n {
     font-size: 40px;

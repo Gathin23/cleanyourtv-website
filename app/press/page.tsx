@@ -68,10 +68,10 @@ export default async function Press() {
   const outlets = [...new Set(items.map((i) => i.outlet.replace(/ \(.*\)$/, "")))];
   const WALL_ROWS = 16;
   const wall = Array.from({ length: WALL_ROWS }, (_, r) => outlets.filter((_, i) => i % WALL_ROWS === r));
-  // Under the big article count: the countries, each as its round flag (lib/flags.ts), most articles first.
+  // Under the big article count: the countries, each as its round flag (lib/flags.ts); India (home) first, then most articles first.
   const flags = COVERAGE.filter((g) => g.country)
     .map((g) => ({ name: g.group, iso: COUNTRY_ISO[g.group], count: g.items.length }))
-    .sort((x, y) => y.count - x.count || x.name.localeCompare(y.name));
+    .sort((x, y) => Number(y.iso === "in") - Number(x.iso === "in") || y.count - x.count || x.name.localeCompare(y.name));
 
   // The page as a collection of the articles, in the order the list shows them (the videos' VideoObjects live on /tutorials).
   const jsonLd = {
