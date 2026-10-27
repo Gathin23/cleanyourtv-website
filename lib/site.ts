@@ -27,6 +27,7 @@ export const CHANNELS: { ch: string; label: string; href: string }[] = [
   { ch: "08", label: "Android app", href: "/app/android" },
   { ch: "09", label: "TV list", href: "/tvs" },
   { ch: "10", label: "FAQ", href: "/faq" },
+  { ch: "11", label: "Tutorials", href: "/tutorials" },
 ];
 
 /** 36512 -> "36.5k", for the GitHub pill. */

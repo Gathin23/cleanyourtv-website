@@ -879,6 +879,11 @@ select.chip {
     padding: 0 8px;
   }
 }
+@media (max-width: 1023px) {
+  .navlinks .nav-wide {
+    display: none;
+  }
+}
 @media (max-width: 920px) {
   .nav-more {
     display: none;

@@ -8,8 +8,12 @@ import { loadFacts, loadSiteData } from "@/lib/data";
 import { GH } from "@/lib/parse";
 import { COVERAGE_COUNTRIES, COVERAGE_TOTAL } from "@/lib/press";
 import { homeGraph, pageMeta } from "@/lib/seo";
+import { HOME_PICKS, LANGS, TUTORIAL_VIDEOS } from "@/lib/tutorials";
 import { ON_AIR_SINCE, PRESS, PRESS_LOGO_W, PRIVACY_LIVE, PRIVACY_PATH, PRIVACY_SOON, TRENDSHIFT, cdn, roundedCount } from "@/lib/site";
 import "./home.css";
+
+// Three community walk-throughs under the set-up steps, each a link to /tutorials (no YouTube on the home page).
+const VIDEO_PICKS = HOME_PICKS.map((id) => TUTORIAL_VIDEOS.find((v) => v.id === id)).filter((v) => v !== undefined);
 
 // Content comes from the cleanyourtv repo and GitHub at build time; the deploy workflow rebuilds the site every hour.
 
@@ -191,6 +195,22 @@ export default async function Page() {
           <p className="setup-note">
             The prompt is <a href={`${GH}/blob/main/PROMPT.md`}>PROMPT.md</a> in the repo. Put your TV model on the line that asks for it.
           </p>
+          <div className="hsv">
+            <Link href="/tutorials" className="hsv-link">
+              Prefer a video? Watch community tutorials on YouTube <span aria-hidden="true">→</span>
+            </Link>
+            <ul className="plain hsv-list">
+              {VIDEO_PICKS.map((v) => (
+                <li key={v.id}>
+                  <Link href="/tutorials" className="hsv-item" aria-label={`${v.title}, ${LANGS[v.lang] || v.lang}, on the tutorials page`}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={cdn(`/press/videos/${v.id}.jpg`)} alt="" width={480} height={360} loading="lazy" decoding="async" />
+                    <span className="hsv-lang ch">{LANGS[v.lang] || v.lang}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
           <pre id="prompt-text" hidden>{data.prompt}</pre>
         </div>
         <div className="term" aria-label="What your coding assistant does, as an example" role="figure">

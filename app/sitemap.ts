@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { loadFacts } from "@/lib/data";
 import { COVERAGE } from "@/lib/press";
 import { SITE, isoDay } from "@/lib/seo";
+import { VIDEOS_AS_OF } from "@/lib/videos";
 
 // The home page, /tvs, /addons, /faq and /bot change whenever the repo does, so their date is the repo's last commit; /press is as new as its newest article;
 // /not-android by the day its menu paths were last checked; the Android app's pages by its privacy policy's effective date.
@@ -18,6 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE}/bot`, lastModified: updated, changeFrequency: "daily", priority: 0.6 },
     { url: `${SITE}/not-android`, lastModified: "2026-10-26", changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE}/press`, lastModified: press, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${SITE}/tutorials`, lastModified: VIDEOS_AS_OF, changeFrequency: "weekly", priority: 0.7 },
     { url: `${SITE}/blog/reintroducing-cleanyourtv`, lastModified: "2026-10-20", changeFrequency: "yearly", priority: 0.6 },
     { url: `${SITE}/app/android`, lastModified: "2026-10-23", changeFrequency: "monthly", priority: 0.5 },
     { url: `${SITE}/app/android/privacy`, lastModified: "2026-10-23", changeFrequency: "monthly", priority: 0.5 },

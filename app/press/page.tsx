@@ -187,7 +187,10 @@ export default async function Press() {
           </div>
           <span className="ch press-asof">Views as of {videoDate(VIDEOS_AS_OF)}</span>
         </div>
-        <VideoGrid videos={VIDEOS} />
+        <VideoGrid videos={VIDEOS.slice(0, 8)} shown={8} />
+        <Link href="/tutorials" className="btn btn-ghost btn-sm press-more">
+          See all {VIDEOS.length} community videos and tutorials →
+        </Link>
       </section>
 
       <section aria-labelledby="art-h" className="wrap press-sec press-arts">

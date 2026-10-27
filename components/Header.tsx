@@ -12,6 +12,7 @@ const NAV: [string, string][] = [
   ["TV list", "/tvs"],
   ...(PRIVACY_LIVE ? [[PRIVACY_NAME, PRIVACY_PATH] as [string, string]] : []),
   ["Add-ons", "/addons"],
+  ["Tutorials", "/tutorials"],
   ["Press", "/press"],
   ["PR bot", "/bot"],
   ["App", "/app/android"],
@@ -76,8 +77,8 @@ export default function Header({ stars }: { stars: number }) {
           </Link>
           <div className="navlinks">
             {NAV.map(([label, href]) => (
-              <Link key={label} href={href} aria-current={current(href)}>
-                {/* "Non-Android TVs" loses its "TVs" when the bar is tight (home's, just above the phone menu). */}
+              <Link key={label} href={href} aria-current={current(href)} className={href === "/tutorials" ? "nav-wide" : undefined}>
+                {/* "Non-Android TVs" loses its "TVs" when the bar is tight (home's, just above the phone menu); Tutorials leaves the bar below 1024 px (footer and phone menu keep it). */}
                 {label.endsWith(" TVs") ? (
                   <>
                     {label.slice(0, -4)}

@@ -21,6 +21,7 @@ export default function Footer() {
         <nav aria-label="Use it" className="foot-nav">
           <Link href="/tvs">TV list</Link>
           <Link href="/#setup">Set up</Link>
+          <Link href="/tutorials">Tutorials</Link>
           {PRIVACY_LIVE && <Link href={PRIVACY_PATH}>{PRIVACY_NAME}</Link>}
           <Link href="/app/android">Android app</Link>
         </nav>

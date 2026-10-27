@@ -1,0 +1,207 @@
+/* /tutorials: the hero, four to start with, then every video with its filters. Class names start with tut- (route CSS stays loaded after client navigation). */
+
+.tut {
+  padding-bottom: 96px;
+}
+.tut-note {
+  margin: 0;
+  font-size: 15px;
+}
+.tut-sec {
+  padding-top: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.tut-asof {
+  font-size: 19px;
+  color: var(--mute);
+}
+.tut-feat {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 20px;
+}
+.tut-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
+  gap: 28px 20px;
+}
+.tut-all {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.tut-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+}
+.tut-sort select {
+  height: 44px;
+  font: inherit;
+  font-size: 15px;
+}
+.tut-langs {
+  padding-bottom: 8px;
+}
+.tut-more {
+  align-self: flex-start;
+}
+.tut-more .ch {
+  font-size: 19px;
+  font-weight: 400;
+}
+.tut-foot {
+  margin: 24px 0 0;
+  color: var(--dim-2);
+}
+
+/* A card: the thumbnail is the play button until it is pressed, then the player sits in the same 16:9 box. */
+.tut-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+}
+.tut-card-big {
+  padding: 12px;
+  background: var(--panel);
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+}
+.tut-thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--panel);
+  border: 1px solid var(--line-2);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.tut-thumb iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.tut-play {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  color: var(--bg);
+}
+.tut-play img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter 0.15s;
+}
+.tut-play-icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  margin: -30px 0 0 -30px;
+  border-radius: 999px;
+  background: var(--mint);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+  transition: transform 0.15s;
+}
+.tut-play-icon svg {
+  margin-left: 3px;
+}
+.tut-play:hover img,
+.tut-play:focus-visible img {
+  filter: brightness(0.8);
+}
+.tut-play:hover .tut-play-icon,
+.tut-play:focus-visible .tut-play-icon {
+  transform: scale(1.08);
+}
+.tut-play:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: -3px;
+}
+.tut-len {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  padding: 0 6px;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 18px;
+}
+.tut-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+.tut-title {
+  margin: 0;
+  font-family: var(--f-body);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+.tut-card-big .tut-title {
+  font-size: 17px;
+}
+.tut-meta {
+  margin: 0;
+  font-size: 14px;
+  color: var(--dim-2);
+}
+.tut-row {
+  margin: auto 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 12px;
+}
+.tut-tags {
+  display: flex;
+  gap: 12px;
+}
+.tut-lang {
+  font-size: 18px;
+  color: var(--blue);
+}
+.tut-views {
+  font-size: 18px;
+  color: var(--mint);
+}
+.tut-yt {
+  font-size: 14px;
+  color: var(--dim);
+}
+
+@media (max-width: 600px) {
+  .tut-sec {
+    padding-top: 40px;
+  }
+  .tut-controls {
+    flex-direction: column;
+  }
+  .tut-langs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin: 0 -16px;
+    padding: 0 16px 8px;
+    scrollbar-width: none;
+  }
+  .tut-langs .chip {
+    flex: none;
+  }
+}
