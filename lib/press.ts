@@ -82,6 +82,7 @@ export const COVERAGE: PressGroup[] = [
     country: true,
     items: [
       ["The Daily Star", "Smart TV owners are using AI to get rid of ads: report", "20 Oct", "https://www.thedailystar.net/news/technology/news/smart-tv-owners-are-using-ai-get-rid-ads-report-4303291", "thedailystar-2c1d4d", "thedailystar"],
+      ["24 Live Newspaper", "স্মার্ট টিভির যন্ত্রণাদায়ক বিজ্ঞাপন বন্ধ করবে কৃত্রিম বুদ্ধিমত্তা!", "26 Oct", "https://www.bangla.24livenewspaper.com/post-161290", "24livenewspaper-bb7183", "24livenewspaper"],
     ],
   },
   {
@@ -194,6 +195,7 @@ export const COVERAGE: PressGroup[] = [
       ["Insmart", "Android TV bez reklam s AI a Claude Code", "19 Oct", "https://insmart.cz/android-tv-bez-reklam-ai-claude-code/", "insmart-943c1f", "insmart"],
       ["CzechCrunch", "Chytré televize jsou plné reklam a balastu. Lidé ale našli šikovný trik a pomocí AI je upravují", "25 Oct", "https://cc.cz/chytre-televize-jsou-plne-reklam-a-balastu-lide-ale-nasli-sikovny-trik-a-pomoci-ai-je-upravuji/", "czechcrunch-dae17d", "czechcrunch"],
       ["AVmania (Živě.cz)", "Udělejme chytré televize zase hloupější. AI agenti z nich umí vyhodit všechno, co otravuje", "20 Oct", "https://avmania.zive.cz/archiv-clanku/udelejme-chytre-televize-zase-hloupejsi", "avmania-08bcc0", "avmania"],
+      ["SMARTmania.cz", "Reklamy z televize pryč za čtvrt hodiny? Lidé si je čistí sami s pomocí Claude Code", "26 Oct", "https://smartmania.cz/reklamy-z-televize-pryc-za-ctvrt-hodiny-lide-si-je-cisti-sami-s-pomoci-claude-code/", "smartmania-694ab2", "smartmania"],
     ],
   },
   {
@@ -249,6 +251,7 @@ export const COVERAGE: PressGroup[] = [
       ["CenárioMT", "Smart TV mais rápida: como usar IA e reduzir anúncios", "24 Oct", "https://cenariomt.com.br/tecnologia/smart-tv-mais-rapida-como-usar-ia-e-reduzir-anuncios/", "cenariomt-f95398", "cenariomt"],
       ["Hardware.com.br", "Usuários usam IA para remover anúncios e rastreamento de smart TVs", "24 Oct", "https://www.hardware.com.br/?p=384756", "hardwarebr-d22aa9", "hardwarebr"],
       ["O Cafezinho", "Donos de smart TV usam IA para tirar anúncios e rastreamento, diz TechCrunch", "19 Oct", "https://www.ocafezinho.com/2026-10-19/donos-de-smart-tv-usam-ia-para-tirar-anuncios-e-rastreamento-diz-techcrunch/", "ocafezinho-215ea3", "ocafezinho"],
+      ["Ver-o-Fato", "Inteligência artificial permite modificar smart TVs e eliminar aplicativos indesejados", "23 Oct", "https://ver-o-fato.com.br/inteligencia-artificial-permite-modificar-smart-tvs-e-eliminar-aplicativos-indesejados/", "verofato-6e80aa", "verofato"],
     ],
   },
   {
@@ -264,6 +267,7 @@ export const COVERAGE: PressGroup[] = [
       ["Cadena 3", "El auge de los hacks de IA para convertir televisores inteligentes en modelos simples", "19 Oct", "https://www.cadena3.com/noticia/tecnologia/el-auge-de-los-hacks-de-ia-para-convertir-televisores-inteligentes-en-modelos-simples_604870", "cadena3-6548ba", "cadena3"],
       ["OneDigital", "CleanYourTV limpia tu Android TV de publicidad con IA", "21 Oct", "https://onedigital.mx/2026/10/21/cleanyourtv-limpiar-android-tv/", "onedigital-6347b8", "onedigital"],
       ["ENTER.CO", "¿Cómo volver 'tonto' tu smart TV con IA para quitarle los anuncios?", "21 Oct", "https://www.enter.co/chips-bits/como-volver-tonto-smart-tv-ia-anuncios/", "enter-ee172d", "enter"],
+      ["Digital Trends Español", "Cómo usar IA para convertir tu Smart TV en una TV “tonta” y eliminar anuncios, rastreo y bloatware", "20 Oct", "https://es.digitaltrends.com/inteligente/como-usar-ia-convertir-smart-tv-tv-tonta-guia/", "digitaltrendses-162b23", "digitaltrendses"],
     ],
   },
   {
@@ -314,6 +318,7 @@ export const COVERAGE: PressGroup[] = [
       ["electrify.tw", "告別 Google TV 首頁廣告！CleanYourTV 免 Root 換上 Apple TV 極簡桌面", "25 Oct", "https://electrify.tw/cleanyourtv-google-tv-apple-tv-launcher-ai-agent/", "electrify-801e0d", "electrify"],
       ["商傳媒 SUN MEDIA", "厭煩廣告追蹤 用戶利用AI工具讓智慧電視「變笨」", "20 Oct", "https://sunmedia.tw/news/technology/1792450714-%E5%8E%AD%E7%85%A9%E5%BB%A3%E5%91%8A%E8%BF%BD%E8%B9%A4%E3%80%80%E7%94%A8%E6%88%B6%E5%88%A9%E7%94%A8AI%E5%B7%A5%E5%85%B7%E8%AE%93%E6%99%BA%E6%85%A7%E9%9B%BB%E8%A6%96%E3%80%8C%E8%AE%8A%E7%AC%A8%E3%80%8D", "sunmedia-bffed3", "sunmedia"],
       ["方格子 Vocus (HKT實驗室)", "告別煩人廣告！用 CleanYourTV 把你的 Android TV 變成 Apple TV 風格", "", "https://vocus.cc/article/6ad814e1fd89780001ca9516", "vocus-15898b", "vocus"],
+      ["BigGo 財經", "電視使用者靠 Claude Code 移除廣告與追蹤軟體", "21 Oct", "https://finance.biggo.com.tw/news/241f874a-3b79-487d-a7d2-3774ed007a45", "biggo-b2a0e5", "biggo"],
     ],
   },
   {
@@ -358,6 +363,7 @@ export const COVERAGE: PressGroup[] = [
       ["AnonyViet (English edition)", "Instructions for using CleanYourTV: Remove ads on Android TV, Google TV", "23 Oct", "https://en.anonyviet.com/instructions-for-using-cleanyourtv-remove-ads-on-android-tv-google-tv/", "anonyviet-3fedb6", "anonyviet"],
       ["24h.com.vn", "Nở rộ trào lưu dùng AI dọn dẹp quảng cáo và phần mềm rác trên Smart TV", "23 Oct", "https://www.24h.com.vn/cong-nghe-thong-tin/no-ro-trao-luu-dung-ai-don-dep-quang-cao-va-phan-mem-rac-tren-smart-tv-c55a1805057.html", "24h-1459be", "24h"],
       ["GenK", "Nhờ Claude vibe code biến TV thành \"Jarvis\", nói một câu là Netflix tự chạy", "26 Oct", "https://genk.vn/nho-claude-vibe-code-bien-tv-thanh-jarvis-noi-mot-cau-la-netflix-tu-chay-165262610142221263.chn", "genk-2044eb", "genk"],
+      ["Báo Hà Tĩnh", "Dùng Claude để \"giải cứu\" ti vi cũ", "22 Oct", "https://baohatinh.vn/dung-claude-de-giai-cuu-ti-vi-cu-post319150.html", "baohatinh-5f417b", "baohatinh"],
     ],
   },
   {
@@ -398,6 +404,7 @@ export const COVERAGE: PressGroup[] = [
       ["MyKreaTool", "AI Removes Smart TV Ads in 5 Minutes: CleanYourTV", "22 Oct", "https://mykreatool.com/en/news/kak-ubrat-reklamu-smart-tv-ai-cleanyourtv", "mykreatool-a54853", "mykreatool"],
       ["Carexpo.ru", "Умные телевизоры становятся «глупыми»: ИИ помогает избавиться от рекламы и слежки", "25 Oct", "https://carexpo.ru/ii-na-strazhe-vashikh-nervov-kak-sdelat-televizor-glupym-i-izbavitsya-ot-reklamy", "carexpo-d56f29", "carexpo"],
       ["Habr", "OpenAI и Anthropic ограничили использование своих ИИ-моделей для создания бесплатных клонов платного ПО", "26 Oct", "https://habr.com/ru/news/1099152/", "habr-d047d8", "habr"],
+      ["Клуб DNS", "Владельцы умных телевизоров стали использовать ИИ для отключения рекламы и слежки", "20 Oct", "https://club.dns-shop.ru/digest/186725-vladeltsyi-umnyih-televizorov-stali-ispolzovat-ii-dlya-otklucheniya/", "clubdns-187fb0", "clubdns"],
     ],
   },
   {
@@ -523,6 +530,21 @@ export const COVERAGE: PressGroup[] = [
     country: true,
     items: [
       ["Geektime", "תופעה: משתמשים בקלוד כדי לנקות את הטלוויזיה מכל מה שגרוע בה", "24 Oct", "https://www.geektime.co.il/developers-using-ai-claude-to-hack-smart-tv/", "geektime-ec12ae", "geektime"],
+      ["C14", "ויראלי: הטריק שינקה לכם את הטלוויזיה מפרסומות", "25 Oct", "https://www.c14.co.il/article/1752065", "c14-8601a0", "c14"],
+    ],
+  },
+  {
+    group: "Finland",
+    country: true,
+    items: [
+      ["Tivi", "Uusi ilmiö leviää: Näin älytelevisiosta poistetaan mainokset ja seuranta", "20 Oct", "https://www.tivi.fi/uutiset/a/a53cf770-c442-48dc-ae8b-79f148d40a88", "tivi-e8d41b", "tivi"],
+    ],
+  },
+  {
+    group: "Serbia",
+    country: true,
+    items: [
+      ["Kurir", "Ljudi koriste AI da uklone reklame sa pametnih televizora: Evo kako ih vraćaju na staro", "20 Oct", "https://www.kurir.rs/techvision/saveti/10139632/reklame-na-pametnim-televizorima-kako-ih-ukloniti-uz-ai", "kurir-4533c4", "kurir"],
     ],
   },
   {

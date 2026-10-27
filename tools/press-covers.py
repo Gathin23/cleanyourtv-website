@@ -33,7 +33,7 @@ UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, li
 W, H = 640, 360
 # Buttons that close a cookie or consent banner, in the languages the list covers.
 # Text of the pages a bot check, captcha or country block shows instead of the article: no cover beats a picture of those.
-BLOCKED = re.compile(r"Performing security verification|Just a moment|Verify you are human|Checking your browser|не робот|not allowed to access|Access denied|Attention Required|请求存在异常", re.I)
+BLOCKED = re.compile(r"Performing security verification|Just a moment|Verify you are human|Checking your browser|не робот|проверяем безопасность|not allowed to access|Access denied|Attention Required|请求存在异常|request was intercepted|Cookies zustimmen", re.I)
 CONSENT = ["Accept all", "Accept All", "Accept", "I agree", "Agree", "Got it", "OK", "Allow all", "Alle akzeptieren", "Akzeptieren",
            "Tout accepter", "Accepter", "Aceptar", "Aceitar", "Accetta", "Accetto", "Zgadzam się", "Akceptuję", "Принять", "同意", "接受", "동의"]
 
