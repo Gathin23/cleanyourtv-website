@@ -102,7 +102,7 @@
 }
 .press-logos ul {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   border-top: 1px solid var(--line);
   border-left: 1px solid var(--line);
 }
@@ -126,6 +126,30 @@
 .press-logos a:hover {
   background: #111;
   color: #fff;
+}
+.press-logos a:focus-visible {
+  outline: 3px solid var(--mint);
+  outline-offset: -3px;
+}
+/* Every wordmark in white, the way an "as seen in" strip reads; Bild's box is already white with dark letters. */
+.press-logos img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.85;
+}
+.press-logos img.press-logo-box {
+  filter: none;
+}
+.press-logos a:hover img {
+  opacity: 1;
+}
+@media (max-width: 900px) {
+  .press-logos ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 /* Videos and articles */
@@ -345,12 +369,15 @@ select.chip {
   .press-logos {
     padding-top: 48px;
   }
-  .press-logos ul {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .press-logos li:nth-child(n + 7) {
+    display: none;
   }
   .press-logos a {
     height: 64px;
-    font-size: 16px;
+    padding: 0 8px;
+  }
+  .press-logos img {
+    transform: scale(0.8);
   }
   .press-sec {
     padding-top: 56px;

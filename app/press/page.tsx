@@ -9,6 +9,7 @@ import JsonLd from "@/components/JsonLd";
 import { loadTweet } from "@/lib/data";
 import { GH } from "@/lib/parse";
 import { SITE, breadcrumbs, isoDay, pageMeta } from "@/lib/seo";
+import { cdn } from "@/lib/site";
 import "./press.css";
 
 const title = "CleanYourTV in the press";
@@ -16,8 +17,22 @@ const description = `${COVERAGE_TOTAL} articles and ${VIDEOS.length} videos abou
 
 export const metadata = pageMeta("/press", title, description);
 
-// "Featured in": the big names, in this order, each linking to its first article here.
-const FEATURED = ["TechCrunch", "TechRadar", "Tom's Guide", "Mashable", "Android Authority", "XDA", "Gizmodo", "PCWorld", "404 Media", "Yahoo Tech", "01net", "GIGAZINE"];
+// "Featured in": the twelve biggest outlets that wrote about it, by reach, each as its wordmark (public/press/logos-wordmark/, CREDITS.md there)
+// at a height that gives every logo about the same area, linking to its article here. Phones show the first six.
+const FEATURED: [outlet: string, logo: string, height: number][] = [
+  ["TechCrunch", "techcrunch", 40],
+  ["Yahoo Tech", "yahoo", 29],
+  ["Gizmodo", "gizmodo", 25],
+  ["Mashable", "mashable", 22],
+  ["TechRadar", "techradar", 23],
+  ["Tom's Guide", "tomsguide", 24],
+  ["PCWorld", "pcworld", 26],
+  ["Android Authority", "androidauthority", 20],
+  ["XDA", "xda", 30],
+  ["Bild", "bild", 34],
+  ["404 Media", "404media", 32],
+  ["Xataka", "xataka", 34],
+];
 
 // For a journalist: the pictures and the story. There is no press-kit archive, so these are the repo's own files.
 const KIT: [string, string, string][] = [
@@ -47,7 +62,10 @@ export default async function Press() {
   const cover = (thumb: string) =>
     covers[thumb] ? `/press/covers/${covers[thumb]}` : fs.existsSync(path.join(process.cwd(), "public", "press", "thumbs", `${thumb}.jpg`)) ? `/press/thumbs/${thumb}.jpg` : "";
   const rows: PressRow[] = items.map((it) => [it.outlet, it.headline, it.date, it.url, at.get(it.group) ?? 0, cover(it.thumb), `/press/icons/${it.icon}.png`]);
-  const featured = FEATURED.map((name) => items.find((it) => it.outlet === name || it.outlet.startsWith(name + " ("))).filter((it) => !!it);
+  const featured = FEATURED.flatMap(([name, logo, height]) => {
+    const it = items.find((i) => i.outlet === name || i.outlet.startsWith(name + " ("));
+    return it ? [{ ...it, name, logo, height }] : [];
+  });
   const stats = [
     { label: "Articles", value: String(COVERAGE_TOTAL), bar: "#FF8A8A" },
     { label: "Countries", value: String(COVERAGE_COUNTRIES), bar: "#FFDC96" },
@@ -152,7 +170,10 @@ export default async function Press() {
         <ul className="plain">
           {featured.map((it) => (
             <li key={it.url}>
-              <a href={it.url} target="_blank" rel="noopener">{it.outlet.replace(/ \(.*\)$/, "")}</a>
+              <a href={it.url} target="_blank" rel="noopener" aria-label={`${it.name} (opens in a new tab)`}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={cdn(`/press/logos-wordmark/${it.logo}.svg`)} alt="" style={{ height: it.height }} className={it.logo === "bild" ? "press-logo-box" : undefined} loading="lazy" decoding="async" />
+              </a>
             </li>
           ))}
         </ul>
