@@ -18,3 +18,10 @@ CleanYourTV was covered; each links to that outlet's article.
 | xda.svg | [File:Xda logo.svg](https://commons.wikimedia.org/wiki/File:Xda_logo.svg), Wikimedia Commons | Public domain (text logo), trademark of XDA |
 | bild.svg | [File:Logo BILD.svg](https://commons.wikimedia.org/wiki/File:Logo_BILD.svg), Wikimedia Commons, recoloured | Public domain (text logo), trademark of Axel Springer |
 | 404media.svg | [File:404 Media logo.svg](https://commons.wikimedia.org/wiki/File:404_Media_logo.svg), Wikimedia Commons | Public domain (text logo), trademark of 404 Media |
+
+## Colour sets (27 Oct 2026)
+
+`../logos-colour/` holds the same twelve files in their original colours for the light tiles on /press, with three changes:
+Bild back to its red box (#DD0000) with white letters, and PCWorld and Android Authority in near-black (#111111), since
+their sources above are white or unfilled. `../logos-colour-dark/` is the dark-tile variant (not used by default): Mashable,
+TechRadar's dark letters, 404 Media, Android Authority and The Verge in white, the rest as in `logos-colour/`.
