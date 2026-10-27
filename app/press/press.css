@@ -58,7 +58,58 @@
 .phx-stripe {
   height: 4px;
 }
+/* The credits wall behind the numbers: every outlet's name, faint, fading out behind the figures, drifting slowly. */
+.phx-wall {
+  position: absolute;
+  inset: 4px 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  overflow: hidden;
+  pointer-events: none;
+  font-family: var(--f-ch);
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: rgba(236, 236, 236, 0.1);
+  -webkit-mask-image: radial-gradient(ellipse 78% 82% at 40% 52%, transparent 0 32%, rgba(0, 0, 0, 0.55) 68%, #000 100%);
+  mask-image: radial-gradient(ellipse 78% 82% at 40% 52%, transparent 0 32%, rgba(0, 0, 0, 0.55) 68%, #000 100%);
+}
+.phx-wall-row {
+  overflow: hidden;
+}
+.phx-wall-track {
+  display: inline-flex;
+  animation: phx-drift 160s linear infinite;
+}
+.phx-wall-row:nth-child(even) .phx-wall-track {
+  animation-direction: reverse;
+  animation-duration: 190s;
+}
+.phx-wall-track span::after {
+  content: "·";
+  padding: 0 0.7em;
+}
+.phx-wall-big {
+  color: rgba(207, 255, 207, 0.22);
+}
+@keyframes phx-drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .phx-wall-track {
+    animation: none;
+  }
+}
 .phx-screen {
+  position: relative;
   padding: 32px 36px 34px;
   display: flex;
   flex-direction: column;

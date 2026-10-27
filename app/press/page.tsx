@@ -65,6 +65,12 @@ export default async function Press() {
     const it = items.find((i) => i.outlet === name || i.outlet.startsWith(name + " ("));
     return it ? [{ ...it, name, logo, height }] : [];
   });
+  // Behind the numbers, every outlet that wrote about it, as a slow credits wall: one name each, the big ones a little brighter,
+  // dealt round-robin into rows (each row's names twice, so the CSS drift loops).
+  const big = new Set(FEATURED.map(([name]) => name));
+  const outlets = [...new Set(items.map((i) => i.outlet.replace(/ \(.*\)$/, "")))];
+  const WALL_ROWS = 16;
+  const wall = Array.from({ length: WALL_ROWS }, (_, r) => outlets.filter((_, i) => i % WALL_ROWS === r));
   // The screen's row under the big article count: three figures of equal weight.
   const stats: { label: string; value: string; bar: string; href?: string }[] = [
     { label: "countries", value: String(COVERAGE_COUNTRIES), bar: "#FFDC96" },
@@ -122,6 +128,21 @@ export default async function Press() {
         </div>
         <div className="phx-tv" role="group" aria-label="Coverage in numbers">
           <div className="stripe phx-stripe" aria-hidden="true" />
+          <div className="phx-wall" aria-hidden="true">
+            {wall.map((row, r) => (
+              <div key={r} className="phx-wall-row">
+                <div className="phx-wall-track">
+                  {[0, 1].map((copy) =>
+                    row.map((name) => (
+                      <span key={`${copy}-${name}`} className={big.has(name) ? "phx-wall-big" : undefined}>
+                        {name}
+                      </span>
+                    )),
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
           <div className="phx-screen">
             <p className="phx-big">
               <span className="phx-num">{COVERAGE_TOTAL}</span>
