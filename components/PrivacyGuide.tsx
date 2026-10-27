@@ -111,7 +111,7 @@ function issueUrl(kind: "worked" | "different", b: Brand, pick: Pick, model: str
     lines.push("", `Can we show your GitHub name next to these steps, as “Checked on a ${tv} by @you”? (yes / no)`);
   } else {
     if (step) lines.push(`**Step:** ${steps.indexOf(step) + 1}. ${step.title}`, "");
-    lines.push("**What did your menu show instead?** (the names on screen, or a photo)", "", "");
+    lines.push("**What did your menu show instead?** A photo of the TV screen helps most: drag it into this box. Or type the names you see.", "", "");
   }
   lines.push("", `From https://cleanyour.tv/not-android#${b.id}${pick ? `-${pick}` : ""}`);
   return `${GH}/issues/new?labels=tv-support&title=${encodeURIComponent(title)}&body=${encodeURIComponent(lines.join("\n"))}`;

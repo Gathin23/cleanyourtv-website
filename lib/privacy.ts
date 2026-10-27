@@ -11,7 +11,7 @@ export type Item = { name: string; to: "off" | "on" | "press" };
  *  only for those answers to the brand's question (VIDAA version, Vizio menu…). */
 export type Variant = { label: string; years?: [number, number]; for?: string[]; crumbs: string[]; items?: Item[]; note?: string };
 
-/** Someone confirmed this step on their own TV, through a "Worked on my TV" issue. None yet. */
+/** Someone confirmed this step on their own TV, through a "Worked on my TV" issue. */
 export type Check = { year: number; model: string; by: string; issue: number };
 
 export type Step = {
@@ -115,13 +115,13 @@ export const BRANDS: Brand[] = [
         does: "Ads stay, but stop being targeted at you.",
         sameAs: "acr",
         items: [
-          { name: "Interest-Based Advertisements", to: "off" },
+          { name: "Interest-Based Advertisements (Service Privacy Notice)", to: "off" },
           { name: "Customization Service", to: "off" },
           { name: "Improve personalized ads", to: "off" },
           { name: "Get news and special offers", to: "off" },
           { name: "Do not track", to: "on" },
         ],
-        note: "This is the full set the IMC 2024 study switched off before the TVs stopped contacting tracking servers. Your TV may not show every one.",
+        note: "Most TVs only show Interest-Based Advertisements here, next to Viewing Information Services. The other four are on some models only: untick any you see. This is the full set the IMC 2024 study switched off before the TVs stopped contacting tracking servers.",
         undo: "Tick them again. Ads stay either way; they just stop being targeted.",
         sources: [IMC],
         checks: [],
@@ -131,7 +131,7 @@ export const BRANDS: Brand[] = [
         title: "Reset the ad ID",
         does: "Gives the TV a new ad ID. On its own it doesn’t stop personalised ads.",
         variants: [{ label: "Newer menus", crumbs: ["Settings", "All Settings", "General & Privacy", "Terms & Privacy"], items: [{ name: "Reset PSID", to: "press" }] }],
-        note: "This gives the TV a new ad ID. On its own it doesn’t turn off personalised ads; step 2 does.",
+        note: "This gives the TV a new ad ID. On its own it doesn’t turn off personalised ads; step 2 does. Not every model has Reset PSID: if yours doesn’t, skip this step.",
         undo: "Nothing to undo.",
         sources: [NAI],
         checks: [],
@@ -212,7 +212,7 @@ export const BRANDS: Brand[] = [
         ],
         undo: "Turn it back on in the same place.",
         sources: [CR, ["XDA, Aug 2026", "https://www.xda-developers.com/hidden-lg-tv-settings-i-changed-immediately-to-make-my-new-tv-look-even-better/"], MARKUP, ["Pocket-lint", "https://www.pocket-lint.com/lg-tv-turn-off-live-plus/"], CR21],
-        checks: [],
+        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }],
       },
       {
         id: "agreements",
@@ -232,17 +232,25 @@ export const BRANDS: Brand[] = [
         note: "Only the Terms of Use and the Privacy Policy are required. Apps keep working without the rest.",
         undo: "Accept them again in User Agreements. Voice control needs Voice information.",
         sources: [["LG: User Agreements", "https://www.lg.com/us/support/help-library/how-to-accept-the-updated-user-agreements-on-your-lg-tv--20155426555618"], CR],
-        checks: [],
+        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }],
       },
       {
         id: "adid",
         title: "Limit ad tracking",
         does: "Ads stay, but stop being targeted at you.",
-        variants: [{ label: "", crumbs: ["All Settings", "General", "System", "Additional Settings", "Advertisement"] }],
-        items: [{ name: "Limit AD Tracking", to: "on" }],
+        variants: [
+          { label: "2020 and older", years: [1990, 2020], crumbs: ["All Settings", "General", "System", "Additional Settings", "Advertisement"], items: [{ name: "Limit AD Tracking", to: "on" }] },
+          {
+            label: "2021 and newer",
+            years: [2021, 2026],
+            crumbs: ["Settings", "Privacy & Terms", "User Agreements"],
+            items: [{ name: "Interest-based & Cross-device advertising", to: "off" }],
+            note: "Newer TVs have no Advertisement menu, so this agreement is the switch. If you did step 2, you’re done. If your Additional Settings does show Advertisement, turn Limit AD Tracking on there too.",
+          },
+        ],
         undo: "Turn it off again.",
         sources: [MARKUP],
-        checks: [],
+        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }],
       },
       {
         id: "home",
@@ -256,7 +264,7 @@ export const BRANDS: Brand[] = [
         note: "On 2026 TVs, also turn off Screen Saver Promotion, and AI Recommendations under General › AI Service › LG AI Settings.",
         undo: "Tick them again.",
         sources: [MARKUP, ["LG: Content Recommendation", "https://www.lg.com/in/support/product-support/troubleshoot/help-library/cs-CT52006584-20153905578425OLT/"], ["XDA, Aug 2026", "https://www.xda-developers.com/hidden-lg-tv-settings-i-changed-immediately-to-make-my-new-tv-look-even-better/"]],
-        checks: [],
+        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }],
       },
       {
         id: "voice",
@@ -267,7 +275,7 @@ export const BRANDS: Brand[] = [
         note: "Voice recognition is off by default. The Magic Remote’s mic only listens while you hold its button.",
         undo: "Turn Hands-free Voice back on.",
         sources: [["LG statement, Sep 2026", "https://www.lg.com/global/newsroom/news/statements/statement-understanding-privacy-on-lg-smart-tvs/"]],
-        checks: [],
+        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }],
       },
     ],
     outro: "Menu paths can move with a software update. If yours didn’t match, tell us what you saw.",
@@ -297,7 +305,7 @@ export const BRANDS: Brand[] = [
           { label: "Or on the web", crumbs: ["my.roku.com", "Privacy Settings", "Smart TV Experience"] },
         ],
         items: [{ name: "Automatic Content Recognition (ACR)", to: "off" }],
-        note: "Older software calls it “Use info from TV inputs”.",
+        note: "Older software calls it “Use info from TV inputs”. Some Roku TVs don’t list Privacy in Settings at all: then use the web path at my.roku.com.",
         undo: "Tick it again. You lose the “More Ways to Watch” suggestions from live TV while it’s off.",
         sources: [["Roku support", "https://support.roku.com/article/115005739288"], MARKUP],
         checks: [],
@@ -363,7 +371,7 @@ export const BRANDS: Brand[] = [
         does: "What you watch isn’t linked to your Walmart account.",
         sameAs: "acr",
         items: [{ name: "Let Walmart link Viewing Data to your Walmart account", to: "off" }],
-        note: "Walmart owns Vizio now. The Viewing Data screen lets you say no.",
+        note: "Walmart owns Vizio now. Only newer software asks about this: if there’s no Walmart option next to Viewing Data, there’s nothing to turn off.",
         undo: "Allow it again on the same screen.",
         sources: [["Vizio: Viewing Data", "https://vizio.com/en/terms/privacy-policy/viewing-data-privacy-policy"]],
         checks: [],
