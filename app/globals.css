@@ -809,11 +809,6 @@ select.chip {
   align-items: center;
   gap: 12px;
 }
-.onair {
-  font-family: var(--f-ch);
-  font-size: 20px;
-  white-space: nowrap;
-}
 .gh-pill,
 .coffee {
   display: inline-flex;
@@ -879,22 +874,6 @@ select.chip {
     padding: 0 8px;
   }
 }
-@media (max-width: 1023px) {
-  .navlinks .nav-wide {
-    display: none;
-  }
-}
-/* Just above the phone layout the bar is tightest; Home's On air light steps out so a longer star count (40.1k) still fits. */
-@media (min-width: 861px) and (max-width: 960px) {
-  .head-right .onair {
-    display: none;
-  }
-}
-@media (max-width: 920px) {
-  .nav-more {
-    display: none;
-  }
-}
 @media (max-width: 860px) {
   :root {
     --mast-h: 66px;
@@ -935,14 +914,7 @@ select.chip {
   .logo-word {
     font-size: 19px;
   }
-  .onair {
-    font-size: 18px;
-    gap: 6px;
-  }
-  .onair::before {
-    width: 8px;
-    height: 8px;
-  }
+
   .head-right {
     gap: 10px;
   }

@@ -6,11 +6,10 @@ import { useEffect, useRef, useState } from "react";
 import CheckForm from "@/components/CheckForm";
 import { Mark, Wordmark } from "@/components/Logo";
 import { GH } from "@/lib/parse";
-import { CHANNELS, COFFEE, PRIVACY_LIVE, PRIVACY_NAME, PRIVACY_PATH, shortCount } from "@/lib/site";
+import { CHANNELS, COFFEE, shortCount } from "@/lib/site";
 
 const NAV: [string, string][] = [
   ["TV list", "/tvs"],
-  ...(PRIVACY_LIVE ? [[PRIVACY_NAME, PRIVACY_PATH] as [string, string]] : []),
   ["Add-ons", "/addons"],
   ["Tutorials", "/tutorials"],
   ["Press", "/press"],
@@ -26,7 +25,7 @@ const Cup = () => (
   </svg>
 );
 
-/** The stripe, the logo, the nav (a channel guide behind a menu button on phones) and the GitHub pill. Home adds the On air light and the coffee link. */
+/** The stripe, the logo, the nav (a channel guide behind a menu button on phones) and the GitHub pill. Home adds the coffee link. */
 export default function Header({ stars }: { stars: number }) {
   const path = usePathname().replace(/(.)\/$/, "$1");
   const home = path === "/";
@@ -77,21 +76,12 @@ export default function Header({ stars }: { stars: number }) {
           </Link>
           <div className="navlinks">
             {NAV.map(([label, href]) => (
-              <Link key={label} href={href} aria-current={current(href)} className={href === "/tutorials" ? "nav-wide" : undefined}>
-                {/* "Non-Android TVs" loses its "TVs" when the bar is tight (home's, just above the phone menu); Tutorials leaves the bar below 1024 px (footer and phone menu keep it). */}
-                {label.endsWith(" TVs") ? (
-                  <>
-                    {label.slice(0, -4)}
-                    <span className="nav-more">{"\u00a0"}TVs</span>
-                  </>
-                ) : (
-                  label
-                )}
+              <Link key={label} href={href} aria-current={current(href)}>
+                {label}
               </Link>
             ))}
           </div>
           <div className="head-right">
-            {home && <span className="onair live">On air</span>}
             {gh}
             {home && coffee}
             <button
