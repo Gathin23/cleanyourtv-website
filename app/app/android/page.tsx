@@ -12,7 +12,7 @@ import "./android.css";
 const REPO = "https://github.com/udhaykumarbala/cleanyourtv-app";
 const DOWNLOAD = `${REPO}/releases/latest`;
 const AUTHOR = "https://github.com/udhaykumarbala";
-const VERSION = "0.3.0";
+const VERSION = "0.4.0";
 const IMG = "/app/android";
 
 const title = "Clean Your TV app for Android phones";
@@ -220,7 +220,7 @@ export default function AndroidApp() {
           ))}
         </ol>
         <p className="dim and-after">
-          Come back any time to put an app back, check for leftovers after a TV update, change the dock or the look, or undo everything.
+          Come back any time to put an app back, check for leftovers after a TV update, change the dock or the look, or undo everything. New in 0.4.0: the Look sheet. Pick a picture, one of five styles and 4 to 8 apps in a row, and see it on a preview of your own TV before anything reaches it.
         </p>
       </section>
 
