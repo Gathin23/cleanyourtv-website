@@ -9,7 +9,7 @@ import "./bot.css";
 
 const BOT = "https://github.com/Gathin23/maintainer-bot";
 const REPORT = `${BOT}/blob/v4/report/v4.md`;
-const PC = "https://pc.0g.ai";
+const PC = "https://pc.0g.ai/?utm_source=cleanyourtv&utm_medium=website&utm_campaign=bot-page";
 
 const title = "maintainer-bot · CleanYourTV";
 const description =
