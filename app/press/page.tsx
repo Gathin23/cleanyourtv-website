@@ -16,10 +16,10 @@ const description = `${COVERAGE_TOTAL} articles and ${VIDEOS.length} videos abou
 
 export const metadata = pageMeta("/press", title, description);
 
-// "Featured in": the twelve biggest outlets that wrote about it, by reach, each as its own colour wordmark on a light tile
-// (public/press/logos-colour/, CREDITS.md in logos-wordmark/) at a height that gives every logo about the same area,
-// linking to its article here. Phones show the first six. LOGOS = "dark" swaps to dark tiles with dark-background variants.
-const LOGOS: "light" | "dark" = "light";
+// "Featured in": the twelve biggest outlets that wrote about it, by reach, each as its wordmark on a dark tile, in its own colour
+// where that reads on dark (public/press/logos-colour-dark/, CREDITS.md in logos-wordmark/), at a height that gives every logo
+// about the same area, linking to its article here. Phones show the first six. LOGOS = "light" swaps to light tiles in full colour.
+const LOGOS: "light" | "dark" = "dark";
 const FEATURED: [outlet: string, logo: string, height: number][] = [
   ["TechCrunch", "techcrunch", 40],
   ["The Verge", "theverge", 27],
@@ -65,11 +65,11 @@ export default async function Press() {
     const it = items.find((i) => i.outlet === name || i.outlet.startsWith(name + " ("));
     return it ? [{ ...it, name, logo, height }] : [];
   });
+  // The screen's row under the big article count: three figures of equal weight.
   const stats: { label: string; value: string; bar: string; href?: string }[] = [
-    { label: "Articles", value: String(COVERAGE_TOTAL), bar: "#FF8A8A" },
-    { label: "Countries", value: String(COVERAGE_COUNTRIES), bar: "#FFDC96" },
-    { label: "YouTube videos", value: String(VIDEOS.length), bar: "#6FA8FF", href: "/tutorials" },
-    { label: "Likes on the first post", value: compact(tweet.likes), bar: "#8EE08F" },
+    { label: "countries", value: String(COVERAGE_COUNTRIES), bar: "#FFDC96" },
+    { label: "videos", value: String(VIDEOS.length), bar: "#6FA8FF", href: "/tutorials" },
+    { label: "likes on the first post", value: compact(tweet.likes), bar: "#8EE08F" },
   ];
 
   // The page as a collection of the articles, in the order the list shows them (the videos' VideoObjects live on /tutorials).
@@ -106,27 +106,40 @@ export default async function Press() {
   return (
     <main className="press">
       <JsonLd data={jsonLd} />
-      <section aria-labelledby="page-h" className="wrap press-hero">
-        <div className="stack press-hero-text">
+      {/* The top: the title and a way in on the left, the numbers on a TV screen on the right, the outlets straight under both. */}
+      <section aria-labelledby="page-h" className="wrap phx">
+        <div className="phx-text">
           <p className="kicker c-pink">CH 05 · Press</p>
-          <h1 id="page-h" className="h1 press-h1">In the press</h1>
-          <p className="lede press-lede">Articles and videos about CleanYourTV from its first days. Headlines are as published, in the language they were written in.</p>
+          <h1 id="page-h" className="h1 phx-h1">In the press</h1>
+          <p className="lede phx-lede">
+            {COVERAGE_TOTAL} articles from {COVERAGE_COUNTRIES} countries, each headline as published, in its own language.
+          </p>
+          <ul className="plain phx-links">
+            <li><a href="#articles">Read the articles ↓</a></li>
+            <li><Link href="/tutorials">Watch tutorials →</Link></li>
+            <li><a href="#press-kit">Press kit ↓</a></li>
+          </ul>
+        </div>
+        <div className="phx-tv" role="group" aria-label="Coverage in numbers">
+          <div className="stripe phx-stripe" aria-hidden="true" />
+          <div className="phx-screen">
+            <p className="phx-big">
+              <span className="phx-num">{COVERAGE_TOTAL}</span>
+              <span className="ch phx-unit">articles</span>
+            </p>
+            <dl className="phx-row">
+              {stats.map((s) => (
+                <div key={s.label} className="phx-stat" style={{ "--bar": s.bar } as React.CSSProperties}>
+                  <dt className="ch">{s.label}</dt>
+                  <dd>{s.href ? <Link href={s.href}>{s.value}</Link> : s.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </div>
       </section>
 
-      {/* Coverage in numbers, straight under the title: articles and countries lead, big and glowing. */}
-      <section aria-label="Coverage in numbers" className="band pst">
-        <dl className="wrap pst-grid">
-          {stats.map((s, i) => (
-            <div key={s.label} className={i < 2 ? "pst-cell pst-lead" : "pst-cell"} style={{ "--bar": s.bar } as React.CSSProperties}>
-              <dt className="ch">{s.label}</dt>
-              <dd>{s.href ? <Link href={s.href} className="pst-link">{s.value}</Link> : s.value}</dd>
-            </div>
-          ))}
-        </dl>
-      </section>
-
-      <section aria-labelledby="logos-h" className="wrap press-logos">
+      <section aria-labelledby="logos-h" className="wrap press-logos phx-logos">
         <h2 id="logos-h" className="kicker c-mute">Featured in</h2>
         <ul className={`plain press-logos-${LOGOS}`}>
           {featured.map((it) => (
@@ -147,7 +160,7 @@ export default async function Press() {
         </Link>
       </p>
 
-      <section aria-labelledby="art-h" className="wrap press-sec press-arts">
+      <section id="articles" aria-labelledby="art-h" className="wrap press-sec press-arts">
         <div className="stack">
           <p className="kicker c-amber">Newest first</p>
           <h2 id="art-h" className="h2 h2-sm">Articles</h2>
@@ -161,7 +174,7 @@ export default async function Press() {
       </section>
 
       {/* For anyone writing about it: the pictures, the story and who to ask, after the coverage itself. */}
-      <section className="wrap press-kit-sec">
+      <section id="press-kit" className="wrap press-kit-sec">
         <aside aria-labelledby="kit-h" className="kit">
           <h2 id="kit-h">Writing about it?</h2>
           <ul className="plain">

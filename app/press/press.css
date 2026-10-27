@@ -1,18 +1,135 @@
-/* /press: the title, the numbers band, the outlet logos, the videos, the article list, then the press box. */
+/* /press: the title beside a TV screen of numbers, the outlet logos, a link to the videos, the article list, then the press box. */
 
-.press-hero {
-  padding-top: 72px;
-  padding-bottom: 48px;
+.phx {
+  padding-top: 64px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
 }
-.press-hero-text {
-  gap: 16px;
+.phx-text {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
-.press-h1 {
-  font-size: clamp(48px, 7vw, 96px);
+.phx-h1 {
+  font-size: clamp(52px, 7vw, 104px);
 }
-.press-lede {
-  max-width: 46ch;
+.phx-lede {
+  max-width: 34ch;
+  font-size: 21px;
+}
+.phx-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  margin-top: 6px;
+  font-family: var(--f-head);
+  font-weight: 600;
+  font-size: 17px;
+}
+.phx-links a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 2px solid var(--line-3);
+  padding-bottom: 2px;
+}
+.phx-links a:hover {
+  color: var(--mint);
+  border-color: var(--mint);
+}
+
+/* The numbers on a TV screen: one big count, then three equal figures on one line. */
+.phx-tv {
+  position: relative;
+  border: 2px solid var(--line-3);
+  border-radius: 18px;
+  overflow: hidden;
+  background: radial-gradient(ellipse 80% 70% at 30% 35%, rgba(207, 255, 207, 0.08), transparent 70%), #0b0c0f;
+  box-shadow: 0 0 0 1px rgba(207, 255, 207, 0.06), 0 0 60px rgba(207, 255, 207, 0.07);
+}
+.phx-tv::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 4px);
+}
+.phx-stripe {
+  height: 4px;
+}
+.phx-screen {
+  padding: 32px 36px 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.phx-big {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.phx-num {
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: clamp(88px, 10vw, 150px);
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+  color: var(--mint);
+  text-shadow: 0 0 36px rgba(207, 255, 207, 0.45);
+}
+.phx-unit {
+  font-size: 34px;
+  color: var(--mint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.phx-row {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  align-items: start;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.phx-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.phx-stat::before {
+  content: "";
+  order: -2;
+  width: 28px;
+  height: 4px;
+  margin-bottom: 8px;
+  background: var(--bar);
+}
+.phx-stat dd {
+  order: -1;
+  margin: 0;
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: clamp(32px, 3.2vw, 46px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+}
+.phx-stat dd a {
+  color: inherit;
+  text-decoration: none;
+}
+.phx-stat dd a:hover {
+  color: var(--mint);
+}
+.phx-stat dt {
   font-size: 19px;
+  line-height: 1.15;
+  color: var(--dim-2);
 }
 .kit {
   border: 2px solid var(--ink);
@@ -58,121 +175,53 @@
   color: var(--dim-2);
 }
 
-/* Coverage in numbers: four big glowing figures, articles and countries first and largest. */
-.pst-grid {
-  margin-top: 0;
-  margin-bottom: 0;
-  display: grid;
-  grid-template-columns: 1.25fr 1.25fr 1fr 1fr;
-  align-items: end;
-  gap: 0 32px;
-  padding-top: 40px;
-  padding-bottom: 44px;
-}
-.pst-cell {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  min-width: 0;
-}
-.pst-cell::before {
-  content: "";
-  order: -2;
-  width: 40px;
-  height: 6px;
-  margin-bottom: 14px;
-  background: var(--bar);
-}
-.pst-cell dt {
-  font-size: 24px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--dim-2);
-}
-.pst-cell dd {
-  order: -1;
-  margin: 0;
-  font-family: var(--f-head);
-  font-weight: 700;
-  font-size: clamp(44px, 5.2vw, 76px);
-  line-height: 1;
-  letter-spacing: -0.04em;
-  color: var(--ink);
-}
-.pst-lead dd {
-  font-size: clamp(64px, 8.4vw, 124px);
-  color: var(--mint);
-  text-shadow: 0 0 28px rgba(207, 255, 207, 0.45);
-}
-
-/* Featured in */
+/* Featured in: straight under the hero, part of the same block, as dark tiles. */
 .press-logos {
-  padding-top: 72px;
+  padding-top: 40px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 .press-logos ul {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
-}
-.press-logos li {
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  gap: 10px;
 }
 .press-logos a {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 84px;
-  padding: 0 12px;
-  color: var(--ink);
-  font-family: var(--f-head);
-  font-weight: 700;
-  font-size: 19px;
-  text-align: center;
+  height: 88px;
+  padding: 0 14px;
+  border: 1px solid #2c313a;
+  border-radius: 10px;
+  background: #0d0f13;
   text-decoration: none;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
 }
 .press-logos a:hover {
-  background: #111;
-  color: #fff;
+  transform: translateY(-3px);
+  border-color: #4a5260;
+  background: #12151a;
 }
 .press-logos a:focus-visible {
   outline: 3px solid var(--mint);
-  outline-offset: -3px;
+  outline-offset: 2px;
 }
-/* Each outlet's own colour wordmark. Light tiles by default (the usual "as seen in" look, so dark logos read);
-   .press-logos-dark keeps dark tiles and uses the dark-background variants. */
 .press-logos img {
   display: block;
   width: auto;
   max-width: 100%;
   object-fit: contain;
-  transition: transform 0.15s ease;
 }
-.press-logos a:hover img {
-  transform: scale(1.04);
-}
-.press-logos-light {
-  gap: 10px;
-  border: 0 !important;
-}
-.press-logos-light li {
-  border: 0 !important;
-}
+/* LOGOS = "light": the same tiles, light, with every wordmark in its full colours. */
 .press-logos-light a {
-  height: 92px;
   background: #f2f2ee;
-  border: 1px solid #d9d9d2;
-  border-radius: 8px;
+  border-color: #d9d9d2;
 }
 .press-logos-light a:hover {
   background: #ffffff;
-}
-.press-logos-light a:focus-visible {
-  outline-offset: 2px;
+  border-color: #c4c4bc;
 }
 @media (max-width: 900px) {
   .press-logos ul {
@@ -182,11 +231,12 @@
 
 /* The one line pointing to /tutorials, where the videos are */
 .press-vids {
-  margin: 0;
-  padding-top: 56px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 40px;
   font-family: var(--f-head);
   font-weight: 600;
-  font-size: 20px;
+  font-size: 17px;
 }
 .press-vids a {
   color: var(--ink);
@@ -195,15 +245,6 @@
 .press-vids a:hover {
   color: var(--mint);
 }
-.pst-link {
-  color: inherit;
-  text-decoration: none;
-  border-bottom: 2px dashed var(--bar);
-}
-.pst-link:hover {
-  color: var(--mint);
-}
-
 /* The press box, after the coverage */
 .press-kit-sec {
   margin-top: -48px;
@@ -402,37 +443,61 @@ select.chip {
   color: var(--dim-2);
 }
 
+/* Below about 1000 px the screen goes under the title. */
+@media (max-width: 1000px) {
+  .phx {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+}
+
 @media (max-width: 600px) {
-  .press-hero {
+  .phx {
     padding-top: 32px;
-    padding-bottom: 32px;
     gap: 24px;
   }
-  .press-lede {
+  .phx-text {
+    gap: 14px;
+  }
+  .phx-lede {
     font-size: 17px;
   }
-  .pst-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 28px 16px;
-    padding-top: 28px;
-    padding-bottom: 32px;
+  .phx-links {
+    gap: 8px 20px;
+    font-size: 15px;
   }
-  .pst-cell::before {
-    width: 28px;
-    height: 5px;
-    margin-bottom: 8px;
+  .phx-tv {
+    border-radius: 14px;
   }
-  .pst-cell dt {
-    font-size: 19px;
+  .phx-screen {
+    padding: 24px 20px 26px;
+    gap: 22px;
   }
-  .pst-cell dd {
-    font-size: 40px;
+  .phx-big {
+    gap: 12px;
   }
-  .pst-lead dd {
-    font-size: 54px;
+  .phx-num {
+    font-size: 96px;
+  }
+  .phx-unit {
+    font-size: 26px;
+  }
+  .phx-row {
+    gap: 12px;
+    padding-top: 18px;
+  }
+  .phx-stat::before {
+    width: 22px;
+    margin-bottom: 6px;
+  }
+  .phx-stat dd {
+    font-size: 30px;
+  }
+  .phx-stat dt {
+    font-size: 17px;
   }
   .press-logos {
-    padding-top: 48px;
+    padding-top: 28px;
   }
   .press-logos li:nth-child(n + 7) {
     display: none;
@@ -443,9 +508,6 @@ select.chip {
   }
   .press-logos img {
     transform: scale(0.8);
-  }
-  .press-logos-light a {
-    height: 68px;
   }
   .press-kit-sec {
     margin-top: -24px;
