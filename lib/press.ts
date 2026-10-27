@@ -128,6 +128,7 @@ export const COVERAGE: PressGroup[] = [
       ["4K Filme", "Nutzer befreit Smart-TV mit KI von Werbung und wird dafür gefeiert", "21 Oct", "https://www.4kfilme.de/nutzer-befreit-smart-tv-mit-ki-von-werbund-und-wird-gefeiert/", "4kfilme-ffb7f3", "4kfilme"],
       ["TechZeitGeist", "Werbung auf dem Smart-TV: Was sich abschalten lässt und was nicht", "24 Oct", "https://www.techzeitgeist.de/werbung-auf-dem-smart-tv-was-sich-abschalten-laesst-und-was-nicht/", "techzeitgeist-204327", "techzeitgeist"],
       ["iFun.de", "CleanYourTV: Befreit Android-TVs von Werbung und Ballast", "26 Oct", "https://www.ifun.de/cleanyourtv-befreit-android-tvs-von-werbung-und-ballast-293435/", "ifun-bbe72b", "ifun"],
+      ["Golem.de", "Entrümpelung per Agent-KI: Agenten entfernen Werbung von Smart-TVs", "", "https://www.golem.de/news/entruempelung-per-agent-ki-agenten-entfernen-werbung-von-smart-tvs-2610-214283.html", "golem-cd1f6d", "golem"],
     ],
   },
   {
@@ -192,6 +193,7 @@ export const COVERAGE: PressGroup[] = [
     items: [
       ["Insmart", "Android TV bez reklam s AI a Claude Code", "19 Oct", "https://insmart.cz/android-tv-bez-reklam-ai-claude-code/", "insmart-943c1f", "insmart"],
       ["CzechCrunch", "Chytré televize jsou plné reklam a balastu. Lidé ale našli šikovný trik a pomocí AI je upravují", "25 Oct", "https://cc.cz/chytre-televize-jsou-plne-reklam-a-balastu-lide-ale-nasli-sikovny-trik-a-pomoci-ai-je-upravuji/", "czechcrunch-dae17d", "czechcrunch"],
+      ["AVmania (Živě.cz)", "Udělejme chytré televize zase hloupější. AI agenti z nich umí vyhodit všechno, co otravuje", "20 Oct", "https://avmania.zive.cz/archiv-clanku/udelejme-chytre-televize-zase-hloupejsi", "avmania-08bcc0", "avmania"],
     ],
   },
   {
@@ -295,6 +297,10 @@ export const COVERAGE: PressGroup[] = [
       ["知乎专栏 Zhihu", "cleanyourtv：用 AI 给家用电视去广告换桌面", "", "https://zhuanlan.zhihu.com/p/2096295711121974643", "zhihu-32b70b", "zhihu"],
       ["CSDN", "CleanYourTV 从 ADB 连接到换 Apple TV 风格桌面完整实操（附型号清单与避坑）", "", "https://blog.csdn.net/luzhiqiubiji/article/details/168657505", "csdn-fa5cb9", "csdn"],
       ["今日头条 Toutiao", "CleanYourTV一键给安卓电视去广告，免Root换回Apple TV极简桌面", "", "https://www.toutiao.com/article/7699299071026053647/", "toutiao-3b25c3", "toutiao"],
+      ["CSDN", "1天狂揽791颗星！一个“给电视去广告”的小工具，凭什么全网爆火", "", "https://blog.csdn.net/gitblog_00199/article/details/168538103", "csdn-dcdee6", "csdn"],
+      ["CSDN", "5 分钟上手：用 AI 把智能电视的广告和垃圾软件一键清干净", "", "https://blog.csdn.net/gitblog_01132/article/details/168661872", "csdn-6ba33f", "csdn"],
+      ["知乎专栏 Zhihu", "让 Claude Code 爆改电视，这个开源项目有点意思！", "", "https://zhuanlan.zhihu.com/p/2095920498823652264", "zhihu-ddb75e", "zhihu"],
+      ["知乎专栏 Zhihu", "安卓 TV 去广告开源工具走红，电视厂商广告收入承压", "", "https://zhuanlan.zhihu.com/p/2095856104622368561", "zhihu-a76c82", "zhihu"],
     ],
   },
   {
@@ -372,6 +378,8 @@ export const COVERAGE: PressGroup[] = [
       ["PurePC.pl", "Agenty AI pomagają usuwać bloatware z Google TV i Fire TV. Sprawdzamy możliwości projektów cleanyourtv i dumbtv", "20 Oct", "https://www.purepc.pl/ai-claude-code-smart-tv-reklamy-acr-cleanyourtv-dumbtv", "purepc-4de8b2", "purepc"],
       ["rtvManiaK.pl", "Koniec reklam na telewizorach. Tak działa AI!", "21 Oct", "https://www.rtvmaniak.pl/9743107/koniec-reklam-na-telewizorach-tak-dziala-ai/", "rtvmaniak-12246e", "rtvmaniak"],
       ["Bezprawnik", "Hakowanie telewizorów przez AI. Apple TV za 1499 zł traci sens?", "19 Oct", "https://bezprawnik.pl/hakowanie-telewizorow-ai/", "bezprawnik-e8ee40", "bezprawnik"],
+      ["Instalki", "Magia ery kodowania z AI. Użytkownicy sami ulepszają swoje telewizory", "23 Oct", "https://www.instalki.pl/news/tv-audio/magia-ery-kodowania-z-ai-uzytkownicy-sami-ulepszaja-swoje-telewizory/", "instalki-13ee40", "instalki"],
+      ["Elektroda.pl", "AI w walce z nachalnymi reklamami - agenci AI czyszczą smart TV z reklam i śledzenia", "", "https://www.elektroda.pl/rtvforum/topic4185760.html", "elektroda-41df5e", "elektroda"],
     ],
   },
   {
@@ -470,6 +478,7 @@ export const COVERAGE: PressGroup[] = [
     country: true,
     items: [
       ["Teknikveckan", "Se hur en användare vibekodar bort all reklam från sin smart-tv", "21 Oct", "https://teknikveckan.se/se-hur-en-reklamtrott-anvandare-vibekodar-bort-reklamen-fran-sin-smart-tv/", "teknikveckan-661b87", "teknikveckan"],
+      ["SweClockers", "AI-kod gör smart-TV dum", "22 Oct", "https://www.sweclockers.com/artikel/43315-ai-kod-gor-smart-tv-dum", "sweclockers-76e522", "sweclockers"],
     ],
   },
   {
@@ -485,6 +494,7 @@ export const COVERAGE: PressGroup[] = [
     country: true,
     items: [
       ["TechNews.bg", "Собственици на смарт-телевизори молят AI да направи устройствата им „глупави“", "21 Oct", "https://technews.bg/article-186575.html", "technewsbg-6fa691", "technewsbg"],
+      ["Kaldata", "С помощта на AI може да се отървете от рекламите и проследяването на смарт телевизора си", "20 Oct", "https://www.kaldata.com/it-%D0%BD%D0%BE%D0%B2%D0%B8%D0%BD%D0%B8/%D0%B8%D0%B7%D0%BA%D1%83%D1%81%D1%82%D0%B2%D0%B5%D0%BD-%D0%B8%D0%BD%D1%82%D0%B5%D0%BB%D0%B5%D0%BA%D1%82/%D1%81-%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%82%D0%B0-%D0%BD%D0%B0-ai-%D0%BC%D0%BE%D0%B6%D0%B5-%D0%B4%D0%B0-%D1%81%D0%B5-%D0%BE%D1%82%D1%8A%D1%80%D0%B2%D0%B5%D1%82%D0%B5-%D0%BE%D1%82-%D1%80%D0%B5%D0%BA-715959.html", "kaldata-ed1c06", "kaldata"],
     ],
   },
   {
@@ -506,6 +516,13 @@ export const COVERAGE: PressGroup[] = [
     country: true,
     items: [
       ["Tech With Muchiri", "Your slow Android TV might only need Claude: how owners are stripping out ads and bloat", "25 Oct", "https://techwithmuchiri.com/your-slow-android-tv-might-only-need-claude/", "techwithmuchiri-67abab", "techwithmuchiri"],
+    ],
+  },
+  {
+    group: "Israel",
+    country: true,
+    items: [
+      ["Geektime", "תופעה: משתמשים בקלוד כדי לנקות את הטלוויזיה מכל מה שגרוע בה", "24 Oct", "https://www.geektime.co.il/developers-using-ai-claude-to-hack-smart-tv/", "geektime-ec12ae", "geektime"],
     ],
   },
   {
