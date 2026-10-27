@@ -73,9 +73,7 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   white-space: nowrap;
-  color: rgba(236, 236, 236, 0.1);
-  -webkit-mask-image: radial-gradient(ellipse 78% 82% at 40% 52%, transparent 0 32%, rgba(0, 0, 0, 0.55) 68%, #000 100%);
-  mask-image: radial-gradient(ellipse 78% 82% at 40% 52%, transparent 0 32%, rgba(0, 0, 0, 0.55) 68%, #000 100%);
+  color: rgba(236, 236, 236, 0.08);
 }
 .phx-wall-row {
   overflow: hidden;
