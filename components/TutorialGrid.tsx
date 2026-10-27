@@ -91,8 +91,8 @@ export default function TutorialGrid({ videos }: { videos: TutorialVideo[] }) {
         </div>
         <div className="tut-selects">
           <label className="tut-sort">
-            <span className="sr-only">Language</span>
-            <select className="chip" value={lang} onChange={(e) => (setLang(e.target.value), setShown(PAGE))}>
+            <span className="ch tut-sel-l">Language</span>
+            <select className="tut-sel" value={lang} onChange={(e) => (setLang(e.target.value), setShown(PAGE))}>
               <option value="all">Every language ({byKind.length})</option>
               {langs.map(([code, n]) => (
                 <option key={code} value={code}>
@@ -102,8 +102,8 @@ export default function TutorialGrid({ videos }: { videos: TutorialVideo[] }) {
             </select>
           </label>
           <label className="tut-sort">
-            <span className="sr-only">Sort</span>
-            <select className="chip" value={sort} onChange={(e) => setSort(e.target.value as "views" | "new")}>
+            <span className="ch tut-sel-l">Sort</span>
+            <select className="tut-sel" value={sort} onChange={(e) => setSort(e.target.value as "views" | "new")}>
               <option value="views">Most viewed</option>
               <option value="new">Newest</option>
             </select>

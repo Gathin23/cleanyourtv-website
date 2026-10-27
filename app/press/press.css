@@ -284,21 +284,6 @@
 }
 
 /* The one line pointing to /tutorials, where the videos are */
-.press-vids {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-top: 40px;
-  font-family: var(--f-head);
-  font-weight: 600;
-  font-size: 17px;
-}
-.press-vids a {
-  color: var(--ink);
-  text-underline-offset: 5px;
-}
-.press-vids a:hover {
-  color: var(--mint);
-}
 /* The press box, after the coverage */
 .press-kit-sec {
   margin-top: -48px;

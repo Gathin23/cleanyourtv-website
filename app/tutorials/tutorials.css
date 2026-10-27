@@ -43,10 +43,38 @@
   flex-wrap: wrap;
   gap: 8px;
 }
-.tut-sort select {
+.tut-sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.tut-sel-l {
+  font-size: 19px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--mute);
+}
+/* The two dropdowns: a plain dark field with our own mint chevron instead of the browser's. */
+.tut-sel {
+  appearance: none;
+  -webkit-appearance: none;
   height: 44px;
+  padding: 0 40px 0 14px;
+  border: 1px solid var(--line-3);
+  border-radius: 6px;
+  background: var(--panel) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23cfffcf' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 14px center;
+  color: var(--ink);
   font: inherit;
   font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.tut-sel:hover {
+  border-color: var(--mint);
+}
+.tut-sel option {
+  background: var(--panel);
+  color: var(--ink);
 }
 .tut-more {
   align-self: flex-start;

@@ -3,7 +3,6 @@ import path from "node:path";
 import Link from "next/link";
 import { COVERAGE, COVERAGE_COUNTRIES, COVERAGE_TOTAL } from "@/lib/press";
 import { COUNTRY_ISO } from "@/lib/flags";
-import { VIDEOS } from "@/lib/videos";
 import PressGrid, { type PressRow } from "@/components/PressGrid";
 import JsonLd from "@/components/JsonLd";
 import { GH } from "@/lib/parse";
@@ -12,7 +11,7 @@ import { cdn } from "@/lib/site";
 import "./press.css";
 
 const title = "CleanYourTV in the press";
-const description = `${COVERAGE_TOTAL} articles and ${VIDEOS.length} videos about CleanYourTV, from outlets in ${COVERAGE_COUNTRIES} countries: TechCrunch and Mashable to GIGAZINE and Xataka.`;
+const description = `${COVERAGE_TOTAL} articles about CleanYourTV, from outlets in ${COVERAGE_COUNTRIES} countries: TechCrunch and Mashable to GIGAZINE and Xataka.`;
 
 export const metadata = pageMeta("/press", title, description);
 
@@ -117,7 +116,6 @@ export default async function Press() {
           </p>
           <ul className="plain phx-links">
             <li><a href="#articles">Read the articles ↓</a></li>
-            <li><Link href="/tutorials">Watch tutorials →</Link></li>
             <li><a href="#press-kit">Press kit ↓</a></li>
           </ul>
         </div>
@@ -174,13 +172,6 @@ export default async function Press() {
           ))}
         </ul>
       </section>
-
-      {/* Every video lives on /tutorials now; one line here points there. */}
-      <p className="wrap press-vids">
-        <Link href="/tutorials">
-          Videos and tutorials: see all {VIDEOS.length} on /tutorials <span aria-hidden="true">→</span>
-        </Link>
-      </p>
 
       <section id="articles" aria-labelledby="art-h" className="wrap press-sec press-arts">
         <div className="stack">
