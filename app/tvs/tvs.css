@@ -192,6 +192,10 @@
 }
 .tvf-list li {
   border-bottom: 1px solid var(--line);
+  /* A search shows and hides hundreds of rows at once; the ones off screen skip layout and paint until scrolled to,
+     held at a row's height meanwhile (64 px and the border; the browser keeps each one's real height once drawn). */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 65px;
 }
 .tvf-row {
   display: flex;

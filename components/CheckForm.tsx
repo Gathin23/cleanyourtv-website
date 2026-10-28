@@ -1,10 +1,10 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState, type KeyboardEvent, type ReactNode } from "react";
+import { useDeferredValue, useMemo, useState, type KeyboardEvent, type ReactNode } from "react";
 import { notAndroid, privacyHref, routeFor } from "@/lib/checker";
 import { PRIVACY_LIVE } from "@/lib/site";
-import { closest, matches, norm, searchWords, type TvRow } from "@/lib/tvrows";
+import { closest, hayOf, matches, norm, searchWords, type TvRow } from "@/lib/tvrows";
 
 const SHOWN = 8;
 
@@ -71,57 +71,64 @@ export default function CheckForm({ id, placeholder = "Type a brand or model", s
     router.push(href);
   };
 
-  const words = searchWords(q);
-  const options: Option[] = [];
-  if (q.trim().length >= 2) {
-    const not = notAndroid(q);
-    if (not)
-      options.push(
-        PRIVACY_LIVE
-          ? { key: "privacy", href: privacyHref(q), kind: "privacy", body: <>{not} isn&apos;t Android <span aria-hidden="true">→</span> Non-Android TV guide</> }
-          : { key: "privacy", href: null, kind: "soon", body: <>{not} isn&apos;t Android · privacy guide coming tonight</> },
-      );
-    if (rows) {
-      const hits = rows.filter((t) => matches(t, words));
-      // No exact model: offer the nearest tested ones (same brand, same series) instead of an empty list.
-      const near = hits.length || not ? [] : closest(rows, words, 5);
-      // Models whose brand and name carry the words come before ones that only match on a chip or a folder name,
-      // and two lists for the same model and system show once.
-      const named = (t: TvRow) => (words.every((w) => norm(`${t.b} ${t.n}`).includes(w)) ? 0 : 1);
-      const seen = new Set<string>();
-      const top = [...(hits.length ? hits : near)].sort((a, b) => named(a) - named(b)).filter((t) => {
-        const k = norm(`${t.b} ${t.n} ${t.o}`);
-        return !seen.has(k) && !!seen.add(k);
-      });
-      for (const t of top.slice(0, SHOWN)) {
-        const label = `${t.b} ${t.n}`;
-        options.push({
-          key: t.f,
-          href: `/tvs?q=${encodeURIComponent(label)}`,
-          kind: "tv",
-          body: (
-            <>
-              <span className="cb-name">
-                <strong>{highlight(t.b, words)}</strong> {highlight(t.n, words)}
-              </span>
-              <span className="cb-os">{t.o}</span>
-            </>
-          ),
+  // The box takes each key at once; the list is worked out from a deferred copy, in a render the next key can interrupt.
+  const dq = useDeferredValue(q);
+  // Each row's search text, normalised once per visit rather than on every keystroke.
+  const hay = useMemo(() => rows?.map(hayOf), [rows]);
+  const words = useMemo(() => searchWords(dq), [dq]);
+  const options = useMemo(() => {
+    const options: Option[] = [];
+    if (dq.trim().length >= 2) {
+      const not = notAndroid(dq);
+      if (not)
+        options.push(
+          PRIVACY_LIVE
+            ? { key: "privacy", href: privacyHref(dq), kind: "privacy", body: <>{not} isn&apos;t Android <span aria-hidden="true">→</span> Non-Android TV guide</> }
+            : { key: "privacy", href: null, kind: "soon", body: <>{not} isn&apos;t Android · privacy guide coming tonight</> },
+        );
+      if (rows) {
+        const hits = rows.filter((t, i) => matches(t, words, hay?.[i]));
+        // No exact model: offer the nearest tested ones (same brand, same series) instead of an empty list.
+        const near = hits.length || not ? [] : closest(rows, words, 5);
+        // Models whose brand and name carry the words come before ones that only match on a chip or a folder name,
+        // and two lists for the same model and system show once.
+        const named = (t: TvRow) => (words.every((w) => norm(`${t.b} ${t.n}`).includes(w)) ? 0 : 1);
+        const seen = new Set<string>();
+        const top = [...(hits.length ? hits : near)].sort((a, b) => named(a) - named(b)).filter((t) => {
+          const k = norm(`${t.b} ${t.n} ${t.o}`);
+          return !seen.has(k) && !!seen.add(k);
         });
+        for (const t of top.slice(0, SHOWN)) {
+          const label = `${t.b} ${t.n}`;
+          options.push({
+            key: t.f,
+            href: `/tvs?q=${encodeURIComponent(label)}`,
+            kind: "tv",
+            body: (
+              <>
+                <span className="cb-name">
+                  <strong>{highlight(t.b, words)}</strong> {highlight(t.n, words)}
+                </span>
+                <span className="cb-os">{t.o}</span>
+              </>
+            ),
+          });
+        }
+        if (hits.length || !not)
+          options.push({
+            key: "all",
+            href: `/tvs?q=${encodeURIComponent(dq.trim())}`,
+            kind: "all",
+            body: hits.length ? (
+              <>See all {hits.length} {hits.length === 1 ? "match" : "matches"} <span aria-hidden="true">→</span></>
+            ) : (
+              <>{near.length ? "No exact match" : "Not tested yet"}: if it runs Android TV or Google TV, it still works <span aria-hidden="true">→</span></>
+            ),
+          });
       }
-      if (hits.length || !not)
-        options.push({
-          key: "all",
-          href: `/tvs?q=${encodeURIComponent(q.trim())}`,
-          kind: "all",
-          body: hits.length ? (
-            <>See all {hits.length} {hits.length === 1 ? "match" : "matches"} <span aria-hidden="true">→</span></>
-          ) : (
-            <>{near.length ? "No exact match" : "Not tested yet"}: if it runs Android TV or Google TV, it still works <span aria-hidden="true">→</span></>
-          ),
-        });
     }
-  }
+    return options;
+  }, [dq, words, rows, hay]);
   const expanded = open && options.length > 0;
   const current = expanded && active >= 0 && active < options.length && options[active].href ? active : -1;
   // The next option that can be picked, from `from` in direction `step`; -1 back at the input.

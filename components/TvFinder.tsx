@@ -1,16 +1,35 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { memo, useDeferredValue, useEffect, useMemo, useState } from "react";
 import { GH } from "@/lib/parse";
 import { PRIVACY_LIVE, PRIVACY_PATH, PRIVACY_SOON } from "@/lib/site";
-import { closest, matches, searchWords, type TvRow } from "@/lib/tvrows";
+import { closest, hayOf, matches, searchWords, type TvRow } from "@/lib/tvrows";
 
 const brandKey = (b: string) => b.toLowerCase().replace(/\.$/, "");
 // The first rows show; the rest stay in the page (so every tested model is in its HTML) until asked for or searched.
 const CAP = 30;
 
 type Answer = "" | "yes" | "no" | "unsure";
+
+/** One model's line. Memoised: a keystroke only re-renders the rows whose `hidden` flips. */
+const Row = memo(function Row({ t, hidden }: { t: TvRow; hidden: boolean }) {
+  return (
+    <li hidden={hidden}>
+      <a href={`${GH}/tree/main/examples/${t.f}`} target="_blank" rel="noopener" className="tvf-row">
+        <span className="tvf-name">
+          <span className="tvf-model"><strong>{t.b}</strong> {t.n}</span>
+          {t.m && <span className="tvf-meta">{t.m}</span>}
+        </span>
+        <span className="tvf-os">
+          <span className="ch">{t.o}</span>
+          {t.p && <span className="tvf-part ch">cleanup only</span>}
+        </span>
+        <span className="tvf-open">List on GitHub<span className="sr-only"> (opens in a new tab)</span></span>
+      </a>
+    </li>
+  );
+});
 
 /** No tested list for this TV: ask what it runs, since any Android TV or Google TV works, tested or not. */
 function AndroidCheck() {
@@ -71,32 +90,31 @@ export default function TvFinder({ tvs, brands }: { tvs: TvRow[]; brands: [strin
     setQ(v);
     requestAnimationFrame(() => document.getElementById("search")?.scrollIntoView({ block: "start" }));
   }, []);
-  const words = searchWords(q);
-  const shown = tvs.filter((t) => (!brand || brandKey(t.b) === brand) && matches(t, words));
-  const filtered = !!(words.length || brand);
+  // The box and the chips answer at once; the list follows a beat later, in a render React can interrupt for the next key.
+  const dq = useDeferredValue(q);
+  const dBrand = useDeferredValue(brand);
+  // Each row's search text, normalised once rather than on every keystroke.
+  const hay = useMemo(() => tvs.map(hayOf), [tvs]);
+  const words = useMemo(() => searchWords(dq), [dq]);
+  const hit = useMemo(() => tvs.map((t, i) => (!dBrand || brandKey(t.b) === dBrand) && matches(t, words, hay[i])), [tvs, hay, words, dBrand]);
+  const shown = useMemo(() => tvs.filter((_, i) => hit[i]), [tvs, hit]);
+  const filtered = !!(words.length || dBrand);
   const top = brands.slice(0, 5);
   const rest = brands.slice(5);
-  const picked = brands.find(([b]) => brandKey(b) === brand);
+  const picked = brands.find(([b]) => brandKey(b) === dBrand);
   const capped = !all && !words.length && shown.length > CAP;
   // A Samsung, LG or Roku search that finds nothing gets the honest answer, not "it still works".
   const other = !shown.length && words.some((w) => ["samsung", "tizen", "lg", "webos", "roku", "vizio"].includes(w));
   // Nothing has every word: show the models that share the most (the brand, the series without its screen size).
-  const near = !shown.length && !other ? closest(tvs.filter((t) => !brand || brandKey(t.b) === brand), words, 8) : [];
-  const row = (t: TvRow, hidden: boolean) => (
-    <li key={t.f} hidden={hidden}>
-      <a href={`${GH}/tree/main/examples/${t.f}`} target="_blank" rel="noopener" className="tvf-row">
-        <span className="tvf-name">
-          <span className="tvf-model"><strong>{t.b}</strong> {t.n}</span>
-          {t.m && <span className="tvf-meta">{t.m}</span>}
-        </span>
-        <span className="tvf-os">
-          <span className="ch">{t.o}</span>
-          {t.p && <span className="tvf-part ch">cleanup only</span>}
-        </span>
-        <span className="tvf-open">List on GitHub<span className="sr-only"> (opens in a new tab)</span></span>
-      </a>
-    </li>
+  const near = useMemo(
+    () => (shown.length || other ? [] : closest(tvs.filter((t) => !dBrand || brandKey(t.b) === dBrand), words, 8)),
+    [shown.length, other, tvs, dBrand, words],
   );
+  // Every row stays in the list (so every tested model is in the page's HTML); a search only flips which are hidden.
+  const rows = useMemo(() => {
+    let seen = 0;
+    return tvs.map((t, i) => <Row key={t.f} t={t} hidden={!hit[i] || (capped && seen++ >= CAP)} />);
+  }, [tvs, hit, capped]);
   const chip = (key: string, label: string, n?: number) => (
     <button key={key || "all"} type="button" className="chip" aria-pressed={brand === key} onClick={() => setBrand(key)}>
       {label}
@@ -139,9 +157,10 @@ export default function TvFinder({ tvs, brands }: { tvs: TvRow[]; brands: [strin
         )}
       </p>
 
-      {shown.length > 0 ? (
-        <ul className="plain tvf-list">{shown.map((t, i) => row(t, capped && i >= CAP))}</ul>
-      ) : other ? (
+      <ul className="plain tvf-list" hidden={!shown.length}>
+        {rows}
+      </ul>
+      {shown.length > 0 ? null : other ? (
         <div className="tvf-empty">
           <p>
             <strong>Samsung, LG and Roku TVs are not supported.</strong> They run Tizen, webOS and Roku OS, which have no ADB, so there is no way to switch
@@ -163,9 +182,13 @@ export default function TvFinder({ tvs, brands }: { tvs: TvRow[]; brands: [strin
           {near.length > 0 && (
             <>
               <p>
-                <strong>No exact match for &ldquo;{q.trim()}&rdquo;.</strong> The closest tested {near.length === 1 ? "model" : "models"}:
+                <strong>No exact match for &ldquo;{dq.trim()}&rdquo;.</strong> The closest tested {near.length === 1 ? "model" : "models"}:
               </p>
-              <ul className="plain tvf-list tvf-near">{near.map((t) => row(t, false))}</ul>
+              <ul className="plain tvf-list tvf-near">
+                {near.map((t) => (
+                  <Row key={t.f} t={t} hidden={false} />
+                ))}
+              </ul>
             </>
           )}
           <AndroidCheck />
