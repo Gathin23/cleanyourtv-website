@@ -258,8 +258,10 @@ export default async function Page() {
             {photos.map((x) => (
               <li key={x.link + x.image}>
                 <a href={x.link} target="_blank" rel="noopener">
+                  {/* From the site itself, not jsDelivr (cdn()): its copies of these took up to 34 s at P99 in Cloudflare's field
+                      data, mostly cold fetches through to GitHub, while Cloudflare already holds public/results at the edge. */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={cdn(x.image)} alt={`${x.tv}, posted by ${x.handle}`} loading="lazy" decoding="async" />
+                  <img src={x.image} alt={`${x.tv}, posted by ${x.handle}`} loading="lazy" decoding="async" />
                   <span>{x.handle}</span>
                 </a>
               </li>
