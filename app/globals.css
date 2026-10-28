@@ -2,6 +2,117 @@
    The shared parts live here: tokens, type, the header, the phone menu, the footer, buttons, chips,
    stat grids and tiles. Each page's own layout is in a .css next to its page.tsx. */
 
+/* The fonts' stand-ins while they load. next/font draws each with a "… Fallback" face: Arial, scaled to the font's
+   average letter. That still re-wrapped headings on the swap (bold text drawn from regular Arial, the pixel and code
+   fonts from a proportional one), and on Android, which has no Arial to offer, the stand-in fell through to Roboto or
+   the system monospace at full size: Cloudflare's field data had the heroes on / and /app/android shifting by 0.3.
+   The same-named faces below replace next/font's (the last one defined wins): Arial Bold for bold text, and Courier New
+   (or Liberation Mono or Droid Sans Mono, all 0.6 em a letter) for the monospaced fonts, which then match every line
+   exactly. The "… Roboto" faces are Android's, next in each stack. Sizes fitted to the text of /, /tvs, /not-android,
+   /app/android, /faq and /addons; ascent and descent are the real fonts'. */
+@font-face {
+  font-family: "Space Grotesk Fallback";
+  src: local("Arial"), local("ArialMT");
+  size-adjust: 103.1%;
+  ascent-override: 95.1%;
+  descent-override: 28.1%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Space Grotesk Fallback";
+  src: local("Arial Bold"), local("Arial-BoldMT");
+  font-weight: 550 900;
+  size-adjust: 100.3%;
+  ascent-override: 97.7%;
+  descent-override: 28.9%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Space Grotesk Roboto";
+  src: local("Roboto"), local("Roboto Regular"), local("Roboto-Regular");
+  size-adjust: 103.3%;
+  ascent-override: 94.8%;
+  descent-override: 28.1%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Space Grotesk Roboto";
+  src: local("Roboto Bold"), local("Roboto-Bold");
+  font-weight: 550 900;
+  size-adjust: 106.5%;
+  ascent-override: 92.0%;
+  descent-override: 27.2%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "IBM Plex Sans Fallback";
+  src: local("Arial"), local("ArialMT");
+  size-adjust: 100.2%;
+  ascent-override: 101.8%;
+  descent-override: 26.9%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "IBM Plex Sans Fallback";
+  src: local("Arial Bold"), local("Arial-BoldMT");
+  font-weight: 550 900;
+  size-adjust: 96.6%;
+  ascent-override: 105.6%;
+  descent-override: 28.0%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "IBM Plex Sans Roboto";
+  src: local("Roboto"), local("Roboto Regular"), local("Roboto-Regular");
+  size-adjust: 100.4%;
+  ascent-override: 101.6%;
+  descent-override: 26.9%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "IBM Plex Sans Roboto";
+  src: local("Roboto Bold"), local("Roboto-Bold");
+  font-weight: 550 900;
+  size-adjust: 102.5%;
+  ascent-override: 99.5%;
+  descent-override: 26.3%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "IBM Plex Mono Fallback";
+  src: local("Courier New"), local("CourierNewPSMT"), local("Liberation Mono"), local("Droid Sans Mono"), local("DroidSansMono");
+  size-adjust: 100.0%;
+  ascent-override: 102.0%;
+  descent-override: 27.0%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "VT323 Fallback";
+  src: local("Courier New"), local("CourierNewPSMT"), local("Liberation Mono"), local("Droid Sans Mono"), local("DroidSansMono");
+  size-adjust: 66.5%;
+  ascent-override: 120.2%;
+  descent-override: 30.1%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Fredoka Fallback";
+  src: local("Arial Bold"), local("Arial-BoldMT");
+  font-weight: 550 900;
+  size-adjust: 92.9%;
+  ascent-override: 104.4%;
+  descent-override: 25.8%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Fredoka Roboto";
+  src: local("Roboto Bold"), local("Roboto-Bold");
+  font-weight: 550 900;
+  size-adjust: 98.6%;
+  ascent-override: 98.4%;
+  descent-override: 24.3%;
+  line-gap-override: 0%;
+}
+
 :root {
   --bg: #050505;
   --band: #0c0c0c;
@@ -28,11 +139,11 @@
   --on-amber: #2b1e00;
   --on-blue: #04152e;
   --on-red: #2e0505;
-  --f-head: var(--font-grotesk), "Space Grotesk", system-ui, sans-serif;
-  --f-body: var(--font-plex), "IBM Plex Sans", system-ui, sans-serif;
+  --f-head: var(--font-grotesk), "Space Grotesk Roboto", "Space Grotesk", system-ui, sans-serif;
+  --f-body: var(--font-plex), "IBM Plex Sans Roboto", "IBM Plex Sans", system-ui, sans-serif;
   --f-mono: var(--font-plex-mono), "IBM Plex Mono", ui-monospace, monospace;
   --f-ch: var(--font-vt323), "VT323", monospace;
-  --f-logo: var(--font-fredoka), "Fredoka", sans-serif;
+  --f-logo: var(--font-fredoka), "Fredoka Roboto", "Fredoka", sans-serif;
   --mast-h: 0px;
   color-scheme: dark;
 }

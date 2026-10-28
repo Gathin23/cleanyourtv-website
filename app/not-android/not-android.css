@@ -768,6 +768,20 @@
 .na-panel[hidden] {
   display: none;
 }
+/* Until the guide's JS takes over, the head script (lib/prepaint.ts) says which level will show, so the other two never
+   draw and nothing below them moves at hydration. Without JS the attribute is never set and every level reads. */
+html[data-na-level="l2"] #panel-l1,
+html[data-na-level="l2"] #panel-l3,
+html[data-na-level="l3"] #panel-l1,
+html[data-na-level="l3"] #panel-l2 {
+  display: none;
+}
+/* A visit that will open a TV's steps (#samsung-2024, saved progress): what sits below the picker waits, invisible, for
+   them to go in above it, instead of being shoved down in view. */
+html[data-na-wait] main.na > .na-pick ~ *,
+html[data-na-wait] .site-foot {
+  visibility: hidden;
+}
 .na-panel .dim {
   margin: 0;
   max-width: 72ch;

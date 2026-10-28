@@ -2,6 +2,9 @@
 // block-or-keep tables, the undo list and the sources. The guide, the no-JS list and the printout all read from here.
 // Every path and fact is from cleanyourtv-launch/tv-privacy-research.md; nothing it marks unverified is here.
 
+/** Where /not-android keeps a visitor's progress (localStorage). */
+export const NA_STORE = "cyt-not-android";
+
 export type BrandId = "samsung" | "lg" | "roku" | "vizio" | "firetv" | "hisense" | "google";
 
 /** One switch at the end of a path: "off" draws ☐, "on" draws ☑, "press" draws a button. */

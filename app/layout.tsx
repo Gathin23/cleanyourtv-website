@@ -3,9 +3,11 @@ import { Fredoka, IBM_Plex_Mono, IBM_Plex_Sans, Space_Grotesk, VT323 } from "nex
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { loadStars } from "@/lib/data";
+import { NA_PREPAINT } from "@/lib/prepaint";
 import "./globals.css";
 
 // Space Grotesk for headings and numbers, IBM Plex Sans for text, Plex Mono for model details, VT323 for channel labels, Fredoka for the logo.
+// Their stand-ins while they load ("… Fallback") are refitted in globals.css.
 const grotesk = Space_Grotesk({ subsets: ["latin"], weight: ["500", "700"], variable: "--font-grotesk", display: "swap" });
 const plex = IBM_Plex_Sans({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-plex", display: "swap" });
 const plexMono = IBM_Plex_Mono({ subsets: ["latin"], weight: "400", variable: "--font-plex-mono", display: "swap", preload: false });
@@ -42,7 +44,12 @@ export const viewport: Viewport = { themeColor: "#050505", width: "device-width"
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const stars = await loadStars();
   return (
-    <html lang="en" className={[grotesk, plex, plexMono, vt323, fredoka].map((f) => f.variable).join(" ")}>
+    // suppressHydrationWarning: the head script may have set data-na-* on <html> before React hydrates it.
+    <html lang="en" className={[grotesk, plex, plexMono, vt323, fredoka].map((f) => f.variable).join(" ")} suppressHydrationWarning>
+      <head>
+        {/* Before the first paint: draw /not-android as its JS will leave it (lib/prepaint.ts). In the layout, so it only ever runs from the HTML. */}
+        <script dangerouslySetInnerHTML={{ __html: NA_PREPAINT }} />
+      </head>
       <body>
         <a href="#content" className="skip">Skip to content</a>
         <Header stars={stars} />

@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import CopyButton from "@/components/CopyButton";
 import NetCheck from "@/components/NetCheck";
 import { Keys, StepBody, StepList, Toggles, pathsFor } from "@/components/PrivacySteps";
-import { BRANDS, DOMAINS, brandById, choiceOf, pickLabel, stepsFor } from "@/lib/privacy";
+import { BRANDS, DOMAINS, NA_STORE, brandById, choiceOf, pickLabel, stepsFor } from "@/lib/privacy";
 import type { Brand, BrandId, Pick, Step, Verdict } from "@/lib/privacy";
 import { GH } from "@/lib/parse";
 import { lgYear, samsungYear } from "@/lib/tvYear";
@@ -21,7 +21,7 @@ import type { YearResult } from "@/lib/tvYear";
 type Level = "l1" | "l2" | "l3";
 type Saved = { brand: BrandId | null; pick: Pick; model: string; done: string[] };
 
-const KEY = "cyt-not-android";
+const KEY = NA_STORE;
 const HASH = new RegExp(`^#(${BRANDS.map((b) => b.id).join("|")})(?:-([a-z0-9-]+))?$`);
 // In-page anchors: the two levels are tabs, the rest are folds further down that open when linked.
 const LEVEL_IDS: Record<string, Level> = { further: "l2", network: "l2", dns: "l3" };
@@ -145,7 +145,9 @@ export default function PrivacyGuide({ hero, after }: { hero: React.ReactNode; a
   const moveTo = useRef<string | null>(null);
   const opener = useRef<HTMLButtonElement | null>(null);
 
-  useEffect(() => {
+  // Layout effects here and in the restore below: on a client-side visit they settle before the first paint, so the
+  // guide never shows one way and then moves. On the first load the head script (lib/prepaint.ts) covers the gap.
+  useLayoutEffect(() => {
     const mq = matchMedia("(max-width: 600px)");
     const on = () => setPhone(mq.matches);
     on();
@@ -158,7 +160,7 @@ export default function PrivacyGuide({ hero, after }: { hero: React.ReactNode; a
 
   // First visit: the link's #samsung-2024 wins, then whatever was saved. #dns and #network pick their level; #undo and
   // the other folds open.
-  useEffect(() => {
+  useLayoutEffect(() => {
     const fromHash = () => {
       const m = location.hash.match(HASH);
       if (m) {
@@ -205,6 +207,14 @@ export default function PrivacyGuide({ hero, after }: { hero: React.ReactNode; a
       document.removeEventListener("click", click);
     };
   }, []);
+
+  // The guide now draws its own level and steps: the head script's stand-ins go (lib/prepaint.ts, not-android.css).
+  useEffect(() => {
+    if (!ready) return;
+    const d = document.documentElement.dataset;
+    delete d.naLevel;
+    delete d.naWait;
+  }, [ready]);
 
   // Keep the address and localStorage in step with the guide; print only this TV's steps once one is picked.
   useEffect(() => {
