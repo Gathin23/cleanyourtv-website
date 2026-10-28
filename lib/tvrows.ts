@@ -34,3 +34,40 @@ export function tvRow(t: Tv): TvRow {
   return { f: t.folder, b: t.brand, n: name || t.model, m: meta, o: t.os, ...(fire ? { p: 1 as const } : {}) };
 }
 
+
+// Words that say nothing about which TV it is, so they never make two rows look alike.
+const VAGUE = new Set(["tv", "smart", "android", "google", "the", "my", "inch", "led", "uhd", "hd", "4k", "8k", "series", "model"]);
+
+/** A model word and its looser forms: "55c745k" also tries "c745k", "55c745" and "c745" (no screen size, no region letter). */
+function loose(w: string): string[] {
+  const out = [w];
+  if (/\d/.test(w) && w.length >= 5) {
+    const noSize = w.replace(/^\d{2,3}(?=[a-z])/, "");
+    const noTail = w.replace(/(?<=\d)[a-z]{1,2}$/, "");
+    const both = noSize.replace(/(?<=\d)[a-z]{1,2}$/, "");
+    for (const v of [noSize, noTail, both]) if (v.length >= 3 && !out.includes(v)) out.push(v);
+  }
+  return out;
+}
+
+/**
+ * When no row has every word: the rows that share the most words with the search (a brand, a model series without its
+ * screen size), best first. Empty when the search shares nothing useful with any tested model.
+ */
+export function closest(rows: TvRow[], words: string[], max = 12): TvRow[] {
+  // A bare screen size ("43", "55") matches half the list, so it doesn't count.
+  const useful = words.filter((w) => w.length >= 2 && !VAGUE.has(w) && !/^\d{2,3}$/.test(w)).map(loose);
+  if (!useful.length) return [];
+  const scored = rows
+    .map((t) => {
+      const hay = norm(`${t.b} ${t.n} ${t.m} ${t.f}`);
+      const brand = norm(t.b);
+      // The brand counts double, so "toshiba 43" stays with Toshiba rather than any 43" set.
+      // Under four letters a model fragment turns up inside unrelated codes ("xr9" in K-65XR90M2), so it needs to be longer.
+      return { t, s: useful.reduce((n, vs) => n + (vs[0] === brand ? 2 : vs.some((v) => v.length >= 4 && hay.includes(v)) ? 1 : 0), 0) };
+    })
+    .filter((x) => x.s > 0);
+  if (!scored.length) return [];
+  const best = Math.max(...scored.map((x) => x.s));
+  return scored.filter((x) => x.s === best).slice(0, max).map((x) => x.t);
+}

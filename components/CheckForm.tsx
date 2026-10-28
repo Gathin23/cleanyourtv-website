@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState, type KeyboardEvent, type ReactNode } from "react";
 import { notAndroid, privacyHref, routeFor } from "@/lib/checker";
 import { PRIVACY_LIVE } from "@/lib/site";
-import { matches, norm, searchWords, type TvRow } from "@/lib/tvrows";
+import { closest, matches, norm, searchWords, type TvRow } from "@/lib/tvrows";
 
 const SHOWN = 8;
 
@@ -83,11 +83,13 @@ export default function CheckForm({ id, placeholder = "Type a brand or model", s
       );
     if (rows) {
       const hits = rows.filter((t) => matches(t, words));
+      // No exact model: offer the nearest tested ones (same brand, same series) instead of an empty list.
+      const near = hits.length || not ? [] : closest(rows, words, 5);
       // Models whose brand and name carry the words come before ones that only match on a chip or a folder name,
       // and two lists for the same model and system show once.
       const named = (t: TvRow) => (words.every((w) => norm(`${t.b} ${t.n}`).includes(w)) ? 0 : 1);
       const seen = new Set<string>();
-      const top = [...hits].sort((a, b) => named(a) - named(b)).filter((t) => {
+      const top = [...(hits.length ? hits : near)].sort((a, b) => named(a) - named(b)).filter((t) => {
         const k = norm(`${t.b} ${t.n} ${t.o}`);
         return !seen.has(k) && !!seen.add(k);
       });
@@ -112,7 +114,11 @@ export default function CheckForm({ id, placeholder = "Type a brand or model", s
           key: "all",
           href: `/tvs?q=${encodeURIComponent(q.trim())}`,
           kind: "all",
-          body: hits.length ? <>See all {hits.length} {hits.length === 1 ? "match" : "matches"} <span aria-hidden="true">→</span></> : <>No tested list yet: search the TV list <span aria-hidden="true">→</span></>,
+          body: hits.length ? (
+            <>See all {hits.length} {hits.length === 1 ? "match" : "matches"} <span aria-hidden="true">→</span></>
+          ) : (
+            <>{near.length ? "No exact match" : "Not tested yet"}: if it runs Android TV or Google TV, it still works <span aria-hidden="true">→</span></>
+          ),
         });
     }
   }

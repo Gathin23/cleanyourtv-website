@@ -4,11 +4,59 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { GH } from "@/lib/parse";
 import { PRIVACY_LIVE, PRIVACY_PATH, PRIVACY_SOON } from "@/lib/site";
-import { matches, searchWords, type TvRow } from "@/lib/tvrows";
+import { closest, matches, searchWords, type TvRow } from "@/lib/tvrows";
 
 const brandKey = (b: string) => b.toLowerCase().replace(/\.$/, "");
 // The first rows show; the rest stay in the page (so every tested model is in its HTML) until asked for or searched.
 const CAP = 30;
+
+type Answer = "" | "yes" | "no" | "unsure";
+
+/** No tested list for this TV: ask what it runs, since any Android TV or Google TV works, tested or not. */
+function AndroidCheck() {
+  const [a, setA] = useState<Answer>("");
+  const pick = (v: Answer, label: string) => (
+    <button type="button" className="chip" aria-pressed={a === v} onClick={() => setA(v)}>
+      {label}
+    </button>
+  );
+  return (
+    <div className="tvf-ask">
+      <p>
+        <strong>Is it an Android TV or Google TV?</strong> Then it works, tested or not: these are only the models someone has already shared a list for.
+      </p>
+      <div className="chips" role="group" aria-label="What does your TV run?">
+        {pick("yes", "Yes, Android TV or Google TV")}
+        {pick("no", "No, Samsung, LG, Roku…")}
+        {pick("unsure", "Not sure")}
+      </div>
+      {a === "yes" && (
+        <p className="tvf-answer" aria-live="polite">
+          Good, you can use it. The assistant reads what your TV has installed and builds a list for your model with you, with the same backup and undo.{" "}
+          <Link href="/#setup">Set it up</Link> or use the <Link href="/app/android">phone app</Link>.
+        </p>
+      )}
+      {a === "no" && (
+        <p className="tvf-answer" aria-live="polite">
+          Then CleanYourTV can&rsquo;t run on it, since those systems have no ADB.{" "}
+          {PRIVACY_LIVE ? (
+            <>
+              <Link href={PRIVACY_PATH}>The Non-Android TV guide</Link> still turns off most of the tracking, step by step with your remote.
+            </>
+          ) : (
+            PRIVACY_SOON
+          )}
+        </p>
+      )}
+      {a === "unsure" && (
+        <p className="tvf-answer" aria-live="polite">
+          Look at the home screen: Google TV says so at the top. Or open Settings: Android TV and Google TV have <strong>Device Preferences</strong> (or{" "}
+          <strong>System</strong> › About showing Android TV OS). Fire TV works for the cleanup half. A Samsung, LG or Roku home screen means it isn&rsquo;t Android.
+        </p>
+      )}
+    </div>
+  );
+}
 
 /** Search box, brand chips (the five biggest) and a select for the rest, over the tested models; every word typed has to match. */
 export default function TvFinder({ tvs, brands }: { tvs: TvRow[]; brands: [string, number][] }) {
@@ -32,6 +80,23 @@ export default function TvFinder({ tvs, brands }: { tvs: TvRow[]; brands: [strin
   const capped = !all && !words.length && shown.length > CAP;
   // A Samsung, LG or Roku search that finds nothing gets the honest answer, not "it still works".
   const other = !shown.length && words.some((w) => ["samsung", "tizen", "lg", "webos", "roku", "vizio"].includes(w));
+  // Nothing has every word: show the models that share the most (the brand, the series without its screen size).
+  const near = !shown.length && !other ? closest(tvs.filter((t) => !brand || brandKey(t.b) === brand), words, 8) : [];
+  const row = (t: TvRow, hidden: boolean) => (
+    <li key={t.f} hidden={hidden}>
+      <a href={`${GH}/tree/main/examples/${t.f}`} target="_blank" rel="noopener" className="tvf-row">
+        <span className="tvf-name">
+          <span className="tvf-model"><strong>{t.b}</strong> {t.n}</span>
+          {t.m && <span className="tvf-meta">{t.m}</span>}
+        </span>
+        <span className="tvf-os">
+          <span className="ch">{t.o}</span>
+          {t.p && <span className="tvf-part ch">cleanup only</span>}
+        </span>
+        <span className="tvf-open">List on GitHub<span className="sr-only"> (opens in a new tab)</span></span>
+      </a>
+    </li>
+  );
   const chip = (key: string, label: string, n?: number) => (
     <button key={key || "all"} type="button" className="chip" aria-pressed={brand === key} onClick={() => setBrand(key)}>
       {label}
@@ -75,23 +140,7 @@ export default function TvFinder({ tvs, brands }: { tvs: TvRow[]; brands: [strin
       </p>
 
       {shown.length > 0 ? (
-        <ul className="plain tvf-list">
-          {shown.map((t, i) => (
-            <li key={t.f} hidden={capped && i >= CAP}>
-              <a href={`${GH}/tree/main/examples/${t.f}`} target="_blank" rel="noopener" className="tvf-row">
-                <span className="tvf-name">
-                  <span className="tvf-model"><strong>{t.b}</strong> {t.n}</span>
-                  {t.m && <span className="tvf-meta">{t.m}</span>}
-                </span>
-                <span className="tvf-os">
-                  <span className="ch">{t.o}</span>
-                  {t.p && <span className="tvf-part ch">cleanup only</span>}
-                </span>
-                <span className="tvf-open">List on GitHub<span className="sr-only"> (opens in a new tab)</span></span>
-              </a>
-            </li>
-          ))}
-        </ul>
+        <ul className="plain tvf-list">{shown.map((t, i) => row(t, capped && i >= CAP))}</ul>
       ) : other ? (
         <div className="tvf-empty">
           <p>
@@ -111,13 +160,15 @@ export default function TvFinder({ tvs, brands }: { tvs: TvRow[]; brands: [strin
         </div>
       ) : (
         <div className="tvf-empty">
-          <p>
-            <strong>Not on the list yet? It still works.</strong> These are only the models someone has already tested. On any Android TV or Google TV, the
-            assistant reads what your TV has installed and builds a list for your model with you.
-          </p>
-          <p>
-            <Link href="/#setup">How to set it up</Link>
-          </p>
+          {near.length > 0 && (
+            <>
+              <p>
+                <strong>No exact match for &ldquo;{q.trim()}&rdquo;.</strong> The closest tested {near.length === 1 ? "model" : "models"}:
+              </p>
+              <ul className="plain tvf-list tvf-near">{near.map((t) => row(t, false))}</ul>
+            </>
+          )}
+          <AndroidCheck />
         </div>
       )}
 

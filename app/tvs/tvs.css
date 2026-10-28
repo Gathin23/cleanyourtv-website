@@ -270,6 +270,19 @@
   color: var(--ink);
   font-weight: 600;
 }
+.tvf-near {
+  margin: 4px 0 24px;
+}
+.tvf-ask .chips {
+  margin: 14px 0 4px;
+}
+.tvf-answer {
+  margin-top: 12px !important;
+  padding: 14px 16px;
+  border-left: 3px solid var(--mint, #cfffcf);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--ink) !important;
+}
 
 /* Yours is missing? */
 .tvs-missing-wrap {
