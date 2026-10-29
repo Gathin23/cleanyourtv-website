@@ -14,7 +14,14 @@ const title = "Halloween pack for your TV";
 const description =
   "A Halloween look for CleanYourTV Home until 1 November: night wallpapers and an illustrated haunted house, a jack-o'-lantern for Wi-Fi that glows while you're online, a bat, a ghost and bats over Home. One command on, one command off.";
 
-export const metadata = pageMeta("/halloween", `${title} · CleanYourTV`, description);
+export const metadata = pageMeta("/halloween", `${title} · CleanYourTV`, description, {
+  image: {
+    url: `${SITE}/hw/og-halloween.jpg`,
+    width: 1200,
+    height: 630,
+    alt: "Halloween for your TV. The CleanYourTV Halloween pack: a TV with rabbit ears showing a haunted-house wallpaper and bats flying across Home, with drips, bats and pumpkins.",
+  },
+});
 
 // What the skin does, one line each (from the launcher's Halloween skin and themes/halloween).
 const FEATURES: [string, string, string][] = [

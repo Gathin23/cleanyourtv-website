@@ -10,7 +10,7 @@ import { loadFacts, loadSiteData } from "@/lib/data";
 import { HALLOWEEN } from "@/lib/halloween";
 import { GH } from "@/lib/parse";
 import { COVERAGE_COUNTRIES, COVERAGE_TOTAL } from "@/lib/press";
-import { homeGraph, pageMeta } from "@/lib/seo";
+import { SITE, homeGraph, pageMeta } from "@/lib/seo";
 import { HOME_PICKS, LANGS, TUTORIAL_VIDEOS } from "@/lib/tutorials";
 import { ON_AIR_SINCE, PRESS, PRESS_LOGO_W, PRIVACY_LIVE, PRIVACY_PATH, PRIVACY_SOON, TRENDSHIFT, cdn, roundedCount } from "@/lib/site";
 import "./home.css";
@@ -24,7 +24,15 @@ const VIDEO_PICKS = HOME_PICKS.map((id) => TUTORIAL_VIDEOS.find((v) => v.id === 
 const description =
   "Your TV, minus the ads. Debloat any Android TV or Google TV over Wi-Fi and swap the ad-filled home screen for a clean Apple TV-style launcher. No root, fully reversible.";
 
-export const metadata = pageMeta("/", "CleanYourTV: remove ads and bloat from Android TV and Google TV", description);
+// Halloween: the share image is the Halloween banner (public/hw/og-home.jpg, 1200x630); flag off, the site's usual /docs/og.png.
+const HW_OG = {
+  url: `${SITE}/hw/og-home.jpg`,
+  width: 1200,
+  height: 630,
+  alt: "CleanYourTV, Halloween edition. Your TV, minus the ads. The spooky logo with a pumpkin for the o, the headline, drips and bats, and a TV showing a haunted-house wallpaper with bats flying across Home.",
+};
+
+export const metadata = pageMeta("/", "CleanYourTV: remove ads and bloat from Android TV and Google TV", description, HALLOWEEN ? { image: HW_OG } : {});
 
 const WORDS = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"];
 
