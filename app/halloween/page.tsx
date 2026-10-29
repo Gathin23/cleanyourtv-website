@@ -16,12 +16,13 @@ const description =
 
 export const metadata = pageMeta("/halloween", `${title} · CleanYourTV`, description);
 
-const SHOTS: [string, string, string][] = [
-  ["01-home-first", "Home with the Halloween theme", "The theme on a real TV: a night photo behind a frosted dock, with its place and photographer under the buttons."],
-  ["08-focus-wifi-jackolantern", "The jack-o'-lantern on the Wi-Fi button", "The Wi-Fi button is a jack-o'-lantern whose carved face glows while the TV is online and goes dark when it drops."],
-  ["06-focus-inputs-bat", "The bat on the Inputs button", "A bat for Inputs, flapping when focused."],
-  ["09-focus-settings-ghost", "The ghost on the Settings button", "A ghost for Settings, floating up when focused."],
-  ["12-bats-flying", "Bats flying over Home", "Bats fly up over the first Home of the day."],
+// What the skin does, one line each (from the launcher's Halloween skin and themes/halloween).
+const FEATURES: [string, string, string][] = [
+  ["🌙", "Night photos", "A night photo behind a frosted dock, credited under the buttons."],
+  ["🎃", "Wi-Fi jack-o'-lantern", "The Wi-Fi button glows while you're online and goes dark when the connection drops."],
+  ["🦇", "Bat for Inputs", "It flaps when focused."],
+  ["👻", "Ghost for Settings", "It floats up when focused."],
+  ["🦇", "Bats over Home", "They fly up over the first Home of the day."],
 ];
 
 // [file, caption, author and licence, Commons page]
@@ -103,11 +104,15 @@ export default function Halloween() {
 
       <section aria-labelledby="shots-h" className="wrap hw-sec">
         <h2 id="shots-h" className="hw-h2">On a real TV</h2>
-        <ul className="hw-shots plain">
-          {SHOTS.map(([file, alt, cap], i) => (
-            <li key={file} className="hw-shot">
-              <img src={cdn(`/hw/${file}.webp`)} width={1280} height={720} alt={alt} loading={i === 0 ? "eager" : "lazy"} decoding="async" />
-              <p>{cap}</p>
+        <img className="hw-shot" src={cdn("/hw/01-home-first.webp")} width={1280} height={720} alt="Home with the Halloween theme on a real TV: a night photo behind a frosted dock, with its place and photographer under the buttons" loading="lazy" decoding="async" />
+        <ul className="hw-feats plain">
+          {FEATURES.map(([icon, name, text]) => (
+            <li key={name}>
+              <span className="hw-feat-i" aria-hidden="true">{icon}</span>
+              <span>
+                <strong>{name}</strong>
+                {text}
+              </span>
             </li>
           ))}
         </ul>

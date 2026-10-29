@@ -13,12 +13,14 @@
 .hw-card:nth-child(even):hover { transform: translateY(-4px) rotate(0.6deg); }
 .hw-card h3 { margin: 0 0 8px; font-family: var(--f-head); font-size: 24px; line-height: 1.1; letter-spacing: -0.02em; color: #ff9a3c; }
 .hw-card p { margin: 0; color: var(--dim-2); }
-.hw-shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 24px; }
-.hw-shot img, .hw-credits img { display: block; width: 100%; height: auto; border: 2px solid var(--ink); border-radius: 6px; background: #111; }
-.hw-shot img { box-shadow: 0 0 0 6px #0c0c0c, 0 30px 80px rgba(255, 154, 60, 0.08); }
-.hw-shot p { margin: 12px 0 0; font-family: var(--f-ch); font-size: 19px; line-height: 1.2; color: var(--mute); }
+.hw-shot { display: block; width: 100%; height: auto; border: 2px solid var(--ink); border-radius: 6px; background: #111; box-shadow: 0 0 0 6px #0c0c0c, 0 30px 80px rgba(255, 154, 60, 0.08); }
+.hw-feats { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 0 32px; margin-top: 28px; border-top: 1px solid var(--line-2); }
+.hw-feats li { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: start; padding: 16px 0; border-bottom: 1px solid var(--line-2); color: var(--dim-2); }
+.hw-feat-i { font-size: 26px; line-height: 1.2; }
+.hw-feats strong { display: block; font-family: var(--f-head); font-size: 20px; line-height: 1.2; color: var(--ink); }
 .hw-code { margin: 0 0 12px; padding: 18px 20px; overflow-x: auto; background: var(--band-2); border: 2px solid var(--ink); border-radius: 6px; font-family: var(--f-mono); font-size: 14px; line-height: 1.9; color: #cfcfcf; box-shadow: 0 0 60px rgba(207, 255, 207, 0.06); }
 .hw-credits { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)); gap: 16px; margin-bottom: 20px; }
 .hw-credits p { margin: 8px 0 0; font-size: 14px; }
 .hw-credits span { display: block; color: var(--dim-2); }
 .hw-sec .btn { margin-bottom: 16px; }
+.hw-credits img { display: block; width: 100%; height: auto; border: 2px solid var(--ink); border-radius: 6px; background: #111; }
