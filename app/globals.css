@@ -1035,6 +1035,13 @@ select.chip {
   }
 }
 
+/* Halloween: the header's coffee link as an icon-only square (lib/halloween.ts). */
+.coffee-icon {
+  justify-content: center;
+  width: 44px;
+  padding: 0;
+}
+
 /* Halloween: the header's orange button to /halloween (lib/halloween.ts); a compact pumpkin button on phones. */
 .hw-nav {
   display: inline-flex;

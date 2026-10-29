@@ -107,7 +107,14 @@ export default function Header({ stars }: { stars: number }) {
           <div className="head-right">
             {HALLOWEEN && halloween(false)}
             {gh}
-            {home && coffee}
+            {home && (HALLOWEEN ? (
+              // Halloween: the header's coffee link shrinks to its icon (the phone menu keeps the words).
+              <a href={COFFEE} className="coffee coffee-icon" aria-label="Buy me a coffee" title="Buy me a coffee">
+                <Cup />
+              </a>
+            ) : (
+              coffee
+            ))}
             <button
               ref={button}
               type="button"
