@@ -5,7 +5,7 @@ import HomeCheck from "@/components/HomeCheck";
 import JsonLd from "@/components/JsonLd";
 import OnAirWall from "@/components/OnAirWall";
 import { Countdown, Lights, Terminal } from "@/components/HwClient";
-import { Fog, Garland, Pumpkin } from "@/components/HwDecor";
+import { Fog, Garland } from "@/components/HwDecor";
 import { loadFacts, loadSiteData } from "@/lib/data";
 import { HALLOWEEN } from "@/lib/halloween";
 import { GH } from "@/lib/parse";
@@ -77,9 +77,8 @@ export default async function Page() {
       {HALLOWEEN ? (
         <Link href="/halloween" className="hbar">
           <span className="wrap hbar-in">
-            <span className="hbar-new ch hw-hbar-pk" aria-hidden="true">
-              <Pumpkin s={24} small glow={false} />
-            </span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="hw-hbar-pk" src="/hw/pumpkin-1x.webp" srcSet="/hw/pumpkin-1x.webp 1x, /hw/pumpkin-2x.webp 2x" width={34} height={32} alt="" />
             <span className="hbar-text">
               <span className="hide-phone">Planning to make your TV spooooky this Halloweeeeen?</span>
               <span className="hbar-short">Make your TV spooooky this Halloweeeeen</span>

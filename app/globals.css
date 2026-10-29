@@ -1236,9 +1236,10 @@ html.menu-open {
   }
 }
 
-/* The orange bar's badge: a small pumpkin on the dark chip instead of "NEW". */
+/* The orange bar's badge: the spooky logo's 3D pumpkin straight on the bar, no chip behind it. */
 .hw-hbar-pk {
-  display: inline-flex;
-  align-items: center;
-  padding: 3px 8px 2px;
+  flex: none;
+  display: block;
+  width: 34px;
+  height: 32px;
 }
