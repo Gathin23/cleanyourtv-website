@@ -273,6 +273,30 @@
   z-index: 5;
 }
 
+/* The slider handle's bat: dark on the light knob, wings flap while hovered or dragged. */
+.hw-on .ba-knob {
+  color: #2b1100;
+}
+.hw-bat {
+  overflow: visible;
+}
+.hw-bat-wing {
+  transform-origin: 16px 8px;
+}
+.hw-bat-wing-r {
+  transform-origin: 16px 8px;
+}
+.ba-frame:hover .hw-bat-wing,
+.ba-frame:active .hw-bat-wing {
+  animation: hw-flap 0.32s ease-in-out infinite;
+}
+@keyframes hw-flap { 0%, 100% { transform: scaleY(1) rotate(0); } 50% { transform: scaleY(0.55) rotate(-8deg); } }
+.ba-frame:hover .hw-bat-wing-r,
+.ba-frame:active .hw-bat-wing-r {
+  animation-name: hw-flap-r;
+}
+@keyframes hw-flap-r { 0%, 100% { transform: scaleY(1) rotate(0); } 50% { transform: scaleY(0.55) rotate(8deg); } }
+
 /* --- the buttons, the orange band, selection --- */
 .hw-on {
   overflow-x: clip;

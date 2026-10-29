@@ -31,9 +31,22 @@ export default function BeforeAfter() {
         <span className="ba-tag ba-tag-after" aria-hidden="true">{HALLOWEEN ? "After · Exorcised" : "After"}</span>
         <span className="ba-line" aria-hidden="true">
           <span className="ba-knob">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M9 6l-6 6 6 6M15 6l6 6-6 6" />
-            </svg>
+            {HALLOWEEN ? (
+              // Halloween: a bat in place of the arrows; its wings flap while the picture is hovered or dragged (app/halloween-home.css).
+              <svg className="hw-bat" width="36" height="22.5" viewBox="0 0 32 20" fill="currentColor">
+                <path d="M14.6 6 14 2.4l1.6 1.8h.8L18 2.4 17.4 6c.6 2 .1 6-1.4 9-1.5-3-2-7-1.4-9z" />
+                <g className="hw-bat-wing">
+                  <path d="M14.6 7C11 4 6 3 1 6c1.5 1.5 1.6 3 1 5 2-1 3.500-.5 4.500 1.500C8 10.500 10 10.500 11.500 12c1-1.500 2-2 2.900-1.500z" />
+                </g>
+                <g className="hw-bat-wing hw-bat-wing-r">
+                  <path d="M17.4 7C21 4 26 3 31 6c-1.500 1.500-1.600 3-1 5-2-1-3.500-.5-4.500 1.500C24 10.500 22 10.500 20.500 12c-1-1.500-2-2-2.900-1.500z" />
+                </g>
+              </svg>
+            ) : (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 6l-6 6 6 6M15 6l6 6-6 6" />
+              </svg>
+            )}
           </span>
         </span>
         {HALLOWEEN && <span className="hw-crt" aria-hidden="true"><i /></span>}
