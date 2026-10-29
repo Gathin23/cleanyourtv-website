@@ -1243,12 +1243,3 @@ html.menu-open {
   width: auto;
   vertical-align: -0.28em;
 }
-/* The arrow is for phones only: on wider screens the bar's right-hand text is the whole call to action. */
-.hw-hbar-arrow {
-  display: none;
-}
-@media (max-width: 600px) {
-  .hw-hbar-arrow {
-    display: inline;
-  }
-}
