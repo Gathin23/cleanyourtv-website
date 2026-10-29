@@ -18,7 +18,7 @@ export const metadata = pageMeta("/halloween", `${title} · CleanYourTV`, descri
 
 // What the skin does, one line each (from the launcher's Halloween skin and themes/halloween).
 const FEATURES: [string, string, string][] = [
-  ["🌙", "Night photos", "A night photo behind a frosted dock, credited under the buttons."],
+  ["🌙", "Night wallpapers", "Night photos and an illustrated haunted house as wallpapers, behind a frosted dock."],
   ["🎃", "Wi-Fi jack-o'-lantern", "The Wi-Fi button glows while you're online and goes dark when the connection drops."],
   ["🦇", "Bat for Inputs", "It flaps when focused."],
   ["👻", "Ghost for Settings", "It floats up when focused."],
@@ -76,7 +76,7 @@ export default function Halloween() {
           <li className="hw-card">
             <h3>The theme</h3>
             <p>
-              <code>themes/halloween</code>: a new night photo every 30 minutes, the photo&rsquo;s name under the top-right buttons, a frosted-glass dock and a
+              <code>themes/halloween</code>: a new night wallpaper every 30 minutes, a frosted-glass dock and a
               pumpkin-orange focus glow on a near-black background.
             </p>
           </li>
@@ -157,6 +157,7 @@ export default function Halloween() {
             </li>
           ))}
         </ul>
+        <p className="hw-p">Haunted house illustration · CleanYourTV, CC0.</p>
         <p className="hw-p">
           The icons are from <a href="https://github.com/microsoft/fluentui-emoji">Fluent Emoji 3D</a>, MIT licence, Copyright (c) Microsoft Corporation.
         </p>
