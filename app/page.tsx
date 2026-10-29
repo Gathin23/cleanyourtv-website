@@ -94,12 +94,24 @@ export default async function Page() {
       <section aria-labelledby="hero-h" className={HALLOWEEN ? "wrap hero hw-hero" : "wrap hero"}>
         {HALLOWEEN && <Fog />}
         <div className="stack hero-top">
-          <div className={HALLOWEEN ? "hw-kick" : undefined}>
-            <p className="kicker c-mint">{HALLOWEEN ? "CH 13 · Halloween special · For Android TV and Google TV" : "CH 00 · For Android TV and Google TV"}</p>
-            {HALLOWEEN && <Countdown />}
-          </div>
+          {HALLOWEEN ? (
+            <div className="hw-kick">
+              <p className="kicker c-mint">CH 13 · Halloween special · For Android TV and Google TV</p>
+              <Countdown />
+            </div>
+          ) : (
+            <p className="kicker c-mint">CH 00 · For Android TV and Google TV</p>
+          )}
           <h1 id="hero-h" className="h1 hero-h">
-            Your TV, minus<br /> {HALLOWEEN ? <span className="hw-glitch">the ads.</span> : "the ads."}
+            {HALLOWEEN ? (
+              <>
+                Your TV, minus<br /> <span className="hw-glitch">the ads.</span>
+              </>
+            ) : (
+              <>
+                Your TV, minus<br /> the ads.
+              </>
+            )}
           </h1>
         </div>
         <div className="hero-grid">

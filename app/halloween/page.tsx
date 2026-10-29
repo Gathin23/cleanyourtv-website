@@ -1,8 +1,10 @@
 import JsonLd from "@/components/JsonLd";
 import CopyButton from "@/components/CopyButton";
+import { Fog, Pumpkin } from "@/components/HwDecor";
 import { GH } from "@/lib/parse";
 import { SITE, breadcrumbs, pageMeta } from "@/lib/seo";
 import { cdn } from "@/lib/site";
+import "../halloween-home.css";
 import "./halloween.css";
 
 // The Halloween pack (theme + launcher skin), live until 1 Nov 2026. Facts come from the halloween-pack commits in the
@@ -47,11 +49,20 @@ export default function Halloween() {
     ],
   };
   return (
-    <main className="hw">
+    <main className="hw hw-on">
       <JsonLd data={jsonLd} />
-      <section aria-labelledby="page-h" className="wrap hw-head">
-        <p className="kicker">Halloween pack · until 1 Nov 2026</p>
-        <h1 id="page-h" className="hw-h1">Halloween for your TV</h1>
+      <section aria-labelledby="page-h" className="wrap hw-head hw-hero">
+        <Fog />
+        <p className="kicker c-mint">CH 13 · Halloween special · until 1 Nov 2026</p>
+        <h1 id="page-h" className="hw-h1">
+          Halloween<br />
+          for your <span className="hw-glitch">TV.</span>
+        </h1>
+        <div className="hw-pks" aria-hidden="true">
+          <Pumpkin s={46} delay={0.4} />
+          <Pumpkin s={74} delay={1.3} />
+          <Pumpkin s={38} delay={2.1} small />
+        </div>
         <p className="lede hw-lede">
           A spooky Home for CleanYourTV: seven night photos, a jack-o&rsquo;-lantern that glows while you&rsquo;re online, a bat, a ghost and bats over the
           first Home of the day. One command to put it on, one to take it off.
@@ -95,7 +106,7 @@ export default function Halloween() {
         <ul className="hw-shots plain">
           {SHOTS.map(([file, alt, cap], i) => (
             <li key={file} className="hw-shot">
-              <img src={cdn(`/halloween/${file}.webp`)} width={1280} height={720} alt={alt} loading={i === 0 ? "eager" : "lazy"} decoding="async" />
+              <img src={cdn(`/hw/${file}.webp`)} width={1280} height={720} alt={alt} loading={i === 0 ? "eager" : "lazy"} decoding="async" />
               <p>{cap}</p>
             </li>
           ))}
@@ -133,7 +144,7 @@ export default function Halloween() {
         <ul className="hw-credits plain">
           {PHOTOS.map(([n, cap, by, file]) => (
             <li key={n}>
-              <img src={cdn(`/halloween/wall-${n}.webp`)} width={640} height={360} alt={cap} loading="lazy" decoding="async" />
+              <img src={cdn(`/hw/wall-${n}.webp`)} width={640} height={360} alt={cap} loading="lazy" decoding="async" />
               <p>
                 <a href={`https://commons.wikimedia.org/wiki/File:${file}`}>{cap}</a>
                 <span>{by}</span>

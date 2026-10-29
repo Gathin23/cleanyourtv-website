@@ -1,18 +1,24 @@
-/* /halloween: the Halloween pack. Neutral first draft; restyled to the design's look. */
-.hw-head { padding-top: 64px; padding-bottom: 24px; }
-.hw-h1 { margin: 0; font-family: var(--f-head); font-weight: 700; font-size: clamp(36px, 4.5vw, 60px); line-height: 1.05; letter-spacing: -0.03em; }
-.hw-lede { max-width: 52ch; }
-.hw-sec { padding-top: 48px; padding-bottom: 24px; }
-.hw-h2 { margin: 0 0 20px; font-family: var(--f-head); font-weight: 700; font-size: clamp(24px, 2.4vw, 32px); letter-spacing: -0.02em; }
+/* /halloween: the Halloween pack, in the look of the Halloween home (app/halloween-home.css supplies the pumpkins, fog, glitch). */
+.hw-head { padding-top: 72px; padding-bottom: 24px; position: relative; display: flex; flex-direction: column; gap: 16px; }
+.hw-h1 { margin: 0; font-family: var(--f-head); font-weight: 700; font-size: clamp(48px, 8vw, 112px); line-height: 0.92; letter-spacing: -0.045em; }
+.hw-lede { max-width: 52ch; margin: 0; }
+.hw-pks { display: flex; align-items: flex-end; gap: 22px; padding-top: 8px; }
+.hw-sec { padding-top: 56px; padding-bottom: 24px; }
+.hw-h2 { margin: 0 0 20px; font-family: var(--f-head); font-weight: 700; font-size: clamp(28px, 3.4vw, 44px); line-height: 1; letter-spacing: -0.035em; }
 .hw-p, .hw-note { max-width: 70ch; color: var(--dim-2); }
-.hw-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
-.hw-card { border: 1px solid var(--line-2); padding: 20px; }
-.hw-card h3 { margin: 0 0 8px; font-size: 18px; }
+.hw-note { font-family: var(--f-ch); font-size: 20px; color: #ff9a3c; }
+.hw-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 12px; }
+.hw-card { padding: 20px; border: 2px solid var(--ink); border-radius: 6px; background: var(--band-2); transition: transform 0.15s, box-shadow 0.15s; }
+.hw-card:hover { transform: translateY(-4px) rotate(-0.6deg); box-shadow: 0 14px 40px rgba(255, 154, 60, 0.25); }
+.hw-card:nth-child(even):hover { transform: translateY(-4px) rotate(0.6deg); }
+.hw-card h3 { margin: 0 0 8px; font-family: var(--f-head); font-size: 24px; line-height: 1.1; letter-spacing: -0.02em; color: #ff9a3c; }
 .hw-card p { margin: 0; color: var(--dim-2); }
-.hw-shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-.hw-shot img, .hw-credits img { display: block; width: 100%; height: auto; border: 1px solid var(--line-2); }
-.hw-shot p { margin: 8px 0 0; font-size: 15px; color: var(--dim-2); }
-.hw-code { margin: 0 0 12px; padding: 16px; overflow-x: auto; border: 1px solid var(--line-2); font-size: 15px; }
-.hw-credits { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-bottom: 20px; }
+.hw-shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 24px; }
+.hw-shot img, .hw-credits img { display: block; width: 100%; height: auto; border: 2px solid var(--ink); border-radius: 6px; background: #111; }
+.hw-shot img { box-shadow: 0 0 0 6px #0c0c0c, 0 30px 80px rgba(255, 154, 60, 0.08); }
+.hw-shot p { margin: 12px 0 0; font-family: var(--f-ch); font-size: 19px; line-height: 1.2; color: var(--mute); }
+.hw-code { margin: 0 0 12px; padding: 18px 20px; overflow-x: auto; background: var(--band-2); border: 2px solid var(--ink); border-radius: 6px; font-family: var(--f-mono); font-size: 14px; line-height: 1.9; color: #cfcfcf; box-shadow: 0 0 60px rgba(207, 255, 207, 0.06); }
+.hw-credits { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)); gap: 16px; margin-bottom: 20px; }
 .hw-credits p { margin: 8px 0 0; font-size: 14px; }
 .hw-credits span { display: block; color: var(--dim-2); }
+.hw-sec .btn { margin-bottom: 16px; }

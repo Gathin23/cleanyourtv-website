@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { loadFacts } from "@/lib/data";
 import { COVERAGE } from "@/lib/press";
+import { HALLOWEEN } from "@/lib/halloween";
 import { SITE, isoDay } from "@/lib/seo";
 import { VIDEOS_AS_OF } from "@/lib/videos";
 
@@ -18,7 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE}/faq`, lastModified: updated, changeFrequency: "weekly", priority: 0.7 },
     { url: `${SITE}/bot`, lastModified: updated, changeFrequency: "daily", priority: 0.6 },
     { url: `${SITE}/not-android`, lastModified: "2026-10-26", changeFrequency: "monthly", priority: 0.7 },
-    { url: `${SITE}/halloween`, lastModified: "2026-10-29", changeFrequency: "weekly", priority: 0.5 },
+    ...(HALLOWEEN ? [{ url: `${SITE}/halloween`, lastModified: "2026-10-29", changeFrequency: "weekly" as const, priority: 0.5 }] : []),
     { url: `${SITE}/press`, lastModified: press, changeFrequency: "weekly", priority: 0.7 },
     { url: `${SITE}/tutorials`, lastModified: VIDEOS_AS_OF, changeFrequency: "weekly", priority: 0.7 },
     { url: `${SITE}/blog/reintroducing-cleanyourtv`, lastModified: "2026-10-20", changeFrequency: "yearly", priority: 0.6 },

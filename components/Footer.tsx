@@ -18,7 +18,7 @@ export default function Footer() {
             <Wordmark />
           </Link>
           <span className="foot-since">On air since {since}</span>
-          {HALLOWEEN && <span className="foot-since hw-foot">Halloween special, until 1 Nov</span>}
+          {HALLOWEEN && <Link href="/halloween" className="foot-since hw-foot">Halloween special, until 1 Nov</Link>}
         </div>
         <nav aria-label="Use it" className="foot-nav">
           <Link href="/tvs">TV list</Link>
