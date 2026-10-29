@@ -109,6 +109,7 @@ export default function Header({ stars }: { stars: number }) {
             {NAV.map(([label, href]) => (
               <Link key={label} href={href} aria-current={current(href)}>
                 {label}
+                {href === "/bot" && <img className="nav-0g" src="/brand/0g-purple.svg" width={21} height={10} alt="0G" />}
               </Link>
             ))}
           </div>

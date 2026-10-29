@@ -910,6 +910,11 @@ select.chip {
 .navlinks a:hover {
   text-decoration: underline;
 }
+.nav-0g {
+  height: 10px;
+  width: auto;
+  margin-left: 6px;
+}
 .navlinks a[aria-current="page"] {
   background: var(--ink);
   color: var(--bg);
