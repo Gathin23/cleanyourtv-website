@@ -1236,12 +1236,12 @@ html.menu-open {
   }
 }
 
-/* The orange bar's badge: the spooky logo's 3D pumpkin straight on the bar, no chip behind it. */
-.hw-hbar-pk {
-  flex: none;
-  display: block;
-  width: 34px;
-  height: 32px;
+/* The spooky logo's 3D pumpkin inline in the orange bar's text, about the cap height of the type beside it. */
+.hw-pk-in {
+  display: inline-block;
+  height: 1.25em;
+  width: auto;
+  vertical-align: -0.28em;
 }
 /* The arrow is for phones only: on wider screens the bar's right-hand text is the whole call to action. */
 .hw-hbar-arrow {
