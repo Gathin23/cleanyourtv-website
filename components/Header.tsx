@@ -31,6 +31,8 @@ const Cup = () => (
 export default function Header({ stars }: { stars: number }) {
   const path = usePathname().replace(/(.)\/$/, "$1");
   const home = path === "/";
+  // Halloween: the dripping stripe belongs to the home page and the pack page.
+  const hw = HALLOWEEN && (home || path === "/halloween");
   // The menu belongs to the page it was opened on, so following a link closes it.
   const [openOn, setOpenOn] = useState<string | null>(null);
   const open = openOn === path;
@@ -68,9 +70,9 @@ export default function Header({ stars }: { stars: number }) {
   );
 
   return (
-    <div className={HALLOWEEN && home ? "mast hw-mast" : "mast"}>
+    <div className={hw ? "mast hw-mast" : "mast"}>
       <div className="stripe" aria-hidden="true" />
-      {HALLOWEEN && home && <Drips />}
+      {hw && <Drips />}
       <header className="site-head">
         <nav aria-label="Main" className="wrap head-bar">
           <Link href="/" className="logo" aria-label="CleanYourTV, home">
