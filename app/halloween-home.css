@@ -1,5 +1,5 @@
 /* The Halloween look on the home page (lib/halloween.ts is the switch; every rule here hangs off an hw- class or .hw-on).
-   Drips, garland, fog, glitch, ghosts, the CRT wipe, the terminal and Lights out are from the Claude Design file
+   Drips, garland, fog, glitch, the CRT power-on, the terminal and Lights out are from the Claude Design file
    "CleanYourTV Halloween", ported to the site's own components, fonts and tokens. Reduced motion stops all of it. */
 
 @keyframes hw-drip { 0%, 100% { transform: scaleY(0.35); } 55% { transform: scaleY(1); } }
@@ -12,9 +12,6 @@
   90% { opacity: 0.2; }
   91% { opacity: 1; text-shadow: 0 0 34px rgba(207, 255, 207, 0.22); }
 }
-@keyframes hw-float { 0%, 100% { transform: translate(0, 0) rotate(-4deg); } 50% { transform: translate(8px, -14px) rotate(4deg); } }
-@keyframes hw-pop { 0% { transform: scale(1); opacity: 1; filter: blur(0); } 100% { transform: scale(1.7) translateY(-24px); opacity: 0; filter: blur(8px); } }
-@keyframes hw-in { 0% { transform: scale(0.4) translateY(30px); opacity: 0; } 100% { transform: none; opacity: 1; } }
 @keyframes hw-fog { 0%, 100% { transform: translateX(-8%); } 50% { transform: translateX(8%); } }
 @keyframes hw-blink { 50% { opacity: 0; } }
 @keyframes hw-flicker { 0%, 100% { opacity: 1; filter: brightness(1); } 8% { opacity: 0.82; } 10% { opacity: 1; } 38% { opacity: 0.9; filter: brightness(0.9); } 40% { opacity: 0.6; } 42% { opacity: 1; filter: brightness(1.15); } 70% { opacity: 0.88; } 72% { opacity: 1; } }
@@ -243,7 +240,7 @@
   animation: hw-glitch 7s steps(1, end) 2s infinite;
 }
 
-/* --- before and after: haunted tint and scanlines on the before, the CRT power-on, ghost ads --- */
+/* --- before and after: haunted tint and scanlines on the before, the CRT power-on --- */
 .hw-ba-tint {
   position: absolute;
   inset: 0;
@@ -251,13 +248,6 @@
   clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0);
   background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 3px), linear-gradient(180deg, rgba(213, 139, 230, 0.28), rgba(142, 224, 143, 0.18));
   background-blend-mode: normal;
-}
-.hw-wipe .ba-img-before,
-.hw-wipe .hw-ba-tint {
-  transition: clip-path 1s cubic-bezier(0.6, 0, 0.2, 1);
-}
-.hw-wipe .ba-line {
-  transition: left 1s cubic-bezier(0.6, 0, 0.2, 1);
 }
 .hw-on .ba-frame {
   box-shadow: 0 0 0 6px #0c0c0c, 0 30px 80px rgba(255, 154, 60, 0.08);
@@ -287,80 +277,6 @@
 }
 .hw-on .ba-tag {
   z-index: 5;
-}
-.hw-ghosts {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 100px;
-  z-index: 4;
-  pointer-events: none;
-}
-.hw-ghost {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0;
-  background: none;
-  border: 0;
-  color: var(--mint);
-  cursor: crosshair;
-  pointer-events: auto;
-  animation: hw-in 0.6s ease-out calc(var(--i) * 0.12s + 1.4s) both, hw-float calc(5.4s + var(--i) * 0.9s) ease-in-out calc(var(--i) * 0.12s + 2s) infinite;
-}
-.hw-ghost-pop {
-  pointer-events: none;
-  animation: hw-pop 0.55s ease-out forwards;
-}
-.hw-ghost-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  min-width: 92px;
-  padding: 14px 14px 10px;
-  background: rgba(12, 20, 12, 0.55);
-  border: 1.5px solid rgba(207, 255, 207, 0.6);
-  border-bottom: 0;
-  border-radius: 50px 50px 6px 6px;
-  box-shadow: 0 0 28px rgba(207, 255, 207, 0.22), inset 0 0 18px rgba(207, 255, 207, 0.1);
-}
-.hw-ghost-eyes {
-  display: flex;
-  gap: 10px;
-}
-.hw-ghost-eyes span {
-  width: 7px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--mint);
-}
-.hw-ghost-t {
-  font-family: var(--f-ch);
-  font-size: 19px;
-  line-height: 1;
-  white-space: nowrap;
-}
-.hw-ghost-tail {
-  display: flex;
-  gap: 4px;
-}
-.hw-ghost-tail span {
-  width: 12px;
-  height: 7px;
-  border-radius: 0 0 7px 7px;
-  background: rgba(207, 255, 207, 0.45);
-}
-@media (max-width: 640px) {
-  .hw-ghost-body {
-    min-width: 72px;
-    padding: 10px 8px 8px;
-  }
-  .hw-ghost-t {
-    font-size: 16px;
-  }
 }
 
 /* --- the buttons, the orange band, selection --- */

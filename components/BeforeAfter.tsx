@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import HwGhosts from "@/components/HwGhosts";
 import { HALLOWEEN } from "@/lib/halloween";
 
 // My parents' TV before and after, the two photos lined up bezel to bezel (public/docs/hero-*.jpg).
@@ -16,10 +15,8 @@ const webp = (name: string) => `/docs/${name}-640.webp 640w, /docs/${name}-960.w
 
 export default function BeforeAfter() {
   const [pos, setPos] = useState(50);
-  // Halloween: the last ghost ad busted wipes the picture to the after, easing there (see app/halloween-home.css).
-  const [wipe, setWipe] = useState(false);
   return (
-    <figure className={wipe ? "ba hw-wipe" : "ba"} style={{ "--pos": `${pos}%` } as React.CSSProperties}>
+    <figure className="ba" style={{ "--pos": `${pos}%` } as React.CSSProperties}>
       <div className="ba-frame">
         <picture>
           <source type="image/webp" srcSet={webp("hero-after")} sizes={SIZES} />
@@ -39,18 +36,7 @@ export default function BeforeAfter() {
             </svg>
           </span>
         </span>
-        {HALLOWEEN && (
-          <>
-            <HwGhosts
-              onCleared={() => {
-                setWipe(true);
-                setPos(0);
-                setTimeout(() => setWipe(false), 1100);
-              }}
-            />
-            <span className="hw-crt" aria-hidden="true"><i /></span>
-          </>
-        )}
+        {HALLOWEEN && <span className="hw-crt" aria-hidden="true"><i /></span>}
         <input
           className="ba-range"
           type="range"
