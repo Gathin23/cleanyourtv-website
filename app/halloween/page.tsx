@@ -1,6 +1,6 @@
 import JsonLd from "@/components/JsonLd";
 import CopyButton from "@/components/CopyButton";
-import { Fog, Pumpkin } from "@/components/HwDecor";
+import { Fog, Garland, Pumpkin } from "@/components/HwDecor";
 import { GH } from "@/lib/parse";
 import { SITE, breadcrumbs, pageMeta } from "@/lib/seo";
 import { cdn } from "@/lib/site";
@@ -54,6 +54,8 @@ export default function Halloween() {
   return (
     <main className="hw hw-on">
       <JsonLd data={jsonLd} />
+      <Garland />
+
       <section aria-labelledby="page-h" className="wrap hw-head hw-hero">
         <Fog />
         <div className="hw-head-text">
