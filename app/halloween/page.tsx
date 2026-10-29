@@ -12,17 +12,17 @@ import "./halloween.css";
 
 const title = "Halloween pack for your TV";
 const description =
-  "A Halloween look for CleanYourTV Home until 1 November: seven night photos, a jack-o'-lantern for Wi-Fi that glows while you're online, a bat, a ghost and bats over the first Home of the day. One command to install, one to go back.";
+  "A Halloween look for CleanYourTV Home until 1 November: night wallpapers and an illustrated haunted house, a jack-o'-lantern for Wi-Fi that glows while you're online, a bat, a ghost and bats over Home. One command on, one command off.";
 
 export const metadata = pageMeta("/halloween", `${title} · CleanYourTV`, description);
 
 // What the skin does, one line each (from the launcher's Halloween skin and themes/halloween).
 const FEATURES: [string, string, string][] = [
-  ["🌙", "Night wallpapers", "Night photos and an illustrated haunted house as wallpapers, behind a frosted dock."],
-  ["🎃", "Wi-Fi jack-o'-lantern", "The Wi-Fi button glows while you're online and goes dark when the connection drops."],
-  ["🦇", "Bat for Inputs", "It flaps when focused."],
-  ["👻", "Ghost for Settings", "It floats up when focused."],
-  ["🦇", "Bats over Home", "They fly up over the first Home of the day."],
+  ["🌙", "Night wallpapers", "Photos and an illustrated haunted house."],
+  ["🎃", "Wi-Fi jack-o'-lantern", "Glows online, goes dark offline."],
+  ["🦇", "Bat for Inputs", "Flaps when focused."],
+  ["👻", "Ghost for Settings", "Floats up when focused."],
+  ["🦇", "Bats over Home", "They fly up on the first Home of the day."],
 ];
 
 // [file, caption, author and licence, Commons page]
@@ -39,6 +39,7 @@ const PHOTOS: [string, string, string, string][] = [
 const INSTALL = `git clone https://github.com/Gathin23/cleanyourtv.git
 cd cleanyourtv
 TV_HOST=192.168.1.50 tools/theme.sh themes/halloween`;
+const WINDOWS = "powershell -ExecutionPolicy Bypass -File tools\\theme.ps1 -TvHost 192.168.1.50 themes\\halloween";
 const SAVER = "TV_HOST=192.168.1.50 addons/haunted/build-and-install.sh";
 const RESET = "TV_HOST=192.168.1.50 tools/theme.sh --reset";
 
@@ -66,10 +67,7 @@ export default function Halloween() {
             <Pumpkin s={74} delay={1.3} />
             <Pumpkin s={38} delay={2.1} small />
           </div>
-          <p className="lede hw-lede">
-            A spooky Home for CleanYourTV: night photos and an illustrated haunted house, a jack-o&rsquo;-lantern that glows while you&rsquo;re online, a bat, a ghost and
-            bats over the first Home of the day. One command to put it on, one to take it off.
-          </p>
+          <p className="lede hw-lede">Turn your TV spooky this Halloween. One command on, one command off.</p>
         </div>
         {/* The page's largest picture, so it loads first: no lazy loading, explicit size, three widths. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -85,40 +83,90 @@ export default function Halloween() {
         />
       </section>
 
+      <section aria-labelledby="install-h" className="wrap hw-sec">
+        <h2 id="install-h" className="hw-h2">Put it on your TV</h2>
+        <ol className="hw-steps plain">
+          <li>
+            <span className="hw-step-n" aria-hidden="true">1</span>
+            <span><strong>Same Wi-Fi</strong>Your TV and computer on one network. Find your TV&rsquo;s IP address.</span>
+          </li>
+          <li>
+            <span className="hw-step-n" aria-hidden="true">2</span>
+            <span><strong>Get the repo</strong>Clone <a href={GH}>CleanYourTV</a> on your computer.</span>
+          </li>
+          <li>
+            <span className="hw-step-n" aria-hidden="true">3</span>
+            <span><strong>Run one command</strong>It pushes the theme and restarts Home.</span>
+          </li>
+        </ol>
+        <div className="hw-code-box">
+          <div className="hw-code-bar">
+            <span>macOS / Linux</span>
+            <CopyButton from="hw-install" label="Copy" className="hw-copy" />
+          </div>
+          <pre className="hw-code" id="hw-install"><code>{INSTALL}</code></pre>
+        </div>
+        <div className="hw-code-box">
+          <div className="hw-code-bar">
+            <span>Windows</span>
+            <CopyButton from="hw-win" label="Copy" className="hw-copy" />
+          </div>
+          <pre className="hw-code" id="hw-win"><code>{WINDOWS}</code></pre>
+        </div>
+        <p className="hw-tiny">Replace <code>192.168.1.50</code> with your TV&rsquo;s address.</p>
+        <div className="hw-code-box hw-code-small">
+          <div className="hw-code-bar">
+            <span>Back to normal</span>
+            <CopyButton from="hw-reset" label="Copy" className="hw-copy" />
+          </div>
+          <pre className="hw-code" id="hw-reset"><code>{RESET}</code></pre>
+        </div>
+      </section>
+
       <section aria-labelledby="in-h" className="wrap hw-sec">
         <h2 id="in-h" className="hw-h2">What&rsquo;s in the pack</h2>
         <ul className="hw-cards plain">
           <li className="hw-card">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={cdn("/hw/card-theme.webp")} width={640} height={360} alt="" loading="lazy" decoding="async" />
             <h3>The theme</h3>
-            <p>
-              <code>themes/halloween</code>: a new night wallpaper every 30 minutes, a frosted-glass dock and a
-              pumpkin-orange focus glow on a near-black background.
-            </p>
+            <p>Frosted dock, a new wallpaper every 30 minutes, pumpkin-orange glow.</p>
           </li>
           <li className="hw-card">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={cdn("/hw/card-skin.webp")} width={640} height={360} alt="" loading="lazy" decoding="async" />
             <h3>The skin</h3>
-            <p>
-              A jack-o&rsquo;-lantern for Wi-Fi whose carved face glows while the TV is online, a bat for Inputs that flaps when focused, a ghost for Settings that
-              floats up, bats flying up over the first Home of the day, and &ldquo;Happy Halloween&rdquo;.
-            </p>
+            <p>Wi-Fi, Inputs and Settings become a jack-o&rsquo;-lantern, a bat and a ghost.</p>
           </li>
           <li className="hw-card">
+            <span className="hw-thumbs" aria-hidden="true">
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img key={n} src={cdn(`/hw/th-${n}.webp`)} width={256} height={144} alt="" loading="lazy" decoding="async" />
+              ))}
+            </span>
             <h3>The wallpapers</h3>
-            <p>Seven photos from Wikimedia Commons, cropped to leave the picture clear where Home doesn&rsquo;t cover it and darkened so the clock and dock stay readable.</p>
+            <p>Seven night photos and an illustrated haunted house.</p>
           </li>
           <li className="hw-card">
+            <span className="hw-icons" aria-hidden="true">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={cdn("/hw/icon-pumpkin.webp")} width={96} height={96} alt="" loading="lazy" decoding="async" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={cdn("/hw/icon-bat.webp")} width={128} height={128} alt="" loading="lazy" decoding="async" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={cdn("/hw/icon-ghost.webp")} width={96} height={96} alt="" loading="lazy" decoding="async" />
+            </span>
             <h3>The icons</h3>
-            <p>The pumpkin, bat and ghost are Microsoft&rsquo;s Fluent Emoji 3D (MIT). The lit and dark pumpkins are the same picture with the face recoloured.</p>
+            <p>Fluent Emoji 3D, lit and dark.</p>
           </li>
         </ul>
-        <p className="hw-note">
-          The skin switches itself off after 1 November (<code>festival_until</code> is 2026-11-01). The photos stay until you go back to the normal look.
-          A launcher older than the skin shows the photos and the dock without it.
-        </p>
+        <p className="hw-note">The skin switches itself off after 1 November.</p>
       </section>
 
       <section aria-labelledby="shots-h" className="wrap hw-sec">
         <h2 id="shots-h" className="hw-h2">On a real TV</h2>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           className="hw-shot"
           src={cdn("/hw/01-home-main.webp")}
@@ -143,47 +191,26 @@ export default function Halloween() {
 
       <section aria-labelledby="saver-h" className="wrap hw-sec">
         <h2 id="saver-h" className="hw-h2">Bonus: the Haunted screensaver</h2>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="hw-shot" src={cdn("/hw/screensaver-ghost.webp")} width={1280} height={720} alt="The Haunted screensaver on a real TV: a full moon behind dark trees, a ghost floating up on the left, a bat flying across and a small clock" loading="lazy" decoding="async" />
-        <p className="hw-p">
-          The Halloween photos slowly crossfading, with bats drifting across, a ghost that floats up every half minute or so, a flickering jack-o&rsquo;-lantern glow and a
-          small clock. No network access, nothing running in the background. From the repository checkout (JDK 17 and Android SDK 34):
-        </p>
-        <pre className="hw-code" id="hw-saver"><code>{SAVER}</code></pre>
-        <CopyButton from="hw-saver" label="Copy the command" className="btn btn-ghost" />
-        <p className="hw-p">To remove it and get your old screensaver back: <code>TV_HOST=192.168.1.50 addons/haunted/build-and-install.sh --uninstall</code></p>
-      </section>
-
-      <section aria-labelledby="install-h" className="wrap hw-sec">
-        <h2 id="install-h" className="hw-h2">Put it on your TV</h2>
-        <p className="hw-p">
-          Needs your TV on the same network with its address (the example uses <code>192.168.1.50</code>; use yours) and a checkout of the{" "}
-          <a href={GH}>repository</a>. Pushing a theme restarts Home.
-        </p>
-        <pre className="hw-code" id="hw-install"><code>{INSTALL}</code></pre>
-        <CopyButton from="hw-install" label="Copy the commands" className="btn btn-ghost" />
-        <p className="hw-p">
-          On Windows: <code>powershell -ExecutionPolicy Bypass -File tools\theme.ps1 -TvHost 192.168.1.50 themes\halloween</code>.
-        </p>
-      </section>
-
-      <section aria-labelledby="back-h" className="wrap hw-sec">
-        <h2 id="back-h" className="hw-h2">Back to the normal look</h2>
-        <p className="hw-p">This clears the theme and the pictures and returns Home to the launcher&rsquo;s built-in look:</p>
-        <pre className="hw-code" id="hw-reset"><code>{RESET}</code></pre>
-        <CopyButton from="hw-reset" label="Copy the command" className="btn btn-ghost" />
-        <p className="hw-p">The theme can never break Home: a key it doesn&rsquo;t understand is ignored, and a file that doesn&rsquo;t parse is ignored whole.</p>
+        <p className="hw-p">Night photos crossfading, with bats, a ghost and a flickering glow.</p>
+        <div className="hw-code-box">
+          <div className="hw-code-bar">
+            <span>From the repo checkout</span>
+            <CopyButton from="hw-saver" label="Copy" className="hw-copy" />
+          </div>
+          <pre className="hw-code" id="hw-saver"><code>{SAVER}</code></pre>
+        </div>
+        <p className="hw-tiny">Needs JDK 17 and Android SDK 34. To remove it: <code>addons/haunted/build-and-install.sh --uninstall</code></p>
       </section>
 
       <section aria-labelledby="credits-h" className="wrap hw-sec">
         <h2 id="credits-h" className="hw-h2">Credits</h2>
-        <p className="hw-p">
-          The photos are from Wikimedia Commons, each under its own licence (CC0, public domain, CC BY or CC BY-SA), not the repository&rsquo;s MIT licence.
-          Each was cropped to 16:9, resized to 1920&times;1080, graded toward night and darkened toward the bottom and top-left; adaptations of the CC BY-SA
-          pictures stay under CC BY-SA.
-        </p>
+        <p className="hw-p">Photos from Wikimedia Commons, each under its own licence (not the repository&rsquo;s MIT), cropped and graded toward night.</p>
         <ul className="hw-credits plain">
           {PHOTOS.map(([n, cap, by, file]) => (
             <li key={n}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={cdn(`/hw/wall-${n}.webp`)} width={640} height={360} alt={cap} loading="lazy" decoding="async" />
               <p>
                 <a href={`https://commons.wikimedia.org/wiki/File:${file}`}>{cap}</a>
@@ -194,7 +221,7 @@ export default function Halloween() {
         </ul>
         <p className="hw-p">Haunted house illustration · CleanYourTV, CC0.</p>
         <p className="hw-p">
-          The icons are from <a href="https://github.com/microsoft/fluentui-emoji">Fluent Emoji 3D</a>, MIT licence, Copyright (c) Microsoft Corporation.
+          Icons from <a href="https://github.com/microsoft/fluentui-emoji">Fluent Emoji 3D</a>, MIT licence, Copyright (c) Microsoft Corporation.
         </p>
       </section>
     </main>
