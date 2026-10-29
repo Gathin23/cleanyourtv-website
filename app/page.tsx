@@ -75,16 +75,17 @@ export default async function Page() {
       <JsonLd data={homeGraph(facts, description)} />
 
       {HALLOWEEN ? (
-        <Link href="/halloween" className="hbar">
+        <Link href="/halloween" className="hbar" aria-label="See the Halloween pack">
           <span className="wrap hbar-in">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img className="hw-hbar-pk" src="/hw/pumpkin-1x.webp" srcSet="/hw/pumpkin-1x.webp 1x, /hw/pumpkin-2x.webp 2x" width={34} height={32} alt="" />
             <span className="hbar-text">
               <span className="hide-phone">Planning to make your TV spooooky this Halloweeeeen?</span>
-              <span className="hbar-short">Make your TV spooooky this Halloweeeeen</span>
+              <span className="hbar-short">Make your TV spooooky this Halloweeeeen 😈</span>
             </span>
             <span className="hbar-go">
-              <span className="hide-phone">Check this out</span> →
+              <span className="hide-phone">Do not click here… mwahaha 😈</span>
+              <span className="hw-hbar-arrow" aria-hidden="true">→</span>
             </span>
           </span>
         </Link>
