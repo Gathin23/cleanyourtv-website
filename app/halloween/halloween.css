@@ -1,0 +1,18 @@
+/* /halloween: the Halloween pack. Neutral first draft; restyled to the design's look. */
+.hw-head { padding-top: 64px; padding-bottom: 24px; }
+.hw-h1 { margin: 0; font-family: var(--f-head); font-weight: 700; font-size: clamp(36px, 4.5vw, 60px); line-height: 1.05; letter-spacing: -0.03em; }
+.hw-lede { max-width: 52ch; }
+.hw-sec { padding-top: 48px; padding-bottom: 24px; }
+.hw-h2 { margin: 0 0 20px; font-family: var(--f-head); font-weight: 700; font-size: clamp(24px, 2.4vw, 32px); letter-spacing: -0.02em; }
+.hw-p, .hw-note { max-width: 70ch; color: var(--dim-2); }
+.hw-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.hw-card { border: 1px solid var(--line-2); padding: 20px; }
+.hw-card h3 { margin: 0 0 8px; font-size: 18px; }
+.hw-card p { margin: 0; color: var(--dim-2); }
+.hw-shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.hw-shot img, .hw-credits img { display: block; width: 100%; height: auto; border: 1px solid var(--line-2); }
+.hw-shot p { margin: 8px 0 0; font-size: 15px; color: var(--dim-2); }
+.hw-code { margin: 0 0 12px; padding: 16px; overflow-x: auto; border: 1px solid var(--line-2); font-size: 15px; }
+.hw-credits { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-bottom: 20px; }
+.hw-credits p { margin: 8px 0 0; font-size: 14px; }
+.hw-credits span { display: block; color: var(--dim-2); }
