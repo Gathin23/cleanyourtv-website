@@ -95,10 +95,7 @@ export default async function Page() {
         {HALLOWEEN && <Fog />}
         <div className="stack hero-top">
           {HALLOWEEN ? (
-            <div className="hw-kick">
-              <p className="kicker c-mint">CH 13 · Halloween special · For Android TV and Google TV</p>
-              <Countdown />
-            </div>
+            <Countdown />
           ) : (
             <p className="kicker c-mint">CH 00 · For Android TV and Google TV</p>
           )}

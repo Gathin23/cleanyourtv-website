@@ -201,14 +201,8 @@
   filter: blur(40px);
   animation: hw-fog 16s ease-in-out infinite;
 }
-.hw-kick {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px 24px;
-}
 .hw-count {
+  align-self: flex-start;
   margin: 0;
   display: inline-flex;
   align-items: center;
