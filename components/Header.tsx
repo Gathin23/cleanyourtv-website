@@ -64,6 +64,14 @@ export default function Header({ stars }: { stars: number }) {
       </svg>
     </a>
   );
+  // Halloween: an orange button to the pack page, in the header (a compact pumpkin on phones) and in the phone menu.
+  const halloween = (inMenu: boolean) => (
+    <Link href="/halloween" className={inMenu ? "hw-nav hw-nav-menu" : "hw-nav"} aria-current={current("/halloween")} aria-label={inMenu ? undefined : "Halloween"} onClick={inMenu ? () => setOpenOn(null) : undefined}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/hw/pumpkin-1x.webp" srcSet="/hw/pumpkin-1x.webp 1x, /hw/pumpkin-2x.webp 2x" width={34} height={32} alt="" />
+      <span className={inMenu ? undefined : "hw-nav-t"}>Halloween</span>
+    </Link>
+  );
   const coffee = (
     <a href={COFFEE} className="coffee">
       <Cup />
@@ -97,6 +105,7 @@ export default function Header({ stars }: { stars: number }) {
             ))}
           </div>
           <div className="head-right">
+            {HALLOWEEN && halloween(false)}
             {gh}
             {home && coffee}
             <button
@@ -134,6 +143,7 @@ export default function Header({ stars }: { stars: number }) {
           </ul>
         </div>
         <div className="menu-end">
+          {HALLOWEEN && halloween(true)}
           {gh}
           {coffee}
         </div>
