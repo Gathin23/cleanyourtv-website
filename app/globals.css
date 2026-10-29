@@ -1035,14 +1035,7 @@ select.chip {
   }
 }
 
-/* Halloween: the header's coffee link as an icon-only square (lib/halloween.ts). */
-.coffee-icon {
-  justify-content: center;
-  width: 44px;
-  padding: 0;
-}
-
-/* Halloween: the header's orange button to /halloween (lib/halloween.ts); a compact pumpkin button on phones. */
+/* Halloween: the header's orange pumpkin button to /halloween (lib/halloween.ts); the phone menu's version keeps its words. */
 .hw-nav {
   display: inline-flex;
   align-items: center;
@@ -1074,13 +1067,14 @@ select.chip {
   justify-content: center;
   font-size: 16px;
 }
-@media (max-width: 600px) {
-  .head-right .hw-nav {
-    padding: 0 9px;
-  }
-  .head-right .hw-nav-t {
-    display: none;
-  }
+.head-right .hw-nav {
+  padding: 0 9px;
+}
+.head-right .hw-nav img {
+  width: 34px;
+}
+.head-right .hw-nav-t {
+  display: none;
 }
 
 /* ---- the phone menu: the channel guide under the header */

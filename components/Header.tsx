@@ -74,7 +74,7 @@ export default function Header({ stars }: { stars: number }) {
   );
   // Halloween: an orange button to the pack page, in the header (a compact pumpkin on phones) and in the phone menu.
   const halloween = (inMenu: boolean) => (
-    <Link href="/halloween" className={inMenu ? "hw-nav hw-nav-menu" : "hw-nav"} aria-current={current("/halloween")} aria-label={inMenu ? undefined : "Halloween"} onClick={inMenu ? () => setOpenOn(null) : undefined}>
+    <Link href="/halloween" className={inMenu ? "hw-nav hw-nav-menu" : "hw-nav"} aria-current={current("/halloween")} aria-label={inMenu ? undefined : "Halloween"} title={inMenu ? undefined : "Halloween"} onClick={inMenu ? () => setOpenOn(null) : undefined}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="/hw/pumpkin-1x.webp" srcSet="/hw/pumpkin-1x.webp 1x, /hw/pumpkin-2x.webp 2x" width={34} height={32} alt="" />
       <span className={inMenu ? undefined : "hw-nav-t"}>Halloween</span>
@@ -115,14 +115,7 @@ export default function Header({ stars }: { stars: number }) {
           <div className="head-right">
             {HALLOWEEN && halloween(false)}
             {gh}
-            {home && (HALLOWEEN ? (
-              // Halloween: the header's coffee link shrinks to its icon (the phone menu keeps the words).
-              <a href={COFFEE} className="coffee coffee-icon" aria-label="Buy me a coffee" title="Buy me a coffee">
-                <Bmc />
-              </a>
-            ) : (
-              coffee
-            ))}
+            {home && coffee}
             <button
               ref={button}
               type="button"
