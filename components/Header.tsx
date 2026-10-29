@@ -7,7 +7,6 @@ import CheckForm from "@/components/CheckForm";
 import { Drips } from "@/components/HwDecor";
 import { Mark, Wordmark } from "@/components/Logo";
 import { HALLOWEEN } from "@/lib/halloween";
-import "@/app/halloween-home.css";
 import { GH } from "@/lib/parse";
 import { CHANNELS, COFFEE, shortCount } from "@/lib/site";
 

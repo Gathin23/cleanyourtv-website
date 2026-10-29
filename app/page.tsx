@@ -5,7 +5,7 @@ import HomeCheck from "@/components/HomeCheck";
 import JsonLd from "@/components/JsonLd";
 import OnAirWall from "@/components/OnAirWall";
 import { Countdown, Lights, Terminal } from "@/components/HwClient";
-import { Fog, Garland } from "@/components/HwDecor";
+import { Fog, Garland, Pumpkin } from "@/components/HwDecor";
 import { loadFacts, loadSiteData } from "@/lib/data";
 import { HALLOWEEN } from "@/lib/halloween";
 import { GH } from "@/lib/parse";
@@ -74,20 +74,35 @@ export default async function Page() {
     <main className={HALLOWEEN ? "home hw-on" : "home"}>
       <JsonLd data={homeGraph(facts, description)} />
 
-      {PRIVACY_LIVE && (
-        <Link href={PRIVACY_PATH} className="hbar">
+      {HALLOWEEN ? (
+        <Link href="/halloween" className="hbar">
           <span className="wrap hbar-in">
-            <span className="hbar-new ch">New</span>
+            <span className="hbar-new ch hw-hbar-pk" aria-hidden="true">
+              <Pumpkin s={24} small glow={false} />
+            </span>
             <span className="hbar-text">
-              <span className="hide-phone">Samsung, LG, Roku or another non-Android TV? Turn off the tracking, step by step, no root.</span>
-              <span className="hbar-short">Samsung, LG or Roku? Stop the tracking.</span>
+              <span className="hide-phone">Planning to make your TV spooooky this Halloweeeeen?</span>
+              <span className="hbar-short">Make your TV spooooky this Halloweeeeen</span>
             </span>
             <span className="hbar-go">
-              <span className="hide-phone">Check here</span> →
+              <span className="hide-phone">Check this out</span> →
             </span>
           </span>
         </Link>
-      )}
+      ) : PRIVACY_LIVE ? (
+          <Link href={PRIVACY_PATH} className="hbar">
+            <span className="wrap hbar-in">
+              <span className="hbar-new ch">New</span>
+              <span className="hbar-text">
+                <span className="hide-phone">Samsung, LG, Roku or another non-Android TV? Turn off the tracking, step by step, no root.</span>
+                <span className="hbar-short">Samsung, LG or Roku? Stop the tracking.</span>
+              </span>
+              <span className="hbar-go">
+                <span className="hide-phone">Check here</span> →
+              </span>
+            </span>
+          </Link>
+      ) : null}
 
       {HALLOWEEN && <Garland />}
 
