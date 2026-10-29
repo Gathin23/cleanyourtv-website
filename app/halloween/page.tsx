@@ -39,6 +39,7 @@ const PHOTOS: [string, string, string, string][] = [
 const INSTALL = `git clone https://github.com/Gathin23/cleanyourtv.git
 cd cleanyourtv
 TV_HOST=192.168.1.50 tools/theme.sh themes/halloween`;
+const SAVER = "TV_HOST=192.168.1.50 addons/haunted/build-and-install.sh";
 const RESET = "TV_HOST=192.168.1.50 tools/theme.sh --reset";
 
 export default function Halloween() {
@@ -104,7 +105,17 @@ export default function Halloween() {
 
       <section aria-labelledby="shots-h" className="wrap hw-sec">
         <h2 id="shots-h" className="hw-h2">On a real TV</h2>
-        <img className="hw-shot" src={cdn("/hw/01-home-first.webp")} width={1280} height={720} alt="Home with the Halloween theme on a real TV: a night photo behind a frosted dock, with its place and photographer under the buttons" loading="lazy" decoding="async" />
+        <img
+          className="hw-shot"
+          src={cdn("/hw/bats-flying-1280.webp")}
+          srcSet={`${cdn("/hw/bats-flying-1280.webp")} 1280w, ${cdn("/hw/bats-flying-1920.webp")} 1920w`}
+          sizes="(min-width: 1290px) 1240px, calc(100vw - 48px)"
+          width={1280}
+          height={720}
+          alt="Home with the Halloween theme on a real TV: the illustrated haunted-house wallpaper under a full moon, bats flying across Home, the dock with Netflix focused, and the jack-o'-lantern, bat and ghost buttons in the top right"
+          loading="lazy"
+          decoding="async"
+        />
         <ul className="hw-feats plain">
           {FEATURES.map(([icon, name, text]) => (
             <li key={name}>
@@ -116,6 +127,18 @@ export default function Halloween() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section aria-labelledby="saver-h" className="wrap hw-sec">
+        <h2 id="saver-h" className="hw-h2">Bonus: the Haunted screensaver</h2>
+        <img className="hw-shot" src={cdn("/hw/screensaver-ghost.webp")} width={1280} height={720} alt="The Haunted screensaver on a real TV: a full moon behind dark trees, a ghost floating up on the left, a bat flying across and a small clock" loading="lazy" decoding="async" />
+        <p className="hw-p">
+          The Halloween photos slowly crossfading, with bats drifting across, a ghost that floats up every half minute or so, a flickering jack-o&rsquo;-lantern glow and a
+          small clock. No network access, nothing running in the background. From the repository checkout (JDK 17 and Android SDK 34):
+        </p>
+        <pre className="hw-code" id="hw-saver"><code>{SAVER}</code></pre>
+        <CopyButton from="hw-saver" label="Copy the command" className="btn btn-ghost" />
+        <p className="hw-p">To remove it and get your old screensaver back: <code>TV_HOST=192.168.1.50 addons/haunted/build-and-install.sh --uninstall</code></p>
       </section>
 
       <section aria-labelledby="install-h" className="wrap hw-sec">
