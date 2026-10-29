@@ -297,6 +297,23 @@
 }
 @keyframes hw-flap-r { 0%, 100% { transform: scaleY(1) rotate(0); } 50% { transform: scaleY(0.55) rotate(8deg); } }
 
+/* --- the Check button and the After label in pumpkin orange (#ff9a3c with #2b1100, 8:1) --- */
+.hw-on .check button {
+  background: #ff9a3c;
+  color: #2b1100;
+}
+.hw-on .check button:hover {
+  background: #ffad5c;
+  color: #2b1100;
+}
+.hw-on .check button:focus-visible {
+  outline-color: #2b1100;
+}
+.hw-on .ba-tag-after {
+  background: #ff9a3c;
+  color: #2b1100;
+}
+
 /* --- the buttons, the orange band, selection --- */
 .hw-on {
   overflow-x: clip;

@@ -3,6 +3,7 @@ import { Fredoka, IBM_Plex_Mono, IBM_Plex_Sans, Space_Grotesk, VT323 } from "nex
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { loadStars } from "@/lib/data";
+import { HALLOWEEN } from "@/lib/halloween";
 import { NA_PREPAINT } from "@/lib/prepaint";
 import "./globals.css";
 
@@ -22,6 +23,11 @@ export const metadata: Metadata = {
   creator: "Gathin",
   description:
     "Your TV, minus the ads. Debloat any Android TV or Google TV over Wi-Fi and swap the ad-filled home screen for a clean Apple TV-style launcher. No root, fully reversible.",
+  // The icons live in public/ (icon.svg, apple-icon.png) so the Halloween flag can swap them: lib/halloween.ts.
+  icons: {
+    icon: [{ url: HALLOWEEN ? "/hw/icon.svg" : "/icon.svg", type: "image/svg+xml", sizes: "any" }],
+    apple: [{ url: HALLOWEEN ? "/hw/apple-icon.png" : "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   openGraph: {
     title: "CleanYourTV",
     description: "Your TV, minus the ads. No root, nothing uninstalled, one line restores it.",
