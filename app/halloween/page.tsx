@@ -3,7 +3,6 @@ import CopyButton from "@/components/CopyButton";
 import { Fog, Garland, Pumpkin } from "@/components/HwDecor";
 import { GH } from "@/lib/parse";
 import { SITE, breadcrumbs, pageMeta } from "@/lib/seo";
-import { cdn } from "@/lib/site";
 import "../halloween-home.css";
 import "./halloween.css";
 
@@ -82,8 +81,8 @@ export default function Halloween() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           className="hw-shot hw-hero-shot"
-          src={cdn("/hw/bats-flying-1280.webp")}
-          srcSet={`${cdn("/hw/bats-flying-640.webp")} 640w, ${cdn("/hw/bats-flying-1280.webp")} 1280w, ${cdn("/hw/bats-flying-1920.webp")} 1920w`}
+          src={"/hw/bats-flying-1280.webp"}
+          srcSet="/hw/bats-flying-640.webp 640w, /hw/bats-flying-1280.webp 1280w, /hw/bats-flying-1920.webp 1920w"
           sizes="(min-width: 1040px) 572px, calc(100vw - 48px)"
           width={1280}
           height={720}
@@ -137,13 +136,13 @@ export default function Halloween() {
         <ul className="hw-cards plain">
           <li className="hw-card">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={cdn("/hw/card-theme.webp")} width={640} height={360} alt="" loading="lazy" decoding="async" />
+            <img src={"/hw/card-theme.webp"} width={640} height={360} alt="" loading="lazy" decoding="async" />
             <h3>The theme</h3>
             <p>Frosted dock, a new wallpaper every 30 minutes, pumpkin-orange glow.</p>
           </li>
           <li className="hw-card">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={cdn("/hw/card-skin.webp")} width={640} height={360} alt="" loading="lazy" decoding="async" />
+            <img src={"/hw/card-skin.webp"} width={640} height={360} alt="" loading="lazy" decoding="async" />
             <h3>The skin</h3>
             <p>Wi-Fi, Inputs and Settings become a jack-o&rsquo;-lantern, a bat and a ghost.</p>
           </li>
@@ -151,7 +150,7 @@ export default function Halloween() {
             <span className="hw-thumbs" aria-hidden="true">
               {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img key={n} src={cdn(`/hw/th-${n}.webp`)} width={256} height={144} alt="" loading="lazy" decoding="async" />
+                <img key={n} src={`/hw/th-${n}.webp`} width={256} height={144} alt="" loading="lazy" decoding="async" />
               ))}
             </span>
             <h3>The wallpapers</h3>
@@ -160,11 +159,11 @@ export default function Halloween() {
           <li className="hw-card">
             <span className="hw-icons" aria-hidden="true">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={cdn("/hw/icon-pumpkin.webp")} width={96} height={96} alt="" loading="lazy" decoding="async" />
+              <img src={"/hw/icon-pumpkin.webp"} width={96} height={96} alt="" loading="lazy" decoding="async" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={cdn("/hw/icon-bat.webp")} width={128} height={128} alt="" loading="lazy" decoding="async" />
+              <img src={"/hw/icon-bat.webp"} width={128} height={128} alt="" loading="lazy" decoding="async" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={cdn("/hw/icon-ghost.webp")} width={96} height={96} alt="" loading="lazy" decoding="async" />
+              <img src={"/hw/icon-ghost.webp"} width={96} height={96} alt="" loading="lazy" decoding="async" />
             </span>
             <h3>The icons</h3>
             <p>Fluent Emoji 3D, lit and dark.</p>
@@ -178,7 +177,7 @@ export default function Halloween() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           className="hw-shot"
-          src={cdn("/hw/01-home-main.webp")}
+          src={"/hw/01-home-main.webp"}
           width={1280}
           height={720}
           alt="Home on a real TV with the Halloween theme: the illustrated haunted house under a full moon, the dock with Netflix focused, and the jack-o'-lantern, bat and ghost buttons in the top right"
@@ -201,7 +200,7 @@ export default function Halloween() {
       <section aria-labelledby="saver-h" className="wrap hw-sec">
         <h2 id="saver-h" className="hw-h2">Bonus: the Haunted screensaver</h2>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="hw-shot" src={cdn("/hw/screensaver-ghost.webp")} width={1280} height={720} alt="The Haunted screensaver on a real TV: a full moon behind dark trees, a ghost floating up on the left, a bat flying across and a small clock" loading="lazy" decoding="async" />
+        <img className="hw-shot" src={"/hw/screensaver-ghost.webp"} width={1280} height={720} alt="The Haunted screensaver on a real TV: a full moon behind dark trees, a ghost floating up on the left, a bat flying across and a small clock" loading="lazy" decoding="async" />
         <p className="hw-p">Night photos crossfading, with bats, a ghost and a flickering glow.</p>
         <div className="hw-code-box">
           <div className="hw-code-bar">
@@ -220,7 +219,7 @@ export default function Halloween() {
           {PHOTOS.map(([n, cap, by, file]) => (
             <li key={n}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={cdn(`/hw/wall-${n}.webp`)} width={640} height={360} alt={cap} loading="lazy" decoding="async" />
+              <img src={`/hw/wall-${n}.webp`} width={640} height={360} alt={cap} loading="lazy" decoding="async" />
               <p>
                 <a href={`https://commons.wikimedia.org/wiki/File:${file}`}>{cap}</a>
                 <span>{by}</span>
