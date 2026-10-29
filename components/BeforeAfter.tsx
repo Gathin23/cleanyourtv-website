@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import HwGhosts from "@/components/HwGhosts";
+import { HALLOWEEN } from "@/lib/halloween";
 
 // My parents' TV before and after, the two photos lined up bezel to bezel (public/docs/hero-*.jpg).
 // A range input over the whole picture is the slider, so keyboard and screen readers get it for free.
@@ -14,8 +16,10 @@ const webp = (name: string) => `/docs/${name}-640.webp 640w, /docs/${name}-960.w
 
 export default function BeforeAfter() {
   const [pos, setPos] = useState(50);
+  // Halloween: the last ghost ad busted wipes the picture to the after, easing there (see app/halloween-home.css).
+  const [wipe, setWipe] = useState(false);
   return (
-    <figure className="ba" style={{ "--pos": `${pos}%` } as React.CSSProperties}>
+    <figure className={wipe ? "ba hw-wipe" : "ba"} style={{ "--pos": `${pos}%` } as React.CSSProperties}>
       <div className="ba-frame">
         <picture>
           <source type="image/webp" srcSet={webp("hero-after")} sizes={SIZES} />
@@ -25,8 +29,9 @@ export default function BeforeAfter() {
           <source type="image/webp" srcSet={webp("hero-before")} sizes={SIZES} />
           <img className="ba-img ba-img-before" src="/docs/hero-before.jpg" alt="Before: the stock home screen with a sponsored banner and rows of promoted apps" width={1280} height={760} />
         </picture>
-        <span className="ba-tag" aria-hidden="true">Before</span>
-        <span className="ba-tag ba-tag-after" aria-hidden="true">After</span>
+        {HALLOWEEN && <span className="hw-ba-tint" aria-hidden="true" />}
+        <span className="ba-tag" aria-hidden="true">{HALLOWEEN ? "Before · Haunted" : "Before"}</span>
+        <span className="ba-tag ba-tag-after" aria-hidden="true">{HALLOWEEN ? "After · Exorcised" : "After"}</span>
         <span className="ba-line" aria-hidden="true">
           <span className="ba-knob">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
@@ -34,6 +39,18 @@ export default function BeforeAfter() {
             </svg>
           </span>
         </span>
+        {HALLOWEEN && (
+          <>
+            <HwGhosts
+              onCleared={() => {
+                setWipe(true);
+                setPos(0);
+                setTimeout(() => setWipe(false), 1100);
+              }}
+            />
+            <span className="hw-crt" aria-hidden="true"><i /></span>
+          </>
+        )}
         <input
           className="ba-range"
           type="range"

@@ -1,0 +1,508 @@
+/* The Halloween look on the home page (lib/halloween.ts is the switch; every rule here hangs off an hw- class or .hw-on).
+   Drips, garland, fog, glitch, ghosts, the CRT wipe, the terminal and Lights out are from the Claude Design file
+   "CleanYourTV Halloween", ported to the site's own components, fonts and tokens. Reduced motion stops all of it. */
+
+@keyframes hw-drip { 0%, 100% { transform: scaleY(0.35); } 55% { transform: scaleY(1); } }
+@keyframes hw-drop { 0%, 50% { transform: translateY(0) scale(0); opacity: 0; } 56% { transform: translateY(0) scale(1); opacity: 1; } 100% { transform: translateY(90px) scale(0.7); opacity: 0; } }
+@keyframes hw-glitch {
+  0%, 86%, 100% { transform: none; opacity: 1; text-shadow: 0 0 34px rgba(207, 255, 207, 0.22); }
+  87% { transform: translate(-4px, 1px) skewX(-8deg); text-shadow: 5px 0 #ff6b6b, -5px 0 #cfffcf; }
+  88% { transform: translate(4px, -2px); opacity: 0.55; text-shadow: -6px 0 #ff9a3c, 6px 0 #6fa8ff; }
+  89% { transform: none; opacity: 1; text-shadow: 2px 0 #ff6b6b, -2px 0 #cfffcf; }
+  90% { opacity: 0.2; }
+  91% { opacity: 1; text-shadow: 0 0 34px rgba(207, 255, 207, 0.22); }
+}
+@keyframes hw-float { 0%, 100% { transform: translate(0, 0) rotate(-4deg); } 50% { transform: translate(8px, -14px) rotate(4deg); } }
+@keyframes hw-pop { 0% { transform: scale(1); opacity: 1; filter: blur(0); } 100% { transform: scale(1.7) translateY(-24px); opacity: 0; filter: blur(8px); } }
+@keyframes hw-in { 0% { transform: scale(0.4) translateY(30px); opacity: 0; } 100% { transform: none; opacity: 1; } }
+@keyframes hw-fog { 0%, 100% { transform: translateX(-8%); } 50% { transform: translateX(8%); } }
+@keyframes hw-blink { 50% { opacity: 0; } }
+@keyframes hw-flicker { 0%, 100% { opacity: 1; filter: brightness(1); } 8% { opacity: 0.82; } 10% { opacity: 1; } 38% { opacity: 0.9; filter: brightness(0.9); } 40% { opacity: 0.6; } 42% { opacity: 1; filter: brightness(1.15); } 70% { opacity: 0.88; } 72% { opacity: 1; } }
+@keyframes hw-twinkle { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+@keyframes hw-sway { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg); } }
+@keyframes hw-crt-line { 0% { transform: scaleX(0) scaleY(1); opacity: 1; } 35% { transform: scaleX(1) scaleY(1); opacity: 1; } 100% { transform: scaleX(1) scaleY(300); opacity: 0; } }
+@keyframes hw-crt-cover { 0%, 45% { opacity: 1; } 100% { opacity: 0; visibility: hidden; } }
+
+/* --- masthead: orange in the stripe, drips off it, a garland under the header (home only) --- */
+.hw-mast {
+  position: relative;
+  z-index: 30;
+}
+.hw-mast .stripe {
+  background: linear-gradient(90deg, var(--white) 0 14.2857%, var(--amber) 0 28.5714%, #ff9a3c 0 42.8571%, var(--green) 0 57.1429%, var(--violet) 0 71.4286%, var(--red) 0 85.7143%, var(--blue) 0);
+}
+.hw-drips {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  right: 0;
+  height: 0;
+  pointer-events: none;
+}
+.hw-drip {
+  position: absolute;
+  top: 0;
+  width: 8px;
+}
+.hw-drip-run {
+  display: block;
+  width: 8px;
+  height: var(--h);
+  background: var(--c);
+  border-radius: 0 0 6px 6px;
+  transform-origin: top;
+  animation: hw-drip var(--t) ease-in-out var(--o) infinite;
+}
+.hw-drip-drop {
+  position: absolute;
+  left: 0;
+  top: calc(var(--h) - 2px);
+  width: 8px;
+  height: 10px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background: var(--c);
+  animation: hw-drop var(--t) ease-in var(--o) infinite;
+}
+/* Under the header (and the orange bar), as the first thing in <main>: zero height, the pumpkins hang below it. */
+.hw-garland {
+  position: relative;
+  z-index: 5;
+  height: 0;
+  pointer-events: none;
+}
+.menu-open .hw-garland {
+  display: none;
+}
+.hw-wire {
+  position: absolute;
+  top: 0;
+  width: 8.3333%;
+  height: 22px;
+  border-bottom: 2px solid var(--line-3);
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+}
+.hw-bulb {
+  position: absolute;
+  top: 20px;
+  margin-left: -11px;
+  transform-origin: 50% 0;
+  animation: hw-sway var(--sw) ease-in-out var(--so) infinite;
+}
+.hw-bulb-cord {
+  display: block;
+  width: 2px;
+  height: 6px;
+  margin: 0 auto;
+  background: var(--line-3);
+}
+.hw-bulb-pk {
+  display: block;
+  animation: hw-twinkle var(--tw) ease-in-out var(--to) infinite;
+}
+@media (max-width: 640px) {
+  .hw-garland {
+    height: 44px;
+  }
+  .hw-bulb:nth-child(2n + 14) {
+    display: none;
+  }
+}
+
+/* --- the pumpkin, from plain shapes; --s is its width --- */
+.hw-pk {
+  position: relative;
+  display: inline-block;
+  flex: none;
+  width: var(--s);
+  height: calc(var(--s) * 0.88);
+}
+.hw-pk > span {
+  position: absolute;
+}
+.hw-pk-glow {
+  left: -35%;
+  right: -35%;
+  bottom: calc(var(--s) * -0.12);
+  height: calc(var(--s) * 0.5);
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255, 154, 60, 0.45), transparent 70%);
+  filter: blur(6px);
+  animation: hw-flicker calc(3.2s + var(--d)) linear calc(var(--d) * -1) infinite;
+}
+.hw-pk-stem {
+  top: 0;
+  left: 50%;
+  width: calc(var(--s) * 0.11);
+  height: calc(var(--s) * 0.22);
+  margin-left: calc(var(--s) * -0.055);
+  border-radius: 3px;
+  background: linear-gradient(#5d8a3a, #2f4f1f);
+  transform: rotate(10deg);
+}
+.hw-pk-lobe {
+  top: calc(var(--s) * 0.16);
+  height: calc(var(--s) * 0.7);
+  border-radius: 50%;
+  z-index: 1;
+  box-shadow: inset -3px -2px 8px rgba(70, 20, 0, 0.45), inset 3px 2px 6px rgba(255, 210, 150, 0.25);
+}
+.hw-pk-l { left: 0; width: calc(var(--s) * 0.56); background: radial-gradient(ellipse at 50% 30%, #ffb062 0%, #f07a22 45%, #a8460c 100%); }
+.hw-pk-r { left: calc(var(--s) * 0.44); width: calc(var(--s) * 0.56); background: radial-gradient(ellipse at 50% 30%, #ffb062 0%, #f07a22 45%, #a8460c 100%); }
+.hw-pk-c { left: calc(var(--s) * 0.2); width: calc(var(--s) * 0.6); z-index: 2; background: radial-gradient(ellipse at 50% 30%, #ffb062 0%, #f07a22 45%, #b8510f 100%); }
+.hw-pk-face {
+  inset: 0;
+  z-index: 3;
+  animation: hw-flicker calc(3.2s + var(--d)) linear calc(var(--d) * -1) infinite;
+  filter: drop-shadow(0 0 4px #ffb347);
+}
+.hw-pk-face > span {
+  position: absolute;
+  background: radial-gradient(circle at 50% 60%, #fff6c8 0%, #ffd36b 45%, #ff9a3c 100%);
+}
+.hw-pk-eye { top: calc(var(--s) * 0.36); width: calc(var(--s) * 0.16); height: calc(var(--s) * 0.15); clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+.hw-pk-e1 { left: calc(var(--s) * 0.27); }
+.hw-pk-e2 { left: calc(var(--s) * 0.57); }
+.hw-pk-nose { left: calc(var(--s) * 0.46); top: calc(var(--s) * 0.5); width: calc(var(--s) * 0.08); height: calc(var(--s) * 0.07); clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+.hw-pk-mouth {
+  left: calc(var(--s) * 0.24);
+  top: calc(var(--s) * 0.6);
+  width: calc(var(--s) * 0.52);
+  height: calc(var(--s) * 0.16);
+  clip-path: polygon(0 0, 17% 34%, 33% 0, 50% 34%, 67% 0, 83% 34%, 100% 0, 88% 72%, 68% 100%, 32% 100%, 12% 72%);
+}
+
+/* --- hero: fog, the countdown, the glitching "the ads." --- */
+.hw-hero {
+  position: relative;
+  isolation: isolate;
+}
+.hw-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0 calc(50% - 50vw);
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(600px 380px at 88% 8%, rgba(255, 154, 60, 0.09), transparent 70%);
+}
+.hw-fog {
+  position: absolute;
+  inset: 0 calc(50% - 50vw);
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hw-fog span {
+  position: absolute;
+  width: 60%;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(200, 210, 230, 0.06);
+  filter: blur(40px);
+  animation: hw-fog 16s ease-in-out infinite;
+}
+.hw-kick {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px 24px;
+}
+.hw-count {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px;
+  background: #0c0c0c;
+  border: 1px solid #ff9a3c;
+  border-radius: 4px;
+  font-family: var(--f-ch);
+  font-size: 21px;
+  line-height: 1.2;
+  color: #ff9a3c;
+  box-shadow: 0 0 30px rgba(255, 154, 60, 0.18);
+}
+.hw-count-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 99px;
+  background: #ff9a3c;
+}
+.hw-count-v {
+  min-width: 9.5ch;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.hw-glitch {
+  display: inline-block;
+  text-shadow: 0 0 34px rgba(207, 255, 207, 0.22);
+  animation: hw-glitch 7s steps(1, end) 2s infinite;
+}
+
+/* --- before and after: haunted tint and scanlines on the before, the CRT power-on, ghost ads --- */
+.hw-ba-tint {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0);
+  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 3px), linear-gradient(180deg, rgba(213, 139, 230, 0.28), rgba(142, 224, 143, 0.18));
+  background-blend-mode: normal;
+}
+.hw-wipe .ba-img-before,
+.hw-wipe .hw-ba-tint {
+  transition: clip-path 1s cubic-bezier(0.6, 0, 0.2, 1);
+}
+.hw-wipe .ba-line {
+  transition: left 1s cubic-bezier(0.6, 0, 0.2, 1);
+}
+.hw-on .ba-frame {
+  box-shadow: 0 0 0 6px #0c0c0c, 0 30px 80px rgba(255, 154, 60, 0.08);
+}
+.hw-on .ba-line {
+  box-shadow: 0 0 16px rgba(207, 255, 207, 0.6);
+}
+.hw-crt {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: #050505;
+  animation: hw-crt-cover 1.5s ease-out 0.2s both;
+}
+.hw-crt i {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  margin-top: -1px;
+  background: #fff;
+  box-shadow: 0 0 20px #cfffcf, 0 0 40px #cfffcf;
+  transform-origin: center;
+  animation: hw-crt-line 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s both;
+}
+.hw-on .ba-tag {
+  z-index: 5;
+}
+.hw-ghosts {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100px;
+  z-index: 4;
+  pointer-events: none;
+}
+.hw-ghost {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--mint);
+  cursor: crosshair;
+  pointer-events: auto;
+  animation: hw-in 0.6s ease-out calc(var(--i) * 0.12s + 1.4s) both, hw-float calc(5.4s + var(--i) * 0.9s) ease-in-out calc(var(--i) * 0.12s + 2s) infinite;
+}
+.hw-ghost-pop {
+  pointer-events: none;
+  animation: hw-pop 0.55s ease-out forwards;
+}
+.hw-ghost-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 92px;
+  padding: 14px 14px 10px;
+  background: rgba(12, 20, 12, 0.55);
+  border: 1.5px solid rgba(207, 255, 207, 0.6);
+  border-bottom: 0;
+  border-radius: 50px 50px 6px 6px;
+  box-shadow: 0 0 28px rgba(207, 255, 207, 0.22), inset 0 0 18px rgba(207, 255, 207, 0.1);
+}
+.hw-ghost-eyes {
+  display: flex;
+  gap: 10px;
+}
+.hw-ghost-eyes span {
+  width: 7px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--mint);
+}
+.hw-ghost-t {
+  font-family: var(--f-ch);
+  font-size: 19px;
+  line-height: 1;
+  white-space: nowrap;
+}
+.hw-ghost-tail {
+  display: flex;
+  gap: 4px;
+}
+.hw-ghost-tail span {
+  width: 12px;
+  height: 7px;
+  border-radius: 0 0 7px 7px;
+  background: rgba(207, 255, 207, 0.45);
+}
+@media (max-width: 640px) {
+  .hw-ghost-body {
+    min-width: 72px;
+    padding: 10px 8px 8px;
+  }
+  .hw-ghost-t {
+    font-size: 16px;
+  }
+}
+
+/* --- the buttons, the orange band, selection --- */
+.hw-on {
+  overflow-x: clip;
+  --amber: #ff9a3c;
+  --on-amber: #2b1100;
+}
+.hw-on ::selection {
+  background: #ff9a3c;
+  color: #2b1100;
+}
+.hw-on .tile:hover {
+  transform: translateY(-4px) rotate(-0.6deg);
+  box-shadow: 0 14px 40px rgba(255, 154, 60, 0.25);
+}
+.hw-on .tile:nth-child(even):hover {
+  transform: translateY(-4px) rotate(0.6deg);
+}
+.hw-on .stripe-thin {
+  background: linear-gradient(90deg, var(--white) 0 14.2857%, #ffdc96 0 28.5714%, #ff9a3c 0 42.8571%, var(--green) 0 57.1429%, var(--violet) 0 71.4286%, var(--red) 0 85.7143%, var(--blue) 0);
+}
+.hw-foot {
+  display: block;
+  color: #ff9a3c;
+}
+
+/* --- terminal --- */
+.hw-term {
+  box-shadow: 0 0 60px rgba(207, 255, 207, 0.06);
+}
+.hw-term pre {
+  min-height: 15.5em;
+}
+.hw-term-end {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.hw-replay {
+  min-height: 28px;
+  padding: 0 10px;
+  background: transparent;
+  color: inherit;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  font: inherit;
+  font-size: 17px;
+  line-height: 1;
+  cursor: pointer;
+}
+.hw-replay:hover {
+  background: var(--bg);
+  color: var(--ink);
+}
+.hw-rec {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.hw-rec i {
+  width: 9px;
+  height: 9px;
+  border-radius: 99px;
+  background: #ff6b6b;
+  animation: hw-blink 1.2s steps(1) infinite;
+}
+.hw-t-dim { color: #8a8a8a; }
+.hw-t-mint { color: var(--mint); }
+.hw-t-violet { color: #d58be6; }
+.hw-t-ok { color: var(--green); }
+.hw-cursor {
+  display: inline-block;
+  width: 9px;
+  height: 17px;
+  vertical-align: -3px;
+  background: var(--mint);
+  animation: hw-blink 1s steps(1) infinite;
+}
+
+/* --- Lights out --- */
+.hw-torch {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+}
+.hw-lights {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 70;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 18px 0 10px;
+  background: #ff9a3c;
+  color: #2b1100;
+  border: 2px solid #2b1100;
+  border-radius: 999px;
+  font-family: var(--f-ch);
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 0 0 2px #ff9a3c, 0 10px 34px rgba(255, 154, 60, 0.4);
+}
+.hw-lights:hover {
+  background: #ffad5c;
+}
+.hw-lights-on {
+  border-color: #ff9a3c;
+  box-shadow: 0 0 40px rgba(255, 154, 60, 0.45);
+}
+.hw-lights-sw {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 46px;
+  height: 26px;
+  padding: 0 3px;
+  border-radius: 99px;
+  background: #2b1100;
+}
+.hw-lights-on .hw-lights-sw {
+  justify-content: flex-end;
+}
+@media (max-width: 640px) {
+  .hw-lights {
+    right: 12px;
+    bottom: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hw-mast *,
+  .hw-on *,
+  .hw-on *::before,
+  .hw-on *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .hw-crt {
+    display: none;
+  }
+  .hw-drop,
+  .hw-drip-drop {
+    display: none;
+  }
+}

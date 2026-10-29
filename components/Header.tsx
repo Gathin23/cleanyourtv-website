@@ -4,7 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import CheckForm from "@/components/CheckForm";
+import { Drips } from "@/components/HwDecor";
 import { Mark, Wordmark } from "@/components/Logo";
+import { HALLOWEEN } from "@/lib/halloween";
 import { GH } from "@/lib/parse";
 import { CHANNELS, COFFEE, shortCount } from "@/lib/site";
 
@@ -66,8 +68,9 @@ export default function Header({ stars }: { stars: number }) {
   );
 
   return (
-    <div className="mast">
+    <div className={HALLOWEEN && home ? "mast hw-mast" : "mast"}>
       <div className="stripe" aria-hidden="true" />
+      {HALLOWEEN && home && <Drips />}
       <header className="site-head">
         <nav aria-label="Main" className="wrap head-bar">
           <Link href="/" className="logo" aria-label="CleanYourTV, home">

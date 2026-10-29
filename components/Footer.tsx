@@ -1,6 +1,7 @@
 import Link from "next/link";
 import FooterNote from "@/components/FooterNote";
 import { Mark, Wordmark } from "@/components/Logo";
+import { HALLOWEEN } from "@/lib/halloween";
 import { GH } from "@/lib/parse";
 import { COFFEE, ON_AIR_SINCE, PRIVACY_LIVE, PRIVACY_NAME, PRIVACY_PATH } from "@/lib/site";
 
@@ -17,6 +18,7 @@ export default function Footer() {
             <Wordmark />
           </Link>
           <span className="foot-since">On air since {since}</span>
+          {HALLOWEEN && <span className="foot-since hw-foot">Halloween special, until 1 Nov</span>}
         </div>
         <nav aria-label="Use it" className="foot-nav">
           <Link href="/tvs">TV list</Link>

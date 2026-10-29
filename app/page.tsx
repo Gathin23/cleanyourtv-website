@@ -4,13 +4,17 @@ import CopyButton from "@/components/CopyButton";
 import HomeCheck from "@/components/HomeCheck";
 import JsonLd from "@/components/JsonLd";
 import OnAirWall from "@/components/OnAirWall";
+import { Countdown, Lights, Terminal } from "@/components/HwClient";
+import { Fog, Garland } from "@/components/HwDecor";
 import { loadFacts, loadSiteData } from "@/lib/data";
+import { HALLOWEEN } from "@/lib/halloween";
 import { GH } from "@/lib/parse";
 import { COVERAGE_COUNTRIES, COVERAGE_TOTAL } from "@/lib/press";
 import { homeGraph, pageMeta } from "@/lib/seo";
 import { HOME_PICKS, LANGS, TUTORIAL_VIDEOS } from "@/lib/tutorials";
 import { ON_AIR_SINCE, PRESS, PRESS_LOGO_W, PRIVACY_LIVE, PRIVACY_PATH, PRIVACY_SOON, TRENDSHIFT, cdn, roundedCount } from "@/lib/site";
 import "./home.css";
+import "./halloween-home.css";
 
 // Three community walk-throughs under the set-up steps, each a link to /tutorials (no YouTube on the home page).
 const VIDEO_PICKS = HOME_PICKS.map((id) => TUTORIAL_VIDEOS.find((v) => v.id === id)).filter((v) => v !== undefined);
@@ -67,7 +71,7 @@ export default async function Page() {
   const featured = FEATURED_AIR.map((link) => data.results.find((r) => r.link === link)).filter((r): r is (typeof data.results)[number] => !!r);
   const photos = [...featured, ...data.results.filter((r) => !featured.includes(r))].slice(0, 4);
   return (
-    <main className="home">
+    <main className={HALLOWEEN ? "home hw-on" : "home"}>
       <JsonLd data={homeGraph(facts, description)} />
 
       {PRIVACY_LIVE && (
@@ -85,11 +89,17 @@ export default async function Page() {
         </Link>
       )}
 
-      <section aria-labelledby="hero-h" className="wrap hero">
+      {HALLOWEEN && <Garland />}
+
+      <section aria-labelledby="hero-h" className={HALLOWEEN ? "wrap hero hw-hero" : "wrap hero"}>
+        {HALLOWEEN && <Fog />}
         <div className="stack hero-top">
-          <p className="kicker c-mint">CH 00 · For Android TV and Google TV</p>
+          <div className={HALLOWEEN ? "hw-kick" : undefined}>
+            <p className="kicker c-mint">{HALLOWEEN ? "CH 13 · Halloween special · For Android TV and Google TV" : "CH 00 · For Android TV and Google TV"}</p>
+            {HALLOWEEN && <Countdown />}
+          </div>
           <h1 id="hero-h" className="h1 hero-h">
-            Your TV, minus<br /> the ads.
+            Your TV, minus<br /> {HALLOWEEN ? <span className="hw-glitch">the ads.</span> : "the ads."}
           </h1>
         </div>
         <div className="hero-grid">
@@ -105,7 +115,7 @@ export default async function Page() {
       </section>
 
       <section aria-labelledby="paths-h" className="wrap paths">
-        <h2 id="paths-h" className="kicker c-mute">Pick your button</h2>
+        <h2 id="paths-h" className="kicker c-mute">{HALLOWEEN ? "Trick or treat? Pick your button" : "Pick your button"}</h2>
         <div className="tiles">
           {TILES.map(([tone, label, href], i) =>
             href === PRIVACY_PATH && !PRIVACY_LIVE ? (
@@ -213,6 +223,9 @@ export default async function Page() {
           </div>
           <pre id="prompt-text" hidden>{data.prompt}</pre>
         </div>
+        {HALLOWEEN ? (
+          <Terminal />
+        ) : (
         <div className="term" aria-label="What your coding assistant does, as an example" role="figure">
           <div className="term-bar" aria-hidden="true"><span>Your assistant, live</span><span>REC</span></div>
           <pre>
@@ -224,6 +237,7 @@ export default async function Page() {
             <span className="t-dim">  To undo, ask it to restore your TV.</span>
           </pre>
         </div>
+        )}
       </section>
 
       <section aria-labelledby="hna-h" className="hna">
@@ -297,6 +311,7 @@ export default async function Page() {
           </p>
         </div>
       </section>
+      {HALLOWEEN && <Lights />}
     </main>
   );
 }
