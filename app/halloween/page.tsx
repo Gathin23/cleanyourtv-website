@@ -84,7 +84,7 @@ export default function Halloween() {
       </section>
 
       <section aria-labelledby="install-h" className="wrap hw-sec">
-        <h2 id="install-h" className="hw-h2">Put it on your TV</h2>
+        <h2 id="install-h" className="hw-h2">Apply it to your TV</h2>
         <ol className="hw-steps plain">
           <li>
             <span className="hw-step-n" aria-hidden="true">1</span>
