@@ -426,3 +426,15 @@
     display: none;
   }
 }
+
+/* The spooky logo in the header: 34 px high like the icon + wordmark it replaces, 28 px on phones so the menu keeps its room. */
+.hw-logo {
+  display: block;
+  height: 34px;
+  width: auto;
+}
+@media (max-width: 600px) {
+  .hw-logo {
+    height: 28px;
+  }
+}

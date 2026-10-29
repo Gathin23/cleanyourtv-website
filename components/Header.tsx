@@ -7,6 +7,7 @@ import CheckForm from "@/components/CheckForm";
 import { Drips } from "@/components/HwDecor";
 import { Mark, Wordmark } from "@/components/Logo";
 import { HALLOWEEN } from "@/lib/halloween";
+import "@/app/halloween-home.css";
 import { GH } from "@/lib/parse";
 import { CHANNELS, COFFEE, shortCount } from "@/lib/site";
 
@@ -74,8 +75,16 @@ export default function Header({ stars }: { stars: number }) {
       <header className="site-head">
         <nav aria-label="Main" className="wrap head-bar">
           <Link href="/" className="logo" aria-label="CleanYourTV, home">
-            <Mark id="logo-glow-head" />
-            <Wordmark />
+            {HALLOWEEN ? (
+              // Halloween: the spooky logo (the pumpkin is the "o"), trimmed, 238x34 at 1x.
+              // eslint-disable-next-line @next/next/no-img-element
+              <img className="hw-logo" src="/hw/logo-1x.webp" srcSet="/hw/logo-1x.webp 1x, /hw/logo-2x.webp 2x" width={238} height={34} alt="CleanYourTV" />
+            ) : (
+              <>
+                <Mark id="logo-glow-head" />
+                <Wordmark />
+              </>
+            )}
           </Link>
           <div className="navlinks">
             {NAV.map(([label, href]) => (
