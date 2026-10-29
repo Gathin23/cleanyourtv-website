@@ -1,5 +1,8 @@
 /* /halloween: the Halloween pack, in the look of the Halloween home (app/halloween-home.css supplies the pumpkins, fog, glitch). */
-.hw-head { padding-top: 72px; padding-bottom: 24px; position: relative; display: flex; flex-direction: column; gap: 16px; }
+.hw-head { padding-top: 72px; padding-bottom: 24px; position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; align-items: center; }
+.hw-head-text { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.hw-hero-shot { margin: 0; }
+@media (min-width: 1040px) { .hw-head { grid-template-columns: minmax(0, 1fr) minmax(0, 572px); gap: 48px; } .hw-head .hw-h1 { font-size: clamp(56px, 6.6vw, 96px); } }
 .hw-h1 { margin: 0; font-family: var(--f-head); font-weight: 700; font-size: clamp(48px, 8vw, 112px); line-height: 0.92; letter-spacing: -0.045em; }
 .hw-lede { max-width: 52ch; margin: 0; }
 .hw-pks { display: flex; align-items: flex-end; gap: 22px; padding-top: 8px; }

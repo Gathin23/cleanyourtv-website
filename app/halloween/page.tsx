@@ -55,20 +55,34 @@ export default function Halloween() {
       <JsonLd data={jsonLd} />
       <section aria-labelledby="page-h" className="wrap hw-head hw-hero">
         <Fog />
-        <p className="kicker c-mint">CH 13 · Halloween special · until 1 Nov 2026</p>
-        <h1 id="page-h" className="hw-h1">
-          Halloween<br />
-          for your <span className="hw-glitch">TV.</span>
-        </h1>
-        <div className="hw-pks" aria-hidden="true">
-          <Pumpkin s={46} delay={0.4} />
-          <Pumpkin s={74} delay={1.3} />
-          <Pumpkin s={38} delay={2.1} small />
+        <div className="hw-head-text">
+          <p className="kicker c-mint">CH 13 · Halloween special · until 1 Nov 2026</p>
+          <h1 id="page-h" className="hw-h1">
+            Halloween<br />
+            for your <span className="hw-glitch">TV.</span>
+          </h1>
+          <div className="hw-pks" aria-hidden="true">
+            <Pumpkin s={46} delay={0.4} />
+            <Pumpkin s={74} delay={1.3} />
+            <Pumpkin s={38} delay={2.1} small />
+          </div>
+          <p className="lede hw-lede">
+            A spooky Home for CleanYourTV: night photos and an illustrated haunted house, a jack-o&rsquo;-lantern that glows while you&rsquo;re online, a bat, a ghost and
+            bats over the first Home of the day. One command to put it on, one to take it off.
+          </p>
         </div>
-        <p className="lede hw-lede">
-          A spooky Home for CleanYourTV: seven night photos, a jack-o&rsquo;-lantern that glows while you&rsquo;re online, a bat, a ghost and bats over the
-          first Home of the day. One command to put it on, one to take it off.
-        </p>
+        {/* The page's largest picture, so it loads first: no lazy loading, explicit size, three widths. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          className="hw-shot hw-hero-shot"
+          src={cdn("/hw/bats-flying-1280.webp")}
+          srcSet={`${cdn("/hw/bats-flying-640.webp")} 640w, ${cdn("/hw/bats-flying-1280.webp")} 1280w, ${cdn("/hw/bats-flying-1920.webp")} 1920w`}
+          sizes="(min-width: 1040px) 572px, calc(100vw - 48px)"
+          width={1280}
+          height={720}
+          fetchPriority="high"
+          alt="Home with the Halloween theme on a real TV: the illustrated haunted-house wallpaper under a full moon, bats flying across Home, the dock with Netflix focused, and the jack-o'-lantern, bat and ghost buttons in the top right"
+        />
       </section>
 
       <section aria-labelledby="in-h" className="wrap hw-sec">
@@ -107,12 +121,10 @@ export default function Halloween() {
         <h2 id="shots-h" className="hw-h2">On a real TV</h2>
         <img
           className="hw-shot"
-          src={cdn("/hw/bats-flying-1280.webp")}
-          srcSet={`${cdn("/hw/bats-flying-1280.webp")} 1280w, ${cdn("/hw/bats-flying-1920.webp")} 1920w`}
-          sizes="(min-width: 1290px) 1240px, calc(100vw - 48px)"
+          src={cdn("/hw/01-home-main.webp")}
           width={1280}
           height={720}
-          alt="Home with the Halloween theme on a real TV: the illustrated haunted-house wallpaper under a full moon, bats flying across Home, the dock with Netflix focused, and the jack-o'-lantern, bat and ghost buttons in the top right"
+          alt="Home on a real TV with the Halloween theme: the illustrated haunted house under a full moon, the dock with Netflix focused, and the jack-o'-lantern, bat and ghost buttons in the top right"
           loading="lazy"
           decoding="async"
         />
