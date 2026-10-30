@@ -1,7 +1,7 @@
 # Round flags for the press stat card
 
-The 44 SVG flags here are from **circle-flags** by HatScripts, https://github.com/HatScripts/circle-flags
-(files `flags/<iso>.svg` on the `gh-pages` branch, fetched 27 Oct 2026), used unmodified. Only the flags of the countries
+The 46 SVG flags here are from **circle-flags** by HatScripts, https://github.com/HatScripts/circle-flags
+(files `flags/<iso>.svg` on the `gh-pages` branch, fetched 27 Oct 2026; Lithuania and Morocco 30 Oct 2026), used unmodified. Only the flags of the countries
 in `lib/press.ts` are kept; `lib/flags.ts` maps each country to its file. Their license:
 
 ```

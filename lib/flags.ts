@@ -24,6 +24,8 @@ export const COUNTRY_ISO: Record<string, string> = {
   Japan: "jp",
   Jordan: "jo",
   Kenya: "ke",
+  Lithuania: "lt",
+  Morocco: "ma",
   Netherlands: "nl",
   Norway: "no",
   Pakistan: "pk",
