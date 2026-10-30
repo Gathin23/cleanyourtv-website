@@ -14,8 +14,8 @@ export type Item = { name: string; to: "off" | "on" | "press" };
  *  only for those answers to the brand's question (VIDAA version, Vizio menu…). */
 export type Variant = { label: string; years?: [number, number]; for?: string[]; crumbs: string[]; items?: Item[]; note?: string };
 
-/** Someone confirmed this step on their own TV, through a "Worked on my TV" issue. */
-export type Check = { year: number; model: string; by: string; issue: number };
+/** Someone confirmed this step on their own TV, through a "Worked on my TV" issue. No year for brands without model years (Roku). */
+export type Check = { year?: number; model: string; by: string; issue: number };
 
 export type Step = {
   id: string;
@@ -110,7 +110,7 @@ export const BRANDS: Brand[] = [
         ],
         undo: "Tick it again in the same place.",
         sources: [CR, ["SamMobile, Feb 2025", "https://www.sammobile.com/news/samsung-tvs-displaying-repeated-privacy-pop-ups/"], CR22, CR21, EM21, ["Samsung: ACR", "https://www.samsung.com/us/support/answer/ANS10010616/"]],
-        checks: [],
+        checks: [{ year: 2022, model: "QE55LS03B", by: "joeclack", issue: 2212 }],
       },
       {
         id: "ads",
@@ -127,7 +127,7 @@ export const BRANDS: Brand[] = [
         note: "Most TVs only show Interest-Based Advertisements here, next to Viewing Information Services. On some 2020 sets it opens a notice with an I agree tick: leave it unticked and press Confirm. The other four are on some models only: untick any you see. This is the full set the IMC 2024 study switched off before the TVs stopped contacting tracking servers.",
         undo: "Tick them again. Ads stay either way; they just stop being targeted.",
         sources: [IMC],
-        checks: [],
+        checks: [{ year: 2022, model: "QE55LS03B", by: "joeclack", issue: 2212 }],
       },
       {
         id: "psid",
@@ -137,7 +137,7 @@ export const BRANDS: Brand[] = [
         note: "This gives the TV a new ad ID. On its own it doesn’t turn off personalised ads; step 2 does. Not every model has Reset PSID: if yours doesn’t, skip this step.",
         undo: "Nothing to undo.",
         sources: [NAI],
-        checks: [],
+        checks: [{ year: 2022, model: "QE55LS03B", by: "joeclack", issue: 2212 }],
       },
       {
         id: "voice",
@@ -156,7 +156,7 @@ export const BRANDS: Brand[] = [
           ["Samsung AU: Bixby can’t be turned off", "https://www.samsung.com/au/support/tv-audio-video/how-to-use-bixby-on-a-samsung-smart-tv/"],
           EM21,
         ],
-        checks: [],
+        checks: [{ year: 2022, model: "QE55LS03B", by: "joeclack", issue: 2212 }],
       },
       {
         id: "mic",
@@ -167,7 +167,7 @@ export const BRANDS: Brand[] = [
         note: "With it off, voice commands stop. The remote’s mic only listens while you hold its button.",
         undo: "Slide the switch back.",
         sources: [["Samsung: mic switch", "https://www.samsung.com/ca/support/tv-audio-video/how-to-enable-or-disable-the-microphone-switch-on-samsung-smart-tvs"]],
-        checks: [],
+        checks: [{ year: 2022, model: "QE55LS03B", by: "joeclack", issue: 2212 }],
       },
       {
         id: "petcare",
@@ -177,7 +177,7 @@ export const BRANDS: Brand[] = [
         text: "On Q8F and higher models, Pet Care uses the TV’s mic to listen for barking while the TV is off. It’s switched on from the SmartThings app on your phone, so if you never turned it on there, you’re done.",
         undo: "Turn it on again in SmartThings.",
         sources: [["Samsung: Pet Care", "https://www.samsung.com/us/tvs/smart-tv/smart-home/"]],
-        checks: [],
+        checks: [{ year: 2022, model: "QE55LS03B", by: "joeclack", issue: 2212 }],
       },
     ],
     outro: "Some owners report ad settings switching back after a firmware update, so look again after one.",
@@ -215,7 +215,7 @@ export const BRANDS: Brand[] = [
         ],
         undo: "Turn it back on in the same place.",
         sources: [CR, ["XDA, Aug 2026", "https://www.xda-developers.com/hidden-lg-tv-settings-i-changed-immediately-to-make-my-new-tv-look-even-better/"], MARKUP, ["Pocket-lint", "https://www.pocket-lint.com/lg-tv-turn-off-live-plus/"], CR21],
-        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }],
+        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }],
       },
       {
         id: "agreements",
@@ -236,7 +236,7 @@ export const BRANDS: Brand[] = [
         note: "Only the Terms of Use and the Privacy Policy are required. Apps keep working without the rest. The names may end in “Agreement”, and Who.Where.What? and Do Not Sell only show on some sets.",
         undo: "Accept them again in User Agreements. Voice control needs Voice information.",
         sources: [["LG: User Agreements", "https://www.lg.com/us/support/help-library/how-to-accept-the-updated-user-agreements-on-your-lg-tv--20155426555618"], CR],
-        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }],
+        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }],
       },
       {
         id: "adid",
@@ -269,7 +269,7 @@ export const BRANDS: Brand[] = [
         ],
         undo: "Turn it off again.",
         sources: [MARKUP],
-        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }],
+        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }],
       },
       {
         id: "home",
@@ -283,7 +283,7 @@ export const BRANDS: Brand[] = [
         note: "On 2026 TVs, also turn off Screen Saver Promotion, and AI Recommendations under General › AI Service › LG AI Settings.",
         undo: "Tick them again.",
         sources: [MARKUP, ["LG: Content Recommendation", "https://www.lg.com/in/support/product-support/troubleshoot/help-library/cs-CT52006584-20153905578425OLT/"], ["XDA, Aug 2026", "https://www.xda-developers.com/hidden-lg-tv-settings-i-changed-immediately-to-make-my-new-tv-look-even-better/"]],
-        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }],
+        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }],
       },
       {
         id: "voice",
@@ -294,7 +294,7 @@ export const BRANDS: Brand[] = [
         note: "Voice recognition is off by default. The Magic Remote’s mic only listens while you hold its button.",
         undo: "Turn Hands-free Voice back on.",
         sources: [["LG statement, Sep 2026", "https://www.lg.com/global/newsroom/news/statements/statement-understanding-privacy-on-lg-smart-tvs/"]],
-        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }],
+        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }],
       },
     ],
     outro: "Menu paths can move with a software update. If yours didn’t match, tell us what you saw.",
@@ -327,7 +327,7 @@ export const BRANDS: Brand[] = [
         note: "Older software calls it “Use info from TV inputs”. Some Roku TVs don’t list Privacy in Settings at all: then use the web path at my.roku.com.",
         undo: "Tick it again. You lose the “More Ways to Watch” suggestions from live TV while it’s off.",
         sources: [["Roku support", "https://support.roku.com/article/115005739288"], MARKUP],
-        checks: [],
+        checks: [{ model: "Hisense 60R6+", by: "btsiders", issue: 2323 }, { model: "TCL 55S403", by: "grapeofwrath", issue: 2324 }],
       },
       {
         id: "ads",
@@ -338,7 +338,7 @@ export const BRANDS: Brand[] = [
         note: "Older software calls it Limit ad tracking (tick that one on). Resetting the advertising ID on its own doesn’t opt you out.",
         undo: "Tick it again.",
         sources: [NAI],
-        checks: [],
+        checks: [{ model: "Hisense 60R6+", by: "btsiders", issue: 2323 }, { model: "TCL 55S403", by: "grapeofwrath", issue: 2324 }],
       },
       {
         id: "mic",
@@ -348,7 +348,7 @@ export const BRANDS: Brand[] = [
         note: "Take mic access away from each channel, or block it for all. On the Voice Remote Pro, the hands-free switch turns off “Hey Roku”; push-to-talk still works.",
         undo: "Allow it again in the same menu.",
         sources: [["Roku: microphone", "https://developer.roku.com/dev/docs/romicrophone"], ["Roku: Voice Remote Pro", "https://support.roku.com/en-ca/article/learn-about-voice-remote-pro"]],
-        checks: [],
+        checks: [{ model: "Hisense 60R6+", by: "btsiders", issue: 2323 }, { model: "TCL 55S403", by: "grapeofwrath", issue: 2324 }],
       },
     ],
     outro: "Menu paths can move with a software update. If yours didn’t match, tell us what you saw.",
