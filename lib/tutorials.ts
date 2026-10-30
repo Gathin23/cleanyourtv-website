@@ -10,6 +10,8 @@ export const LANGS: Record<string, string> = {
   hi: "Hindi",
   te: "Telugu",
   ml: "Malayalam",
+  ta: "Tamil",
+  mr: "Marathi",
   zh: "Chinese",
   ja: "Japanese",
   ko: "Korean",
@@ -23,6 +25,7 @@ export const LANGS: Record<string, string> = {
   fr: "French",
   de: "German",
   ru: "Russian",
+  tr: "Turkish",
 };
 
 /** id -> [tutorial or not, language]. "other" is news, roundups, overviews and warnings: still on the page under All. */
@@ -174,6 +177,47 @@ export const VIDEO_INFO: Record<string, [Kind, string]> = {
   "n2bxxufIC_c": ["tutorial", "zh"], // 电视开机后的广告，真的能自己关掉吗？ #cleanYourTV #tvvibehack #电视去广告 #豆包 #解锁电视
   "tm2qLCnfiHA": ["other", "en"], // Why People Are Using AI to Take Back Their TVs
   "1bG0x9M7znA": ["tutorial", "zh"], // HIMEDIA H8 Pro 上古神器 AI 助力復活
+  "fBvo05Li4To": ["tutorial", "ml"], // നിങ്ങളുടെ TV ഇനി പുതിയത് പോലെ Clean Your TV: Remove Ads & Bl
+  "kaTm78_VW18": ["tutorial", "fr"], // Ma télé était devenue un panneau publicitaire… j'ai réglé ça
+  "eGhoRMAqvtc": ["tutorial", "en"], // clean your android TV in 3 mins! ✨ (new easy method)
+  "ZefYOxl-cYs": ["tutorial", "en"], // Clean Up Your Google TV From Your Phone! | CleanYourTV
+  "V8cpKXNZLLs": ["other", "ru"], // Этот репозиторий отключит слежку, рекламу на вашем телевизор
+  "_OyZUhFfB-c": ["tutorial", "en"], // ChatGPT Struggled, Claude Nailed It: My Android TV Now Looks
+  "mEYFZdfLJds": ["tutorial", "en"], // Android TV — How to Use CleanYourTV to Remove Ads & Bloatwar
+  "XC97Cv2-Xs4": ["tutorial", "es"], // Le pedí a una IA que limpiara mi televisor 😱📺 | CleanYourTV 
+  "tzTWkMyK2gM": ["tutorial", "en"], // I Let Claude Code Take Control Of My Android TV And It Built
+  "tHZX5Ww2Rx8": ["tutorial", "en"], // JVC Android TV — How to Install a Custom Launcher
+  "vIO631-wpYw": ["other", "en"], // Clean Your Android TV Right From Your Phone 📺
+  "-6NxCu1fHX0": ["tutorial", "en"], // Claude Made My Android TV Super Fast & Ad-Free
+  "GDL6uUpplb4": ["tutorial", "en"], // Remove Ads From Your Smart TV With AI (Free, No Root)
+  "iNCBXDgpG9U": ["other", "en"], // Smart TV Ads: What AI Can Change (and What It Can't)
+  "0txQbaHjdDA": ["tutorial", "en"], // I Let Claude Code Optimize My Android TV — Before vs After
+  "Ne5cC0BkLAk": ["other", "en"], // CleanYourTV vs Aerial: which one dumbs your TV down?
+  "7MVgWacyV7s": ["tutorial", "en"], // Android TV — How to Remove Ads from the Home Screen
+  "7m98EuprJ68": ["other", "en"], // Your Smart TV, Without Ads? Meet CleanYourTV
+  "9aTdeeurUd4": ["other", "fr"], // Claude transforme des TV : nouvel OS ou nouvel accueil ?
+  "W2j0LHwfjkY": ["other", "ta"], // Did Anthropic Just DESTROY OpenAI? 🤯 Claude Duet, Grok iPhon
+  "mli1QxgwD54": ["other", "en"], // People are using Claude Code to strip the ads off their TVs
+  "w6G7ASxt0ng": ["other", "en"], // Claude Code removed 25 apps from a smart TV
+  "-DtSozDzL0g": ["tutorial", "es"], // Smart TV SIN ANUNCIOS usando IA
+  "_tnk1B-aDSE": ["tutorial", "es"], // Cómo Eliminar la PUBLICIDAD de tu Smart TV y Dejarla RÁPIDA 
+  "X1-Nlp07DFw": ["other", "en"], // AI News This Week: Claude Duet, Notion Agents and Claude Cod
+  "-q_TJuaGnbo": ["other", "es"], // ¿Y si lo mejor para tu tele es hacerla más TONTA?
+  "1XYpNW5jScs": ["other", "es"], // Hackea tu tele, tu Kindle y tu aspiradora con Claude Code
+  "s2c5wKWUtw8": ["other", "zh"], // 本週新建開源專案星數 TOP 5：AI 幫你把電視清乾淨、DeepSeek 推論引擎開源｜GitHub 新星週報 #3
+  "Gy8BThr06KA": ["tutorial", "tr"], // kavunOS Kurulumu: Xiaomi Mi TV Stick’i 2–3 Kat Hızlandırın (
+  "s3UwXXlpiMU": ["tutorial", "en"], // Remove Android TV Home-Screen Ads with CleanYourTV
+  "dWwuzGoOnTA": ["tutorial", "zh"], // cleanyour.tv 佈景主題的優化,隱藏標題,dock半透明,縮小圖示
+  "OLJgyVycq5I": ["tutorial", "pt"], // Transformei minha TV numa Apple TV (sem anúncios) com IA
+  "MVFWtqzVSfI": ["other", "en"], // Clean the Ads Off Your Smart TV With One Open-Source Repo (C
+  "CUHVS5XquMI": ["other", "en"], // AI Can Now Hack Your Smart TV. 7 Real Examples
+  "KY-__0FU64A": ["other", "en"], // Forslag: what's on your streaming services, on one Android T
+  "xx-VxMhXJCo": ["other", "en"], // I Reverse-Engineered My Fridge - Claude Opus 5.5 Music Video
+  "27mu7l8Eesc": ["other", "en"], // CleanYourTV is an open-source TV cleaning tool designed to r
+  "9z1vqNl96Cs": ["other", "mr"], // AI Is Removing Ads From Smart TVs
+  "Y3d5havVXgE": ["tutorial", "en"], // This Made My Android TV Faster & Ads Free ⚡️
+  "y5oXyxKyF4k": ["tutorial", "en"], // Turn Any Google TV into Real Apple TV! (No PC, No CLAUDE)
+  "8VHxxtm_-4k": ["other", "en"], // People Let Claude Hack Their Smart TVs. Here's What Actually
 };
 
 /** The four the page opens with: clear walk-throughs with the most views, one of them not in English. */
