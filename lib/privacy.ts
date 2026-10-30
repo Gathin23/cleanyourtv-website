@@ -211,7 +211,7 @@ export const BRANDS: Brand[] = [
           { label: "2026 TVs", years: [2026, 2026], crumbs: ["Hold the Settings button", "System", "Additional settings"] },
           { label: "2025 TVs", years: [2025, 2025], crumbs: ["All Settings", "Support", "Privacy & Terms", "User Agreements"], items: [{ name: "Viewing Information", to: "off" }] },
           { label: "2021–2024 TVs", years: [2021, 2024], crumbs: ["All Settings", "General", "System", "Additional Settings"] },
-          { label: "2020 TVs", years: [2020, 2020], crumbs: ["Settings", "General", "Additional Settings"] },
+          { label: "2020 TVs", years: [2020, 2020], crumbs: ["Settings", "General", "Additional Settings"], note: "Some 2020 sets have no Live Plus: nothing to turn off." },
         ],
         undo: "Turn it back on in the same place.",
         sources: [CR, ["XDA, Aug 2026", "https://www.xda-developers.com/hidden-lg-tv-settings-i-changed-immediately-to-make-my-new-tv-look-even-better/"], MARKUP, ["Pocket-lint", "https://www.pocket-lint.com/lg-tv-turn-off-live-plus/"], CR21],
@@ -248,6 +248,7 @@ export const BRANDS: Brand[] = [
             years: [1990, 2020],
             crumbs: ["All Settings", "General", "System", "Additional Settings", "Advertisement"],
             items: [{ name: "Limit AD Tracking", to: "on" }],
+            note: "If Additional Settings shows Advertising Cookies, turn it off.",
           },
           {
             label: "2021–2024 TVs",
