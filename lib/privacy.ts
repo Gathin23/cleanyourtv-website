@@ -124,7 +124,7 @@ export const BRANDS: Brand[] = [
           { name: "Get news and special offers", to: "off" },
           { name: "Do not track", to: "on" },
         ],
-        note: "Most TVs only show Interest-Based Advertisements here, next to Viewing Information Services. The other four are on some models only: untick any you see. This is the full set the IMC 2024 study switched off before the TVs stopped contacting tracking servers.",
+        note: "Most TVs only show Interest-Based Advertisements here, next to Viewing Information Services. On some 2020 sets it opens a notice with an I agree tick: leave it unticked and press Confirm. The other four are on some models only: untick any you see. This is the full set the IMC 2024 study switched off before the TVs stopped contacting tracking servers.",
         undo: "Tick them again. Ads stay either way; they just stop being targeted.",
         sources: [IMC],
         checks: [],
