@@ -253,7 +253,7 @@ export const BRANDS: Brand[] = [
           {
             label: "2021–2024 TVs",
             years: [2021, 2024],
-            crumbs: ["Settings", "Support", "Privacy & Terms", "Advertisement"],
+            crumbs: ["All Settings", "Support", "Privacy & Terms", "Advertisement"],
             items: [
               { name: "Limit AD Tracking", to: "on" },
               { name: "Reset AD ID", to: "press" },
