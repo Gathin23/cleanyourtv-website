@@ -639,6 +639,7 @@ export const COVERAGE: PressGroup[] = [
       ["Archyde", "Smart TV Owners Use AI Coding Assistants to Remove Bloatware", "20 Oct", "https://www.archyde.com/smart-tv-owners-use-ai-coding-assistants-to-remove-bloatware/", "archyde-694b78", "archyde"],
       ["Bitdoze", "Replace Smart TV Home Screen & Remove Ads (Every TV OS)", "26 Oct", "https://www.bitdoze.com/smart-tv-custom-home-screen-remove-ads/", "bitdoze-c101ec", "bitdoze"],
       ["Bitdoze (Español)", "Cambia la Pantalla de Inicio de tu Smart TV sin Anuncios", "26 Oct", "https://www.bitdoze.com/es/pantalla-inicio-smart-tv-sin-anuncios/", "bitdoze-361d21", "bitdoze"],
+      ["Quickfever", "How to Debloat Your Android TV Using Antigravity (CleanYourTV Guide)", "28 Oct", "https://quickfever.com/how-to-debloat-your-android-tv-using-antigravity", "quickfever-a300d6", "quickfever"],
     ],
   },
 ];
