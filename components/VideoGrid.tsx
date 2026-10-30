@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { cdn } from "@/lib/site";
-import { type Video, videoDate, videoLength, videoViews } from "@/lib/videos";
+import { type Video, videoDate, videoLength, videoSite, videoUrl, videoViews } from "@/lib/videos";
 
-/** Video cards linking to YouTube (no embeds): the most watched first, the rest one tap away. */
+/** Video cards linking out to YouTube or Bilibili (no embeds): the most watched first, the rest one tap away. */
 export default function VideoGrid({ videos, shown = 4 }: { videos: Video[]; shown?: number }) {
   const [all, setAll] = useState(false);
   const list = all ? videos : videos.slice(0, shown);
@@ -13,7 +13,7 @@ export default function VideoGrid({ videos, shown = 4 }: { videos: Video[]; show
       <ul id="video-list" className="plain vids">
         {list.map((v) => (
           <li key={v.id}>
-            <a href={`https://www.youtube.com/watch?v=${v.id}`} target="_blank" rel="noopener" className="vid">
+            <a href={videoUrl(v)} target="_blank" rel="noopener" className="vid">
               <span className="vid-thumb">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={cdn(`/press/videos/${v.id}.jpg`)} alt="" width={480} height={360} loading="lazy" decoding="async" />
@@ -24,7 +24,7 @@ export default function VideoGrid({ videos, shown = 4 }: { videos: Video[]; show
                 <span>{[v.channel, videoDate(v.date)].filter(Boolean).join(" · ")}</span>
                 <span className="vid-views ch">{videoViews(v.views)}</span>
               </span>
-              <span className="sr-only"> (YouTube, opens in a new tab)</span>
+              <span className="sr-only"> ({videoSite(v)}, opens in a new tab)</span>
             </a>
           </li>
         ))}

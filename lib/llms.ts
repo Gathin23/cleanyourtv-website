@@ -43,7 +43,7 @@ CleanYourTV is free and MIT licensed. You paste one markdown prompt into a codin
 - [Questions people ask](${SITE}/faq): is it safe, firmware updates, ADB security and more
 - [Non-Android TVs: stop your TV tracking you](${SITE}/not-android): no-root privacy steps for Samsung, LG, Roku, Vizio, Hisense VIDAA and other smart TVs
 - [Add-ons, themes and settings](${SITE}/addons): optional extras for the launcher
-- [Press](${SITE}/press): the press coverage: ${COVERAGE_TOTAL} articles, with outlets in ${COVERAGE_COUNTRIES} countries, and ${VIDEOS.length} YouTube videos
+- [Press](${SITE}/press): the press coverage: ${COVERAGE_TOTAL} articles, with outlets in ${COVERAGE_COUNTRIES} countries, and ${VIDEOS.length} videos on YouTube and Bilibili
 - [maintainer-bot](${SITE}/bot): the open-source bot that reviews every pull request, how it decides and how well; it runs on 0G Private Computer
 - [Clean Your TV app for Android phones](${SITE}/app/android): a community-built phone app that does the same clean-up from an Android phone over Wi-Fi, with no computer or coding agent
 

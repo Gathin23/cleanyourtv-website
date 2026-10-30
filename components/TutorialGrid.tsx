@@ -2,28 +2,29 @@
 
 import { useMemo, useState } from "react";
 import { cdn } from "@/lib/site";
-import { videoDate, videoLength, videoViews } from "@/lib/videos";
+import { videoDate, videoEmbed, videoLength, videoSite, videoUrl, videoViews } from "@/lib/videos";
 import { LANGS, type TutorialVideo } from "@/lib/tutorials";
 
 const PAGE = 24;
 
-/** One video: its thumbnail is a play button, and the YouTube player (youtube-nocookie) only loads once it is pressed. */
+/** One video: its thumbnail is a play button, and the player (youtube-nocookie, or Bilibili's) only loads once it is pressed. */
 export function TutorialCard({ v, big = false }: { v: TutorialVideo; big?: boolean }) {
   const [playing, setPlaying] = useState(false);
-  const watch = `https://www.youtube.com/watch?v=${v.id}`;
+  const watch = videoUrl(v);
+  const site = videoSite(v);
   return (
     <article className={big ? "tut-card tut-card-big" : "tut-card"}>
       <div className="tut-thumb">
         {playing ? (
           <iframe
-            src={`https://www.youtube-nocookie.com/embed/${v.id}?autoplay=1&rel=0`}
+            src={`${videoEmbed(v)}${v.site === "bilibili" ? "&autoplay=1" : "?autoplay=1&rel=0"}`}
             title={v.title}
             allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
             allowFullScreen
             referrerPolicy="strict-origin-when-cross-origin"
           />
         ) : (
-          <button type="button" className="tut-play" onClick={() => setPlaying(true)} aria-label={`Play “${v.title}” here (loads YouTube)`}>
+          <button type="button" className="tut-play" onClick={() => setPlaying(true)} aria-label={`Play “${v.title}” here (loads ${site})`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={cdn(`/press/videos/${v.id}.jpg`)} alt="" width={480} height={360} loading="lazy" decoding="async" />
             <span className="tut-play-icon" aria-hidden="true">
@@ -46,7 +47,7 @@ export function TutorialCard({ v, big = false }: { v: TutorialVideo; big?: boole
             {v.views > 0 && <span className="tut-views ch">{videoViews(v.views)}</span>}
           </span>
           <a href={watch} target="_blank" rel="noopener" className="tut-yt">
-            Watch on YouTube<span className="sr-only"> (opens in a new tab)</span>
+            Watch on {site}<span className="sr-only"> (opens in a new tab)</span>
           </a>
         </p>
       </div>

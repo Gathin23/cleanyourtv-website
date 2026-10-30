@@ -5,11 +5,11 @@ import { GH } from "@/lib/parse";
 import { SITE, breadcrumbs, pageMeta } from "@/lib/seo";
 import { cdn } from "@/lib/site";
 import { FEATURED, LANGS, TUTORIAL_VIDEOS } from "@/lib/tutorials";
-import { VIDEOS_AS_OF, videoDate } from "@/lib/videos";
+import { VIDEOS_AS_OF, videoDate, videoEmbed, videoUrl } from "@/lib/videos";
 import "./tutorials.css";
 
 // Every community video about CleanYourTV, walk-throughs first (lib/tutorials.ts says which is which, and the language).
-// Nothing from YouTube loads until a visitor presses play: the player is youtube-nocookie, swapped in on click.
+// Nothing from YouTube or Bilibili loads until a visitor presses play: the player (youtube-nocookie, or Bilibili's) is swapped in on click.
 
 const tutorials = TUTORIAL_VIDEOS.filter((v) => v.kind === "tutorial");
 const languages = new Set(tutorials.map((v) => v.lang)).size;
@@ -48,8 +48,8 @@ export default function Tutorials() {
               thumbnailUrl: cdn(`/press/videos/${v.id}.jpg`),
               uploadDate: v.date,
               ...(v.duration > 0 ? { duration: isoDuration(v.duration) } : {}),
-              contentUrl: `https://www.youtube.com/watch?v=${v.id}`,
-              embedUrl: `https://www.youtube-nocookie.com/embed/${v.id}`,
+              contentUrl: videoUrl(v),
+              embedUrl: videoEmbed(v),
               inLanguage: v.lang,
               author: { "@type": "Person", name: v.channel },
             },
@@ -71,7 +71,7 @@ export default function Tutorials() {
           Made by people who cleaned their own TVs. Pick your language, press play. {tutorials.length} walk-throughs in {languages} languages.
         </p>
         <p className="tut-note dim">
-          Nothing from YouTube loads until you press play. Prefer to read? The <Link href="/#setup">three steps</Link> are on the home page.
+          Nothing from YouTube or Bilibili loads until you press play. Prefer to read? The <Link href="/#setup">three steps</Link> are on the home page.
         </p>
       </section>
 
@@ -93,7 +93,7 @@ export default function Tutorials() {
         </div>
         <TutorialGrid videos={TUTORIAL_VIDEOS} />
         <p className="tut-foot">
-          Made a video about CleanYourTV? <a href={`${GH}/issues/new?title=${encodeURIComponent("Video: ")}`}>Add it here</a> with the YouTube link, and it joins this page and{" "}
+          Made a video about CleanYourTV? <a href={`${GH}/issues/new?title=${encodeURIComponent("Video: ")}`}>Add it here</a> with the YouTube or Bilibili link, and it joins this page and{" "}
           <Link href="/press">the press page</Link>.
         </p>
       </section>

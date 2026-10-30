@@ -1,6 +1,6 @@
 import { VIDEOS, type Video } from "@/lib/videos";
 
-// /tutorials: which of the press page's YouTube videos walk you through it, and in which language.
+// /tutorials: which of the press page's videos (YouTube and Bilibili) walk you through it, and in which language.
 // Hand-kept, so correct it here. A video added to lib/videos.ts without a row is guessed from its title (see guess) until it gets one.
 
 export type Kind = "tutorial" | "other";
@@ -218,6 +218,47 @@ export const VIDEO_INFO: Record<string, [Kind, string]> = {
   "Y3d5havVXgE": ["tutorial", "en"], // This Made My Android TV Faster & Ads Free ⚡️
   "y5oXyxKyF4k": ["tutorial", "en"], // Turn Any Google TV into Real Apple TV! (No PC, No CLAUDE)
   "8VHxxtm_-4k": ["other", "en"], // People Let Claude Hack Their Smart TVs. Here's What Actually
+  "BV1SYnz61Enp": ["other", "zh"], // 有了AI，终于不用忍受满是广告的电视界面了
+  "BV1tbnq66Exn": ["tutorial", "zh"], // cleanyourtv安装教程
+  "BV1HFnA6YECT": ["tutorial", "zh"], // 电视改造：CleanYourTV 部署，干净无广告 TV
+  "BV1punR67E9a": ["other", "zh"], // 夯爆了！Github 又出狠活神器！CleanYourTV 是 GitHub 上一个开源的电视清理项目，专门收拾电视上那
+  "BV1tenT6REEr": ["other", "zh"], // AI帮你电视去广告？秒变Apple TV风格
+  "BV1ajHT6cE3V": ["other", "zh"], // 你家电视终于有救了！GitHub大佬把“cleanyourtv”做成了手机APP，一键清理Android TV预装、广告
+  "BV1pTHP66EVs": ["tutorial", "zh"], // 安装CleanYourTV+Aerial一键优化电视，替换桌面home，精简无用程序，打造纯净桌面，清爽大屏！
+  "BV1yAHV6PEyA": ["other", "zh"], // 最近爆火的这两款 GitHub 开源神器CleanYourTV+Aerial，彻底净化安卓电视广告，秒变 Apple T
+  "BV1b3n46GEzC": ["other", "zh"], // clean your tv，一键清理你的电视系统自带应用，打造极简数字人生
+  "BV1Uwn16cE6n": ["tutorial", "zh"], // 测评打假 cleanyourtv净化桌面到底是不是真的， 实测 电视桌面净化效果 cleanyourtv实测#真干活用搭
+  "BV1AsnB6PED6": ["other", "zh"], // cleanyourtv电视去广告软件，专门收拾电视上那些关不掉的预装应用和开机广告
+  "BV1wLHM6DExS": ["other", "zh"], // 来自民间大佬制作APP，Github上爆火的电视优化开源工具，CleanYour TV终于有了APP版，不用AI、不用电
+  "BV1Sdn66UEww": ["tutorial", "zh"], // 电视优化开源神器cleanyourtv完整使用教程告别电视弹窗广告清除预装广告与臃肿软件直接替换极简桌面，对标Apple
+  "BV1uJn96QEEb": ["other", "zh"], // 夯到爆！CleanYourTV，一款能自动删除电视中的广告组件的开源项目，无需root和数据线，只需连同一个WiFi即可
+  "BV1mTnm6vEL2": ["tutorial", "zh"], // [001期】电视优化开源神器cleanyourtv使用教程，清除预装广告与臃肿软件、替换极简桌面，对标AppleTV!随
+  "BV1iFnb6tEiL": ["tutorial", "zh"], // CleanYourTV电视去广告教程
+  "BV1qZn86qECd": ["tutorial", "zh"], // 拯救老电视，clean your tv安装使用教程，去掉电视广告和预装的应用app,实测使用设置跟风避雷
+  "BV1winH6DE7K": ["tutorial", "zh"], // 第006期：【tv电视去广告教程】 CleanYourTV 是 GitHub 上一个开源的电视清理项目，专门收拾电视上那
+  "BV1KFn86EE8M": ["tutorial", "zh"], // 电视优化开源工具！教你用Ai帮你部署cleanyourtv
+  "BV1sMnp6ZEQT": ["tutorial", "zh"], // cleanyourtv电视去广告教程，专门收拾电视上那些关不掉的预装应用和开机广告。#百度搭子 #办公就用dumate 
+  "BV1zyHu6SEkc": ["tutorial", "zh"], // 老旧电视满血复活！开源神器 CleanYourTV，支持手机直接操作，免 Root 免刷机，清掉开机广告和预装应用，一键
+  "BV1QnnZ6iEf6": ["other", "zh"], // 真没想到国产电视也能对面Apple TV了，没有广告，界面干净整洁，他就是GitHub 上一位大神开源的cleanyou
+  "BV1qqnb6AEh8": ["tutorial", "zh"], // 电视改造｜部署 CleanYourTV，告别弹窗广告，清爽看电视 改造干净观影端
+  "BV1HQnn6DEpL": ["tutorial", "zh"], // 【小米四+安卓6.0】豆包自动安装Clean your Tv
+  "BV1XcnS67Evt": ["other", "zh"], // 我让 AI 给小米电视收拾了一下，终于想开机了
+  "BV1fenQ6YEgt": ["other", "zh"], // 电视优化开源神器cleanyourtv，告别电视弹窗广告、清除预装广告与臃肿软件、替换极简桌面，对标AppleTV！随时
+  "BV1eonx6QEnN": ["tutorial", "zh"], // CleanYourTV 电视去广告完整教程｜一键清理电视弹窗广告
+  "BV1bRnb6DEcL": ["other", "zh"], // 百度搭子爆改安卓老电视剧对标apple TV #科技#ai tv- vibehack#github #百度搭子#电视
+  "BV1Psxj6HEs6": ["other", "zh"], // 全球电视解放运动：一句话让 AI 干掉电视开机广告！
+  "BV15pnt69EH4": ["other", "zh"], // CleanYourTV，能自动删除电视中的广告组件
+  "BV15Bn469Epx": ["other", "zh"], // 开源工具 CleanYourTV，一键清除电视开机广告
+  "BV15pnt69EMC": ["tutorial", "zh"], // [001期】电视优化开源神器cleanyourtv使用教程，告别电视弹窗广告、清除预装广告与臃肿软件，对标AppleTV
+  "BV12Bnt6kE48": ["other", "zh"], // 智能电视太卡太卡？GitHub热榜教你一键去广告瘦身
+  "BV1xcx76dEdM": ["other", "zh"], // 74期 安卓电视首页太乱 常用应用收纳与预装内容整理一次看清
+  "BV1mYsX6ZEjd": ["other", "zh"], // 有了Ai，确实门槛低了很多，电视简洁到爆炸，好看又快捷
+  "BV1VjnZ6gE4N": ["other", "zh"], // 电视开机后的广告，真的能自己关掉吗？
+  "BV1a7nc6GEoS": ["other", "zh"], // 把电视丢给Claude问"能黑了它吗"，当天广告和预装全没了
+  "BV1PDnp6FEd4": ["other", "zh"], // AI 全程编写！透明 Dock + 扫码传文件 + 自动装应用，这台电视被我改造成这样
+  "BV11En46qEgA": ["other", "zh"], // 800万人看过的AI用法：电视广告全清了
+  "MK5ZPTC9gRg": ["other", "es"], // Le pidió a una IA que HACKEARA su TV. Lo que quitó explica t
+  "mQgqK6f53J0": ["other", "ru"], // Нейросеть взломала телевизор: что произошло?
 };
 
 /** The four the page opens with: clear walk-throughs with the most views, one of them not in English. */
