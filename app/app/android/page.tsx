@@ -127,7 +127,6 @@ export default function AndroidApp() {
       {/* Hero: the pitch, and the phone beside the TV it just cleaned (drawn, not a picture). */}
       <section aria-labelledby="page-h" className="wrap and-hero">
         <div className="and-hero-text">
-          <p className="kicker c-green">CH 08 · Community app by @udhaykumarbala</p>
           <h1 id="page-h" className="h1 and-h1">Clean your TV from your phone.</h1>
           <p className="lede">
             <strong>No laptop. No coding agent.</strong> <span className="hide-phone">Open the app on your Android phone, tap Start, and</span>
