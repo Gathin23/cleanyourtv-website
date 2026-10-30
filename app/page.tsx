@@ -72,7 +72,7 @@ export default async function Page() {
     { label: "GitHub stars", value: roundedCount(data.stars), bar: "#E9E9E9" },
     { label: "Forks", value: roundedCount(data.forks), bar: "#8EE08F" },
     { label: "Contributors", value: roundedCount(data.contributors), bar: "#FFDC96", phone: false },
-    { label: "TV models tested", value: String(facts.tvs), sub: `from ${facts.brands.length} brands`, bar: "#6FA8FF" },
+    { label: "TV models tested", value: String(facts.tvs), sub: `from ${facts.brandCount} brands`, bar: "#6FA8FF" },
     { label: "Press articles", value: String(COVERAGE_TOTAL), sub: `in ${COVERAGE_COUNTRIES} countries`, bar: "#FF8A8A" },
   ];
   // The four the home page leads with; anything missing falls back to the wall's own order.

@@ -15,7 +15,7 @@ export function llmsText(f: Facts): string {
 
 > An open-source prompt and tested lists that remove the ads and bloat from Android TV and Google TV over ADB, plus a small Apple TV-style launcher. No root, nothing uninstalled, one line restores it.
 
-CleanYourTV is free and MIT licensed. You paste one markdown prompt into a coding assistant with shell access (Claude Code, Codex or Gemini CLI); it finds the TV on your Wi-Fi, backs it up, disables the manufacturer's ad and telemetry packages, and installs the launcher. The repo has tested debloat lists for ${f.tvs} TV models from ${f.brands.length} brands, and the launcher is translated into ${f.languages} languages.
+CleanYourTV is free and MIT licensed. You paste one markdown prompt into a coding assistant with shell access (Claude Code, Codex or Gemini CLI); it finds the TV on your Wi-Fi, backs it up, disables the manufacturer's ad and telemetry packages, and installs the launcher. The repo has tested debloat lists for ${f.tvs} TV models from ${f.brandCount} brands, and the launcher is translated into ${f.languages} languages.
 
 ## Supported TVs
 

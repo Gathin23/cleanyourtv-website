@@ -54,7 +54,7 @@ export function homeGraph(f: Facts, description: string) {
         "@id": `${SITE}/#app`,
         name: NAME,
         url: `${SITE}/`,
-        description: `${description} Tested lists for ${f.tvs} TV models from ${f.brands.length} brands; the launcher speaks ${f.languages} languages.`,
+        description: `${description} Tested lists for ${f.tvs} TV models from ${f.brandCount} brands; the launcher speaks ${f.languages} languages.`,
         applicationCategory: "UtilitiesApplication",
         operatingSystem: "Android TV, Google TV",
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },

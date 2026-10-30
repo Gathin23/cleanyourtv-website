@@ -1,7 +1,7 @@
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import TvFinder from "@/components/TvFinder";
-import { loadTvs } from "@/lib/data";
+import { loadFacts, loadTvs } from "@/lib/data";
 import { GH, brandsOf } from "@/lib/parse";
 import { SITE, breadcrumbs, pageMeta } from "@/lib/seo";
 import { PRIVACY_LIVE, PRIVACY_PATH } from "@/lib/site";
@@ -24,7 +24,7 @@ const PLATFORMS = [
 ];
 
 export default async function Tvs() {
-  const tvs = await loadTvs();
+  const [tvs, { brandCount }] = await Promise.all([loadTvs(), loadFacts()]);
   const brands = brandsOf(tvs);
   const jsonLd = {
     "@context": "https://schema.org",
@@ -75,7 +75,7 @@ export default async function Tvs() {
             </div>
             <dl className="tvs-counts">
               <div><dt>models</dt><dd className="num">{tvs.length}</dd></div>
-              <div><dt>brands</dt><dd className="num">{brands.length}</dd></div>
+              <div><dt>brands</dt><dd className="num">{brandCount}</dd></div>
             </dl>
           </div>
           <TvFinder tvs={tvs.map(tvRow)} brands={brands} />

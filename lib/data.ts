@@ -224,7 +224,7 @@ export async function loadAddonsData(): Promise<AddonsData> {
 
 // ---- /llms.txt, the sitemap and the home page's structured data: the counts and the FAQ, live from the repo
 
-export type Facts = { tvs: number; brands: [string, number][]; languages: number; faq: Faq[]; readme: string; updated: string };
+export type Facts = { tvs: number; brands: [string, number][]; brandCount: number; languages: number; faq: Faq[]; readme: string; updated: string };
 
 export async function loadFacts(): Promise<Facts> {
   const [examplesMd, readme, res, last] = await Promise.all([
@@ -237,9 +237,14 @@ export async function loadFacts(): Promise<Facts> {
   // Languages from the launcher's res/ folders; without the tree, from the README's "**24 languages**".
   const stated = readme?.match(/\*\*(\d+) languages\*\*/);
   const faq = readme ? parseFaq(readme) : [];
+  const brands = brandsOf(tvs);
+  // The README's count ("371 TV models · 100 brands"), from each tv.json's "brand": the table's first word
+  // splits a re-badge (Coocaa, Strong, SEMP) from its maker.
+  const statedBrands = readme?.match(/\d+ TV models · (\d+) brands/);
   return {
     tvs: tvs.length,
-    brands: brandsOf(tvs),
+    brands,
+    brandCount: statedBrands ? Number(statedBrands[1]) : brands.length,
     languages: res ? countLanguages(res.tree.filter((t) => t.type === "tree").map((t) => t.path)) : stated ? Number(stated[1]) : FALLBACK.languages,
     faq: faq.length ? faq : parseFaq(await fs.readFile(path.join(process.cwd(), "content", "readme-faq.md"), "utf8")),
     readme: readme || "",
