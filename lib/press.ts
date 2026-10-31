@@ -303,6 +303,37 @@ export const COVERAGE: PressGroup[] = [
     ],
   },
   {
+    group: "Argentina",
+    country: true,
+    items: [
+      ["Cadena 3", "El auge de los hacks de IA para convertir televisores inteligentes en modelos simples", "19 Oct", "https://www.cadena3.com/noticia/tecnologia/el-auge-de-los-hacks-de-ia-para-convertir-televisores-inteligentes-en-modelos-simples_604870", "cadena3-6548ba", "cadena3"],
+      ["TN", "La nueva tendencia es usar IA para hacer \"menos inteligentes\" los Smart TV: de qué se trata, cuáles son las ventajas y los riesgos", "24 Oct", "https://tn.com.ar/tecno/tutoriales/2026/10/24/la-nueva-tendencia-es-usar-ia-para-hacer-menos-inteligentes-los-smart-tv-de-que-se-trata-cuales-son-las-ventajas-y-los-riesgos/", "tn-fb05c9", "tn"],
+      ["La 100", "La inteligencia artificial que busca hacer menos inteligentes a los Smart TV: para qué sirve y cuáles son los beneficios", "25 Oct", "https://la100.cienradios.com/tecnologia/la-inteligencia-artificial-que-busca-hacer-menos-inteligentes-a-los-smart-tv-para-que-sirve-y-cuales-son-los-beneficios/", "la100-f0edfe", "la100"],
+    ],
+  },
+  {
+    group: "Chile",
+    country: true,
+    items: [
+      ["The Clinic", "La nueva moda de \"hackear\" Smart TV con inteligencia artificial: usuarios logran eliminar anuncios y aplicaciones de rastreo", "21 Oct", "https://www.theclinic.cl/2026/10/21/hackear-televisores-ia-eliminar-anuncios/", "theclinic-c8d089", "theclinic"],
+    ],
+  },
+  {
+    group: "Colombia",
+    country: true,
+    items: [
+      ["ENTER.CO", "¿Cómo volver 'tonto' tu smart TV con IA para quitarle los anuncios?", "21 Oct", "https://www.enter.co/chips-bits/como-volver-tonto-smart-tv-ia-anuncios/", "enter-ee172d", "enter"],
+      ["Semana", "Cómo quitar los anuncios de los televisores con inteligencia artificial: el truco para reducir la publicidad invasiva", "28 Oct", "https://www.semana.com/tecnologia/articulo/como-quitar-los-anuncios-de-los-televisores-con-inteligencia-artificial-el-truco-para-reducir-la-publicidad-invasiva/202654/", "semana-005e6a", "semana"],
+    ],
+  },
+  {
+    group: "Mexico",
+    country: true,
+    items: [
+      ["OneDigital", "CleanYourTV limpia tu Android TV de publicidad con IA", "21 Oct", "https://onedigital.mx/2026/10/21/cleanyourtv-limpiar-android-tv/", "onedigital-6347b8", "onedigital"],
+    ],
+  },
+  {
     group: "Latin America (Spanish-language)",
     country: false,
     items: [
@@ -311,15 +342,8 @@ export const COVERAGE: PressGroup[] = [
       ["Ecosistema Startup", "dumbtv: el hack con IA que elimina los anuncios del TV", "19 Oct", "https://ecosistemastartup.com/dumbtv-el-hack-con-ia-que-elimina-los-anuncios-del-tv/", "ecosistemastartup-f105a1", "ecosistemastartup"],
       ["TecToc", "Usuarios están usando IA para quitar anuncios y «limpiar» sus Smart TV", "19 Oct", "https://tectoc.blog/2026/10/19/usuarios-estan-usando-ia-para-quitar-anuncios-y-limpiar-sus-smart-tv/", "tectoc-41ea15", "tectoc"],
       ["Tecnobits", "Cómo hacer debloat a tu Smart TV con IA y CleanYourTV", "21 Oct", "https://tecnobits.net/como-hacer-debloat-a-tu-smart-tv-con-ia-cleanyourtv/", "tecnobits-d7a0f3", "tecnobits"],
-      ["The Clinic", "La nueva moda de \"hackear\" Smart TV con inteligencia artificial: usuarios logran eliminar anuncios y aplicaciones de rastreo", "21 Oct", "https://www.theclinic.cl/2026/10/21/hackear-televisores-ia-eliminar-anuncios/", "theclinic-c8d089", "theclinic"],
-      ["Cadena 3", "El auge de los hacks de IA para convertir televisores inteligentes en modelos simples", "19 Oct", "https://www.cadena3.com/noticia/tecnologia/el-auge-de-los-hacks-de-ia-para-convertir-televisores-inteligentes-en-modelos-simples_604870", "cadena3-6548ba", "cadena3"],
-      ["OneDigital", "CleanYourTV limpia tu Android TV de publicidad con IA", "21 Oct", "https://onedigital.mx/2026/10/21/cleanyourtv-limpiar-android-tv/", "onedigital-6347b8", "onedigital"],
-      ["ENTER.CO", "¿Cómo volver 'tonto' tu smart TV con IA para quitarle los anuncios?", "21 Oct", "https://www.enter.co/chips-bits/como-volver-tonto-smart-tv-ia-anuncios/", "enter-ee172d", "enter"],
       ["Digital Trends Español", "Cómo usar IA para convertir tu Smart TV en una TV “tonta” y eliminar anuncios, rastreo y bloatware", "20 Oct", "https://es.digitaltrends.com/inteligente/como-usar-ia-convertir-smart-tv-tv-tonta-guia/", "digitaltrendses-162b23", "digitaltrendses"],
-      ["Semana", "Cómo quitar los anuncios de los televisores con inteligencia artificial: el truco para reducir la publicidad invasiva", "28 Oct", "https://www.semana.com/tecnologia/articulo/como-quitar-los-anuncios-de-los-televisores-con-inteligencia-artificial-el-truco-para-reducir-la-publicidad-invasiva/202654/", "semana-005e6a", "semana"],
-      ["TN (Argentina)", "La nueva tendencia es usar IA para hacer \"menos inteligentes\" los Smart TV: de qué se trata, cuáles son las ventajas y los riesgos", "24 Oct", "https://tn.com.ar/tecno/tutoriales/2026/10/24/la-nueva-tendencia-es-usar-ia-para-hacer-menos-inteligentes-los-smart-tv-de-que-se-trata-cuales-son-las-ventajas-y-los-riesgos/", "tn-fb05c9", "tn"],
       ["DiarioBitcoin", "Investigador alerta sobre posibles funciones de rastreo en Smart TV de Samsung", "26 Oct", "https://www.diariobitcoin.com/tecnologia/investigador-alerta-sobre-posibles-funciones-de-rastreo-en-smart-tv-de-samsung/", "diariobitcoin-0b6880", "diariobitcoin"],
-      ["La 100 (Argentina)", "La inteligencia artificial que busca hacer menos inteligentes a los Smart TV: para qué sirve y cuáles son los beneficios", "25 Oct", "https://la100.cienradios.com/tecnologia/la-inteligencia-artificial-que-busca-hacer-menos-inteligentes-a-los-smart-tv-para-que-sirve-y-cuales-son-los-beneficios/", "la100-f0edfe", "la100"],
     ],
   },
   {
