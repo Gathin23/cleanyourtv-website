@@ -41,6 +41,7 @@ export const COVERAGE: PressGroup[] = [
       ["Slashdot", "People Are Vibe Coding Their Way to Better TVs", "23 Oct", "https://entertainment.slashdot.org/story/26/10/23/2034217/people-are-vibe-coding-their-way-to-better-tvs", "slashdot-6190e9", "slashdot"],
       ["Decrypt", "'Privacy Horror': Researcher Uncovers Extent of Samsung Smart TV User Tracking", "26 Oct", "https://decrypt.co/381801/privacy-horror-researcher-uncovers-extent-of-samsung-smart-tv-user-tracking", "decrypt-701850", "decrypt"],
       ["TFTC", "People Are Using AI to Rip the Spyware Out of Their TVs", "23 Oct", "https://www.tftc.io/ai-hacking-smart-tvs-remove-spyware", "tftc-a2ffce", "tftc"],
+      ["CableTV.com", "What Is Smart TV Vibes Coding? How People Are Blocking TV Ads With AI", "28 Oct", "https://www.cabletv.com/news/what-is-smart-tv-vibes-coding", "cabletv-8d3106", "cabletv"],
     ],
   },
   {
@@ -246,6 +247,7 @@ export const COVERAGE: PressGroup[] = [
       ["dev.ua", "«Можеш це зламати?». Користувачі просять ШІ-агентів прибрати рекламу зі смарт-телевізорів і прискорити їхню роботу", "20 Oct", "https://dev.ua/news/robliat-smart-tv-tupym-1792480473", "devua-c55217", "devua"],
       ["TechToday", "Користувачі застосовують штучний інтелект для перетворення розумних телевізорів у пристрої без реклами", "24 Oct", "https://techtoday.in.ua/news/korystuvachi-zastosovuyut-shtuchnyy-intelekt-dlya-peretvorennya-rozumnyh-televizoriv-u-prystroyi-bez-reklamy-224182.html", "techtoday-ed01c6", "techtoday"],
       ["InternetUA", "Люди використовують штучний інтелект, щоб знову зробити свої розумні телевізори дурними", "21 Oct", "http://internetua.com/luadi-vikoristovuuat-shtucsnii-intelekt-sxob-znovu-zrobiti-svoyi-rozumni-televizori-durnimi", "internetua-42e2d3", "internetua"],
+      ["PROIT", "Як штучний інтелект покращує смарт-телевізори", "19 Oct", "https://proit.com.ua/tech/yak-shtuchnyj-intelekt-dopomagaye-korystuvacham/", "proit-722025", "proit"],
     ],
   },
   {
@@ -317,6 +319,7 @@ export const COVERAGE: PressGroup[] = [
       ["Semana", "Cómo quitar los anuncios de los televisores con inteligencia artificial: el truco para reducir la publicidad invasiva", "28 Oct", "https://www.semana.com/tecnologia/articulo/como-quitar-los-anuncios-de-los-televisores-con-inteligencia-artificial-el-truco-para-reducir-la-publicidad-invasiva/202654/", "semana-005e6a", "semana"],
       ["TN (Argentina)", "La nueva tendencia es usar IA para hacer \"menos inteligentes\" los Smart TV: de qué se trata, cuáles son las ventajas y los riesgos", "24 Oct", "https://tn.com.ar/tecno/tutoriales/2026/10/24/la-nueva-tendencia-es-usar-ia-para-hacer-menos-inteligentes-los-smart-tv-de-que-se-trata-cuales-son-las-ventajas-y-los-riesgos/", "tn-fb05c9", "tn"],
       ["DiarioBitcoin", "Investigador alerta sobre posibles funciones de rastreo en Smart TV de Samsung", "26 Oct", "https://www.diariobitcoin.com/tecnologia/investigador-alerta-sobre-posibles-funciones-de-rastreo-en-smart-tv-de-samsung/", "diariobitcoin-0b6880", "diariobitcoin"],
+      ["La 100 (Argentina)", "La inteligencia artificial que busca hacer menos inteligentes a los Smart TV: para qué sirve y cuáles son los beneficios", "25 Oct", "https://la100.cienradios.com/tecnologia/la-inteligencia-artificial-que-busca-hacer-menos-inteligentes-a-los-smart-tv-para-que-sirve-y-cuales-son-los-beneficios/", "la100-f0edfe", "la100"],
     ],
   },
   {
@@ -405,6 +408,7 @@ export const COVERAGE: PressGroup[] = [
       ["Peradaban.id", "Developer Ubah Smart TV Xiaomi Jadi Mirip Apple TV dengan AI", "19 Oct", "https://peradaban.id/developer-modifikasi-tv-xiaomi-ai", "peradaban-b93b08", "peradaban"],
       ["Peradaban.id", "Developer Ubah Smart TV Xiaomi Bebas Iklan dengan Bantuan AI", "19 Oct", "https://peradaban.id/developer-modifikasi-smart-tv-xiaomi", "peradaban-26d8ed", "peradaban"],
       ["ChatNews", "Pengguna Manfaatkan AI untuk Bersihkan Iklan di Smart TV", "21 Oct", "https://chatnews.id/ai-bersihkan-iklan-smart-tv", "chatnews-bfcd0f", "chatnews"],
+      ["SuaraGarut.ID", "AI Tools Help TV Owners Remove Ads and Tracking", "23 Oct", "https://suaragarut.id/en/ai-tools-tv-ads-tracking", "suaragarut-73a18d", "suaragarut"],
     ],
   },
   {
@@ -515,6 +519,7 @@ export const COVERAGE: PressGroup[] = [
       ["AI포스트 (AIPOST)", "스마트TV 홈 화면 갈아엎는 '바이브 코딩' 기법 화제…\"스폰서 광고·시청 추적에 질렸다\"", "20 Oct", "https://www.aipostkorea.com/news/articleView.html?idxno=13025", "aipostkorea-0c426a", "aipostkorea"],
       ["위키트리 (WikiTree)", "스마트TV 광고 떼는 클로드 코드 열풍…조회 620만 속 벽돌 된 TV도 나왔다", "21 Oct", "https://www.wikitree.co.kr/articles/1168141", "wikitree-4600ef", "wikitree"],
       ["위키트리 (WikiTree)", "클로드 코드로 TCL 구글TV 앱 25개를 껐더니 메모리 192MB가 83MB로 줄었다", "21 Oct", "https://www.wikitree.co.kr/articles/1167807", "wikitree-7b0724", "wikitree"],
+      ["GeekNews", "CleanYourTV - Android TV의 불필요한 앱을 끄고 Apple TV 스타일", "31 Oct", "https://news.hada.io/topic?id=36315", "geeknews-eb1f34", "geeknews"],
     ],
   },
   {
@@ -573,6 +578,7 @@ export const COVERAGE: PressGroup[] = [
       ["流動日報 New Mobile Life", "CleanYourTV 經 Wi-Fi 清理 Android 電視　換上 Apple TV 風格主畫面", "24 Oct", "https://www.newmobilelife.com/2026/10/24/cleanyourtv-android-tv-cleanup/", "newmobilelife-e296e6", "newmobilelife"],
       ["ezone.hk", "智能電視成日滿屏廣告？外國掀起「Dumb TV」熱潮　用 AI 清走廣告廢 App 還原極簡風格【附熱門工具推薦】", "26 Oct", "https://ezone.hk/article/20115279", "ezone-f9a62d", "ezone"],
       ["香港01 HK01", "Android TV廣告多好Lag？教你靠AI提速　主畫面秒變Apple TV", "29 Oct", "https://www.hk01.com/%E5%AF%A6%E7%94%A8%E6%95%99%E5%AD%B8/60404790/android-tv%E5%BB%A3%E5%91%8A%E5%A4%9A%E5%A5%BDlag-%E6%95%99%E4%BD%A0%E9%9D%A0ai%E6%8F%90%E9%80%9F-%E4%B8%BB%E7%95%AB%E9%9D%A2%E7%A7%92%E8%AE%8Aapple-tv", "hk01-12472d", "hk01"],
+      ["Techapple.com", "CleanYourTV　11 日 4.3 萬星　為 Android TV 剷廣告", "29 Oct", "https://techapple.com/archives/64873", "techapple-d50a23", "techapple"],
     ],
   },
   {
