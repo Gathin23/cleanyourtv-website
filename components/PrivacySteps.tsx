@@ -102,7 +102,7 @@ export function StepBody({ brand, step, pick, extra }: { brand: Brand; step: Ste
         <ul className="na-checks">
           {step.checks.map((c) => (
             <li key={c.issue}>
-              Checked on a {c.year ? `${c.year} ${brand.name}` : `${brand.name}${/TV$/.test(brand.name) ? "" : " TV"},`} {c.model} by @{c.by}
+              Checked on a {c.year ? `${c.year} ${brand.name}` : `${brand.name}${/TV$/.test(brand.name) ? "" : " TV"}${c.model ? "," : ""}`}{c.model ? ` ${c.model}` : ""} by @{c.by}
             </li>
           ))}
         </ul>
