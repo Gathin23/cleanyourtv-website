@@ -42,6 +42,7 @@ export const COVERAGE: PressGroup[] = [
       ["Decrypt", "'Privacy Horror': Researcher Uncovers Extent of Samsung Smart TV User Tracking", "26 Oct", "https://decrypt.co/381801/privacy-horror-researcher-uncovers-extent-of-samsung-smart-tv-user-tracking", "decrypt-701850", "decrypt"],
       ["TFTC", "People Are Using AI to Rip the Spyware Out of Their TVs", "23 Oct", "https://www.tftc.io/ai-hacking-smart-tvs-remove-spyware", "tftc-a2ffce", "tftc"],
       ["CableTV.com", "What Is Smart TV Vibes Coding? How People Are Blocking TV Ads With AI", "28 Oct", "https://www.cabletv.com/news/what-is-smart-tv-vibes-coding", "cabletv-8d3106", "cabletv"],
+      ["Digital Trends Español", "Cómo usar IA para convertir tu Smart TV en una TV “tonta” y eliminar anuncios, rastreo y bloatware", "20 Oct", "https://es.digitaltrends.com/inteligente/como-usar-ia-convertir-smart-tv-tv-tonta-guia/", "digitaltrendses-162b23", "digitaltrendses"],
     ],
   },
   {
@@ -316,6 +317,7 @@ export const COVERAGE: PressGroup[] = [
     country: true,
     items: [
       ["The Clinic", "La nueva moda de \"hackear\" Smart TV con inteligencia artificial: usuarios logran eliminar anuncios y aplicaciones de rastreo", "21 Oct", "https://www.theclinic.cl/2026/10/21/hackear-televisores-ia-eliminar-anuncios/", "theclinic-c8d089", "theclinic"],
+      ["Ecosistema Startup", "dumbtv: el hack con IA que elimina los anuncios del TV", "19 Oct", "https://ecosistemastartup.com/dumbtv-el-hack-con-ia-que-elimina-los-anuncios-del-tv/", "ecosistemastartup-f105a1", "ecosistemastartup"],
     ],
   },
   {
@@ -327,23 +329,18 @@ export const COVERAGE: PressGroup[] = [
     ],
   },
   {
+    group: "Costa Rica",
+    country: true,
+    items: [
+      ["TecToc", "Usuarios están usando IA para quitar anuncios y «limpiar» sus Smart TV", "19 Oct", "https://tectoc.blog/2026/10/19/usuarios-estan-usando-ia-para-quitar-anuncios-y-limpiar-sus-smart-tv/", "tectoc-41ea15", "tectoc"],
+    ],
+  },
+  {
     group: "Mexico",
     country: true,
     items: [
       ["OneDigital", "CleanYourTV limpia tu Android TV de publicidad con IA", "21 Oct", "https://onedigital.mx/2026/10/21/cleanyourtv-limpiar-android-tv/", "onedigital-6347b8", "onedigital"],
-    ],
-  },
-  {
-    group: "Latin America (Spanish-language)",
-    country: false,
-    items: [
       ["Qore", "Desarrolladores usan IA para quitar anuncios de smart TVs", "20 Oct", "https://www.qore.com/tecnologia/desarrolladores-usan-ia-para-quitar-anuncios-de-smart-tvs/", "qore-4cd981", "qore"],
-      ["DiarioBitcoin", "Usuarios usan IA para quitar anuncios y bloatware de sus televisores inteligentes", "19 Oct", "https://www.diariobitcoin.com/tecnologia/usuarios-usan-ia-para-quitar-anuncios-y-bloatware-de-sus-televisores-inteligentes/", "diariobitcoin-4755e2", "diariobitcoin"],
-      ["Ecosistema Startup", "dumbtv: el hack con IA que elimina los anuncios del TV", "19 Oct", "https://ecosistemastartup.com/dumbtv-el-hack-con-ia-que-elimina-los-anuncios-del-tv/", "ecosistemastartup-f105a1", "ecosistemastartup"],
-      ["TecToc", "Usuarios están usando IA para quitar anuncios y «limpiar» sus Smart TV", "19 Oct", "https://tectoc.blog/2026/10/19/usuarios-estan-usando-ia-para-quitar-anuncios-y-limpiar-sus-smart-tv/", "tectoc-41ea15", "tectoc"],
-      ["Tecnobits", "Cómo hacer debloat a tu Smart TV con IA y CleanYourTV", "21 Oct", "https://tecnobits.net/como-hacer-debloat-a-tu-smart-tv-con-ia-cleanyourtv/", "tecnobits-d7a0f3", "tecnobits"],
-      ["Digital Trends Español", "Cómo usar IA para convertir tu Smart TV en una TV “tonta” y eliminar anuncios, rastreo y bloatware", "20 Oct", "https://es.digitaltrends.com/inteligente/como-usar-ia-convertir-smart-tv-tv-tonta-guia/", "digitaltrendses-162b23", "digitaltrendses"],
-      ["DiarioBitcoin", "Investigador alerta sobre posibles funciones de rastreo en Smart TV de Samsung", "26 Oct", "https://www.diariobitcoin.com/tecnologia/investigador-alerta-sobre-posibles-funciones-de-rastreo-en-smart-tv-de-samsung/", "diariobitcoin-0b6880", "diariobitcoin"],
     ],
   },
   {
@@ -748,6 +745,9 @@ export const COVERAGE: PressGroup[] = [
       ["AI Daily Post", "AI Tools Help Users Disable Smart TV Ads", "19 Oct", "https://aidailypost.com/news/people-use-ai-make-smart-tvs", "aidailypost-90d97c", "aidailypost"],
       ["The Brief", "AI Prompts Are Turning Smart TVs Simple Again", "19 Oct", "https://www.thebrief.news/en/standard/article/33931/ai-prompts-are-turning-smart-tvs-simple-again", "thebrief-ad4ccc", "thebrief"],
       ["The Daily Tech Feed", "Users Turning Smart TVs into \"Dumb TVs\" Using AI Hacks", "19 Oct", "https://thedailytechfeed.com/users-turning-smart-tvs-into-dumb-tvs-using-ai-hacks/", "dailytechfeed-0d5ff7", "dailytechfeed"],
+      ["DiarioBitcoin", "Usuarios usan IA para quitar anuncios y bloatware de sus televisores inteligentes", "19 Oct", "https://www.diariobitcoin.com/tecnologia/usuarios-usan-ia-para-quitar-anuncios-y-bloatware-de-sus-televisores-inteligentes/", "diariobitcoin-4755e2", "diariobitcoin"],
+      ["Tecnobits", "Cómo hacer debloat a tu Smart TV con IA y CleanYourTV", "21 Oct", "https://tecnobits.net/como-hacer-debloat-a-tu-smart-tv-con-ia-cleanyourtv/", "tecnobits-d7a0f3", "tecnobits"],
+      ["DiarioBitcoin", "Investigador alerta sobre posibles funciones de rastreo en Smart TV de Samsung", "26 Oct", "https://www.diariobitcoin.com/tecnologia/investigador-alerta-sobre-posibles-funciones-de-rastreo-en-smart-tv-de-samsung/", "diariobitcoin-0b6880", "diariobitcoin"],
     ],
   },
 ];
