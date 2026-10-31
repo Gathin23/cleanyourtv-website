@@ -14,8 +14,9 @@ export type Item = { name: string; to: "off" | "on" | "press" };
  *  only for those answers to the brand's question (VIDAA version, Vizio menu…). */
 export type Variant = { label: string; years?: [number, number]; for?: string[]; crumbs: string[]; items?: Item[]; note?: string };
 
-/** Someone confirmed this step on their own TV, through a "Worked on my TV" issue. No year for brands without model years (Roku). */
-export type Check = { year?: number; model: string; by: string; issue: number };
+/** Someone confirmed this step on their own TV, through a "Worked on my TV" issue. No year for brands without model years (Roku);
+ *  a year range ("2021–2024") and no model when they gave no model number. */
+export type Check = { year?: number | string; model?: string; by: string; issue: number };
 
 export type Step = {
   id: string;
@@ -124,7 +125,7 @@ export const BRANDS: Brand[] = [
           { name: "Get news and special offers", to: "off" },
           { name: "Do not track", to: "on" },
         ],
-        note: "Most TVs only show Interest-Based Advertisements here, next to Viewing Information Services. On some 2020 sets it opens a notice with an I agree tick: leave it unticked and press Confirm. The other four are on some models only: untick any you see. This is the full set the IMC 2024 study switched off before the TVs stopped contacting tracking servers.",
+        note: "Most TVs only show Interest-Based Advertisements here, next to Viewing Information Services. On some 2020 sets it opens a notice with an I agree tick: leave it unticked and press Confirm. The other four are on some models only: untick any you see. This is the full set the IMC 2024 study switched off before the TVs stopped contacting tracking servers. On The Frame, two Art Store entries are listed too: the Art Store terms are needed for Art Mode’s store; untick the Art Store Curation notice if you don’t want personalised art suggestions.",
         undo: "Tick them again. Ads stay either way; they just stop being targeted.",
         sources: [IMC],
         checks: [{ year: 2022, model: "QE55LS03B", by: "joeclack", issue: 2212 }],
@@ -215,7 +216,7 @@ export const BRANDS: Brand[] = [
         ],
         undo: "Turn it back on in the same place.",
         sources: [CR, ["XDA, Aug 2026", "https://www.xda-developers.com/hidden-lg-tv-settings-i-changed-immediately-to-make-my-new-tv-look-even-better/"], MARKUP, ["Pocket-lint", "https://www.pocket-lint.com/lg-tv-turn-off-live-plus/"], CR21],
-        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }],
+        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }, { year: "2021–2024", by: "Sulivan1972", issue: 2762 }],
       },
       {
         id: "agreements",
@@ -236,7 +237,7 @@ export const BRANDS: Brand[] = [
         note: "Only the Terms of Use and the Privacy Policy are required. Apps keep working without the rest. The names may end in “Agreement”, and Who.Where.What? and Do Not Sell only show on some sets.",
         undo: "Accept them again in User Agreements. Voice control needs Voice information.",
         sources: [["LG: User Agreements", "https://www.lg.com/us/support/help-library/how-to-accept-the-updated-user-agreements-on-your-lg-tv--20155426555618"], CR],
-        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }],
+        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }, { year: "2021–2024", by: "Sulivan1972", issue: 2762 }],
       },
       {
         id: "adid",
@@ -258,6 +259,7 @@ export const BRANDS: Brand[] = [
               { name: "Limit AD Tracking", to: "on" },
               { name: "Reset AD ID", to: "press" },
             ],
+            note: "On some sets it’s under General › System › Additional Settings › Advertisement instead.",
           },
           {
             label: "2021 and newer",
@@ -269,7 +271,7 @@ export const BRANDS: Brand[] = [
         ],
         undo: "Turn it off again.",
         sources: [MARKUP],
-        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }],
+        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }, { year: "2021–2024", by: "Sulivan1972", issue: 2762 }],
       },
       {
         id: "home",
@@ -283,7 +285,7 @@ export const BRANDS: Brand[] = [
         note: "On 2026 TVs, also turn off Screen Saver Promotion, and AI Recommendations under General › AI Service › LG AI Settings.",
         undo: "Tick them again.",
         sources: [MARKUP, ["LG: Content Recommendation", "https://www.lg.com/in/support/product-support/troubleshoot/help-library/cs-CT52006584-20153905578425OLT/"], ["XDA, Aug 2026", "https://www.xda-developers.com/hidden-lg-tv-settings-i-changed-immediately-to-make-my-new-tv-look-even-better/"]],
-        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }],
+        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }, { year: "2021–2024", by: "Sulivan1972", issue: 2762 }],
       },
       {
         id: "voice",
@@ -294,7 +296,7 @@ export const BRANDS: Brand[] = [
         note: "Voice recognition is off by default. The Magic Remote’s mic only listens while you hold its button.",
         undo: "Turn Hands-free Voice back on.",
         sources: [["LG statement, Sep 2026", "https://www.lg.com/global/newsroom/news/statements/statement-understanding-privacy-on-lg-smart-tvs/"]],
-        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }],
+        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }, { year: "2021–2024", by: "Sulivan1972", issue: 2762 }],
       },
     ],
     outro: "Menu paths can move with a software update. If yours didn’t match, tell us what you saw.",
