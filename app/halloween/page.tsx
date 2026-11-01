@@ -11,7 +11,7 @@ import "./halloween.css";
 
 const title = "Halloween pack for your TV";
 const description =
-  "A Halloween look for CleanYourTV Home until 1 November: night wallpapers and an illustrated haunted house, a jack-o'-lantern for Wi-Fi that glows while you're online, a bat, a ghost and bats over Home. One command on, one command off.";
+  "A Halloween look for CleanYourTV Home: night wallpapers and an illustrated haunted house, a jack-o'-lantern for Wi-Fi that glows while you're online, a bat, a ghost and bats over Home. One command on, one command off.";
 
 export const metadata = pageMeta("/halloween", `${title} · CleanYourTV`, description, {
   image: {
@@ -65,7 +65,7 @@ export default function Halloween() {
       <section aria-labelledby="page-h" className="wrap hw-head hw-hero">
         <Fog />
         <div className="hw-head-text">
-          <p className="kicker c-mint">CH 13 · Halloween special · until 1 Nov 2026</p>
+          <p className="kicker c-mint">CH 13 · Halloween special · 2026</p>
           <h1 id="page-h" className="hw-h1">
             Halloween<br />
             for your <span className="hw-glitch">TV.</span>

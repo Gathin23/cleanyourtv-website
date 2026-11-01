@@ -4,4 +4,4 @@
  *   lib/halloween.ts, components/Hw*.tsx and app/halloween-home.css, plus a small `HALLOWEEN &&` in
  *   app/page.tsx, components/Header.tsx, Footer.tsx, Logo.tsx and BeforeAfter.tsx.
  */
-export const HALLOWEEN = true;
+export const HALLOWEEN = false;
