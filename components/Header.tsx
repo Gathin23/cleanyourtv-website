@@ -39,10 +39,10 @@ const Bmc = () => (
 export default function Header({ stars }: { stars: number }) {
   const path = usePathname().replace(/(.)\/$/, "$1");
   const home = path === "/";
-  // Halloween: the dripping stripe belongs to the home page and the pack page.
+  // Halloween: the dripping stripe belongs to the pack page, and to the home page while the flag is on.
   // Matched on a normalised path, so /halloween, /halloween/ and /halloween.html all count (a static server may serve the .html name).
   const bare = path.replace(/\.html$/, "").replace(/\/index$/, "") || "/";
-  const hw = HALLOWEEN && (bare === "/" || bare === "/halloween");
+  const hw = bare === "/halloween" || (HALLOWEEN && bare === "/");
   // The menu belongs to the page it was opened on, so following a link closes it.
   const [openOn, setOpenOn] = useState<string | null>(null);
   const open = openOn === path;
