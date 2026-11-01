@@ -16,7 +16,7 @@ const NAV: [string, string][] = [
   ["Tutorials", "/tutorials"],
   ["Press", "/press"],
   ["PR bot", "/bot"],
-  ["App", "/app/android"],
+  ["Community apps", "/app"],
 ];
 
 const Cup = () => (

@@ -22,9 +22,14 @@
 .and-phone-only {
   display: none;
 }
-.and-ver {
-  font-size: 20px;
-  font-weight: 400;
+.and-owner {
+  margin: 0;
+  max-width: 46ch;
+  font-size: 16px;
+  color: var(--dim);
+}
+.and-owner a {
+  color: var(--ink);
 }
 .and-tags {
   display: flex;

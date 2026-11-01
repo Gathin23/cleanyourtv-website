@@ -23,7 +23,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE}/press`, lastModified: press, changeFrequency: "weekly", priority: 0.7 },
     { url: `${SITE}/tutorials`, lastModified: VIDEOS_AS_OF, changeFrequency: "weekly", priority: 0.7 },
     { url: `${SITE}/blog/reintroducing-cleanyourtv`, lastModified: "2026-10-20", changeFrequency: "yearly", priority: 0.6 },
-    { url: `${SITE}/app/android`, lastModified: "2026-10-23", changeFrequency: "monthly", priority: 0.5 },
+    { url: `${SITE}/app`, lastModified: "2026-11-01", changeFrequency: "weekly", priority: 0.6 },
+    { url: `${SITE}/app/android`, lastModified: "2026-11-01", changeFrequency: "monthly", priority: 0.5 },
     { url: `${SITE}/app/android/privacy`, lastModified: "2026-10-23", changeFrequency: "monthly", priority: 0.5 },
   ];
 }
