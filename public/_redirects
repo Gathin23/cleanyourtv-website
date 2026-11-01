@@ -1,6 +1,4 @@
-# Cloudflare static-asset redirects. /app is the short link for the community Android app page (was app/app/page.tsx).
-/app /app/android 307
-/app/ /app/android 307
+# Cloudflare static-asset redirects. /app is the Community apps page (app/app/page.tsx) since 1 Nov 2026; it used to redirect to /app/android.
 # /not-android was first published as /privacy; a 301 keeps deep links like #samsung-2024.
 /privacy /not-android 301
 /privacy/ /not-android 301
