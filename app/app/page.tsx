@@ -3,6 +3,8 @@ import JsonLd from "@/components/JsonLd";
 import { SITE, breadcrumbs, pageMeta } from "@/lib/seo";
 import "./apps.css";
 
+const GH_MARK = "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z";
+
 // Community apps that clean a TV with CleanYourTV's lists, each built and maintained by someone else.
 // Picked on 1 Nov 2026 from a scan of 41 app repos (releases, outside PRs merged, issue replies, CI builds,
 // disable-only with undo, no tracking). Keep the list short and re-check it when an app goes quiet.
@@ -55,8 +57,8 @@ export default function CommunityApps() {
         <h1 id="page-h" className="h1 capps-h1">Clean your TV from your phone or laptop.</h1>
         <p className="lede">Free, open-source apps that use CleanYourTV&apos;s tested TV lists. No coding agent needed.</p>
         <p className="capps-owner">
-          <b>Built and maintained by independent developers, not by CleanYourTV.</b> Each app has its own repo, its own releases and its own
-          issues: if an app misbehaves, report it there.
+          <b>Built and maintained by independent developers, not by CleanYourTV.</b>
+          <span>Each app has its own repo, its own releases and its own issues. If an app misbehaves, report it there.</span>
         </p>
       </section>
 
@@ -73,6 +75,10 @@ export default function CommunityApps() {
               <p className="capps-by dim">
                 Community-built by <a href={a.byUrl}>{a.by}</a>
               </p>
+              <a href={a.repo} className="capps-gh">
+                <svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d={GH_MARK} /></svg>
+                <span>{a.repo.replace("https://github.com/", "")}</span>
+              </a>
               <div className="capps-btns">
                 <a href={a.repo} className="btn btn-ghost btn-sm">Repo and download</a>
                 {a.more && <Link href={a.more[0]} className="btn btn-ghost btn-sm">{a.more[1]}</Link>}
@@ -90,6 +96,12 @@ export default function CommunityApps() {
           <li><b>Prefer to do it yourself?</b> The <Link href="/">CleanYourTV prompt</Link> works with any coding agent and is the version we maintain.</li>
           <li><b>Built an app on CleanYourTV?</b> Open a pull request adding it to <a href="https://github.com/Gathin23/cleanyourtv/blob/main/SHOWCASE.md">SHOWCASE.md</a>. Apps are listed here when they&apos;re open source, release regularly, answer issues and send no tracking.</li>
         </ul>
+        <p className="capps-legal">
+          <b>Disclaimer.</b> These apps are independent projects by their own developers. They are not affiliated with, endorsed by or
+          supported by CleanYourTV or its maintainer, and listing them here is not a recommendation or a guarantee. Each app is provided by its
+          developer under its own license, as is, without warranty. You install and use it at your own risk; check its source, permissions and
+          license before you do.
+        </p>
       </section>
     </main>
   );

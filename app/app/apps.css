@@ -10,14 +10,17 @@
 }
 .capps-owner {
   margin: 0;
-  max-width: 62ch;
-  padding: 12px 16px;
-  border: 1px solid var(--amber);
+  max-width: 64ch;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--amber);
+  color: var(--on-amber);
   border-radius: 10px;
-  color: var(--dim);
 }
 .capps-owner b {
-  color: var(--ink);
+  font-size: 18px;
 }
 .capps-grid {
   display: grid;
@@ -44,10 +47,39 @@
   margin: 0;
   font-size: 24px;
 }
-.capps-rel {
+.capps-card .capps-rel {
   color: var(--green);
-  font-size: 13px;
+  font-family: var(--f-mono);
+  font-size: 15px;
+  font-weight: 500;
   white-space: nowrap;
+  padding: 4px 10px;
+  border: 1px solid var(--green);
+  border-radius: 999px;
+}
+.capps-gh {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--f-mono, ui-monospace, Menlo, monospace);
+  font-size: 15px;
+  color: var(--ink);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.capps-gh:hover span {
+  text-decoration: underline;
+}
+.capps-legal {
+  margin: 20px 0 0;
+  max-width: 70ch;
+  padding-top: 16px;
+  border-top: 1px solid var(--line-2);
+  font-size: 14px;
+  color: var(--dim);
+}
+.capps-legal b {
+  color: var(--ink);
 }
 .capps-plat,
 .capps-by {
