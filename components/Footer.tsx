@@ -25,7 +25,7 @@ export default function Footer() {
           <Link href="/#setup">Set up</Link>
           <Link href="/tutorials">Tutorials</Link>
           {PRIVACY_LIVE && <Link href={PRIVACY_PATH}>{PRIVACY_NAME}</Link>}
-          <Link href="/app/android">Android app</Link>
+          <Link href="/app">Community apps</Link>
         </nav>
         <nav aria-label="Build" className="foot-nav">
           <a href={GH}>GitHub</a>

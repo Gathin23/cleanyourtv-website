@@ -12,10 +12,9 @@ import "./android.css";
 const REPO = "https://github.com/udhaykumarbala/cleanyourtv-app";
 const DOWNLOAD = `${REPO}/releases/latest`;
 const AUTHOR = "https://github.com/udhaykumarbala";
-const VERSION = "0.4.0";
 const IMG = "/app/android";
 
-const title = "Clean Your TV app for Android phones";
+const title = "Community-built phone app for Clean Your TV";
 const description =
   "A community-built phone app for Clean Your TV: clean up your Android TV or Google TV from your Android phone over Wi-Fi. No laptop, no coding agent, no cables. Free and open source.";
 const BANNER_ALT =
@@ -70,12 +69,12 @@ const FACTS: [string, string, ReactNode[]][] = [
   ["What you need", "and-amber", NEEDS],
 ];
 
-const Download = ({ version }: { version?: boolean }) => (
+const Download = () => (
   <a href={DOWNLOAD} className="btn btn-green">
     <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
       <path d="M12 4v12M6 10l6 6 6-6M5 20h14" />
     </svg>
-    Download the APK{version && <span className="ch and-ver">v{VERSION}</span>}
+    Download the community APK
   </a>
 );
 
@@ -92,7 +91,6 @@ export default function AndroidApp() {
         description,
         applicationCategory: "UtilitiesApplication",
         operatingSystem: "Android 9 or newer",
-        softwareVersion: VERSION,
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
         isAccessibleForFree: true,
         license: "https://opensource.org/licenses/MIT",
@@ -127,14 +125,18 @@ export default function AndroidApp() {
       {/* Hero: the pitch, and the phone beside the TV it just cleaned (drawn, not a picture). */}
       <section aria-labelledby="page-h" className="wrap and-hero">
         <div className="and-hero-text">
+          <p className="kicker c-green">Community-built mobile app</p>
           <h1 id="page-h" className="h1 and-h1">Clean your TV from your phone.</h1>
           <p className="lede">
             <strong>No laptop. No coding agent.</strong> <span className="hide-phone">Open the app on your Android phone, tap Start, and</span>
             <span className="and-phone-only">Tap Start, and</span> the ads and bloat are gone in about five minutes.
           </p>
+          <p className="and-owner">
+            A free app made and maintained by <a href={AUTHOR}>udhaykumarbala</a>, separately from CleanYourTV. It uses CleanYourTV&apos;s open TV lists and launcher.
+          </p>
           <div className="btns">
-            <Download version />
-            <a href={REPO} className="btn btn-ghost">Source on GitHub</a>
+            <Download />
+            <a href={REPO} className="btn btn-ghost">App source on GitHub</a>
           </div>
           <p className="and-report dim">
             App not working? <a href={`${REPO}/issues`}>Report it in the app&apos;s repo</a>, not CleanYourTV&apos;s.
@@ -142,7 +144,7 @@ export default function AndroidApp() {
           <ul className="plain and-tags" aria-label="At a glance">
             <li className="tag">Android 9+</li>
             <li className="tag">MIT · open source</li>
-            <li className="tag">131 TV models · 46 brands</li>
+            <li className="tag">Community-maintained</li>
             <li className="tag">No accounts, no ads</li>
           </ul>
         </div>
@@ -219,7 +221,7 @@ export default function AndroidApp() {
           ))}
         </ol>
         <p className="dim and-after">
-          Come back any time to put an app back, check for leftovers after a TV update, change the dock or the look, or undo everything. New in 0.4.0: the Look sheet. Pick a picture, one of five styles and 4 to 8 apps in a row, and see it on a preview of your own TV before anything reaches it.
+          Come back any time to put an app back, check for leftovers after a TV update, change the dock or the look, or undo everything. The Look sheet: Pick a picture, one of five styles and 4 to 8 apps in a row, and see it on a preview of your own TV before anything reaches it.
         </p>
       </section>
 
@@ -261,7 +263,7 @@ export default function AndroidApp() {
           </p>
           <div className="btns">
             <Download />
-            <a href={REPO} className="btn btn-ghost">Source on GitHub</a>
+            <a href={REPO} className="btn btn-ghost">App source on GitHub</a>
           </div>
         </div>
         <a href={AUTHOR} className="and-credit">

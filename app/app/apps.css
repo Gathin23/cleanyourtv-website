@@ -1,0 +1,81 @@
+.capps-head {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 24px;
+}
+.capps-h1 {
+  max-width: 18ch;
+  text-wrap: balance;
+}
+.capps-owner {
+  margin: 0;
+  max-width: 62ch;
+  padding: 12px 16px;
+  border: 1px solid var(--amber);
+  border-radius: 10px;
+  color: var(--dim);
+}
+.capps-owner b {
+  color: var(--ink);
+}
+.capps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.capps-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  background: var(--panel);
+  border: 1px solid var(--line-2);
+  border-radius: 12px;
+  min-width: 0;
+}
+.capps-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+.capps-name {
+  margin: 0;
+  font-size: 24px;
+}
+.capps-rel {
+  color: var(--green);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.capps-plat,
+.capps-by {
+  margin: 0;
+  font-size: 15px;
+}
+.capps-text {
+  margin: 0;
+  flex: 1;
+}
+.capps-by a {
+  color: var(--ink);
+}
+.capps-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+.capps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 70ch;
+  padding-left: 20px;
+}
+@media (max-width: 760px) {
+  .capps-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
