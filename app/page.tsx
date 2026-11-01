@@ -300,6 +300,8 @@ export default async function Page() {
             <div className="stack">
               <p className="kicker c-pink">CH 03 · On air</p>
               <h2 id="air-h" className="h2">Cleaned TVs, sent in by you.</h2>
+              {/* GitHub traffic: 151,672 unique cloners in the 14 days to 31 Oct. */}
+              <p className="lede">150,000+ people downloaded CleanYourTV in its first two weeks. These are a few who posted their TV.</p>
             </div>
           }
         >
