@@ -101,15 +101,15 @@ export default async function Page() {
           </span>
         </Link>
       ) : PRIVACY_LIVE ? (
-          <Link href={PRIVACY_PATH} className="hbar">
+          <Link href="/app" className="hbar">
             <span className="wrap hbar-in">
               <span className="hbar-new ch">New</span>
               <span className="hbar-text">
-                <span className="hide-phone">Samsung, LG, Roku or another non-Android TV? Turn off the tracking, step by step, no root.</span>
-                <span className="hbar-short">Samsung, LG or Roku? Stop the tracking.</span>
+                <span className="hide-phone">Install CleanYourTV from your phone or laptop with community-built apps.</span>
+                <span className="hbar-short">Install it from your phone or laptop.</span>
               </span>
               <span className="hbar-go">
-                <span className="hide-phone">Check here</span> →
+                <span className="hide-phone">See the apps</span> →
               </span>
             </span>
           </Link>
