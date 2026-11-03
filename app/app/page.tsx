@@ -1,6 +1,7 @@
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import { SITE, breadcrumbs, pageMeta } from "@/lib/seo";
+import { cdn } from "@/lib/site";
 import "./apps.css";
 
 const GH_MARK = "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z";
@@ -15,28 +16,38 @@ const description =
 
 export const metadata = pageMeta("/app", title, description);
 
-type App = { name: string; by: string; byUrl: string; platform: string; text: string; repo: string; release: string; more?: [string, string] };
+type App = { name: string; by: string; byUrl: string; platform: string; text: string; repo: string; release: string; more?: [string, string]; shot: [string, string] };
+
+/**
+ * A screenshot from the app's own repo, pinned to a commit and served from jsDelivr's mirror like the site's other images.
+ * The Clean Your TV app's repo is over jsDelivr's 50 MB limit, so its card uses the site's own copy from /app/android.
+ */
+const shot = (repo: string, commit: string, path: string) => `https://cdn.jsdelivr.net/gh/${repo}@${commit}/${path}`;
 
 const APPS: App[] = [
   {
     name: "Clean Your TV app", by: "udhaykumarbala", byUrl: "https://github.com/udhaykumarbala", platform: "Android phone · Android 9+",
     text: "Finds your TV on the Wi-Fi, shows the plan before anything changes, saves a restore point and puts the new home screen on.",
     repo: "https://github.com/udhaykumarbala/cleanyourtv-app", release: "v0.4.7 · 30 Oct", more: ["/app/android", "About this app"],
+    shot: [cdn("/app/android/step-analyse.webp"), "The app on a phone: 22 things to switch off on a Mi TV 4A"],
   },
   {
     name: "Tellyscope", by: "man15h", byUrl: "https://github.com/man15h", platform: "Android phone · Android 8+",
     text: "Matches your TV to one of CleanYourTV's lists, shows every app before it turns any off, and keeps an undo for each change.",
     repo: "https://github.com/man15h/tellyscope", release: "v0.14.0 · 30 Oct",
+    shot: [shot("man15h/tellyscope", "442330d85a84d8bad0930883693e14a36fe6cd09", "docs/screenshots/debloat.png"), "Tellyscope on a phone: the apps it will turn off on an XGIMI Horizon Pro"],
   },
   {
     name: "TidyTV", by: "jolan94", byUrl: "https://github.com/jolan94", platform: "Android phone · Android 8+ · on Google Play",
     text: "Turns off ads, trackers and bloat from your phone using CleanYourTV's tested lists, with a backup first and a one-tap restore.",
     repo: "https://github.com/jolan94/tidytv", release: "v0.10.1 · 29 Oct",
+    shot: [shot("jolan94/tidytv", "7734484fbba5c97f02d41ac08ea9ee7d394f9e4d", "docs/media/screens/13-hub.png"), "TidyTV on a phone: Tidy up, Remote, Send files and Home screen"],
   },
   {
     name: "CleanMyTV", by: "wingedpanther", byUrl: "https://github.com/wingedpanther", platform: "Mac and Windows",
     text: "A desktop app that applies CleanYourTV's list for your TV over Wi-Fi, switches apps off instead of uninstalling them, and restores everything in one click.",
     repo: "https://github.com/wingedpanther/cleanmytv", release: "v0.4.1 · 1 Nov",
+    shot: [shot("wingedpanther/cleanmytv", "84adf82acc2a9cfbd43041a277f24d6538146446", "docs/clean-up.png"), "CleanMyTV on a computer: the Clean up step with the TV's list"],
   },
 ];
 
@@ -66,6 +77,10 @@ export default function CommunityApps() {
         <ul className="plain capps-grid">
           {APPS.map((a) => (
             <li key={a.name} className="capps-card">
+              <div className="capps-shot">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={a.shot[0]} alt={a.shot[1]} loading="lazy" decoding="async" />
+              </div>
               <div className="capps-top">
                 <h2 className="capps-name">{a.name}</h2>
                 <span className="ch capps-rel">{a.release}</span>
