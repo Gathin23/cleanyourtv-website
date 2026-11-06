@@ -7,6 +7,7 @@ import OnAirWall from "@/components/OnAirWall";
 import { Countdown, Lights, Terminal } from "@/components/HwClient";
 import { Fog, Garland } from "@/components/HwDecor";
 import { loadFacts, loadSiteData } from "@/lib/data";
+import { DIWALI } from "@/lib/diwali";
 import { HALLOWEEN } from "@/lib/halloween";
 import { GH } from "@/lib/parse";
 import { COVERAGE_COUNTRIES, COVERAGE_TOTAL } from "@/lib/press";
@@ -32,7 +33,15 @@ const HW_OG = {
   alt: "CleanYourTV, Halloween edition. Your TV, minus the ads. The spooky logo with a pumpkin for the o, the headline, drips and bats, and a TV showing a haunted-house wallpaper with bats flying across Home.",
 };
 
-export const metadata = pageMeta("/", "CleanYourTV: remove ads and bloat from Android TV and Google TV", description, HALLOWEEN ? { image: HW_OG } : {});
+// Diwali: the share image is the Diwali card (public/dw/og-home.jpg, 1200x630) while lib/diwali.ts is on.
+const DW_OG = {
+  url: `${SITE}/dw/og-home.jpg`,
+  width: 1200,
+  height: 630,
+  alt: "Diwali on your TV. CleanYourTV's free Diwali theme: a TV showing Home over Diwali fireworks above a city, with Happy Diwali above the clock.",
+};
+
+export const metadata = pageMeta("/", "CleanYourTV: remove ads and bloat from Android TV and Google TV", description, HALLOWEEN ? { image: HW_OG } : DIWALI ? { image: DW_OG } : {});
 
 const WORDS = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"];
 
@@ -97,6 +106,19 @@ export default async function Page() {
                 <img className="hw-pk-in" src="/hw/pumpkin-1x.webp" srcSet="/hw/pumpkin-1x.webp 1x, /hw/pumpkin-2x.webp 2x" width={34} height={32} alt="" />
                 <span className="hw-pill-arrow" aria-hidden="true">→</span>
               </span>
+            </span>
+          </span>
+        </Link>
+      ) : DIWALI ? (
+        <Link href="/diwali" className="hbar" aria-label="See the Diwali theme">
+          <span className="wrap hbar-in">
+            <span className="hbar-new ch">New</span>
+            <span className="hbar-text">
+              <span className="hide-phone">Diwali on your TV: diyas, rangoli and fireworks for Home, free.</span>
+              <span className="hbar-short">Diwali on your TV 🪔</span>
+            </span>
+            <span className="hbar-go">
+              <span className="hide-phone">Get the theme</span> →
             </span>
           </span>
         </Link>

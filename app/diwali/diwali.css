@@ -1,0 +1,44 @@
+/* /diwali: the Diwali theme, dark with diya gold. Classes are dw-; the site's design system supplies the rest. */
+.dw { --dw-gold: #ffb23c; --dw-deep: #ff8a1e; --dw-ink: #2b1100; }
+.dw-head { padding-top: 72px; padding-bottom: 24px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; align-items: center; }
+.dw-head-text { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+@media (min-width: 1040px) { .dw-head { grid-template-columns: minmax(0, 1fr) minmax(0, 572px); gap: 48px; } }
+.dw-h1 { margin: 0; font-family: var(--f-head); font-weight: 700; font-size: clamp(48px, 7vw, 104px); line-height: 0.92; letter-spacing: -0.045em; }
+.dw-h1 span { color: var(--dw-gold); }
+.dw-lede { max-width: 34ch; margin: 0; font-size: 22px; }
+.dw-sec { padding-top: 56px; padding-bottom: 24px; }
+.dw-h2 { margin: 0 0 20px; font-family: var(--f-head); font-weight: 700; font-size: clamp(28px, 3.4vw, 44px); line-height: 1; letter-spacing: -0.035em; }
+.dw-p { max-width: 70ch; color: var(--dim-2); }
+.dw-p code, .dw-tiny code { font-family: var(--f-mono); font-size: 0.92em; color: var(--ink); }
+.dw-tiny { margin: 8px 0 20px; font-size: 14px; color: var(--mute); }
+.dw-shot { display: block; width: 100%; height: auto; border: 2px solid var(--ink); border-radius: 6px; background: #111; box-shadow: 0 0 0 6px #0c0c0c, 0 30px 80px rgba(255, 178, 60, 0.12); }
+
+.dw-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 12px; margin-bottom: 24px; }
+.dw-steps li { display: grid; grid-template-columns: 56px 1fr; gap: 14px; align-items: start; padding: 18px; border: 2px solid var(--ink); border-radius: 6px; background: var(--band-2); font-size: 17px; color: var(--dim-2); }
+.dw-steps strong { display: block; margin-bottom: 2px; font-family: var(--f-head); font-size: 22px; line-height: 1.15; letter-spacing: -0.02em; color: var(--ink); }
+.dw-step-n { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: var(--dw-gold); color: var(--dw-ink); font-family: var(--f-head); font-weight: 700; font-size: 30px; line-height: 1; }
+.dw-code-box { margin-bottom: 12px; border: 2px solid var(--ink); border-radius: 6px; overflow: hidden; background: var(--band-2); }
+.dw-code-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 8px 8px 16px; background: var(--ink); color: var(--bg); font-family: var(--f-ch); font-size: 21px; line-height: 1; }
+.dw-copy { min-height: 40px; padding: 0 18px; background: var(--dw-gold); color: var(--dw-ink); border: 2px solid var(--dw-ink); border-radius: 4px; font-family: var(--f-head); font-weight: 700; font-size: 16px; cursor: pointer; }
+.dw-copy:hover { background: #ffc35c; }
+.dw-code { margin: 0; padding: 18px 20px; white-space: pre-wrap; overflow-wrap: anywhere; font-family: var(--f-mono); font-size: 16px; line-height: 1.8; color: #f4f4f4; }
+.dw-code-small .dw-code { font-size: 15px; padding: 12px 20px; }
+
+.dw-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); gap: 12px; }
+.dw-card { display: flex; flex-direction: column; gap: 8px; padding: 12px 12px 18px; border: 2px solid var(--ink); border-radius: 6px; background: var(--band-2); }
+.dw-card > img, .dw-thumbs { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 4px; background: #111; object-fit: cover; }
+.dw-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 1fr); gap: 3px; background: none; }
+.dw-thumbs img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 2px; }
+.dw-card h3 { margin: 6px 4px 0; font-family: var(--f-head); font-size: 22px; line-height: 1.1; letter-spacing: -0.02em; color: var(--dw-gold); }
+.dw-card p { margin: 0 4px; color: var(--dim-2); }
+
+.dw-feats { display: grid; grid-template-columns: 1fr; margin-top: 28px; border-top: 1px solid var(--line-2); }
+.dw-feats li { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: start; padding: 16px 0; border-bottom: 1px solid var(--line-2); color: var(--dim-2); }
+.dw-feat-i { font-size: 26px; line-height: 1.2; }
+.dw-feats strong { display: block; font-family: var(--f-head); font-size: 20px; line-height: 1.2; color: var(--ink); }
+@media (min-width: 900px) { .dw-feats { grid-template-columns: repeat(2, 1fr); column-gap: 32px; } }
+
+.dw-credits { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)); gap: 16px; margin-bottom: 20px; }
+.dw-credits p { margin: 8px 0 0; font-size: 14px; }
+.dw-credits span { display: block; color: var(--dim-2); }
+.dw-credits img { display: block; width: 100%; height: auto; border: 2px solid var(--ink); border-radius: 6px; background: #111; }
