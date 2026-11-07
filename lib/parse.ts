@@ -88,7 +88,7 @@ export function starSeriesFallback(): number[] {
 
 /** The token X's syndication endpoint wants: ((id / 1e15) * PI) in base 36 without zeros or the point. */
 export function tweetToken(id: string): string {
-  let x = (Number(id) / 1e15) * Math.PI;
+  const x = (Number(id) / 1e15) * Math.PI;
   const d = "0123456789abcdefghijklmnopqrstuvwxyz";
   let ip = Math.floor(x), fp = x - ip, out = "";
   while (ip > 0) { out = d[ip % 36] + out; ip = Math.floor(ip / 36); }
