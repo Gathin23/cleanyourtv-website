@@ -1,6 +1,9 @@
 // The ISO 3166-1 alpha-2 code of every country group in lib/press.ts, for its round flag (public/press/flags/<code>.svg,
 // from circle-flags, MIT, see CREDITS.md there). tools/press-flags.test.mjs fails when a country group has no code here.
 export const COUNTRY_ISO: Record<string, string> = {
+  Nepal: "np",
+  Bolivia: "bo",
+  Albania: "al",
   Australia: "au",
   Bangladesh: "bd",
   Belarus: "by",
