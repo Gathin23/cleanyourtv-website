@@ -887,6 +887,7 @@ export const COVERAGE: PressGroup[] = [
       ["Estación K2", "La nueva tendencia es usar IA para hacer \"menos inteligentes\" los Smart TV", "", "https://www.estacionk2.com/nota/184518/la-nueva-tendencia-es-usar-ia-para-hacer-menos-inteligentes-los-smart-tv/", "estacink2-2f0eac", "estacink2"],
       ["ComputerShop.EU (blog)", "Entferne unerwünschte Apps von Android TV mit CleanYourTV", "30 Oct", "https://computershop.eu/blog/de/entferne-unerwunschte-apps-von-android-tv-mit-cleanyourtv", "computershopeu-74d5e4", "computershopeu"],
       ["Parade (Medium)", "Debloat Your TCL Smart TV in One Afternoon With an AI Agent", "31 Oct", "https://medium.com/@parade4940/debloat-your-tcl-smart-tv-in-one-afternoon-with-an-ai-agent-ec641abace22", "parade-ffb8c5", "parade"],
+      ["Open-source Projects", "De-bloat any Android TV over Wi-Fi, no root, one-line restore", "3 Nov", "https://www.opensourceprojects.dev/post/cleanyourtv", "opensourceprojects-906a2a", "opensourceprojects"],
     ],
   },
 ];
