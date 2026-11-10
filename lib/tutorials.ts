@@ -665,6 +665,39 @@ export const VIDEO_INFO: Record<string, [Kind, string]> = {
   "ZWAxKD_e8-A": ["other", "vi"], // Dùng Claude Code gỡ quảng cáo khỏi TV của bố mẹ #Shorts
   "fI0OPkdxyoA": ["other", "de"], // Alle hacken ihre Fernseher – Es ist so einfach! (Android TV)
   "-Xe5admIFG0": ["tutorial", "pt"], // TV 10x MAIS RÁPIDA com IA! Como Fazer na Android e Google TV
+  "P0cdXNgxj_s": ["tutorial", "tr"], // Claude Code Android Tv'yi duzene soktu. Kumanda tuşlarını de
+  "Vs4JmkIXrt0": ["tutorial", "ru"], // Как Claude Code вычистил рекламу с телевизора
+  "-jM_fb4e-IY": ["tutorial", "pt"], // DEIXEI MINHA ANDROID TV MAIS RÁPIDA COM IA! Sem root
+  "-G8OUZrayIM": ["tutorial", "en"], // I Fixed My Google TV Home Screen With AI
+  "ba2IImG21YY": ["other", "ru"], // Телевизор без рекламы за один промпт в Claude Code
+  "GS99mQm5Vlk": ["tutorial", "ru"], // Claude Code вычистил рекламу из телевизора родителей
+  "sZOuO_EGvZs": ["tutorial", "ru"], // Claude Code вычистил всю рекламу с телевизора
+  "Ewb3sCHAFlA": ["tutorial", "ru"], // Как убрать рекламу с телевизора через Claude Code
+  "ObfQuceFtiU": ["other", "de"], // KI befreit Smart-TV von Werbung: 4 Millionen Downloads! Dann
+  "zjyk8DiqrVA": ["other", "en"], // AI to Make My TV 10x Better!
+  "G9Gpwg8wvaM": ["other", "ru"], // ИИ убирает рекламу со Smart TV одним промптом
+  "ZetTMsMW2Ck": ["tutorial", "en"], // Before You Let Claude Clean Up Your Android TV (Read This)
+  "MKRuzmPyLfw": ["tutorial", "ru"], // Как убрать рекламу с телевизора через Claude Code
+  "xi8BvW_V0LU": ["other", "ru"], // Телевизор до и после Claude Code
+  "QXHfw2l_5AQ": ["tutorial", "ru"], // Как убрать рекламу с телевизора через Claude Code
+  "fm_6ys-gnsY": ["tutorial", "ru"], // Как убрать рекламу с телевизора через Claude Code
+  "wL9Ku3dyWIg": ["other", "ru"], // Телевизор до и после Claude Code: минус вся реклама
+  "aRhX8XkSFg0": ["other", "en"], // Your Android TV Has Too Many Ads? AI Can Help! 🤯📺
+  "NdcrG9NOo9c": ["tutorial", "en"], // Faster Android TV in 60 Seconds #androidtv #techtips #lifeha
+  "4WubxOi_7aE": ["tutorial", "ru"], // Как убрать рекламу с телевизора через Claude Code
+  "hZv0FYwpBk0": ["other", "en"], // People are using AI to make their smart TVs dumb again
+  "SvbgFX9hx2U": ["tutorial", "ru"], // Claude Code убрал рекламу с телевизора за вечер
+  "JZJxxo_OLQ0": ["other", "en"], // Developer used claude code to hack his tv into an ad-free ap
+  "risNojDx6hA": ["tutorial", "vi"], // Tôi Dùng CleanTV và Claude AI "Lột Xác" Chiếc Android TV Củ 
+  "Ap8xBHPgv-g": ["tutorial", "ru"], // Как взломать свой телевизор с помощью Claude Code
+  "mlwmCVMGTfQ": ["tutorial", "ru"], // Как вычистить рекламу из телевизора через Claude Code
+  "x1EcnYPAHb8": ["other", "en"], // Vibe Code Ads Right Off of Your TV - DTNS 5377
+  "rGW_mOtv6Wo": ["tutorial", "ru"], // Как убрать рекламу с телевизора через Claude Code
+  "kz70irXptYI": ["tutorial", "en"], // I Transformed My Android TV into Apple TV Style Using Phone 
+  "aSugs6jWF8A": ["other", "en"], // AI Is Making Smart TVs Dumb Again 📺 #AI #SmartTV #Shorts
+  "dAlZLnx5PHM": ["tutorial", "id"], // Claude bisa Bersihkan TV kamu dari Sampah dan Iklan dengan m
+  "5CXcfiMW3wY": ["tutorial", "en"], // Use Claude Code To Make Your TV Ad Free | Complete guide!
+  "wZLpUpr3jq0": ["tutorial", "pt"], // O Claude Code tira as propagandas da sua TV
 };
 
 /** The four the page opens with: clear walk-throughs with the most views, one of them not in English. */

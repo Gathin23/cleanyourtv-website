@@ -51,6 +51,8 @@ export const COVERAGE: PressGroup[] = [
       ["How-To Geek", "Using AI to stop your smart TV spying on you can be risky, but this is safer", "4 Nov", "https://www.howtogeek.com/using-ai-stop-smart-tv-spying-risky-this-is-safer/", "howtogeek-1db5fb", "howtogeek"],
       ["HT Guys (HDTV and Home Theater Podcast)", "Podcast #1277: An All Matter Home and Now Samsung is Spying on You", "6 Nov", "https://www.htguys.com/podcasts/2026/11/6/podcast-1277-an-all-matter-home-and-now-samsung-is-spying-on.html", "htguys-39604e", "htguys"],
       ["Android Police", "This simple trick made my Google TV faster in less than 5 minutes", "9 Nov", "https://www.androidpolice.com/simple-trick-old-google-tv-faster/", "androidpolice-ef4079", "androidpolice"],
+      ["Yahoo Tech", "AI Agents Are Stripping Ads From Smart TVs", "5 Nov", "https://tech.yahoo.com/home/articles/ai-agents-stripping-ads-smart-215300300.html", "yahootech-9e9892", "yahootech"],
+      ["Decrypt", "How I Vibe Coded My Smart TV—And Claude Killed It", "23 Oct", "https://decrypt.co/381717/how-vibe-coded-my-smart-tv-claude-killed-it", "decrypt-5832b3", "decrypt"],
     ],
   },
   {
@@ -187,6 +189,7 @@ export const COVERAGE: PressGroup[] = [
       ["COMPUTER BILD", "Google TV ohne Werbung: Dieser KI-Trick macht Android TV \"clean\" wie Apple TV", "5 Nov", "https://www.computerbild.de/artikel/Tipps-Fernseher-cleanyourtv-android-google-tv-anleitung-42382055.html", "computerbild-fa096a", "computerbild"],
       ["futurezone", "Fernseher: Wer eines dieser Geräte hat, kann einen praktischen neuen Trick anwenden", "5 Nov", "https://www.futurezone.de/digital-life/article761002/fernseher-android-tv-cleanyourtv-geht-viral-startbildschirm-im-apple-tv-stil.html", "futurezone-98dee0", "futurezone"],
       ["4K Filme", "So einfach und schnell könnte dein Fernseher sein: Dieses KI-Projekt macht es vor", "6 Nov", "https://www.4kfilme.de/so-einfach-und-schnell-koennte-dein-fernseher-sein-dieses-ki-projekt-macht-es-vor", "4kfilme-48bf61", "4kfilme"],
+      ["Hardwareluxx", "Smart-TVs ohne Werbung und Tracking: KI-Agenten können Fernseher von Ballast befreien", "20 Oct", "https://www.hardwareluxx.de/index.php/news/consumer-electronics/gadgets/70672-smart-tvs-ohne-werbung-und-tracking-ki-agenten-koennen-fernseher-von-ballast-befreien.html", "hardwareluxx-a1dc42", "hardwareluxx"],
     ],
   },
   {
@@ -241,6 +244,8 @@ export const COVERAGE: PressGroup[] = [
       ["Dagospia", "l'intelligenza artificiale fa anche cose buone: ci libera dalle pubblicità rompicojoni!", "23 Oct", "http://www.dagospia.com/cronache/l-intelligenza-artificiale-fa-cose-buone-ci-libera-dalle-pubblicita-491198", "dagospia-02e42e", "dagospia"],
       ["Zeus News", "Claude ripulisce le smart TV: meno pubblicità, più velocità e maggiore controllo per gli utenti", "20 Oct", "https://www.zeusnews.it/n.php?c=32621", "zeusnews-d38e1d", "zeusnews"],
       ["DDay.it", "Hardware in affitto: perché il reverse engineering con l'AI fa paura a chi vende prodotti", "25 Oct", "https://www.dday.it/redazione/59215/hardware-in-affitto-perche-il-reverse-engineering-con-lai-fa-paura-a-chi-vende-prodotti", "dday-05410b", "dday"],
+      ["XiaomiToday", "Script AI per ripulire le smart TV da pubblicità e tracking", "20 Oct", "https://www.xiaomitoday.it/script-ai-smart-tv-pubblicita.html", "xiaomitoday-7e15e3", "xiaomitoday"],
+      ["Tom's Hardware Italia", "Hardware vecchio e non supportato, come riportarlo in vita con l'IA", "9 Nov", "https://www.tomshw.it/business/hardware-abbandonato-dal-produttore-ce-chi-lo-riporta-in-vita-con-lai-per-ora", "tomshardwareitalia-e11cb3", "tomshardwareitalia"],
     ],
   },
   {
@@ -287,6 +292,8 @@ export const COVERAGE: PressGroup[] = [
       ["TechToday", "Користувачі застосовують штучний інтелект для перетворення розумних телевізорів у пристрої без реклами", "24 Oct", "https://techtoday.in.ua/news/korystuvachi-zastosovuyut-shtuchnyy-intelekt-dlya-peretvorennya-rozumnyh-televizoriv-u-prystroyi-bez-reklamy-224182.html", "techtoday-ed01c6", "techtoday"],
       ["InternetUA", "Люди використовують штучний інтелект, щоб знову зробити свої розумні телевізори дурними", "21 Oct", "http://internetua.com/luadi-vikoristovuuat-shtucsnii-intelekt-sxob-znovu-zrobiti-svoyi-rozumni-televizori-durnimi", "internetua-42e2d3", "internetua"],
       ["PROIT", "Як штучний інтелект покращує смарт-телевізори", "19 Oct", "https://proit.com.ua/tech/yak-shtuchnyj-intelekt-dopomagaye-korystuvacham/", "proit-722025", "proit"],
+      ["УНІАН UNIAN", "Користувачі за допомогою ШІ перетворюють розумні телевізори на \"дурні\"", "20 Oct", "https://www.unian.ua/techno/neiroseti/u-merezhi-noviy-trend-koristuvachi-peretvoryuyut-rozumni-televizori-na-zvichayni-13534722.html", "unian-6f0be0", "unian"],
+      ["Mezha.ua", "ШІ-агенти допомагають позбутися реклами та стеження на смарттелевізорах", "20 Oct", "https://mezha.ua/news/from-smartv-to-dumbtv-316344/", "mezhaua-5cbab1", "mezhaua"],
     ],
   },
   {
@@ -303,6 +310,7 @@ export const COVERAGE: PressGroup[] = [
       ["SBC TV", "AI agents μετατρέπουν τα smart TV σε \"χαζές\" αλλά γρήγορες συσκευές", "19 Oct", "https://www.sbctv.gr/2026/10/ai-agents-2/", "sbctv-940674", "sbctv"],
       ["Gizchina.gr", "Android TV: Το AI κόλπο που αφαιρεί διαφημίσεις και κάνει την τηλεόραση πιο γρήγορη", "29 Oct", "https://www.gizchina.gr/2026/10/29/android-tv-choris-diafimiseis-claude-code-ai/", "gizchinagr-1b431a", "gizchinagr"],
       ["Digitaltvinfo.gr", "Smart TV: Πώς αφαιρούν διαφημίσεις και bloatware με την AI", "22 Oct", "https://digitaltvinfo.gr/eidiseis/news/smart-tv-pos-afairoyn-diafimiseis-kai-bloatware-me-tin-ai/", "digitaltvinfogr-f4f052", "digitaltvinfogr"],
+      ["Insomnia.gr", "Με τη βοήθεια της AI, οι χρήστες κάνουν ξανά «χαζές» τις έξυπνες τηλεοράσεις τους", "20 Oct", "https://www.insomnia.gr/articles/entertainment/tv/me-ti-voitheia-tis-ai-oi-xristes-kanoun-ksana-xazes-tis-eksypnes-tileoraseis-tous", "insomniagr-e674b8", "insomniagr"],
     ],
   },
   {
@@ -451,6 +459,7 @@ export const COVERAGE: PressGroup[] = [
       ["Zhihu 知乎专栏", "CleanYourTV 安装教程", "5 Nov", "https://zhuanlan.zhihu.com/p/2100258772992184615", "zhihu-47e43d", "zhihu"],
       ["36Kr (36氪), author 寻空", "爆改硬件，是普通人享受到的第一个AI红利", "6 Nov", "https://36kr.com/p/4057643078260612", "36krauthor-a8b2c9", "36krauthor"],
       ["CSDN (demoplus)", "夯到爆！Github 又出狠活神器，CleanYourTV 之后，六款开源电视工具如何选：从低版本老电视到 Apple TV 风格桌面", "6 Nov", "https://blog.csdn.net/demoplus/article/details/170194206", "csdn-8054c7", "csdn"],
+      ["今日头条 Toutiao (下1个好软件)", "爆火开源项目 | 关闭安卓手机广告、热搜、资讯推荐和营销推送", "26 Oct", "https://www.toutiao.com/article/7700881603635036712/", "toutiao-c88353", "toutiao"],
     ],
   },
   {
@@ -584,6 +593,9 @@ export const COVERAGE: PressGroup[] = [
       ["aleksei (blog.alekseimedia.com, personal Claude Code guides)", "Как убрать рекламу с телевизора через Claude Code", "31 Oct", "https://blog.alekseimedia.com/v/tv", "aleksei-f5f282", "aleksei"],
       ["iPhones.ru", "Я прокачал старый телевизор на Android за 10 минут: убрал рекламу и победил лаги. Вот инструкция", "6 Nov", "https://www.iphones.ru/iNotes/ya-prokachal-staryy-televizor-na-android-za-10-minut-ubral-reklamu-i-pobedil-lagi-vot-instrukciya", "iphonesru-12c547", "iphonesru"],
       ["SecurityLab.ru", "457 моделей телевизоров получили шанс на свободу. Производители вряд ли обрадуются", "9 Nov", "https://www.securitylab.ru/news/579852.php", "securitylabru-3aff06", "securitylabru"],
+      ["Lenta.ru", "Зачем владельцы умных телевизоров делают их «глупыми» с помощью ИИ", "21 Oct", "https://lenta.ru/twz/budushee/make-smarttv-dumb-again.htm", "lentaru-a3704b", "lentaru"],
+      ["vc.ru", "Телевизор без рекламы: 34 800 звёзд на GitHub за 8 дней", "26 Oct", "https://vc.ru/ai/3217920-kak-ubrat-reklamu-s-televizora-instruktsiya-po-cleanyourtv", "vcru-ed10d5", "vcru"],
+      ["Дзен Dzen", "Чистый экран: как Claude Code вычистил рекламу из умного ТВ", "31 Oct", "https://dzen.ru/a/auWyOOBozWj2MhI1", "dzen-30fe4b", "dzen"],
     ],
   },
   {
@@ -871,6 +883,10 @@ export const COVERAGE: PressGroup[] = [
       ["ps on AI (Parul Singh, Substack)", "It Was Weird Until It Wasn't", "28 Oct", "https://parul.substack.com/p/it-was-weird-until-it-wasnt", "psonai-e665f7", "psonai"],
       ["AI Action Letter (Substack, Issue #96)", "Your TV Has Too Many Ads. Let Claude Code Help You Fix That", "4 Nov", "https://abhijayvuyyuru.substack.com/p/your-tv-has-too-many-ads-let-claude", "aiactionletter-61639a", "aiactionletter"],
       ["GenAI Unplugged (Substack)", "I cleaned up my Android TV with Claude Code. It went from 98% full to 1.4 GB free and lost a tracker", "8 Nov", "https://genaiunplugged.substack.com/p/android-tv-clean-up-claude-code", "genaiunplugged-892524", "genaiunplugged"],
+      ["Mashable SEA", "People are using AI to make their smart TVs smarter", "19 Oct", "https://sea.mashable.com/tech/56133/people-are-using-ai-to-make-their-smart-tvs-smarter", "mashablesea-d0ef50", "mashablesea"],
+      ["Estación K2", "La nueva tendencia es usar IA para hacer \"menos inteligentes\" los Smart TV", "", "https://www.estacionk2.com/nota/184518/la-nueva-tendencia-es-usar-ia-para-hacer-menos-inteligentes-los-smart-tv/", "estacink2-2f0eac", "estacink2"],
+      ["ComputerShop.EU (blog)", "Entferne unerwünschte Apps von Android TV mit CleanYourTV", "30 Oct", "https://computershop.eu/blog/de/entferne-unerwunschte-apps-von-android-tv-mit-cleanyourtv", "computershopeu-74d5e4", "computershopeu"],
+      ["Parade (Medium)", "Debloat Your TCL Smart TV in One Afternoon With an AI Agent", "31 Oct", "https://medium.com/@parade4940/debloat-your-tcl-smart-tv-in-one-afternoon-with-an-ai-agent-ec641abace22", "parade-ffb8c5", "parade"],
     ],
   },
 ];
