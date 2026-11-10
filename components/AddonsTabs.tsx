@@ -99,7 +99,7 @@ function Shot({ src, alt, wanted, badge }: { src: string; alt: string; wanted: s
     <div className="ao-shot">
       {src ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={repoCdn(src)} alt={alt} width={1280} height={720} loading="lazy" decoding="async" />
+        <img src={src.startsWith("https://") ? src : repoCdn(src)} alt={alt} width={1280} height={720} loading="lazy" decoding="async" />
       ) : (
         <a className="ao-wanted" href={wanted} target="_blank" rel="noopener">Screenshot wanted</a>
       )}
@@ -312,6 +312,7 @@ function Addons({ addons, community, searching }: { addons: AddonRow[]; communit
           <ul className="plain ao-grid">
             {community.map((c) => (
               <li key={c.url} className="ao-card">
+                <Shot src={c.screenshot || ""} alt={`${c.name} on a TV`} wanted={`${GH}/blob/main/SHOWCASE.md#add-yours`} />
                 <div className="ao-body">
                   <Head name={c.name} href={c.url} by={c.by} />
                   {c.what && <p className="ao-text">{md(c.what, "")}</p>}

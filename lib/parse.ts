@@ -7,7 +7,7 @@ export const THEMES_RAW = `https://raw.githubusercontent.com/${REPO}/main/themes
 export type Tv = { folder: string; tv: string; brand: string; model: string; os: string; notes: string };
 export type Pr = { login: string; avatar: string; title: string };
 export type ResultItem = { handle: string; quote: string; image: string; link: string; tv: string };
-export type ShowcaseItem = { name: string; what: string; builtOn: string; by: string; url: string; category?: string };
+export type ShowcaseItem = { name: string; what: string; builtOn: string; by: string; url: string; category?: string; screenshot?: string };
 export type ThemeItem = { name: string; what: string; image?: string };
 export type Tweet = { text: string; likes: number; replies: number; date: string };
 export type SiteData = {
@@ -56,10 +56,25 @@ export function parseShowcase(md: string): ShowcaseItem[] {
     const c = l.split("|").slice(1, -1).map((s) => s.trim());
     const m = c[0].match(/\[([^\]]+)\]\(([^)]+)\)/);
     const by = (c[3] || "").match(/\[([^\]]+)\]/);
-    const item = { name: m ? m[1] : c[0], url: m ? m[2] : GH, what: c[1] || "", builtOn: c[2] || "", by: by ? by[1] : "", category };
+    // The name cell links its picture as "[screenshot](…)", next to the APK.
+    const shot = c[0].match(/\[screenshot\]\(([^)\s]+)\)/i);
+    const item = { name: m ? m[1] : c[0], url: m ? m[2] : GH, what: c[1] || "", builtOn: c[2] || "", by: by ? by[1] : "", category, screenshot: shot ? githubImage(shot[1]) : "" };
     if (item.name && item.url) out.push(item);
   }
   return out;
+}
+
+/**
+ * A picture in a public GitHub repo, as jsDelivr's mirror of it ("" for anything else), so a showcase
+ * screenshot loads like the repo's own ones do. Takes github.com/o/r/blob|raw/ref/path and
+ * raw.githubusercontent.com/o/r/ref/path.
+ */
+export function githubImage(url: string): string {
+  const u = url.replace(/[?#].*$/, "");
+  const m = u.match(/^https:\/\/github\.com\/([\w.-]+)\/([\w.-]+)\/(?:blob|raw)\/([\w.-]+)\/(.+)$/)
+    || u.match(/^https:\/\/raw\.githubusercontent\.com\/([\w.-]+)\/([\w.-]+)\/([\w.-]+)\/(.+)$/);
+  if (!m || !/\.(jpe?g|png|webp|gif)$/i.test(m[4]) || m[4].includes("..")) return "";
+  return `https://cdn.jsdelivr.net/gh/${m[1]}/${m[2]}@${m[3]}/${m[4]}`;
 }
 
 export function parseThemes(md: string): ThemeItem[] {
