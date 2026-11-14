@@ -708,6 +708,7 @@ export const VIDEO_INFO: Record<string, [Kind, string]> = {
   "Z09W1hztBcw": ["tutorial", "en"], // Claude Code Smart TV Hack: Ole Lehmann's 3 Steps
   "1NPepUWDewA": ["tutorial", "de"], // Mein Fernseher, eure Verkaufsfläche? CleanYourTV räumt auf
   "kyL5fqX6fOI": ["other", "en"], // Why are people hacking their own TVs with Claude?
+  "BnYCCrD8wF4": ["tutorial", "ta"], // END of TV Brands (Tamil Tech, phone app and agent methods)
 };
 
 /** The four the page opens with: clear walk-throughs with the most views, one of them not in English. */

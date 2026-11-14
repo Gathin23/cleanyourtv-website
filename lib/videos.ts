@@ -154,6 +154,7 @@ export const VIDEOS: Video[] = [
   { id: "LhY7uQqIbUE", title: "CleanYourTV GitHub Overview: Reversible Android TV Debloating Over Wi-Fi", channel: "Alex Hitt", date: "2026-10-23", views: 4776, duration: 406 },
   { id: "Z04OH8aEZYc", title: "Github 1.3万星！AI 干掉电视广告，秒变干净苹果风", channel: "机器之心", date: "2026-10-22", views: 4737, duration: 72 },
   { id: "BV1Uwn16cE6n", title: "测评打假 cleanyourtv净化桌面到底是不是真的， 实测 电视桌面净化效果 cleanyourtv实测#真干活用搭子 #办公就用dumate #百度搭子", channel: "我超爱吃瓜嘻嘻", date: "2026-10-22", views: 4683, duration: 41, site: "bilibili" },
+  { id: "BnYCCrD8wF4", title: "😱 END of TV Brands⁉️ இத பண்ணா, இனி புது TV-யே தேவையில்ல 🔥", channel: "Tamil Tech - MrTT", date: "2026-11-14", views: 4507, duration: 416 },
   { id: "ltLmuMkT5go", title: "cleanyourtv Tutorial — What It Is & How To Use It", channel: "GitTube", date: "2026-10-25", views: 4472, duration: 378 },
   { id: "_zB3OufofGE", title: "An AI cleared the ads from his parents' Android TV", channel: "Picoito", date: "2026-10-18", views: 4407, duration: 136 },
   { id: "0iTOlQjNdhs", title: "I Fixed My Android TV With Claude Code + CleanYourTV", channel: "AI Automation Station", date: "2026-11-01", views: 4322, duration: 901 },
