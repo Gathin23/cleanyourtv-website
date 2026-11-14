@@ -190,6 +190,7 @@ export const COVERAGE: PressGroup[] = [
       ["futurezone", "Fernseher: Wer eines dieser Geräte hat, kann einen praktischen neuen Trick anwenden", "5 Nov", "https://www.futurezone.de/digital-life/article761002/fernseher-android-tv-cleanyourtv-geht-viral-startbildschirm-im-apple-tv-stil.html", "futurezone-98dee0", "futurezone"],
       ["4K Filme", "So einfach und schnell könnte dein Fernseher sein: Dieses KI-Projekt macht es vor", "6 Nov", "https://www.4kfilme.de/so-einfach-und-schnell-koennte-dein-fernseher-sein-dieses-ki-projekt-macht-es-vor", "4kfilme-48bf61", "4kfilme"],
       ["Hardwareluxx", "Smart-TVs ohne Werbung und Tracking: KI-Agenten können Fernseher von Ballast befreien", "20 Oct", "https://www.hardwareluxx.de/index.php/news/consumer-electronics/gadgets/70672-smart-tvs-ohne-werbung-und-tracking-ki-agenten-koennen-fernseher-von-ballast-befreien.html", "hardwareluxx-a1dc42", "hardwareluxx"],
+      ["bitpage.de", "CleanYourTV: Android TV Without Ads on the Home Screen", "28 Oct", "https://bitpage.de/en/cleanyourtv-android-tv-remove-ads/", "bitpagede-c091be", "bitpagede"],
     ],
   },
   {
@@ -215,6 +216,7 @@ export const COVERAGE: PressGroup[] = [
       ["Hipertextual", "El truco con IA para quitar todos los anuncios y hacer tu Smart TV más rápida", "25 Oct", "https://hipertextual.com/inteligencia-artificial/eliminar-anuncios-bloatware-smart-tv-ia/", "hipertextual-b32ff9", "hipertextual"],
       ["Enrique Dans", "Cuando mejorar tu televisión consiste en quitarle cosas", "26 Oct", "https://www.enriquedans.com/2026/10/cuando-mejorar-tu-television-consiste-en-quitarle-cosas.html", "enriquedans-572e83", "enriquedans"],
       ["Ara", "El teu televisor t'espia: què pots fer per evitar-ho", "6 Nov", "https://www.ara.cat/media/televisor-t-espia-pots-evitar-ho_1_5901939.html", "ara-aa9c69", "ara"],
+      ["Escuela Vue", "Usan Claude y ADB para quitar anuncios y bloatware de la Smart TV", "25 Oct", "https://escuelavue.es/tecnologia/claude-adb-quitar-anuncios-bloatware-smart-tv/", "escuelavue-50580c", "escuelavue"],
     ],
   },
   {
@@ -349,6 +351,9 @@ export const COVERAGE: PressGroup[] = [
       ["Observatório Tech", "Adeus lentidão e anúncios: projeto viral promete limpeza visual em Smart TVs", "29 Oct", "https://observatoriotech.com.br/noticia/adeus-lentidao-e-anuncios-projeto-viral-promete-limpeza-visual-em-smart-tvs/", "observatoriotech-fdd4c4", "observatoriotech"],
       ["Jornal 24 Horas", "Usuários estão deixando suas smart tvs mais rápidas com IA; confira como fazer", "20 Oct", "https://jornal24horas.com.br/?p=69300", "jornal24horas-9eac3a", "jornal24horas"],
       ["Hardware.com.br", "Irritado com anúncios na Smart TV dos pais, desenvolvedor usa Claude Code para removê-los e acaba criando ferramenta para outras TVs", "1 Nov", "https://www.hardware.com.br/noticias/claude-code-remover-anuncios-smart-tv-cleanyourtv/", "hardwarecombr-0704f9", "hardwarecombr"],
+      ["Showmetech", "TV vibecoding: usuários estão usando IA para remover anúncios e apps de suas smart TVs", "20 Oct", "https://www.showmetech.com.br/tv-vibecoding-ia-para-remover-anuncios-de-smart-tvs/", "showmetech-83acdf", "showmetech"],
+      ["Olhar Digital", "Limpeza de smart TV com IA: Usuários relatam TV que parou de funcionar e anúncios que voltam com a atualização", "10 Nov", "https://olhardigital.com.br/curiosidades/2026/11/10/limpeza-de-smart-tv-com-ia-usuarios-relatam-tv-que-parou-de-funcionar-e-anuncios-que-voltam-com-a-atualizacao/", "olhardigital-7d5fb0", "olhardigital"],
+      ["Olhar Digital", "Smart TV sem anúncios? Dono usa IA para “limpar” a TV de anúncios e apps que vinham de fábrica, e o resultado viralizou e virou movimento na internet", "10 Nov", "https://olhardigital.com.br/curiosidades/2026/11/10/smart-tv-sem-anuncios-dono-usa-ia-para-limpar-a-tv-de-anuncios-e-apps-que-vinham-de-fabrica-e-o-resultado-viralizou-e-virou-movimento-na-internet/", "olhardigital-376275", "olhardigital"],
     ],
   },
   {
@@ -460,6 +465,8 @@ export const COVERAGE: PressGroup[] = [
       ["36Kr (36氪), author 寻空", "爆改硬件，是普通人享受到的第一个AI红利", "6 Nov", "https://36kr.com/p/4057643078260612", "36krauthor-a8b2c9", "36krauthor"],
       ["CSDN (demoplus)", "夯到爆！Github 又出狠活神器，CleanYourTV 之后，六款开源电视工具如何选：从低版本老电视到 Apple TV 风格桌面", "6 Nov", "https://blog.csdn.net/demoplus/article/details/170194206", "csdn-8054c7", "csdn"],
       ["今日头条 Toutiao (下1个好软件)", "爆火开源项目 | 关闭安卓手机广告、热搜、资讯推荐和营销推送", "26 Oct", "https://www.toutiao.com/article/7700881603635036712/", "toutiao-c88353", "toutiao"],
+      ["Ifeng Tech", "智能电视广告引不满，部分用户借助Claude等AI智能体清理广告和预装应用", "20 Oct", "https://tech.ifeng.com/c/8xNzUAQZMqQ", "ifengtech-7cc245", "ifengtech"],
+      ["Huxiu", "一位开发者让电视服用了Claude，这是它系统发生的变化", "24 Oct", "https://www.huxiu.com/article/4900161.html", "huxiu-7fb985", "huxiu"],
     ],
   },
   {
@@ -596,6 +603,9 @@ export const COVERAGE: PressGroup[] = [
       ["Lenta.ru", "Зачем владельцы умных телевизоров делают их «глупыми» с помощью ИИ", "21 Oct", "https://lenta.ru/twz/budushee/make-smarttv-dumb-again.htm", "lentaru-a3704b", "lentaru"],
       ["vc.ru", "Телевизор без рекламы: 34 800 звёзд на GitHub за 8 дней", "26 Oct", "https://vc.ru/ai/3217920-kak-ubrat-reklamu-s-televizora-instruktsiya-po-cleanyourtv", "vcru-ed10d5", "vcru"],
       ["Дзен Dzen", "Чистый экран: как Claude Code вычистил рекламу из умного ТВ", "31 Oct", "https://dzen.ru/a/auWyOOBozWj2MhI1", "dzen-30fe4b", "dzen"],
+      ["Код (thecode.media)", "Вайбкодер избавил Google TV от рекламы и переделал UI под Apple TV", "18 Oct", "https://thecode.media/vajbkoder-izbavil-google-tv-ot-reklamy-i-peredelal-ui-pod-apple-tv/", "thecodemedia-5d06aa", "thecodemedia"],
+      ["Shazoo", "Владелец телевизора Samsung использовал ИИ Claude и за 11 часов очистил телевизор от рекламы и слежки", "23 Oct", "https://shazoo.ru/2026/10/23/192947/vladelec-televizora-samsung-ispolzoval-ii-claude-i-za-11-casov-otcistil-televizor-ot-reklamy-i-slezki", "shazoo-e0a11e", "shazoo"],
+      ["SecurityLab.ru", "ИИ превращает умные телевизоры обратно в «глупые». Рекламу и телеметрию вычищают под ноль", "25 Oct", "https://www.securitylab.ru/news/579201.php", "securitylabru-ec1c7d", "securitylabru"],
     ],
   },
   {
@@ -688,6 +698,7 @@ export const COVERAGE: PressGroup[] = [
       ["Teknikveckan", "Se hur en användare vibekodar bort all reklam från sin smart-tv", "21 Oct", "https://teknikveckan.se/se-hur-en-reklamtrott-anvandare-vibekodar-bort-reklamen-fran-sin-smart-tv/", "teknikveckan-661b87", "teknikveckan"],
       ["SweClockers", "AI-kod gör smart-TV dum", "22 Oct", "https://www.sweclockers.com/artikel/43315-ai-kod-gor-smart-tv-dum", "sweclockers-76e522", "sweclockers"],
       ["Ljud & Bild", "Använder AI för att ta bort reklam från smarta TV-apparater", "29 Oct", "https://www.ljudochbild.se/nyheter/tv/anvander-ai-for-att-ta-bort-reklam-fran-smarta-tv-apparater", "ljudbild-43d99d", "ljudbild"],
+      ["HurBra.se", "cleanyourtv: rensa reklam från Google TV med AI", "20 Oct", "https://hurbra.se/cleanyourtv-google-tv/", "hurbrase-9e2132", "hurbrase"],
     ],
   },
   {
@@ -888,6 +899,7 @@ export const COVERAGE: PressGroup[] = [
       ["ComputerShop.EU (blog)", "Entferne unerwünschte Apps von Android TV mit CleanYourTV", "30 Oct", "https://computershop.eu/blog/de/entferne-unerwunschte-apps-von-android-tv-mit-cleanyourtv", "computershopeu-74d5e4", "computershopeu"],
       ["Parade (Medium)", "Debloat Your TCL Smart TV in One Afternoon With an AI Agent", "31 Oct", "https://medium.com/@parade4940/debloat-your-tcl-smart-tv-in-one-afternoon-with-an-ai-agent-ec641abace22", "parade-ffb8c5", "parade"],
       ["Open-source Projects", "De-bloat any Android TV over Wi-Fi, no root, one-line restore", "3 Nov", "https://www.opensourceprojects.dev/post/cleanyourtv", "opensourceprojects-906a2a", "opensourceprojects"],
+      ["えーAIニュースレター (Substack)", "Claude Codeでテレビの広告を消す人が続出｜2日で数千人、ソニー・TCL製も対象", "19 Oct", "https://eaiformal.substack.com/p/claude-code2tcl", "ai-10a599", "substack"],
     ],
   },
 ];

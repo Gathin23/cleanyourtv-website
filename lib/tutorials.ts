@@ -698,6 +698,16 @@ export const VIDEO_INFO: Record<string, [Kind, string]> = {
   "dAlZLnx5PHM": ["tutorial", "id"], // Claude bisa Bersihkan TV kamu dari Sampah dan Iklan dengan m
   "5CXcfiMW3wY": ["tutorial", "en"], // Use Claude Code To Make Your TV Ad Free | Complete guide!
   "wZLpUpr3jq0": ["tutorial", "pt"], // O Claude Code tira as propagandas da sua TV
+  "VizVLPkE5zs": ["tutorial", "es"], // CleanYourTV: Elimina Aplicaciones de Fábrica y Optimiza tu A
+  "EQz7yhYnEwM": ["other", "es"], // Claude Code puede quitarle los anuncios a tu Smart TV
+  "AwaI_VvKhsg": ["other", "en"], // People are using Claude to strip ads off their smart TVs
+  "FBYRNeG6rtY": ["tutorial", "zh"], // Android TV 去廣告工具 CleanYourTV：不用 root、不刪 app，首頁換成乾淨主畫面
+  "NrcWCBJGyh8": ["other", "es"], // CUIDADO ¿Limpiar tu Smart TV con la IA? Te cuento TODO lo qu
+  "ouMz_gnMWPQ": ["tutorial", "ru"], // Как убрать рекламу с Android TV: нейросеть сделает сама  #ch
+  "e9tO6o5HV1I": ["other", "ru"], // Проект, который сегодня на первом месте в трендах. Он чистит
+  "Z09W1hztBcw": ["tutorial", "en"], // Claude Code Smart TV Hack: Ole Lehmann's 3 Steps
+  "1NPepUWDewA": ["tutorial", "de"], // Mein Fernseher, eure Verkaufsfläche? CleanYourTV räumt auf
+  "kyL5fqX6fOI": ["other", "en"], // Why are people hacking their own TVs with Claude?
 };
 
 /** The four the page opens with: clear walk-throughs with the most views, one of them not in English. */

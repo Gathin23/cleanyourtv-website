@@ -3,4 +3,4 @@
  * to false, or revert the commit that added it. Everything hangs off this constant: lib/diwali.ts, app/diwali/ and a
  * small `DIWALI &&` in app/page.tsx (the bar and the share image), app/sitemap.ts and components/Footer.tsx.
  */
-export const DIWALI = true;
+export const DIWALI = false;
