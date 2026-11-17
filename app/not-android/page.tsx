@@ -4,7 +4,7 @@ import JsonLd from "@/components/JsonLd";
 import OpenWithoutJs from "@/components/OpenWithoutJs";
 import PrivacyGuide from "@/components/PrivacyGuide";
 import { StepList } from "@/components/PrivacySteps";
-import { BRANDS, UNDO } from "@/lib/privacy";
+import { BRANDS, GUIDE_REPORTS, UNDO } from "@/lib/privacy";
 import { GH } from "@/lib/parse";
 import { SITE, breadcrumbs, pageMeta } from "@/lib/seo";
 import "./not-android.css";
@@ -17,7 +17,7 @@ import "./not-android.css";
 const title = "Non-Android TVs: stop your TV tracking you";
 const description =
   "Clean up your non-Android TV: stop Samsung, LG, Roku, Vizio, Hisense VIDAA and Fire TV tracking you. Step by step with your remote, no root, nothing to install, every step undoable.";
-const CHECKED = "26 Oct 2026";
+const CHECKED = "17 Nov 2026";
 
 export const metadata = pageMeta("/not-android", `${title} · CleanYourTV`, description);
 
@@ -239,7 +239,7 @@ export default function Privacy() {
               ))}
             </ul>
             <p className="na-small">
-              Last checked {CHECKED}. Spotted a wrong menu path? <a href={`${GH}/issues/new?labels=tv-support`}>Open an issue</a>.
+              Last checked {CHECKED}. Spotted a wrong menu path? <a href={`${GH}/discussions/new?category=${GUIDE_REPORTS}&title=${encodeURIComponent("Non-Android TV guide: menu looked different on ")}`}>Tell us in Discussions</a>.
             </p>
           </Fold>
         </div>

@@ -6,7 +6,7 @@ import { createPortal } from "react-dom";
 import CopyButton from "@/components/CopyButton";
 import NetCheck from "@/components/NetCheck";
 import { Keys, StepBody, StepList, Toggles, pathsFor } from "@/components/PrivacySteps";
-import { BRANDS, DOMAINS, NA_STORE, brandById, choiceOf, pickLabel, stepsFor } from "@/lib/privacy";
+import { BRANDS, DOMAINS, GUIDE_REPORTS, NA_STORE, brandById, choiceOf, pickLabel, stepsFor } from "@/lib/privacy";
 import type { Brand, BrandId, Pick, Step, Verdict } from "@/lib/privacy";
 import { GH } from "@/lib/parse";
 import { lgYear, samsungYear } from "@/lib/tvYear";
@@ -100,7 +100,7 @@ function CheckNudge({ onGo, className }: { onGo: () => void; className?: string 
 }
 const tvText = (b: Brand, pick: Pick, model: string) => [b.name, pickLabel(b, pick), model && b.decoder && pick && /^\d{4}$/.test(pick) ? model.toUpperCase().replace(/\s+/g, "") : ""].filter(Boolean).join(" ");
 
-function issueUrl(kind: "worked" | "different", b: Brand, pick: Pick, model: string, done: string[], step: Step | null) {
+function reportUrl(kind: "worked" | "different", b: Brand, pick: Pick, model: string, done: string[], step: Step | null) {
   const tv = tvText(b, pick, model);
   const steps = stepsFor(b, pick);
   const title = kind === "worked" ? `Non-Android TV guide worked: ${tv}` : `Non-Android TV guide: menu looked different on ${tv}${step ? `, step ${steps.indexOf(step) + 1}` : ""}`;
@@ -114,7 +114,7 @@ function issueUrl(kind: "worked" | "different", b: Brand, pick: Pick, model: str
     lines.push("**What did your menu show instead?** A photo of the TV screen helps most: drag it into this box. Or type the names you see.", "", "");
   }
   lines.push("", `From https://cleanyour.tv/not-android#${b.id}${pick ? `-${pick}` : ""}`);
-  return `${GH}/issues/new?labels=tv-support&title=${encodeURIComponent(title)}&body=${encodeURIComponent(lines.join("\n"))}`;
+  return `${GH}/discussions/new?category=${GUIDE_REPORTS}&title=${encodeURIComponent(title)}&body=${encodeURIComponent(lines.join("\n"))}`;
 }
 
 const Check = ({ size = 20 }: { size?: number }) => (
@@ -384,7 +384,7 @@ export default function PrivacyGuide({ hero, after }: { hero: React.ReactNode; a
                         step={s}
                         pick={pick}
                         extra={
-                          <a className="na-diff" href={issueUrl("different", brand, pick, model, done, s)} target="_blank" rel="noopener">
+                          <a className="na-diff" href={reportUrl("different", brand, pick, model, done, s)} target="_blank" rel="noopener">
                             Menu looked different?
                           </a>
                         }
@@ -581,8 +581,8 @@ function DoneBand({ brand, pick, model, done, hash, time }: { brand: Brand; pick
           <h3 className="h3">Did this work on your TV?</h3>
           <p className="dim">Tell us on GitHub, so the next person with your TV knows the path is right.</p>
           <div className="btns">
-            <a className="btn btn-ghost btn-sm" href={issueUrl("worked", brand, pick, model, done, null)} target="_blank" rel="noopener">Worked on my TV</a>
-            <a className="btn btn-ghost btn-sm" href={issueUrl("different", brand, pick, model, done, null)} target="_blank" rel="noopener">My menu looked different</a>
+            <a className="btn btn-ghost btn-sm" href={reportUrl("worked", brand, pick, model, done, null)} target="_blank" rel="noopener">Worked on my TV</a>
+            <a className="btn btn-ghost btn-sm" href={reportUrl("different", brand, pick, model, done, null)} target="_blank" rel="noopener">My menu looked different</a>
           </div>
         </div>
         <div className="stack">

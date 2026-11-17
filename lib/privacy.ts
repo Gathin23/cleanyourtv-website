@@ -5,6 +5,10 @@
 /** Where /not-android keeps a visitor's progress (localStorage). */
 export const NA_STORE = "cyt-not-android";
 
+/** The Discussions category the guide's "Worked on my TV" and "My menu looked different" buttons open, so guide reports
+ *  don't fill the issue list. Swap to a dedicated "Guide reports" category once it exists (categories are made in the UI). */
+export const GUIDE_REPORTS = "general";
+
 export type BrandId = "samsung" | "lg" | "roku" | "vizio" | "firetv" | "hisense" | "google";
 
 /** One switch at the end of a path: "off" draws ☐, "on" draws ☑, "press" draws a button. */
@@ -106,12 +110,18 @@ export const BRANDS: Brand[] = [
             crumbs: ["Settings", "Support", "Terms & Privacy", "Privacy Choices"],
             note: "Some sets say “Terms & Policy”. On a 2021 TV, if the menu looks different, try the 2022–2024 path, or Home › Privacy Choices.",
           },
-          { label: "2018 and older", years: [1990, 2018], crumbs: ["Smart Hub", "Settings", "Support", "Terms & Policy"], items: [{ name: "SyncPlus and Marketing", to: "off" }] },
+          {
+            label: "2018 and older",
+            years: [1990, 2018],
+            crumbs: ["Smart Hub", "Settings", "Support", "Terms & Policy"],
+            items: [{ name: "SyncPlus and Marketing", to: "off" }],
+            note: "On 2012 sets (E series, such as the UE40ES7000), Smart Hub › Settings › Terms and conditions lists only the service terms and the privacy policy: there is no switch to turn off here.",
+          },
           { label: "Any year", crumbs: ["Home", "Privacy Choices"], note: "An app in the home screen’s side bar that opens the same agreements." },
         ],
         undo: "Tick it again in the same place.",
         sources: [CR, ["SamMobile, Feb 2025", "https://www.sammobile.com/news/samsung-tvs-displaying-repeated-privacy-pop-ups/"], CR22, CR21, EM21, ["Samsung: ACR", "https://www.samsung.com/us/support/answer/ANS10010616/"]],
-        checks: [{ year: 2022, model: "QE55LS03B", by: "joeclack", issue: 2212 }],
+        checks: [{ year: 2017, model: "UE55MU6170", by: "christianbetatechnik77-cmd", issue: 2637 }, { year: 2019, model: "UA65RU7100SXNZ", by: "geekpulp", issue: 2887 }, { year: 2020, model: "UN43T5300APXPA", by: "vladiramirezma", issue: 3178 }, { year: 2022, model: "QE55LS03B", by: "joeclack", issue: 2212 }, { year: 2025, model: "QA75QFAAUXSA", by: "SMZ-X1", issue: 3913 }, { by: "jehredluvsu-lgtm", issue: 3946 }],
       },
       {
         id: "ads",
@@ -128,17 +138,26 @@ export const BRANDS: Brand[] = [
         note: "Most TVs only show Interest-Based Advertisements here, next to Viewing Information Services. On some 2020 sets it opens a notice with an I agree tick: leave it unticked and press Confirm. The other four are on some models only: untick any you see. This is the full set the IMC 2024 study switched off before the TVs stopped contacting tracking servers. On The Frame, two Art Store entries are listed too: the Art Store terms are needed for Art Mode’s store; untick the Art Store Curation notice if you don’t want personalised art suggestions.",
         undo: "Tick them again. Ads stay either way; they just stop being targeted.",
         sources: [IMC],
-        checks: [{ year: 2022, model: "QE55LS03B", by: "joeclack", issue: 2212 }],
+        checks: [{ year: 2017, model: "UE55MU6170", by: "christianbetatechnik77-cmd", issue: 2637 }, { year: 2019, model: "UA65RU7100SXNZ", by: "geekpulp", issue: 2887 }, { year: 2020, model: "UN43T5300APXPA", by: "vladiramirezma", issue: 3178 }, { year: 2022, model: "QE55LS03B", by: "joeclack", issue: 2212 }, { year: 2025, model: "QA75QFAAUXSA", by: "SMZ-X1", issue: 3913 }, { by: "jehredluvsu-lgtm", issue: 3946 }],
       },
       {
         id: "psid",
         title: "Reset the ad ID",
         does: "Gives the TV a new ad ID. On its own it doesn’t stop personalised ads.",
-        variants: [{ label: "Newer menus", crumbs: ["Settings", "All Settings", "General & Privacy", "Terms & Privacy"], items: [{ name: "Reset PSID", to: "press" }] }],
+        variants: [
+          { label: "Newer menus", years: [2019, 2025], crumbs: ["Settings", "All Settings", "General & Privacy", "Terms & Privacy"], items: [{ name: "Reset PSID", to: "press" }] },
+          {
+            label: "2018 and older",
+            years: [1990, 2018],
+            crumbs: ["Settings", "Support", "Terms & Privacy"],
+            items: [{ name: "Reset PSID", to: "press" }],
+            note: "It’s the last item in the list, after the privacy notices (seen on a 2016 UA65KS9000). It isn’t under System › Expert Settings.",
+          },
+        ],
         note: "This gives the TV a new ad ID. On its own it doesn’t turn off personalised ads; step 2 does. Not every model has Reset PSID: if yours doesn’t, skip this step.",
         undo: "Nothing to undo.",
         sources: [NAI],
-        checks: [{ year: 2022, model: "QE55LS03B", by: "joeclack", issue: 2212 }],
+        checks: [{ year: 2017, model: "UE55MU6170", by: "christianbetatechnik77-cmd", issue: 2637 }, { year: 2019, model: "UA65RU7100SXNZ", by: "geekpulp", issue: 2887 }, { year: 2020, model: "UN43T5300APXPA", by: "vladiramirezma", issue: 3178 }, { year: 2022, model: "QE55LS03B", by: "joeclack", issue: 2212 }, { year: 2025, model: "QA75QFAAUXSA", by: "SMZ-X1", issue: 3913 }, { by: "jehredluvsu-lgtm", issue: 3946 }],
       },
       {
         id: "voice",
@@ -147,17 +166,22 @@ export const BRANDS: Brand[] = [
         items: [{ name: "Voice Wake-Up", to: "off" }],
         variants: [
           { label: "2025 TVs", years: [2025, 2025], crumbs: ["Settings", "All Settings", "Advanced Features", "Voice", "Bixby Settings"] },
-          { label: "2022–2024 TVs", years: [2022, 2024], crumbs: ["Settings", "All Settings", "General & Privacy", "Voice", "Bixby Settings"] },
+          {
+            label: "2022–2024 TVs",
+            years: [2022, 2024],
+            crumbs: ["Settings", "All Settings", "General & Privacy", "Voice", "Bixby Settings"],
+            note: "On some 2023 sets (such as the UN65CU8000) Voice is under Advanced Features, as on 2025 TVs.",
+          },
           { label: "2021 and older", years: [1990, 2021], crumbs: ["Settings", "General", "Voice", "Bixby Voice Settings"], note: "From Samsung’s 2021 manual; older sets may differ." },
         ],
-        note: "Bixby itself can’t be turned off, only its wake-up.",
+        note: "Bixby itself can’t be turned off, only its wake-up. On TVs without a built-in microphone, Voice Wake-Up is greyed out: nothing to turn off.",
         undo: "Turn Voice Wake-Up back on.",
         sources: [
           ["Samsung: Bixby", "https://www.samsung.com/hk_en/support/tv-audio-video/how-to-set-up-and-use-bixby-on-your-samsung-smart-tv/"],
           ["Samsung AU: Bixby can’t be turned off", "https://www.samsung.com/au/support/tv-audio-video/how-to-use-bixby-on-a-samsung-smart-tv/"],
           EM21,
         ],
-        checks: [{ year: 2022, model: "QE55LS03B", by: "joeclack", issue: 2212 }],
+        checks: [{ year: 2017, model: "UE55MU6170", by: "christianbetatechnik77-cmd", issue: 2637 }, { year: 2020, model: "UN43T5300APXPA", by: "vladiramirezma", issue: 3178 }, { year: 2022, model: "QE55LS03B", by: "joeclack", issue: 2212 }, { year: 2025, model: "QA75QFAAUXSA", by: "SMZ-X1", issue: 3913 }, { by: "jehredluvsu-lgtm", issue: 3946 }],
       },
       {
         id: "mic",
@@ -168,7 +192,7 @@ export const BRANDS: Brand[] = [
         note: "With it off, voice commands stop. The remote’s mic only listens while you hold its button.",
         undo: "Slide the switch back.",
         sources: [["Samsung: mic switch", "https://www.samsung.com/ca/support/tv-audio-video/how-to-enable-or-disable-the-microphone-switch-on-samsung-smart-tvs"]],
-        checks: [{ year: 2022, model: "QE55LS03B", by: "joeclack", issue: 2212 }],
+        checks: [{ year: 2017, model: "UE55MU6170", by: "christianbetatechnik77-cmd", issue: 2637 }, { year: 2020, model: "UN43T5300APXPA", by: "vladiramirezma", issue: 3178 }, { year: 2022, model: "QE55LS03B", by: "joeclack", issue: 2212 }, { year: 2025, model: "QA75QFAAUXSA", by: "SMZ-X1", issue: 3913 }, { by: "jehredluvsu-lgtm", issue: 3946 }],
       },
       {
         id: "petcare",
@@ -178,7 +202,7 @@ export const BRANDS: Brand[] = [
         text: "On Q8F and higher models, Pet Care uses the TV’s mic to listen for barking while the TV is off. It’s switched on from the SmartThings app on your phone, so if you never turned it on there, you’re done.",
         undo: "Turn it on again in SmartThings.",
         sources: [["Samsung: Pet Care", "https://www.samsung.com/us/tvs/smart-tv/smart-home/"]],
-        checks: [{ year: 2022, model: "QE55LS03B", by: "joeclack", issue: 2212 }],
+        checks: [{ year: 2017, model: "UE55MU6170", by: "christianbetatechnik77-cmd", issue: 2637 }, { year: 2020, model: "UN43T5300APXPA", by: "vladiramirezma", issue: 3178 }, { year: 2022, model: "QE55LS03B", by: "joeclack", issue: 2212 }, { year: 2025, model: "QA75QFAAUXSA", by: "SMZ-X1", issue: 3913 }, { by: "jehredluvsu-lgtm", issue: 3946 }],
       },
     ],
     outro: "Some owners report ad settings switching back after a firmware update, so look again after one.",
@@ -192,12 +216,13 @@ export const BRANDS: Brand[] = [
     decoder: "lg",
     ask: {
       q: "How old is your TV?",
-      help: "LG moved Live Plus in 2025 and again in 2026.",
+      help: "LG moved Live Plus in 2025 and again in 2026, and 2019 sets keep things in other places.",
       choices: [
         { id: "2026", label: "2026", years: [2026, 2026] },
         { id: "2025", label: "2025", years: [2025, 2025] },
         { id: "2021-2024", label: "2021–2024", years: [2021, 2024] },
         { id: "2020", label: "2020", years: [2020, 2020] },
+        { id: "2019", label: "2019 or older", years: [1990, 2019] },
       ],
     },
     list: "native.lgwebos",
@@ -211,12 +236,18 @@ export const BRANDS: Brand[] = [
         variants: [
           { label: "2026 TVs", years: [2026, 2026], crumbs: ["Hold the Settings button", "System", "Additional settings"] },
           { label: "2025 TVs", years: [2025, 2025], crumbs: ["All Settings", "Support", "Privacy & Terms", "User Agreements"], items: [{ name: "Viewing Information", to: "off" }] },
-          { label: "2021–2024 TVs", years: [2021, 2024], crumbs: ["All Settings", "General", "System", "Additional Settings"] },
+          {
+            label: "2021–2024 TVs",
+            years: [2021, 2024],
+            crumbs: ["All Settings", "General", "System", "Additional Settings"],
+            note: "Some sets have no Live Plus in Additional Settings (a 2022 43UQ75003LF lists Home Settings, Screen Saver and Advertisement, but no Live Plus): then there’s nothing to turn off here, and the Viewing information agreement in step 2 covers it.",
+          },
           { label: "2020 TVs", years: [2020, 2020], crumbs: ["Settings", "General", "Additional Settings"], note: "Some 2020 sets have no Live Plus: nothing to turn off." },
+          { label: "2019 and older", years: [1990, 2019], crumbs: ["All Settings", "General", "Additional Settings"] },
         ],
         undo: "Turn it back on in the same place.",
         sources: [CR, ["XDA, Aug 2026", "https://www.xda-developers.com/hidden-lg-tv-settings-i-changed-immediately-to-make-my-new-tv-look-even-better/"], MARKUP, ["Pocket-lint", "https://www.pocket-lint.com/lg-tv-turn-off-live-plus/"], CR21],
-        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }, { year: "2021–2024", by: "Sulivan1972", issue: 2762 }],
+        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2021, model: "32UP77", by: "vovajonav-cpu", issue: 3485 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }, { year: "2021–2024", by: "Sulivan1972", issue: 2762 }, { year: 2025, model: "OLED55G46LS", by: "hteebee", issue: 4100 }],
       },
       {
         id: "agreements",
@@ -231,13 +262,14 @@ export const BRANDS: Brand[] = [
           { name: "Do Not Sell My Personal Information", to: "on" },
         ],
         variants: [
-          { label: "Most TVs", crumbs: ["Settings", "Privacy & Terms", "User Agreements"] },
-          { label: "Many 2021–2024 TVs", crumbs: ["All Settings", "Support", "Privacy & Terms", "User Agreements"] },
+          { label: "Most TVs", years: [2020, 2026], crumbs: ["Settings", "Privacy & Terms", "User Agreements"] },
+          { label: "Many 2021–2024 TVs", years: [2021, 2024], crumbs: ["All Settings", "Support", "Privacy & Terms", "User Agreements"] },
+          { label: "2019 and older", years: [1990, 2019], crumbs: ["All Settings", "General", "About This TV", "User Agreements"] },
         ],
         note: "Only the Terms of Use and the Privacy Policy are required. Apps keep working without the rest. The names may end in “Agreement”, and Who.Where.What? and Do Not Sell only show on some sets.",
         undo: "Accept them again in User Agreements. Voice control needs Voice information.",
         sources: [["LG: User Agreements", "https://www.lg.com/us/support/help-library/how-to-accept-the-updated-user-agreements-on-your-lg-tv--20155426555618"], CR],
-        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }, { year: "2021–2024", by: "Sulivan1972", issue: 2762 }],
+        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2021, model: "32UP77", by: "vovajonav-cpu", issue: 3485 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }, { year: "2021–2024", by: "Sulivan1972", issue: 2762 }, { year: 2025, model: "OLED55G46LS", by: "hteebee", issue: 4100 }],
       },
       {
         id: "adid",
@@ -245,11 +277,20 @@ export const BRANDS: Brand[] = [
         does: "Ads stay, but stop being targeted at you.",
         variants: [
           {
-            label: "2020 and older",
-            years: [1990, 2020],
+            label: "2020 TVs",
+            years: [2020, 2020],
             crumbs: ["All Settings", "General", "System", "Additional Settings", "Advertisement"],
             items: [{ name: "Limit AD Tracking", to: "on" }],
             note: "If Additional Settings shows Advertising Cookies, turn it off.",
+          },
+          {
+            label: "2019 and older",
+            years: [1990, 2019],
+            crumbs: ["All Settings", "General", "Additional Settings", "Advertisement"],
+            items: [
+              { name: "Limit AD Tracking", to: "on" },
+              { name: "Reset AD ID", to: "press" },
+            ],
           },
           {
             label: "2021–2024 TVs",
@@ -271,21 +312,40 @@ export const BRANDS: Brand[] = [
         ],
         undo: "Turn it off again.",
         sources: [MARKUP],
-        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }, { year: "2021–2024", by: "Sulivan1972", issue: 2762 }],
+        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2021, model: "32UP77", by: "vovajonav-cpu", issue: 3485 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }, { year: "2021–2024", by: "Sulivan1972", issue: 2762 }, { year: 2025, model: "OLED55G46LS", by: "hteebee", issue: 4100 }],
       },
       {
         id: "home",
         title: "Stop the home screen promotions",
         does: "Takes the promotions and recommended content off the home screen.",
-        variants: [{ label: "", crumbs: ["All Settings", "General", "System", "Additional Settings", "Home Settings"] }],
+        variants: [
+          { label: "2026 TVs", years: [2026, 2026], crumbs: ["All Settings", "General", "System", "Additional Settings", "Home Settings"], note: "Also turn off Screen Saver Promotion, and AI Recommendations under General › AI Service › LG AI Settings." },
+          {
+            label: "2025 TVs",
+            years: [2025, 2025],
+            crumbs: ["All Settings", "General", "System", "Additional Settings", "Home Settings"],
+            items: [
+              { name: "Power On Screen", to: "off" },
+              { name: "Content Recommendation", to: "off" },
+            ],
+            note: "On 2025 TVs, Limit Ad Tracking is in its own Advertisement entry: turn it on there too (step 3).",
+          },
+          { label: "2020–2024 TVs", years: [2020, 2024], crumbs: ["All Settings", "General", "System", "Additional Settings", "Home Settings"] },
+          {
+            label: "2019 and older",
+            years: [1990, 2019],
+            crumbs: ["All Settings", "General", "Additional Settings", "Home Settings"],
+            items: [{ name: "Home Promotion", to: "off" }],
+            note: "Also turn off AI Recommendation under All Settings › General › AI Service.",
+          },
+        ],
         items: [
           { name: "Home Promotion", to: "off" },
           { name: "Content Recommendation", to: "off" },
         ],
-        note: "On 2026 TVs, also turn off Screen Saver Promotion, and AI Recommendations under General › AI Service › LG AI Settings.",
         undo: "Tick them again.",
         sources: [MARKUP, ["LG: Content Recommendation", "https://www.lg.com/in/support/product-support/troubleshoot/help-library/cs-CT52006584-20153905578425OLT/"], ["XDA, Aug 2026", "https://www.xda-developers.com/hidden-lg-tv-settings-i-changed-immediately-to-make-my-new-tv-look-even-better/"]],
-        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }, { year: "2021–2024", by: "Sulivan1972", issue: 2762 }],
+        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2021, model: "32UP77", by: "vovajonav-cpu", issue: 3485 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }, { year: "2021–2024", by: "Sulivan1972", issue: 2762 }, { year: 2025, model: "OLED55G46LS", by: "hteebee", issue: 4100 }],
       },
       {
         id: "voice",
@@ -296,7 +356,7 @@ export const BRANDS: Brand[] = [
         note: "Voice recognition is off by default. The Magic Remote’s mic only listens while you hold its button.",
         undo: "Turn Hands-free Voice back on.",
         sources: [["LG statement, Sep 2026", "https://www.lg.com/global/newsroom/news/statements/statement-understanding-privacy-on-lg-smart-tvs/"]],
-        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }, { year: "2021–2024", by: "Sulivan1972", issue: 2762 }],
+        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2021, model: "32UP77", by: "vovajonav-cpu", issue: 3485 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }, { year: "2021–2024", by: "Sulivan1972", issue: 2762 }, { year: 2025, model: "OLED55G46LS", by: "hteebee", issue: 4100 }],
       },
     ],
     outro: "Menu paths can move with a software update. If yours didn’t match, tell us what you saw.",
@@ -326,7 +386,7 @@ export const BRANDS: Brand[] = [
           { label: "Or on the web", crumbs: ["my.roku.com", "Privacy Settings", "Smart TV Experience"] },
         ],
         items: [{ name: "Automatic Content Recognition (ACR)", to: "off" }],
-        note: "Older software calls it “Use info from TV inputs”. Some Roku TVs don’t list Privacy in Settings at all: then use the web path at my.roku.com.",
+        note: "Older software calls it “Use info from TV inputs”. Some Roku TVs don’t list Privacy in Settings at all: then use the web path at my.roku.com. On some Roku TVs Privacy lists only Advertising, Voice and Privacy policy (such as a 55HJ4x25K): check my.roku.com › Privacy Settings, and if Smart TV Experience isn’t there either, the TV has no ACR to turn off.",
         undo: "Tick it again. You lose the “More Ways to Watch” suggestions from live TV while it’s off.",
         sources: [["Roku support", "https://support.roku.com/article/115005739288"], MARKUP],
         checks: [{ model: "Hisense 60R6+", by: "btsiders", issue: 2323 }, { model: "TCL 55S403", by: "grapeofwrath", issue: 2324 }],
@@ -346,7 +406,18 @@ export const BRANDS: Brand[] = [
         id: "mic",
         title: "Check the microphone settings",
         does: "Channels lose access to the microphone.",
-        variants: [{ label: "", crumbs: ["Settings", "Privacy", "Microphone"] }],
+        variants: [
+          { label: "Roku TV", for: ["tv"], crumbs: ["Settings", "Privacy", "Microphone"] },
+          {
+            label: "Roku streaming stick",
+            for: ["stick"],
+            crumbs: ["Settings", "Privacy", "Voice"],
+            items: [
+              { name: "Speech recognition", to: "off" },
+              { name: "App microphone access", to: "off" },
+            ],
+          },
+        ],
         note: "Take mic access away from each channel, or block it for all. On the Voice Remote Pro, the hands-free switch turns off “Hey Roku”; push-to-talk still works.",
         undo: "Allow it again in the same menu.",
         sources: [["Roku: microphone", "https://developer.roku.com/dev/docs/romicrophone"], ["Roku: Voice Remote Pro", "https://support.roku.com/en-ca/article/learn-about-voice-remote-pro"]],
@@ -384,12 +455,13 @@ export const BRANDS: Brand[] = [
         note: "Before 2017 it was called Smart Interactivity.",
         undo: "Turn Viewing Data back on.",
         sources: [["Vizio: Viewing Data", "https://vizio.com/en/terms/privacy-policy/viewing-data-privacy-policy"], ["FTC, 2017", "https://www.ftc.gov/business-guidance/blog/2017/02/what-vizio-was-doing-behind-tv-screen"]],
-        checks: [],
+        checks: [{ year: "pre-2020", by: "PhoebeSandhaus", issue: 2885 }],
       },
       {
         id: "walmart",
         title: "Don’t link your viewing to Walmart",
         does: "What you watch isn’t linked to your Walmart account.",
+        only: ["pl", "ap"],
         sameAs: "acr",
         items: [{ name: "Let Walmart link Viewing Data to your Walmart account", to: "off" }],
         note: "Walmart owns Vizio now. Only newer software asks about this: if there’s no Walmart option next to Viewing Data, there’s nothing to turn off.",
@@ -403,7 +475,12 @@ export const BRANDS: Brand[] = [
         does: "Ads stay, but stop being targeted at you.",
         variants: [
           { label: "If you see Privacy & Legal", for: ["pl"], crumbs: ["Menu", "Privacy & Legal", "Advertising"] },
-          { label: "Before 2024", for: ["ap"], crumbs: ["Menu", "Admin & Privacy", "Advertising"] },
+          {
+            label: "Before 2024",
+            for: ["ap"],
+            crumbs: ["Menu", "Admin & Privacy", "Advertising"],
+            note: "Some sets (such as the V705x-H3) show Reset TV Advertiser ID and a Do Not Sell/Share switch instead of Limited Ad Tracking: press Reset and turn Do Not Sell/Share on.",
+          },
           { label: "Before 2020", for: ["old"], crumbs: ["System", "Reset & Admin", "Advertising"] },
         ],
         items: [
@@ -413,7 +490,7 @@ export const BRANDS: Brand[] = [
         note: "Ads still show; they just stop being targeted.",
         undo: "Turn Limited Ad Tracking off again.",
         sources: [["Vizio: ads FAQ", "https://vizio.com/en/terms/privacy-policy/ads-and-privacy-faq"]],
-        checks: [],
+        checks: [{ year: "pre-2020", by: "PhoebeSandhaus", issue: 2885 }],
       },
     ],
     outro: "Menu paths can move with a software update. If yours didn’t match, tell us what you saw.",
@@ -452,6 +529,12 @@ export const BRANDS: Brand[] = [
             crumbs: ["Settings", "System", "Advanced Settings", "Enhanced Viewing"],
             items: [{ name: "Automatic Content Recognition", to: "off" }],
           },
+          {
+            label: "If it’s under System (VIDAA U9)",
+            for: ["u9"],
+            crumbs: ["Settings", "System", "Advanced Settings", "Enhanced Viewing Settings"],
+            items: [{ name: "Enable Automatic Content Recognition", to: "off" }],
+          },
         ],
         note: "Enhanced Viewing isn’t offered in every country or on every model; if you can’t find it, skip this step. Menus vary between VIDAA versions: if yours looks different, tell us.",
         undo: "Turn it back on in the same place.",
@@ -460,13 +543,16 @@ export const BRANDS: Brand[] = [
           ["Hisense VIDAA U5 manual", "https://commercial.appliancesonline.com.au/manuals/ak/6/3/0/a/630a17fa9e80408c8ad491b0e6ef5608a103fa20_85A7G_User_Manual.pdf"],
           ["VIDAA privacy policy", "https://www.vidaa.com/os-privacy-policy/"],
         ],
-        checks: [],
+        checks: [{ model: "N1213 (VIDAA U6)", by: "CarlWarnett", issue: 3698 }],
       },
       {
         id: "ev-rest",
         title: "Turn off the rest of Enhanced Viewing",
         does: "Turns off the personalised ads, recommendations and automatic picture and sound that come with it.",
-        variants: [{ label: "If Settings has Advanced Settings", crumbs: ["Settings", "Advanced Settings", "Enhanced Viewing Settings"] }],
+        variants: [
+          { label: "If Settings has Advanced Settings", crumbs: ["Settings", "Advanced Settings", "Enhanced Viewing Settings"] },
+          { label: "If it’s under System (VIDAA U9)", for: ["u9"], crumbs: ["Settings", "System", "Advanced Settings", "Enhanced Viewing Settings"] },
+        ],
         items: [
           { name: "Enable Personalized Ads", to: "off" },
           { name: "Enable Content Recommendation", to: "off" },
@@ -478,7 +564,7 @@ export const BRANDS: Brand[] = [
           ["Pocket-lint, Sep 2026", "https://www.pocket-lint.com/how-to-disable-acr-on-a-hisense-tv/"],
           ["V: Enhanced Viewing notice", "https://v-home.com/enhanced-viewing-service-privacy-notice-us/"],
         ],
-        checks: [],
+        checks: [{ model: "N1213 (VIDAA U6)", by: "CarlWarnett", issue: 3698 }],
       },
       {
         id: "ads",
@@ -492,7 +578,7 @@ export const BRANDS: Brand[] = [
         note: "This doesn’t reduce the number of ads, it just stops them being picked for you. Older menus may not have it.",
         undo: "Turn Personalised Ads back on.",
         sources: [["Hisense VIDAA U9 manual", "https://www.hisense.com.my/wp-content/uploads/2025/08/93041_9603VIDAA_U9_EUEMCO_E-Manual_eng_202502%E5%AE%8C%E6%95%B4%E6%9F%A5%E7%9C%8B%E7%89%88.pdf"]],
-        checks: [],
+        checks: [{ model: "N1213 (VIDAA U6)", by: "CarlWarnett", issue: 3698 }],
       },
       {
         id: "consent",
@@ -511,7 +597,7 @@ export const BRANDS: Brand[] = [
           ["Hisense VIDAA U5 manual", "https://commercial.appliancesonline.com.au/manuals/ak/6/3/0/a/630a17fa9e80408c8ad491b0e6ef5608a103fa20_85A7G_User_Manual.pdf"],
           ["V: Enhanced Viewing notice", "https://v-home.com/enhanced-viewing-service-privacy-notice-us/"],
         ],
-        checks: [],
+        checks: [{ model: "N1213 (VIDAA U6)", by: "CarlWarnett", issue: 3698 }],
       },
       {
         id: "voice",
@@ -528,7 +614,7 @@ export const BRANDS: Brand[] = [
           ["Hisense VIDAA U9 manual", "https://www.hisense.com.my/wp-content/uploads/2025/08/93041_9603VIDAA_U9_EUEMCO_E-Manual_eng_202502%E5%AE%8C%E6%95%B4%E6%9F%A5%E7%9C%8B%E7%89%88.pdf"],
           ["Hisense VIDAA U5 manual", "https://commercial.appliancesonline.com.au/manuals/ak/6/3/0/a/630a17fa9e80408c8ad491b0e6ef5608a103fa20_85A7G_User_Manual.pdf"],
         ],
-        checks: [],
+        checks: [{ model: "N1213 (VIDAA U6)", by: "CarlWarnett", issue: 3698 }],
       },
     ],
     outro: "VIDAA menus differ between versions and countries. If yours didn’t match, tell us your VIDAA version and what you saw, so we can add it.",
@@ -560,7 +646,7 @@ export const BRANDS: Brand[] = [
         ],
         undo: "Turn each one back on in the same menu.",
         sources: [["Amazon help", "https://digprjsurvey.amazon.com/csad/help/node/GQFYXZHZB2H629WN"], NAI],
-        checks: [],
+        checks: [{ by: "gregland76", issue: 3459 }],
       },
       {
         id: "ota",
