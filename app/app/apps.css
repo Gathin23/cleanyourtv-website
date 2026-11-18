@@ -37,6 +37,22 @@
   border-radius: 12px;
   min-width: 0;
 }
+.capps-shot {
+  height: 300px;
+  margin: -20px -20px 4px;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  background: var(--band);
+  border-bottom: 1px solid var(--line-2);
+  border-radius: 12px 12px 0 0;
+}
+.capps-shot img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+}
 .capps-top {
   display: flex;
   align-items: baseline;
