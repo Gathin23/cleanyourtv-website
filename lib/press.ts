@@ -12,6 +12,7 @@ export const COVERAGE: PressGroup[] = [
     group: "United States",
     country: true,
     items: [
+      ["The Verge", "The vibe-coding revolution is coming to all the gadgets", "22 Nov", "https://www.theverge.com/column/1039139/vibe-coding-gadgets-tv-camera", "theverge-564b80", "theverge"],
       ["TechCrunch", "People are using AI to make their smart TVs dumb again", "19 Oct", "https://techcrunch.com/2026/10/19/people-are-using-ai-to-make-their-smart-tvs-dumb-again/", "techcrunch-f93d80", "techcrunch"],
       ["Mashable", "Smart TV owners have found a new use for AI: Removing home-screen clutter", "19 Oct", "https://mashable.com/tech/smart-tv-ads-claude-code-ai-cleanup", "mashable-e55056", "mashable"],
       ["Android Authority", "Fed up with ads and bloatware on your smart TV? People are vibecoding ways to remove them", "20 Oct", "https://www.androidauthority.com/android-tv-vibe-hacking-remove-ads-bloatware-3725338/", "androidauthority-e5821e", "androidauthority"],
