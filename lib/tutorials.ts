@@ -709,6 +709,276 @@ export const VIDEO_INFO: Record<string, [Kind, string]> = {
   "1NPepUWDewA": ["tutorial", "de"], // Mein Fernseher, eure Verkaufsfläche? CleanYourTV räumt auf
   "kyL5fqX6fOI": ["other", "en"], // Why are people hacking their own TVs with Claude?
   "BnYCCrD8wF4": ["tutorial", "ta"], // END of TV Brands (Tamil Tech, phone app and agent methods)
+  "aN-65z6bvKk": ["other", "en"], // Everyone’s Letting AI Hack Their TVs… So I Tried It
+  "BV1a5nc65Eo5": ["other", "zh"], // 【第12期】电视优化开源工具！禁用系统广告、清理预装软件、替换超轻量桌面，支持多款电视机型！老电视机也能重获流畅体验
+  "_w9sGmXpmPY": ["other", "it"], // STAVO PER CAMBIARE TV. L’HO RIFATTA GRATIS IN 30 MINUTI!
+  "smXsVgJmrTs": ["other", "de"], // Darum hacken alle ihren TV! (Selbstexperiment)
+  "RLa0d6x8d5g": ["other", "fr"], // Voici ce que l'IA vient de trouver dans nos télés
+  "eADL9qFrLPs": ["other", "en"], // 20 Insane Things People Built With Claude in 2026
+  "4Ws_QFBDyrI": ["other", "en"], // Pomalá Android televize? Vyřešíte to jednoduše pomocí Claude
+  "uQ58SgszCN0": ["other", "pt"], // TRANSFORME SUA TV PELO CELULAR! 🔥 REMOVA ANÚNCIOS E DEIXE SU
+  "LEl8j3YP0GU": ["tutorial", "es"], // Tutorial Completo: Optimiza y Personaliza Cualquier Pantalla
+  "B5jQoJ0Bff0": ["other", "it"], // Spegni subito questa impostazione o la tua Smart TV registre
+  "5sV2MJ5jRNo": ["other", "hi"], // no bloat, no ads, much less RAM usage, and extra storage fre
+  "gxsAbxe_6Bk": ["other", "zh"], // 告別電視ㄉ醜系統！免費裝APPLE TV！？現省9900元！？
+  "A6eT7871kVI": ["other", "pt"], // 10 Repositórios Grátis do GitHub que Estão Bombando
+  "uYP1XwHunUI": ["other", "it"], // HO FATTO ENTRARE UN’IA NELLA MIA SMART TV... GUARDATE COSA H
+  "zDjJspEoxwM": ["other", "es"], // Le pedí a la IA que convirtiera mi TV Box en una Wii
+  "7wvU2IdZn9c": ["tutorial", "te"], // I Let Claude Fix My Slow Smart TV! 🤯
+  "MPACcgXbm0w": ["other", "es"], // Le di el control de mi Google TV a ChatGPT (y lo dejó sin ba
+  "BV1gKnB6LEyj": ["tutorial", "zh"], // 教你用Codex爆改电视，删 App 去广告，改后清新无比
+  "tVgf7X0GrmI": ["other", "ar"], // تلفازي صار مدريدياً! 43 تطبيقاً أقل، ولا إعلانات، وبطاقة الم
+  "BV1xKxJ6cEb3": ["tutorial", "zh"], // 夯到爆！Github 又出狠活神器！电视桌面改造最高的山来了，CleanYourTV爆火后又冒出6款开源电视软件
+  "HaW13jqMNao": ["other", "pt"], // Deixei minha Android TV mais rápida com IA pelo celular!
+  "-t8x8uac9xQ": ["tutorial", "zh"], // 只需一部手机！0代码彻底榨干安卓电视性能：去广告、杀后台、精简桌面保姆级教程（以英伟达 Shield TV 为例）
+  "BV1q5xS6TEnX": ["other", "zh"], // 运行内存只有512MB的创维老电视，我用AI把它救活了，告别开机广告
+  "fZYpjae3zJo": ["tutorial", "zh"], // 夺回 Fire TV 的控制权！汉化系统、更换桌面、屏蔽广告与遥测 ｜CleanYourTV | AI Agent
+  "JpcrM1_GzDg": ["other", "en"], // I Tried the Viral AI Smart TV Hack — With Just an App!
+  "lFledhrU10o": ["other", "te"], // 15 Crazy Things People Built With Claude
+  "BV1aCni6GE7L": ["other", "zh"], // AI爆改电视系统？我来泼盆冷水
+  "BV1jcH56sEbc": ["tutorial", "zh"], // 用了7年的小米电视4A，  AI去广告之后的效果一镜到底。
+  "BV1VgHN6tEf5": ["other", "zh"], // 小米电视   deepseek harness教你焕然一新！
+  "tqpOfHS5-VY": ["other", "en"], // Make your AI agent pay for itself (and this week's biggest A
+  "BV1QHWW6UEk6": ["other", "zh"], // GitHub届又传来喜讯！老电视系统优化+电视桌面改造最高的山来了。6款把「无广告桌面+ADB系统精简+防沉迷+Appl
+  "BV1Tdn46GEkX": ["tutorial", "zh"], // 还在部署cleanyourtv吗？我选择用aerial tv！
+  "3nODuM4ihnk": ["other", "tr"], // Claude ile Eski TV'ni Hızlandır (Android ve Google TV)
+  "PTl-CU-uQ0E": ["tutorial", "es"], // COMO OPTIMIZAR TV BOX Y SMARTTV CON IA Proyecto
+  "eBF4ljhpDRU": ["other", "ru"], // Ускоряем Android TV в 1 клик! Удаляем мусор, рекламу и лаги 
+  "BV1ycnN6zEEp": ["other", "zh"], // 电视被破解！老电视变Apple TV！！ #AI工具 #老电视改造 #智能电视 #开源项目 #数码干货
+  "BV1h9nb6HEPS": ["tutorial", "zh"], // Aerial TV的部署教程，听一遍就会，有手就行！
+  "NcuHMpSWzH8": ["tutorial", "tr"], // EN KOLAY YÖNTEM! Yapay Zeka Destekli Clean Your TV ile Andro
+  "rSNEmUrgb3Q": ["tutorial", "en"], // Clean the ads and junk apps off your own TV's home screen wi
+  "BV1AfxW63EMp": ["tutorial", "zh"], // 电视盒子还能换桌面？用千问办公 AI 跑通 CleanYourTV 项目 还你干净桌面
+  "ZCkCrwB2cHs": ["other", "hi"], // I Turned My Old LAGGY Android TV Into Apple TV Look!
+  "BV1sznN6CEAd": ["other", "zh"], // 【第12期】仅需电脑和电视在同一WiFi，就能净化所有安卓电视桌面，关闭广告和预装软件，替换极简桌面，媲美 Apple 
+  "AUdCyT43wjI": ["tutorial", "id"], // Android TV LEMOT? Ini Cara Bikin Ngebut Pakai HP Saja!
+  "WyTTj5IU3pk": ["tutorial", "id"], // 🔥 DEBLOAT ANDROID TV & GOOGLE TV! Pakai CleanTV, Goodbye LEM
+  "BV1hcno6hEJw": ["other", "zh"], // Aerial TV完全解决按home 键闪现原厂桌面的问题，小米电视spro 2026测试功能一切正常。
+  "BV1b64j6PECB": ["tutorial", "zh"], // 【第6期】电视广告全关掉！换上黑色桌面！电视去广告、电视开机广告一次清干净！小米、TCL、海信、创维近500款智能电视有
+  "BV1FFWM6UExg": ["tutorial", "zh"], // 小米/红米电视如何使用三方桌面？/禁用系统桌面/如何让小米电视/红米电视使用Clean your TV/Aerial T
+  "obPzX9rhP4E": ["other", "zh"], // 小米電視一開機就是廣告？我家 2 台這樣清，還踩了 3 個坑｜Google TV／Android TV
+  "BV1i1y4zaEwy": ["tutorial", "zh"], // 夯到爆！Github 又出狠活神器！！电视桌面改造这块最高的山来了，6款开源软件，能去广告、换电视桌面、手机遥控、播放4
+  "BV1eA4w6AEbZ": ["other", "zh"], // 一个视频讲明白！最近爆火的 4 个电视优化开源项目，全平台适用应用
+  "DU1F6s23ux4": ["other", "en"], // FreeMyTV: A FREE Home Screen for Samsung, LG & Google TV
+  "BV1CMnr66EwJ": ["other", "zh"], // 小米电视改造：桌面换成苹果风，米家还能用
+  "KmhkP7y9XXo": ["tutorial", "hi"], // Slow Fire TV Stick? Make It 10X FASTER! 🔥 100% FREE Method
+  "BV1jTx16xESy": ["other", "zh"], // 【AerialTV】成功让乐视X40老电视起死回生
+  "8DRlBFF8L9M": ["other", "pt"], // Tirei os anúncios da minha Google TV em 30 minutos! Faça iss
+  "EglQwsOOFhE": ["tutorial", "en"], // People Are Vibe Coding Their TVs to Remove the Ads
+  "hzh0wgn0uGQ": ["tutorial", "hi"], // 🚀पुराने Android TV को बनाएं 10X FASTER!🔥 100% FREE Method
+  "m5K7xQoMrOQ": ["tutorial", "zh"], // 小米/红米电视如何使用三方桌面？/禁用系统桌面/如何让小米电视/红米电视使用Clean your TV/Aerial T
+  "BV1sgx96xEjV": ["tutorial", "zh"], // 电视首页太乱？CleanYourTV 实测：用 AI 换上极简桌面
+  "BV1LCsd6mERT": ["tutorial", "zh"], // Aerial TV替换桌面白名单版本最终解决方案及教程
+  "BV1Rmn96aEEo": ["other", "zh"], // 两个AI接力改掉小米电视开机广告：DeepSeek卡住那步，Claude翻了系统代码
+  "eh4LmB74mIk": ["other", "es"], // Creé mi propio menú para mi Samsung con IA
+  "hUg7dGaSnT0": ["other", "en"], // Lobotomize Your Google TV - Android Faithful #173
+  "mPGh-JW9C10": ["other", "en"], // Google Voice Finally "Getting the Message?" - Android Faithf
+  "BV1ZGWq6cEJa": ["other", "zh"], // 教你打开adb并用WorkBuddy爆改Tv极简桌面【适用投影，盒子】
+  "BV1Z6xr6jE73": ["other", "zh"], // 据说这是现在智能电视界最后的一块净土。电视优化开源工具！禁用系统广告、清理预装软件、替换超轻量桌面，支持多款电视机型！老
+  "RBMHGMSi3PE": ["other", "en"], // Claude Duet, Google's new Shopping Agent + more  | This Week
+  "I_JTKj46BsA": ["other", "es"], // Limpié mi TV box con IA: el resultado es LA CABRA
+  "U0ndh5vmulA": ["tutorial", "en"], // Remove Unwanted TV Apps Over Wi-Fi With CleanYourTV
+  "FasMkfoBd-Y": ["tutorial", "hi"], // Make Your TV 10X Faster & Better! 🤯 | No Claude, No AI Neede
+  "QIqACxdTOFs": ["tutorial", "zh"], // 电视开机全是广告？让AI动手清干净｜CleanYourTV实测
+  "BV18Zn96RE91": ["tutorial", "zh"], // 【cleanyourtv使用教程】帮你电视去广告超牛开源神器保姆式安装教程
+  "K3upOFAFKdQ": ["tutorial", "en"], // Clean Up Your Smart TV By Debloating with Your Phone!
+  "9DLAF34umVg": ["other", "es"], // Tu Google TV está lleno de anuncios: apaga esto HOY
+  "RGW9Z6LUepo": ["other", "en"], // Claude Code Hacked a TV... Then Claude Did This..
+  "BV1BWxd6sE68": ["other", "zh"], // 用豆包一键去除电视系统广告＆换上AppleTV UI界面
+  "_bYEfXv2ZDc": ["other", "ru"], // ИИ вместо нового телевизора? Что реально можно улучшить | Шр
+  "ujFtiedeOrc": ["other", "zh"], // 电视首页全是广告？不用刷机的开源解法
+  "i8eKbvbUBXk": ["other", "en"], // Claude Code Can Strip Ads Off Your Android TV, 46k Stars
+  "kzi5k04hN2I": ["tutorial", "en"], // How To Clean Your Smart TV With AI (12X FASTER)
+  "zPORab60SXo": ["other", "en"], // Claude Refused 2 Things on My 2016 Fire TV Stick
+  "Ur5yY7pFbbE": ["tutorial", "es"], // Fire TV Stick sin anuncios: cómo poner un inicio limpio (202
+  "l5rDZa8bpjU": ["other", "es"], // Google TV sin anuncios: lo que hizo ChatGPT con Codex
+  "BV1RzHG6SErN": ["other", "zh"], // AI爆改电视？老玩家早就这么干了
+  "hCMDbAebKf8": ["other", "en"], // 17 Crazy Ways People Actually Use Claude
+  "BiRZeuJzYXE": ["other", "en"], // Making my TV Usable Again
+  "eJqvakSDqO0": ["tutorial", "hi"], // Android TV Slow Hai? Speed Up Your Tv | How to Speed Up Smar
+  "d5xuw6EsELE": ["tutorial", "hi"], // I Made My Slow Android TV 10X Faster With Just My Phone!
+  "HPouM4BkKoY": ["tutorial", "en"], // I Cleaned My Smart TV Using This Viral GitHub Tool (Zero Ads
+  "BV1ij4g6xEzU": ["tutorial", "zh"], // 索尼电视cleanyour tv 教程，纯净无广 #索尼电视
+  "BV1bxxe6CE2c": ["tutorial", "zh"], // 搞定了极米投影仪的clean your tv部署，就是极米的系统开adb太麻烦
+  "FS5mskIdkPE": ["tutorial", "en"], // Make Your Android TV 10–20x Faster! (Try This Method)
+  "V--nmvzCk6k": ["other", "hi"], // I Turned My Old Fire TV Into This With AI
+  "4mToe6xppYU": ["tutorial", "en"], // I Installed an Apple TV OS on an Android TV!
+  "_ThmtYNEUns": ["other", "en"], // 50 Surprising Things People Created With Claude & ChatGPT
+  "BV14ExT6eEvX": ["tutorial", "zh"], // 米家激光投影一代 ADB 去广告｜安装 Aerial‑TV 纯净桌面｜Android9 无需 ROOT
+  "JPxEHukECEQ": ["tutorial", "en"], // How I Safely Debloated My Google TV & Got an Apple TV-Style 
+  "BV12g4E6aEDk": ["tutorial", "zh"], // 【开源】干掉电视开机广告！净屏 CleanYourTV 中文版讲解
+  "fn861-g5yhs": ["other", "pt"], // Tiraram os anúncios da TV com IA (e ela ficou mais rápida)
+  "O-kL8KXyJg4": ["other", "th"], // กล่องทีวีเก่าอืด อย่าเพิ่งทิ้ง! ลบแอปขยะ 5 นาที ลื่นเหมือนให
+  "JZEHBIiqZ-g": ["tutorial", "es"], // 📺 ¡LIBERA toda la Potencia de tu Smart TV LG webOS! | Homebr
+  "J1M94kyiOsc": ["other", "it"], // 19 modi di usare Claude che ti cambiano la vita
+  "cZLZNJGWIQ0": ["tutorial", "zh"], // 透過 cleanyour.tv 打造自己的 Android TV 桌面與背景
+  "BV1NWxT6cEnk": ["other", "zh"], // 把小米、TCL电视改造为AppleTV风格
+  "87shJGWUh9s": ["tutorial", "en"], // Speed Up ANY Android TV or Firestick - Fully Debloated in 2 
+  "BV1rUW26bEJr": ["tutorial", "zh"], // 旧电视盒子别扔：3个开源项目实测（Aerial/CleanYourTV/FongMi）
+  "zLQOhqgdKh4": ["other", "ru"], // Твой телевизор ОХ*ЕЛ. Владельцы пошли против Samsung
+  "FsCFwrXm-6s": ["other", "en"], // 小米電視一開機就賣廣告？AI 免費清走，TCL、Sony 都用得
+  "alWIpWjSefc": ["other", "en"], // Ep. 18 - Smart TV, Dumb Idea
+  "mqG2NRjAcEU": ["tutorial", "hi"], // Clean Your TV Hindi: Android TV Se Ads Kaise Hataye (Free Cl
+  "shQRQjBMaj0": ["tutorial", "en"], // GOOGLE TV — How to Remove Ads & Speed Up TV Using Claude Cod
+  "BV1deHM6BExe": ["tutorial", "zh"], // 最近AI改安卓电视桌面火啦！你改了吗！？去广告更简洁！
+  "BV1kqnW6oEPD": ["other", "zh"], // 电视优化开源神器！禁用系统广告，清理预装垃圾软件，换上轻量桌面，支持多款电视，老电视也能重回流畅！#真干活用搭子 #办公
+  "xS191q7wzY4": ["tutorial", "en"], // Every Harry Potter Fan Needs This on Their Smart TV! 🪄 (Cust
+  "vD-PuMpxFs4": ["other", "en"], // Your Smart TV Is Full of Ads. People Are Using AI to Turn Th
+  "BV1X5sZ6LEPh": ["other", "zh"], // 电视广告太多？试试这套开源方案
+  "BV1LoyGzZEYD": ["other", "zh"], // 电脑和电视连同一个 WiFi，就能净化安卓电视？关广告、换极简桌面
+  "W70arFVwyiM": ["tutorial", "hi"], // Make ANY Android TV Faster! Remove Ads & Bloatware Using Cha
+  "O5biUfwg8kM": ["tutorial", "en"], // 'Black October' in cybersecurity, remove 'Spyware' from Your
+  "BV1Cr4g6uEKx": ["tutorial", "zh"], // 电视去广告神器 CleanYourTV！局域网 ADB 操作，免 root，清爽桌面教程
+  "BV1Vz486GETY": ["other", "zh"], // 用clearyourtv爆改小米电视桌面
+  "YwsJ3Yaoc1c": ["other", "es"], // Hackea tu Smart TV con IA (sin anuncios)
+  "Fy1hOiiAahI": ["tutorial", "hi"], // MAKE YOUR TV FASTER - THE TRUTH ! CLEAR YOUR TV NOW
+  "992f57TVn9w": ["tutorial", "en"], // Android TV — How to Speed Up a Slow TV Without Factory Reset
+  "BV1X1nB6mETa": ["other", "zh"], // Github上的这个开源电视优化工具太夯了！无线ADB净化安卓电视，清除预装冗余软件，纯净桌面，告别开机广告！ #百度搭
+  "97vmB2Eb30A": ["other", "en"], // Pomalá Android televize a Claude Code: video Filipa Oborníka
+  "wfUMMXm9UhY": ["tutorial", "zh"], // GitHub 本週最紅！CleanYourTV 29 天 5.8 萬星｜Android TV 去廣告、換成 Apple 
+  "BV1TA4z6ZEiB": ["tutorial", "zh"], // 电视机魔改成答题系统，电视已经被玩成这样了嘛，必须去给我儿子装一个，或许这就是魔改电视的意义吧😁  #电视魔改答题系统 
+  "o5v-56L379E": ["tutorial", "en"], // CleanYourTV: Debloat Android TV
+  "BV1rVs368Ecd": ["other", "zh"], // 电视开机先看30秒广告？一通电话＋一个免费桌面，10分钟清净
+  "0har-48BSg0": ["tutorial", "hi"], // Clean Your Smart TV Without Claude Pro?! 😱🔥 | Remove Bloatwa
+  "CnWSz_rbnSI": ["tutorial", "hi"], // Android TV ko Apple TV Banao or Ads Hatao Free Mein! CleanYo
+  "FkWC9eE0tQ4": ["tutorial", "en"], // How CleanYourTV Took Back the Smart TV Home Screen
+  "8o3MkKCaYcM": ["other", "ru"], // ИИ-агенты чистят телевизоры от рекламы и слежки | Лука ИИщев
+  "BV1wHnB6NEia": ["other", "zh"], // 一句话指挥AI 一键清除电视广告 改造方案还开源了
+  "3FASfWTmOJM": ["tutorial", "en"], // How to Install Ad-Free debloat Android TV with AI | Glass TV
+  "BV1zA4K6UEFR": ["other", "zh"], // 支持安卓4.4!寰宇电视-Lite2.0拯救你的旧电视
+  "28utZWHIezI": ["other", "hi"], // AI Se Apne Smart TV Ko FAST & ADS FREE Bana Do! 😱 | Android 
+  "u9d_HVHJ1DY": ["tutorial", "en"], // CleanYourTV GitHub Explained: Android TV Privacy Audits, App
+  "BV1n24J6oEgU": ["other", "zh"], // 夯爆了！Github 又出狠活神器！安卓电视一秒变身Apple TV，开机广告秒清除！
+  "uuL3OmhS72o": ["other", "en"], // 🔥 𝐑𝐞𝐦𝐨𝐯𝐞 𝐇𝐨𝐦𝐞 𝐒𝐜𝐫𝐞𝐞𝐧 𝐀𝐝𝐬 𝐨𝐧 𝐀𝐧𝐝𝐫𝐨𝐢𝐝 𝐓𝐕! 𝐂𝐥𝐞𝐚𝐧 & 𝐒𝐩𝐞𝐞𝐝 𝐔𝐩 𝐘𝐨𝐮
+  "qv0eBpyr7Bo": ["other", "hi"], // Apne smart TV ko banaye fast? #androidtv #googletv #ai #chat
+  "7l4EUKa7VsA": ["other", "en"], // I Hacked My TV With Claude...
+  "Il7USTsDPcQ": ["tutorial", "th"], // จับโปรเจคเตอร์ Android เก่ามา Clean ด้วย Claude AI + CleanYo
+  "9T3V-08ZjH0": ["other", "es"], // 🔥 Usé CHATGPT para LIMPIAR y ACELERAR mi GOOGLE TV 🤖 | Agent
+  "mI4i5s2zwuo": ["other", "zh"], // 【AerialTV】成功让乐视X40老电视起死回生
+  "BV1XtxK6BE6v": ["other", "zh"], // 用豆包给安卓旧电视换个清爽桌面，做出Apple TV的感觉
+  "agn87Ft304w": ["other", "en"], // AI is hacking things by itself now…
+  "BV1bjyLzXEXy": ["tutorial", "zh"], // 【cleanyourtv使用教程】帮你电视去广告超牛开源神器保姆式安装教程
+  "BGNECsBTfPs": ["tutorial", "te"], // Clean Your TV GitHub Tool 😱 వాడే ముందు ఈ 3 Issues తెలుసుకోండ
+  "BV1HgHL6ME27": ["other", "zh"], // 【第四期】电视优化开源工具！禁用系统广告、清理各种预装软件、替换超轻量桌面，支持超多款电视机型！老电视机也能重获流畅体验
+  "BV1GZxF69Eyb": ["tutorial", "zh"], // 【CleanYourTV】别再找了，最细电视瘦身教程，电脑一条指令清预装关广告，电视盒子都能用
+  "TejOmgwNsk0": ["tutorial", "hi"], // I Made My Android TV 10X BETTER with AI! 😍 Apple TV Look + R
+  "gdR45XpOBtQ": ["tutorial", "en"], // Tired of Fire TV Ads? What People Did With AI + Safe Setting
+  "XNwNJh59GWE": ["other", "en"], // Engineers Are Letting Claude Code Reverse-Engineer Their Har
+  "BV1utn26AEAZ": ["other", "zh"], // 无线ADB净化安卓电视，清除预装冗余软件，告别开机广告！#安卓电视 #电视优化 #广告拦截  #Github#真干活用搭
+  "BV1Yi4865EqP": ["tutorial", "zh"], // cleanyourtv 电视开机广告是你电视自己放的｜不刷机、不插线，同一 WiFi 就能关，还能一键还原
+  "VmHX5rdOyMQ": ["other", "en"], // My Android TV Home Screen Is Now Naruto (No Ads, No Bloat) P
+  "BV1P6su6PEQC": ["tutorial", "zh"], // 【开源神器第99期】电视广告多还卡顿？同一WiFi停掉广告、换572KB清爽桌面、31套主题、随时还原，5.8万星Cle
+  "BV1rPnq6oEBp": ["other", "zh"], // 仅需电脑和电视在同一WiFi，就能净化所有安卓电视桌面的开源项目#真干活用搭子 #办公就用dumate #百度搭子  #
+  "giZSVBmU0oE": ["other", "ar"], // 7 أشياء في بيتك يصلّحها Claude ببلاش
+  "BV1hLxr6eEvH": ["tutorial", "zh"], // 电视开机先看广告?开源CleanYourTV:两周4.7万星,不用root也能换干净主页
+  "X_lMH7Alyq8": ["other", "en"], // People Used Claude to Hack TVs. Why Does It Stop Halfway?
+  "BV1vsnr6fEJC": ["other", "zh"], // 1分钟学会帮父母家里老电视去除广告和没用的软件、清除预装广告与臃肿软件、让老电视重获流畅!  #电视优化  #真干活用搭
+  "LTvTx30wn5A": ["tutorial", "hi"], // Smart TV Ke Ads Kaise Hataye? | ADB TV + Projectivy Hindi | 
+  "NUnuE6NXxJw": ["tutorial", "en"], // Claude Code can FIX your Slow TV?
+  "BV1B1WH6sEQx": ["other", "zh"], // 【AI实战】让 AI 亲手删掉 Google TV 的广告和预装软件，主页瞬间清爽
+  "BV1b8sr6cEeU": ["other", "zh"], // Claude Code 改造电视：广告全关，自建主界面
+  "2vbA6KjspoE": ["tutorial", "es"], // CleanYourTV con IA GRATIS: tu Google TV sin anuncios (sin pa
+  "BV1eDn968E7D": ["tutorial", "zh"], // 1分钟学会帮父母家里老电视去除广告和没用的软件。#电视优化 #电视  #办公就用dumate #电视去广告
+  "BV1iGnx6XErs": ["other", "zh"], // GitHub 飙升榜 TOP6 · 2026-10-23｜AI熊
+  "BV1LoyGzZEff": ["other", "zh"], // 【安卓电视净化】同 WiFi 一键关广告卸预装，换极简桌面媲美 Apple TV
+  "40UueqxEp7M": ["tutorial", "en"], // Tidy Up Your Google TV With a Phone! | CleanYourTV
+  "BV1X84q6hExi": ["tutorial", "zh"], // 测评打假 cleanyourtv净化桌面 电视桌面净化效果   cleanyourtv实测#真干活用搭子 #办公就用du
+  "vK7vlVfI8oY": ["tutorial", "hi"], // Android TV Slow Hai? AI Wala Jugaad Karne Se Pehle Ye Dekh L
+  "BV1toxD64EYQ": ["other", "zh"], // AI替天行道，电视广告被干掉了！
+  "BV1qQnW67EF9": ["other", "zh"], // 这个开源电视优化工具太夯了！告别开机广告！#安卓电视 #电视优化 #广告拦截  #Github #真干活用搭子 #办公就
+  "efyyLijlEB0": ["tutorial", "te"], // Smart TV Undo Button! 🔁 CleanYourTV Remove Cheyadam Ela? | P
+  "BV1FtWs6eEmU": ["tutorial", "zh"], // CleanYourTV 之后又有新玩法！6 款开源电视工具，老电视和盒子怎么选？
+  "BV1Tuxc6jEy3": ["tutorial", "zh"], // CleanYourTV 到底强在哪？两百多 KB 极简桌面、界面媲美 Apple TV，装完随时能恢复出厂丨老电视也能跑
+  "BV1rMnr66E42": ["tutorial", "zh"], // 仅需电脑和电视在同一WiFi下，就能净化所有安卓电视桌面的教程来了！ #办公就用dumate  #百度搭子 #电视桌面 
+  "24lkUAB5lQc": ["other", "pt"], // Claude Code tirou os ANÚNCIOS da TV
+  "BV1fuyYznEDM": ["other", "zh"], // sony劈了腿并且小米出了轨，我让sony电视用上小米蓝牙遥控器
+  "Bj3XHsdoL2g": ["tutorial", "ml"], // RDR2 on Android TV Home? How to Do It! 😨🔥| Malayalam
+  "BV111WE6oEAW": ["other", "zh"], // 花钱买电视，开机先替别人放 15 秒广告
+  "Q1jfQb9VRHc": ["tutorial", "ru"], // Как убрать рекламу с Android TV через Claude: бесплатный про
+  "5VGT0pf0JXc": ["other", "en"], // People Gave Claude Their Homes 😳
+  "kgZzlRrVNYo": ["tutorial", "es"], // CleanYourTV: el cambio que despeja tu pantalla de inicio
+  "iLFBinuJO94": ["tutorial", "en"], // Your Smart TV isn't old, it's full: what Claude does (and ho
+  "BV1x5ns6aETy": ["tutorial", "zh"], // 治理国产智能电视的开机广告和推荐位的解决方法，官方实测覆盖42品牌123款机型，小米/TCL/索尼六款机型已验证
+  "lzftxCd5dg4": ["other", "en"], // People are using AI to make their smart TVs dumb again
+  "DmmCwe9suAg": ["other", "hi"], // I Tried the Internet's Viral TV Hack... Turn Your Laggy Goog
+  "BV1BGnN6wEDW": ["other", "zh"], // [开源]3天6100星！用Claude Code自动整治电视广告
+  "BV1cnsS6gEuL": ["tutorial", "zh"], // 夯爆了！Github 又出狠活神器！电视改造：CleanYourTV 部署，干净无广告 TV
+  "BV1TGnm6AEg2": ["other", "zh"], // 开源电视优化神器，老电视的救星，告别弹窗广告。#真干活用搭子 #办公就用dumate #百度搭子 #Github
+  "FWvsBv6hzyw": ["other", "pt"], // Limpar a Smart TV com IA: na LG e Samsung muda só o visual?
+  "z_F7V0gt6d0": ["other", "tr"], // XIAOMI TV X Mini – Claude Code ile Hızlandırma ve Reklam Kal
+  "MjOqubDSIgU": ["tutorial", "te"], // Android TV ని మీ మొబైల్‌తోనే Clean చేయండి! No PC Needed | Te
+  "LPhfJddRbL8": ["tutorial", "en"], // Why Is My Google TV Full of Ads? Here's How to Stop It
+  "DPsIfUQSgwA": ["other", "en"], // GitHub's Most Starred Projects of 2026, Explained in 3 Minut
+  "su5d9ql6Gnw": ["tutorial", "en"], // I used AI to make my TV 10x Better in simple two steps
+  "VfKi23L4P1E": ["tutorial", "en"], // Use Claude to Fix Your Android TV (No More Ads)
+  "iK16b3WIsro": ["other", "zh"], // 开机先看广告？有人一句话让 AI 把智能电视「变笨」了
+  "gPwLxh6reuo": ["other", "en"], // Claude Helped Hack This Smart TV
+  "Zb5xMq8pf3o": ["tutorial", "en"], // Clean your tv with app no ads and bloatware just clean launc
+  "912tGEhgdJA": ["tutorial", "en"], // Ads on a TV you paid for? Try a clean home screen
+  "0QolJxrAY14": ["other", "es"], // Revive tu Smart TV Lento con IA y Elimina Anuncios (Seguro)
+  "3HX77-eTSuM": ["tutorial", "hi"], // I Transformed My 7-Year-Old TV for FREE! 🤯 No Claude, No Pai
+  "H089japVSUw": ["tutorial", "en"], // I Removed the Ads From My Living Room TV (2026)
+  "ApM5e_ghTRM": ["tutorial", "en"], // Remove Ads From Smart TV With AI: 3 Agents Tested
+  "BV18Axc6nESv": ["tutorial", "zh"], // 【CleanYourTV】老电视又卡又有广告？最详细的电视瘦身教程！两百多 KB 极简桌面！！附带 AI 装技能步骤！
+  "BV1LhsS6aEZH": ["other", "zh"], // 【第12期】电视优化开源工具！禁用系统广告、清理预装软件、替换超轻量桌面，支持多款电视机型！老电视机也能重获流畅体验
+  "fd7tms7EByQ": ["other", "en"], // People Are Building INSANE Things With Claude (20 Real Examp
+  "FQ4FMZRn7Hw": ["other", "en"], // 18 Real Ways People Used Claude This Month
+  "JTmisy001Zg": ["other", "tr"], // Claude Code ile JVC Android TV Optimizasyonu
+  "BV1bTxc6mEKC": ["tutorial", "zh"], // 电视瘦身合集来了！CleanYourTV 开源工具，清预装关广告换桌面，报个型号 AI 给你出完整步骤
+  "BV1GFxc6pEcG": ["tutorial", "zh"], // 不废话，CleanYourTV 直接上！电脑连同一 WiFi 清预装关广告，家里电视老的新的都合适
+  "M6qgXoZfG70": ["other", "en"], // GitHub Trending Oct 25: +80% BF16 on RTX 3090 Ti, ad-free An
+  "BV1gAxc6nEqQ": ["tutorial", "zh"], // 【网友推荐】CleanYourTV 电视优化工具上线！电脑连同一 WiFi 清预装去广告 附带 AI 一步装好教程！【电
+  "OvGDH1vSJOM": ["tutorial", "en"], // Remove Ads From Your Smart TV With Claude Code? We Read 300+
+  "YJJh9xrnwdQ": ["tutorial", "pt"], // Sua TV não é velha, está cheia: o que o Claude faz (e como f
+  "BV13Hn26TECa": ["other", "zh"], // Claude 爆改安卓老电视机成apple TV #科技 #真干活用搭子 #办公就用dumate #百度搭子
+  "4MhDAkKncSE": ["other", "pt"], // 5 apps grátis para tirar anúncio e lixo de fábrica da TV And
+  "4EQHCYHO_I8": ["other", "zh"], // 电视开机广告终于能关了！免root、免刷机，小白也能搞定 | 小白神器商店
+  "BV1j8sS6AEXH": ["other", "zh"], // 【第1期】电视优化开源工具！禁用系统广告、清理预装软件、替换超轻量桌面，支持多款电视机型！老电视机也能重获流畅体验
+  "U30ATEK9nPU": ["tutorial", "id"], // Bersihkan Iklan & Bloatware Android TV Tanpa Root (CleanYour
+  "qgpXDC9IbTs": ["other", "en"], // GitHub Top 10 This Week — Week of October 23, 2026 (Ep. 007)
+  "HT8GhKgI8FI": ["other", "pt"], // Especial: apps grátis para PC, celular e TV | Top 10 Vol. 11
+  "BV1vDnH6gEh4": ["tutorial", "zh"], // 【8期】CleanYourTV:一键清掉安卓电视广告
+  "IxMoBZg7lRM": ["other", "tr"], // XIAOMI TV X Mini – Reklamları Kaldırma ve Hızlandırma
+  "waqlYFiGT7M": ["tutorial", "en"], // Why Does a TV You Paid For Show Ads? Claude Turned Them Off
+  "WCzL9Wi12GU": ["other", "en"], // Bloatware removal in TV using Claude
+  "nGHj3dKaJSA": ["tutorial", "te"], // Mobile తో Android TV Home Screen మార్చండిలా! | Clean UI & No
+  "qTgFVUtgEcI": ["other", "en"], // 電視機廣告太多？一個開源工具幫你清乾淨 #Shorts
+  "l2SoJhX7DK8": ["tutorial", "zh"], // CleanYourTV：Hermes 清掉便宜电视 11 个追踪器 #shorts
+  "1lhDjBJuQTA": ["other", "es"], // IA para limpiar tu Smart TV: choca con los filtros de cibers
+  "74pXRmXEiiM": ["tutorial", "it"], // JVC Android TV – Installare un launcher personalizzato con C
+  "JTCCrarcLG0": ["other", "ko"], // 구글TV 광고·버벅임 없애기 | 클로드가 15분 만에 정리해 주는 무료 오픈소스 (안드로이드TV)
+  "BV1HTyxzzEDp": ["other", "zh"], // AI把电视广告全删了，开源免费不用刷机
+  "U7O-QM3Cd6I": ["other", "hi"], // Claude Code Switched Off the Ads on My Android TV
+  "3jrQg52evcA": ["tutorial", "en"], // People Are Vibe-Coding Their TVs to Remove Ads — 41,000 Star
+  "OpyHMKfuUeA": ["tutorial", "tr"], // JVC Android TV – Özel Başlatıcı Nasıl Kurulur
+  "SyVqQhVcwmY": ["tutorial", "hi"], // How to Make ANY Slow Android TV Fast & Ad-Free (Apple TV Sty
+  "BV1MPxc6SE1Z": ["tutorial", "zh"], // 【保姆级最新教程】电视卡顿广告多？CleanYourTV 开源工具，电脑连同一 WiFi 就能清理预装软件，老电视也能重
+  "udMEnJYmOx8": ["other", "uk"], // Мій Sony TV стежив за мною. Claude вимкнув 18 трекерів за 1 
+  "RtCgbnhcQGs": ["other", "de"], // XIAOMI TV X Mini – Werbung entfernen & mit Claude Code besch
+  "DueT82m2eNI": ["other", "en"], // AI Revolution: Smart TV Hacks, Marketing Gaps, and Ukraine's
+  "BR161MGrFqQ": ["other", "it"], // La smart TV dei genitori, e Claude Code per censurare le pub
+  "LtoXxfpl2iU": ["tutorial", "de"], // JVC Android TV – Custom Launcher mit Claude Code installiere
+  "przuQswGNOc": ["other", "de"], // XIAOMI TV X Mini – Langsamkeit beheben & Werbung entfernen m
+  "vLJa1iGY4Qg": ["tutorial", "en"], // Organize Your Android TV From Your Mobile! | CleanYourTV
+  "CMPW7IMXJnM": ["tutorial", "ja"], // JVC Android TV – カスタムランチャーの導入方法
+  "G7WebR0igLQ": ["tutorial", "de"], // Cleanyourtv: Android TV werbefrei in 10 Minuten – gratis
+  "94VjEiaSbeU": ["other", "it"], // JVC Android TV – Come rimuovere la pubblicità dalla schermat
+  "BV12dxN68Eoz": ["other", "zh"], // 电视首页全是广告？一句话让 AI 帮你关掉（不卸载、随时还原）
+  "Wrdwy-QzkD8": ["other", "ja"], // 📺 テレビの広告掃除をAIに任せる時代が来た
+  "bSKa0DGLD6s": ["other", "it"], // Claude Code – Ottimizza la tua JVC Android TV
+  "75OVt7HxcCE": ["other", "ko"], // 내 돈 주고 산 스마트TV인데, 광고 봐야해? AI로 싹 지웠다
+  "7wTVKAEdNjE": ["other", "it"], // XIAOMI TV X Mini – Come velocizzare e rimuovere gli annunci 
+  "J0Ap1iPUTIc": ["other", "ja"], // JVC Android TV – 初期化せずに遅いテレビを高速化する手順
+  "NZnyyk_HJ5g": ["other", "fr"], // Orba 3.7 : bilingue, Infos sur l'appli et plus de télés comp
+  "4L5c0KY7OO8": ["other", "it"], // XIAOMI TV X Mini – Come rimuovere gli annunci e velocizzare 
+  "pigmHZkOV2U": ["tutorial", "ja"], // XIAOMI TV X Mini – Claude Codeを使用して速度向上と広告削除を行う方法
+  "wy10dcxsnO8": ["tutorial", "en"], // How Vibe Coding With Claude Code Is Revolutionizing Everyday
+  "GbDBRggGYFo": ["tutorial", "ja"], // JVC Android TV – クロードコードでカスタムランチャーをインストールする方法
+  "J4PbjFXJTTc": ["other", "ja"], // XIAOMI TV X Mini – Claude Codeを使用して広告を削除しTVを高速化する
+  "3TDuh92-KyY": ["tutorial", "ja"], // JVC Android TV – Claude Codeで最適化する方法
+  "T5sWG5EgJYg": ["tutorial", "en"], // AI Cleaned My Android TV: No More Sponsored Ads + Apple TV L
+  "B3-sLTsw9yE": ["other", "en"], // GitHub's 470K-Star AI Tool Lets Agents Hack Your Smart TV
+  "38qjeF56wks": ["other", "en"], // Zrychlení Android televize s Claude Code: na co nezapomenout
 };
 
 /** The four the page opens with: clear walk-throughs with the most views, one of them not in English. */

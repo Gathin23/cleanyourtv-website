@@ -38,6 +38,7 @@ export const COUNTRY_ISO: Record<string, string> = {
   Mexico: "mx",
   "Costa Rica": "cr",
   Netherlands: "nl",
+  "North Macedonia": "mk",
   Norway: "no",
   Pakistan: "pk",
   Poland: "pl",
