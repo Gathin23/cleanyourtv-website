@@ -345,7 +345,7 @@ export const BRANDS: Brand[] = [
         ],
         undo: "Tick them again.",
         sources: [MARKUP, ["LG: Content Recommendation", "https://www.lg.com/in/support/product-support/troubleshoot/help-library/cs-CT52006584-20153905578425OLT/"], ["XDA, Aug 2026", "https://www.xda-developers.com/hidden-lg-tv-settings-i-changed-immediately-to-make-my-new-tv-look-even-better/"]],
-        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2021, model: "32UP77", by: "vovajonav-cpu", issue: 3485 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }, { year: "2021–2024", by: "Sulivan1972", issue: 2762 }, { year: 2025, model: "OLED55G46LS", by: "hteebee", issue: 4100 }],
+        checks: [{ year: 2019, model: "OLED65C9PLA", by: "choucrifahed", issue: 2140 }, { year: 2021, model: "32UP77", by: "vovajonav-cpu", issue: 3485 }, { year: 2022, model: "50UQ75006LG", by: "mnagy132", issue: 2670 }, { year: "2021–2024", by: "Sulivan1972", issue: 2762 }, { year: 2025, model: "OLED55G46LS", by: "hteebee", issue: 4100 }, { year: 2025, model: "65QNED85AQA", by: "pritesh0983", issue: 3432 }],
       },
       {
         id: "voice",
@@ -400,7 +400,7 @@ export const BRANDS: Brand[] = [
         note: "Older software calls it Limit ad tracking (tick that one on). Resetting the advertising ID on its own doesn’t opt you out.",
         undo: "Tick it again.",
         sources: [NAI],
-        checks: [{ model: "Hisense 60R6+", by: "btsiders", issue: 2323 }, { model: "TCL 55S403", by: "grapeofwrath", issue: 2324 }],
+        checks: [{ model: "Hisense 60R6+", by: "btsiders", issue: 2323 }, { model: "TCL 55S403", by: "grapeofwrath", issue: 2324 }, { model: "Roku 3941X2 (streaming stick)", by: "junkjunker", issue: 3110 }],
       },
       {
         id: "mic",
@@ -421,7 +421,7 @@ export const BRANDS: Brand[] = [
         note: "Take mic access away from each channel, or block it for all. On the Voice Remote Pro, the hands-free switch turns off “Hey Roku”; push-to-talk still works.",
         undo: "Allow it again in the same menu.",
         sources: [["Roku: microphone", "https://developer.roku.com/dev/docs/romicrophone"], ["Roku: Voice Remote Pro", "https://support.roku.com/en-ca/article/learn-about-voice-remote-pro"]],
-        checks: [{ model: "Hisense 60R6+", by: "btsiders", issue: 2323 }, { model: "TCL 55S403", by: "grapeofwrath", issue: 2324 }],
+        checks: [{ model: "Hisense 60R6+", by: "btsiders", issue: 2323 }, { model: "TCL 55S403", by: "grapeofwrath", issue: 2324 }, { model: "Roku 3941X2 (streaming stick)", by: "junkjunker", issue: 3110 }],
       },
     ],
     outro: "Menu paths can move with a software update. If yours didn’t match, tell us what you saw.",
@@ -564,7 +564,7 @@ export const BRANDS: Brand[] = [
           ["Pocket-lint, Sep 2026", "https://www.pocket-lint.com/how-to-disable-acr-on-a-hisense-tv/"],
           ["V: Enhanced Viewing notice", "https://v-home.com/enhanced-viewing-service-privacy-notice-us/"],
         ],
-        checks: [{ model: "N1213 (VIDAA U6)", by: "CarlWarnett", issue: 3698 }],
+        checks: [{ model: "N1213 (VIDAA U6)", by: "CarlWarnett", issue: 3698 }, { model: "50A7KAU (VIDAA U9)", by: "beastlyhaz", issue: 3120 }],
       },
       {
         id: "ads",
